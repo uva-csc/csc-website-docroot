@@ -34,3 +34,6 @@ sites/all/themes/README.txt
 # /profiles
 # /scripts
 # /themes
+
+# Ignore Editor Configs
+.project
