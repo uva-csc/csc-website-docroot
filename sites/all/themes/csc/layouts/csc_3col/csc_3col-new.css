@@ -1,0 +1,20 @@
+.csc-3col-container{
+  float: left;
+  width: 100%;
+}
+
+.csc-3col-col-fixed{
+  float: left;
+  width: 150px;
+  display: table-cell;
+}
+
+.csc-3col-fluid-wrapper{
+  width: 100%;
+  display: table-cell;
+}
+
+.csc-3col-col-fluid{
+  float: left;
+  width: 50%;
+}
