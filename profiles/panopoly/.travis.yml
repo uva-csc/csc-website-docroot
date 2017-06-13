@@ -10,71 +10,52 @@ mysql:
 
 env:
   - UPGRADE=none
+  - UPGRADE=7.x-1.9
+  - UPGRADE=7.x-1.8
+  - UPGRADE=7.x-1.6
+  - UPGRADE=7.x-1.5
+  - UPGRADE=7.x-1.4
+  - UPGRADE=7.x-1.2
+  - UPGRADE=7.x-1.1
   - UPGRADE=7.x-1.0-rc5
   - UPGRADE=7.x-1.0-rc4
   - UPGRADE=7.x-1.0-rc3
 
+matrix:
+  fast_finish: true
+  allow_failures:
+    - env: UPGRADE=7.x-1.0-rc3
+
 install:
-  - sudo apt-get update > /dev/null
-  - "mysql -e 'create database drupal;'"
+  # Make some variables available to the travis-ci.sh script.
+  - export UPDATE TRAVIS_BUILD_DIR
 
-  - pear channel-discover pear.drush.org
-  - pear install drush/drush-6.1.0.0
-  - phpenv rehash
+  # Copy the script into a stable location.
+  - cp scripts/travis-ci.sh $HOME/
 
-  # Build Behat dependencies
-  - cd ./tests/behat
-  - composer install
-  # - cp behat.template.yml behat.local.yml
-  - cd ../../../
+  # Move to the directory above, where we should remain.
+  - cd ..
 
-  # Build Codebase
-  - mkdir private_files
-  - mkdir profiles
-  - mv panopoly profiles/
-  - mkdir drupal
-  - mv profiles drupal/
-
-  # Test the current branch
-  - cd drupal
-  - drush make --yes profiles/panopoly/drupal-org-core.make --prepare-install
-  - drush make --yes profiles/panopoly/drupal-org.make --no-core --contrib-destination=profiles/panopoly
-  - drush dl panopoly_demo
-  - cd ../
-
-  # Download an old version to test upgrading from.
-  - if [[ "$UPGRADE" != none ]]; then drush dl panopoly-$UPGRADE; fi
-
-  # Setup files
-  - sudo chmod -R 777 drupal/sites/all
-
-  # Setup display for Selenium
-  - export DISPLAY=:99.0
-  - sh -e /etc/init.d/xvfb start
-  - sleep 5
-
-  # Get Selenium
-  - wget http://selenium.googlecode.com/files/selenium-server-standalone-2.37.0.jar
-  - java -jar selenium-server-standalone-2.37.0.jar > /dev/null 2>&1 &
-  - sleep 5
- 
-  # Disable sendmail
-  - echo sendmail_path=`which true` >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+  # Start by doing system installation.
+  - $HOME/travis-ci.sh system-install
 
 before_script:
-
-  # Do the site install (either the current revision or old for the upgrade).
-  - if [[ "$UPGRADE" == none ]]; then cd drupal; else cd panopoly-$UPGRADE; fi
-  - php `pear config-get php_dir`/drush/drush.php si panopoly --db-url=mysql://root:@127.0.0.1/drupal --account-name=admin --account-pass=admin --site-mail=admin@example.com --site-name="Panopoly" --yes
-  - cd ../drupal
-
-  # If we're an upgrade test, run the upgrade process.
-  - if [[ "$UPGRADE" != none ]]; then cp -a ../panopoly-$UPGRADE/sites/default/* sites/default/ && drush updb --yes; fi
-
-  - drush runserver --server=builtin 8888 > /dev/null 2>&1 &
-  - sleep 3
-  - cd profiles/panopoly/tests/behat
+  - $HOME/travis-ci.sh before-tests
 
 script:
+  - $HOME/travis-ci.sh run-tests
 
-  - ./bin/behat --config behat.travis.yml
+after_script:
+  - $HOME/travis-ci.sh after-tests
+
+notifications:
+  email:
+    recipients:
+      - panopoly-ci@googlegroups.com
+    on_success: always
+    on_failure: always
+  irc:
+    channels:
+      - "chat.freenode.net#panopoly"
+    on_success: always
+    on_failure: always

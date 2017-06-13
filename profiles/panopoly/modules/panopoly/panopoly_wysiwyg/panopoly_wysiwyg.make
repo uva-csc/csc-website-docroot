@@ -19,7 +19,7 @@ projects[wysiwyg_filter][subdir] = contrib
 projects[linkit][version] = 2.6
 projects[linkit][subdir] = contrib
 
-projects[image_resize_filter][version] = 1.13
+projects[image_resize_filter][version] = 1.14
 projects[image_resize_filter][subdir] = contrib
 
 projects[caption_filter][version] = 1.x-dev
@@ -31,7 +31,7 @@ projects[caption_filter][download][branch] = 7.x-1.x
 ; Include our Editors
 
 libraries[tinymce][download][type] = get
-libraries[tinymce][download][url] = https://github.com/downloads/tinymce/tinymce/tinymce_3.5.8.zip
+libraries[tinymce][download][url] = http://download.moxiecode.com/tinymce/tinymce_3.5.8.zip
 libraries[tinymce][patch][1561882] = http://drupal.org/files/1561882-cirkuit-theme-tinymce-3.5.8.patch
 
 libraries[markitup][download][type] = get
