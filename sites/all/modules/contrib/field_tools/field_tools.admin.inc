@@ -14,6 +14,13 @@ function field_tools_field_overview() {
   $field_types = field_info_field_types();
   $fields = field_info_fields();
 
+  // Sort the fields, defaulting to field name.
+  $query = drupal_get_query_parameters();
+  $sort = isset($query['sort']) ? check_plain($query['sort']) : 'field_name';
+  uasort($fields, function($a, $b) use ($sort) {
+    return strcmp($a[$sort], $b[$sort]);
+  });
+
   $rows = array();
   foreach ($fields as $field_name => $field) {
     $row = array();
@@ -36,8 +43,16 @@ function field_tools_field_overview() {
   }
 
   $header = array(
-    t('Field name'),
-    t('Type'),
+    l(t('Field name'), current_path(), array(
+      'query' => array(
+        'sort' => 'field_name',
+      ),
+    )),
+    l(t('Type'), current_path(), array(
+      'query' => array(
+        'sort' => 'type',
+      ),
+    )),
     t('Instances'),
     t('Operations'),
   );
@@ -53,11 +68,229 @@ function field_tools_field_overview() {
 }
 
 /**
+ * Page callback for the field references overview list.
+ *
+ * @todo Make this all singing and dancing with some sort of visual
+ * representation of the relationships.
+ */
+function field_tools_field_references_overview() {
+  $output = '';
+
+  $entity_info = entity_get_info();
+  $field_types = field_info_field_types();
+  $fields = field_info_fields();
+
+  $rows = array();
+  foreach ($fields as $field_name => $field) {
+    // TODO: also deal with taxonomy term ref, product ref.
+    if (!in_array($field['type'], array('entityreference', 'taxonomy_term_reference'))) {
+      continue;
+    }
+
+    $row = array();
+    // Column: field name.
+    $row[] = l($field_name, 'admin/reports/fields/field/' . $field_name);
+    // Column: field type.
+    $row[] = $field_types[$field['type']]['label'];
+    // Column: field instances.
+    $row[] = field_tools_field_instances_list($field);
+    // Column: target entity type.
+    switch ($field['type']) {
+      case 'taxonomy_term_reference':
+        $target_type = 'taxonomy_term';
+        break;
+      case 'entityreference':
+        $target_type = $field['settings']['target_type'];
+    } // switch
+    $row[] = $entity_info[$target_type]['label'];
+    // Column: target bundles.
+    switch ($field['type']) {
+      case 'taxonomy_term_reference':
+        $vocabulary = $field['settings']['allowed_values'][0]['vocabulary'];
+        $row[] = l($entity_info['taxonomy_term']['bundles'][$vocabulary]['label'],
+          _field_ui_bundle_admin_path('taxonomy_term', $vocabulary));
+        break;
+      case 'entityreference':
+        switch ($field['settings']['handler']) {
+          case 'base':
+            // Base handler: select bundles.
+            if (empty($field['settings']['handler_settings']['target_bundles'])) {
+              // Nothing means all bundles.
+              $row[] = t("All bundles");
+            }
+            else {
+              $target_bundles = $field['settings']['handler_settings']['target_bundles'];
+              $items = array();
+              foreach ($target_bundles as $target_bundle) {
+                $items[] = l($entity_info[$target_type]['bundles'][$target_bundle]['label'],
+                  _field_ui_bundle_admin_path($target_type, $target_bundle));
+              }
+
+              $row[] = theme('item_list', array(
+                'items' => $items,
+              ));
+            }
+            break;
+          default:
+            $row[] = "**other handler**";
+            // TODO: view selection
+
+        } // switch entref handler
+        break;
+    } // switch field type
+
+    $rows[] = $row;
+  }
+
+  $header = array(
+    t('Field name'),
+    t('Type'),
+    t('Instances'),
+    t('Target entity type'),
+    t('Target bundles'),
+  );
+
+  $output .= theme('table', array(
+    'rows' => $rows,
+    'header' => $header,
+  ));
+
+  return $output;
+}
+
+/**
+ * Output a graph of references between entity types.
+ *
+ * Requires GraphAPI module.
+ *
+ * @param $graph_engine
+ *  (optional) The name of a GraphAPI engine to use. Defaults to the first
+ *  engine returned by graphapi_get_engines().
+ */
+function field_tools_field_references_graph($graph_engine = NULL) {
+  $graph = graphapi_new_graph();
+
+  $entity_info = entity_get_info();
+  $field_types = field_info_field_types();
+  $fields = field_info_fields();
+  $field_map = field_info_field_map();
+  $instances = field_info_instances();
+
+  // Step 1: Create graph nodes for reference fields.
+  foreach ($fields as $field_name => $field) {
+    $target_type = NULL;
+    switch ($field['type']) {
+      case 'entityreference':
+        $target_type = $field['settings']['target_type'];
+        $link_color = 'red';
+        break;
+      case 'taxonomy_term_reference':
+        $target_type = 'taxonomy_term';
+        $link_color = 'green';
+        break;
+      // TODO: deal with product reference fields.
+    }
+
+    // If no target type was set, then we don't know about this sort of field.
+    if (empty($target_type)) {
+      continue;
+    }
+
+    // First pass: only entity types in graph, no bundles.
+    foreach ($field_map[$field_name]['bundles'] as $instance_entity_type => $instance_bundles) {
+      //dsm("FROM $instance_entity_type TO $target_type");
+      $link_data = array(
+        'title' => $field_name,
+        'type'  => 'field-' . $field['type'],
+        'color' => $link_color,
+      );
+      graphapi_set_link_data($graph, $instance_entity_type, $target_type, $link_data);
+    }
+  }
+
+  // Step 2: Create graph nodes for schema properties that point to other entity tables.
+  // First we need a lookup of all the entity tables.
+  $entity_tables = array();
+  foreach ($entity_info as $entity_type => $entity_type_info) {
+    $entity_tables[$entity_type_info['base table']] = $entity_type;
+  }
+  // Now work through each entity's table schema
+  foreach ($entity_info as $entity_type => $entity_type_info) {
+    $entity_table_schema = drupal_get_schema($entity_type_info['base table']);
+    if (!isset($entity_table_schema['foreign keys'])) {
+      continue;
+    }
+    foreach ($entity_table_schema['foreign keys'] as $relation_name => $relation_info) {
+      if (isset($entity_tables[$relation_info['table']])) {
+        // The relation goes to another entity type's table, so add a link to
+        // our graph.
+        $link_data = array(
+          'title' => $relation_name,
+          'type'  => 'schema',
+          'color' => 'blue',
+        );
+        graphapi_set_link_data($graph, $entity_type, $entity_tables[$relation_info['table']], $link_data);
+      }
+    }
+  }
+
+  //dsm($graph);
+
+  $config = array(
+    'width' => 800,
+    'height' => 400,
+  );
+
+  $graph_api_engines = graphapi_get_engines();
+  if (empty($graph_engine)) {
+    // Take the first engine if none was given in the URL.
+    $graph_api_engine_names = array_keys($graph_api_engines);
+    $graph_engine = array_shift($graph_api_engine_names);
+  }
+
+  $config['engine'] = $graph_engine;
+
+  $build = array();
+
+  $vars = array(
+    'graph' => $graph,
+    'config' => $config,
+  );
+
+  $build['graph'] = array(
+    '#markup' => theme('graphapi_dispatch', $vars)
+  );
+
+  $engine_links_items = array();
+  foreach ($graph_api_engines as $name => $label) {
+    if ($graph_engine == $name) {
+      $label .= ' ' . t("(current)");
+    }
+    $engine_links_items[] = l($label, "admin/reports/fields/graph/$name");
+  }
+
+  $build['engine_links'] = array(
+    '#theme' => 'item_list',
+    '#items' => $engine_links_items,
+    '#title' => t("Select graph rendering engine"),
+  );
+
+  return $build;
+}
+
+/**
  * Form to edit all instances of a field.
+ *
+ * @param $field
+ *  A field definition array.
+ *
+ * @see field_tools_field_edit_form_validate()
+ * @see field_tools_field_edit_form_submit()
  */
 function field_tools_field_edit_form($form, &$form_state, $field) {
   // Take the first instance in the list as the one to populate the form with.
-  $entity_type = array_shift(array_keys($field['bundles']));
+  $bundles = array_keys($field['bundles']);
+  $entity_type = array_shift($bundles);
   $bundle = $field['bundles'][$entity_type][0];
 
   $form['warning'] = array(
@@ -68,7 +301,7 @@ function field_tools_field_edit_form($form, &$form_state, $field) {
 
   $instance = field_info_instance($entity_type, $field['field_name'], $bundle);
 
-  module_load_include('inc', 'field_ui', 'field_ui.admin');
+  form_load_include($form_state, 'inc', 'field_ui', 'field_ui.admin');
 
   // Remainder cribbed from field_ui_field_edit_form().
   $form['#field'] = $field;
@@ -182,8 +415,10 @@ function field_tools_field_edit_form($form, &$form_state, $field) {
 }
 
 /**
+ * Validate handler for the form for all instances of a field.
  *
- *
+ * @see field_tools_field_edit_form()
+ * @see field_tools_field_edit_form_submit()
  * @see field_ui_field_edit_form_validate()
  */
 function field_tools_field_edit_form_validate($form, &$form_state) {
@@ -191,8 +426,10 @@ function field_tools_field_edit_form_validate($form, &$form_state) {
 }
 
 /**
+ * Submit handler for the form for all instances of a field.
  *
- *
+ * @see field_tools_field_edit_form()
+ * @see field_tools_field_edit_form_validate()
  * @see field_ui_field_edit_form_submit()
  */
 function field_tools_field_edit_form_submit($form, &$form_state) {
@@ -228,6 +465,9 @@ function field_tools_field_edit_form_submit($form, &$form_state) {
       )));
     }
   }
+
+  // Redirect the user to the overview page.
+  $form_state['redirect'] = 'admin/reports/fields/tools';
 }
 
 /**
@@ -282,6 +522,9 @@ function field_tools_field_delete_form_submit($form, &$form_state) {
       '%bundle' => $bundle_name,
     )));
   }
+
+  // Redirect the user to the overview page.
+  $form_state['redirect'] = 'admin/reports/fields/tools';
 }
 
 /**
@@ -300,10 +543,22 @@ function field_tools_bundle_fields_clone_from_form($form, &$form_state, $entity_
   $field_instances = field_info_instances($entity_type, $bundle_name);
   //dsm($field_instances);
 
+  // Order the instances by weight.
+  uasort($field_instances, function($a, $b) {
+    if ($a['widget']['weight'] == $b['widget']['weight']) {
+        return 0;
+    }
+    return ($a['widget']['weight'] < $b['widget']['weight']) ? -1 : 1;
+  });
+
   $options_fields = array();
   foreach ($field_instances as $field_name => $field) {
-    $options_fields[$field_name] = $field['label'];
+    $options_fields[$field_name] = t("@field-label (machine name: @field-name)", array(
+      '@field-label' => $field['label'],
+      '@field-name' => $field_name,
+    ));
   }
+  asort($options_fields);
 
   $form['fields'] = array(
     '#title' => t('Fields to clone'),
@@ -400,7 +655,7 @@ function field_tools_field_clone_form($form, &$form_state, $instance) {
     '#description' => t('At least one term in this vocabulary must be selected when submitting data with this field.'),
   );
 
-  module_load_include('inc', 'field_ui', 'field_ui.admin');
+  form_load_include($form_state, 'inc', 'field_ui', 'field_ui.admin');
   $widget_options = field_ui_widget_type_options($field['type']);
   $form['settings']['widget_type'] = array(
     '#type' => 'select',
@@ -459,6 +714,354 @@ function field_tools_field_clone_form_submit($form, &$form_state) {
   }
   if (!empty($new_instances)) {
     _field_tools_add_instance_to_bundles($instance, $new_instances);
+  }
+}
+
+/**
+ * Form to export all fields of a bundle.
+ *
+ * @param $entity_type
+ *  The machine name of the entity.
+ * @param $bundle
+ *  The machine name of the bundle, or a bundle object if the particular
+ *  entity type has a menu loader for bundles.
+ */
+function field_tools_bundle_export_form($form, $form_state, $entity_type, $bundle) {
+  // Get the bundle name if the bundle name is really a bundle object.
+  $bundle_name = field_extract_bundle($entity_type, $bundle);
+
+  $instances = field_info_instances($entity_type, $bundle_name);
+
+  $options_fields = array();
+  foreach ($instances as $field_name => $field) {
+    $options_fields[$field_name] = $field['label'];
+  }
+  asort($options_fields);
+
+  $form['fields'] = array(
+    '#title' => t('Fields to export'),
+    '#type' => 'checkboxes',
+    '#options' => $options_fields,
+    '#description' => t("Select fields that you want to export."),
+  );
+
+  if (module_exists('field_group')) {
+    $groups = field_group_info_groups($entity_type, $bundle_name, 'form');
+    $options_groups = array();
+    foreach ($groups as $group_name => $group) {
+      $options_groups[$group_name] = $group->label;
+    }
+    asort($options_groups);
+
+    $form['groups'] = array(
+      '#title' => t('Groups to export'),
+      '#type' => 'checkboxes',
+      '#options' => $options_groups,
+      '#description' => t("Select groups that you want to export."),
+    );
+  }
+
+  // Check if the form has already been submitted, if so, storage will be
+  // filled and the export code can be built and put into a textarea.
+  if (isset($form_state['storage']['fields'])) {
+    $export_fields = array_filter($form_state['storage']['fields']);
+    $export = array();
+    foreach ($export_fields as $field_name) {
+      $instance = $instances[$field_name];
+      $export[] = field_tools_get_field_code($instance);
+    }
+
+    if (module_exists('field_group')) {
+      $export_groups = array_filter($form_state['storage']['groups']);
+      $groups = field_group_info_groups($entity_type, $bundle_name, 'form');
+      foreach ($export_groups as $group_name) {
+        $group = $groups[$group_name];
+        $export[] = field_tools_get_group_code($group);
+      }
+    }
+
+    $code = implode("\n", $export);
+    $form['code'] = field_tools_textarea(t('Export code'), $code);
+  }
+
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Get export code'),
+  );
+
+  return $form;
+}
+
+/**
+ * Submit handler for field exports.
+ */
+function field_tools_bundle_export_form_submit($form, &$form_state) {
+  $form_state['rebuild'] = TRUE;
+  $form_state['storage']['fields'] = $form_state['values']['fields'];
+  if (module_exists('field_group')) {
+    $form_state['storage']['groups'] = $form_state['values']['groups'];
+  }
+}
+
+/**
+ * Import fields into a bundle.
+ *
+ * @param $entity_type
+ *  The machine name of the entity.
+ * @param $bundle
+ *  The machine name of the bundle, or a bundle object if the particular
+ *  entity type has a menu loader for bundles.
+ */
+function field_tools_bundle_import_form($form, $form_state, $entity_type, $bundle) {
+  $form = array();
+  $form['#entity_type'] = $entity_type;
+  $form['#bundle'] = field_extract_bundle($entity_type, $bundle);
+  $form['code'] = field_tools_textarea(t('Field code'));
+  $form['code']['#required'] = TRUE;
+  $form['code']['#description'] = t('Paste the code of one or more previously exported fields.');
+  $form['actions']['import'] = array(
+    '#type' => 'submit',
+    '#value' => t('Import'),
+  );
+  // Add an action to skip the validation, this means that whatever possible
+  // will be imported, if any of the fields exist on the target bundle already,
+  // they will be skipped.
+  $form['actions']['import_force'] = array(
+    '#type' => 'submit',
+    '#value' => t('Import (skip validation)'),
+  );
+  return $form;
+}
+
+/**
+ * Validation callback for the import form.
+ */
+function field_tools_bundle_import_form_validate($form, &$form_state) {
+  if ($form_state['values']['op'] == $form_state['values']['import_force']) {
+    // Import without validation has been requested, so we can return here.
+    return;
+  }
+
+  eval($form_state['values']['code']);
+  $entity_type = $form['#entity_type'];
+  $bundle = $form['#bundle'];
+  $errors = array();
+
+  if (isset($fields) && count($fields)) {
+    foreach ($fields as $field_name => $item) {
+      $field_type = field_info_field_types($item['field']['type']);
+      if (!$field_type) {
+        $errors[] = t('Unknown field type %field_type. Field %field_name will not be created.', array(
+          '%field_type' => $item['field']['type'],
+          '%field_name' => $field_name,
+        ));
+        continue;
+      }
+
+      $instance = field_info_instance($entity_type, $field_name, $bundle);
+      if ($instance) {
+        $errors[] = t('Bundle %bundle already contains the field %field.', array(
+          '%field' => $field_name,
+          '%bundle' => $bundle,
+        ));
+      }
+    }
+  }
+
+  if (isset($groups) && count($groups)) {
+    foreach ($groups as $group_name => $group) {
+      $existing_groups = field_group_read_groups(array('name' => $entity_type, 'bundle' => $bundle));
+
+      if (isset($existing_groups[$entity_type][$bundle][$group->mode][$group_name])) {
+        $errors[] = t('Bundle %bundle already contains the group %group.', array(
+          '%group' => $group_name,
+          '%bundle' => $bundle,
+        ));
+        continue;
+      }
+    }
+  }
+
+  if (count($errors) > 0) {
+    form_set_error('code', t('Validation failed for the following reasons:'));
+    foreach ($errors as $error) {
+      drupal_set_message($error, 'error');
+    }
+    $form_state['rebuild'] = TRUE;
+  }
+}
+
+/**
+ * Submit handler for the import form.
+ */
+function field_tools_bundle_import_form_submit($form, &$form_state) {
+  eval($form_state['values']['code']);
+  $entity_type = $form['#entity_type'];
+  $bundle = $form['#bundle'];
+
+  if (isset($fields)) {
+    field_tools_import_fields($entity_type, $bundle, $fields);
+  }
+
+  if (isset($groups) && count($groups)) {
+    field_tools_import_groups($entity_type, $bundle, $groups);
+  }
+
+}
+
+/**
+ * Form to export a single field instance.
+ */
+function field_tools_field_export_form($form, $form_state, $instance) {
+  $form = array();
+  $form['code'] = field_tools_textarea(t('Field code'), field_tools_get_field_code($instance));
+  return $form;
+}
+
+/**
+ * Form to export a single group.
+ */
+function field_tools_group_export_form($form, $form_state, $group) {
+  $form = array();
+  $form['code'] = field_tools_textarea(t('Group code'), field_tools_get_group_code($group));
+  return $form;
+}
+
+/**
+ * Retrieve a code representation of the given field instance.
+ *
+ * @param array $instance
+ *  A field instance array.
+ *
+ * @return string
+ *  The code representation of the field instance.
+ */
+function field_tools_get_field_code($instance) {
+  $data = array();
+  $entity_name = $instance['entity_type'];
+  $bundle_name = $instance['bundle'];
+  $field_name = $instance['field_name'];
+  $data[$field_name] = array(
+    'field' => field_info_field($field_name),
+    'instance' => field_info_instance($entity_name, $field_name, $bundle_name),
+  );
+  ctools_include('export');
+  return '$fields[\'' . $field_name . '\'] = ' . ctools_var_export($data[$field_name]) . ';';
+}
+
+/**
+ * Retrieve a code representation of the given field group.
+ *
+ * @param object $group
+ *  A group object
+ * @return string
+ *  The code representation of the group
+ */
+function field_tools_get_group_code($group) {
+  // Unset group properties that are related to the current instance and should
+  // not be exported.
+  unset($group->id, $group->identifier, $group->bundle, $group->entity_type);
+  $group_name = $group->group_name;
+  ctools_include('export');
+  return '$groups[\'' . $group_name . '\'] = ' . ctools_var_export($group) . ';';
+}
+
+/**
+ * Import fields to a bundle.
+ *
+ * @param string $entity_type
+ *  The entity type of the target bundle
+ * @param string $bundle_name
+ *  The name of the target bundle
+ * @param array $fields
+ *  An array of fields to be imported, as obtained from
+ *  field_tools_get_field_code().
+ */
+function field_tools_import_fields($entity_type, $bundle_name, $fields) {
+  if (count($fields)) {
+    foreach ($fields as $field_name => $item) {
+      $field_type = field_info_field_types($item['field']['type']);
+      if (!$field_type) {
+        drupal_set_message(t('Unknown field type %field_type. Field %field_name has not been created.', array(
+          '%field_type' => $item['field']['type'],
+          '%field_name' => $field_name,
+        )), 'error');
+        continue;
+      }
+
+      $field = field_info_field($field_name);
+      if (!$field) {
+        field_create_field($item['field']);
+        drupal_set_message(t('Field %field has been created.', array('%field' => $field_name)));
+      }
+
+      $instance = field_info_instance($entity_type, $field_name, $bundle_name);
+      if (!$instance) {
+        $item['instance']['bundle'] = $bundle_name;
+        $item['instance']['entity_type'] = $entity_type;
+        $item['field_id'] = $field['id'];
+        field_create_instance($item['instance']);
+        drupal_set_message(t('Field %field has been added to bundle %bundle.', array(
+          '%field' => $field_name,
+          '%bundle' => $bundle_name,
+        )));
+      }
+      else {
+        drupal_set_message(t('Field %field has not been added to bundle %bundle because the bundle already contains this field.', array(
+          '%field' => $field_name,
+          '%bundle' => $bundle_name,
+        )), 'error');
+      }
+    }
+  }
+}
+
+/**
+ * Import groups to a bundle.
+ *
+ * @param string $entity_type
+ *  The entity type of the target bundle
+ * @param string $bundle_name
+ *  The name of the target bundle
+ * @param array $groups
+ *  An array of groups to be imported to the target bundle, as obtained from
+ *  field_tools_get_group_code().
+ */
+function field_tools_import_groups($entity_type, $bundle_name, $groups) {
+  if (count($groups)) {
+    if (!module_exists('field_group')) {
+      drupal_set_message(t('Groups could not be imported because the field_group module is not installed.'));
+      return;
+    }
+
+    foreach ($groups as $group_name => $group) {
+      $existing_groups = field_group_read_groups(array('name' => $entity_type, 'bundle' => $bundle_name));
+
+      if (isset($existing_groups[$entity_type][$bundle_name][$group->mode][$group_name])) {
+        drupal_set_message(t('Group %group has not been added to bundle %bundle because the bundle already contains this group.', array(
+          '%group' => $group_name,
+          '%bundle' => $bundle_name,
+        )), 'error');
+        continue;
+      }
+
+      $group->identifier = $group->group_name . '|' . $entity_type . '|' . $bundle_name . '|' . $group->mode;
+      $group->bundle = $bundle_name;
+      $group->entity_type = $entity_type;
+
+      if (isset($group->id)) {
+        unset($group->id);
+      }
+      if (isset($group->export_type)) {
+        unset($group->export_type);
+      }
+      ctools_export_crud_save('field_group', $group);
+
+      drupal_set_message(t('Group %group has been added to bundle %bundle.', array(
+        '%group' => $group_name,
+        '%bundle' => $bundle_name,
+      )));
+    }
   }
 }
 
@@ -654,9 +1257,17 @@ function _field_tools_add_instance_to_bundles($instance, $new_instances) {
         continue;
       }
 
+      // Strip out keys that are specific to the instance being copied.
       $instance = array_diff_key($instance, array_flip(array('id', 'field_id', 'bundle', 'entity_type', 'deleted')));
-      // Only bring back displays that have matching "view mode" in this entity type.
-      $instance['display'] = array_intersect_key($original_display, $entity_types[$entity_type]['view modes']);
+
+      // Only bring back displays that have matching "view mode" in this entity
+      // type.
+      $view_modes = $entity_types[$entity_type]['view modes'];
+      // Add a key for the default display settings, so the array intersection
+      // keeps them, as we always want those.
+      $view_modes['default'] = TRUE;
+
+      $instance['display'] = array_intersect_key($original_display, $view_modes);
       if (empty($instance['display'])) {
         //@todo should there be logic to handle to no matching 'view modes'
       }
@@ -722,8 +1333,17 @@ function field_tools_field_instances_list($field) {
   $entity_info = entity_get_info();
   $items_entities = array();
   foreach ($field['bundles'] as $entity_type => $field_bundle_names) {
+    // Fields may exist for entities that no longer do.
+    if (!isset($entity_info[$entity_type])) {
+      continue;
+    }
+
     $items_bundles = array();
     foreach ($field_bundle_names as $bundle) {
+      if (!isset($entity_info[$entity_type]['bundles'][$bundle])) {
+        continue;
+      }
+
       // @todo: sort these.
       $admin_path = _field_ui_bundle_admin_path($entity_type, $bundle);
       $label = $entity_info[$entity_type]['bundles'][$bundle]['label'];
@@ -737,4 +1357,30 @@ function field_tools_field_instances_list($field) {
   return theme('item_list', array(
     'items' => $items_entities,
   ));
+}
+
+/**
+ * Build a Form API textarea element to use for import/export.
+ *
+ * @param string $label
+ *  The translated label for the textarea element.
+ * @param string $value
+ *  (optional) The code to show in the text area.
+ *
+ * @return array
+ *  A Form API textarea element.
+ */
+function field_tools_textarea($label, $value = NULL) {
+  $textarea = array(
+    '#type' => 'textarea',
+    '#title' => $label,
+    '#rows' => 40,
+  );
+  if ($value === NULL) {
+    $textarea['#default_value'] = '';
+  }
+  else {
+    $textarea['#value'] = $value;
+  }
+  return $textarea;
 }
