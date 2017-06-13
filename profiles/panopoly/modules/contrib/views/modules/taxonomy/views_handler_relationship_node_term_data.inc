@@ -1,5 +1,5 @@
 <?php
-require_once('profiles/panopoly/modules/contrib/views/handlers/views_handler_relationship.inc');
+
 /**
  * @file
  * Definition of views_handler_relationship_node_term_data.

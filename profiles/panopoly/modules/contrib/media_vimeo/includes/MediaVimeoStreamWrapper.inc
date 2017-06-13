@@ -1,5 +1,5 @@
 <?php
-require_once('profiles/panopoly/modules/contrib/media/includes/MediaReadOnlyStreamWrapper.inc');
+
 /**
  *  @file
  *  Create a Vimeo Stream Wrapper class for the Media/Resource module.
