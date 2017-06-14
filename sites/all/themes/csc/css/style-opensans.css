@@ -5342,3 +5342,16 @@ margin: -12px 0 8px 0;
     margin: 1rem;
 }
 
+/** Login link **/
+div.csc-login-link {
+    padding: 8px 36px;
+    border-top: 1px solid white;
+    clear: both;
+    font-size: 0.9em;
+}
+
+div.csc-login-link * {
+    display: inline;
+    padding-right: 6px;
+    vertical-align: middle;
+}
