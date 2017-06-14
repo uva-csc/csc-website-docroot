@@ -1,5 +1,5 @@
 <?php
-require_once('profiles/panopoly/modules/contrib/views/handlers/views_handler_field_entity.inc');
+
 /**
  * @file
  * Definition of views_handler_field_file_link.

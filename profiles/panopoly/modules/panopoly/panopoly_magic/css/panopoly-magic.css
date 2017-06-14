@@ -63,10 +63,6 @@ div.ctools-modal-content div.form-item-categories label {
   width: auto;
 }
 
-#panels-layout-category-Panopoly {
-  margin: 3% 6%;
-}
-
 div.ctools-modal-content .panels-choose-layout .dependent-options {
   padding-left: 0px;
 }
@@ -76,45 +72,24 @@ div.modal-content-preview-button {
   text-align: center;
 }
 
-#panels-layout-category-Panopoly-wrapper .panels-layouts-category,
-#panels-layout-category-Panopoly-wrapper .layout-link div {
-  display: none;
-}
-
-#panels-layout-category-Panopoly-wrapper .layout-link {
-  float: left;
-  height: 68px;
-  padding: 1.25em;
-  text-align: center;
-  width: 68px;
-}
-
-#panels-layout-category-Panopoly-wrapper .layout-link:hover {
-  background-color: #BBB;
-}
-
-#panels-layout-category-Panopoly-wrapper .current-layout {
-  background-color: #DDD;
-}
-
 /**
  * Custom styling for exposed views filter options
  */
 #modal-content .form-item-offset,
 #modal-content .form-item-items-per-page,
-#modal-content .form-item-sort-order, 
-#modal-content .form-item-sort-by {
+#modal-content .form-item-exposed-sort-order, 
+#modal-content .form-item-exposed-sort-by {
   float: left;
   width: 175px;
 }
 
 #modal-content .form-item-offset,
-#modal-content .form-item-sort-order {
+#modal-content .form-item-exposed-sort-order {
   clear: none;
 }
 
-#modal-content .form-item-sort-order label,
-#modal-content .form-item-sort-by label {
+#modal-content .form-item-exposed-sort-order label,
+#modal-content .form-item-exposed-sort-by label {
   float: left;
   font-weight: normal;
   margin-right: 5px;
@@ -135,6 +110,10 @@ div.modal-content-preview-button {
   margin-right: 5px;
 }
 
+#modal-content .general-settings-fieldset label.option {
+  float:none;
+}
+
 #modal-content #edit-context label {
   float: left;
   font-weight: normal;
@@ -145,11 +124,6 @@ div.modal-content-preview-button {
 
 #modal-content #views-exposed-pane div.form-item {
   display: inline;
-}
-
-#modal-content .form-item-view-settings {
-  display:inline;
-  margin-left: 5px;
 }
 
 /* Handle the Header Type Setting Element */
@@ -167,13 +141,25 @@ div.modal-content-preview-button {
   margin-top: 5px;
 }
 
-#modal-content .view-settings-wrapper .field-prefix {
+/* Handle the Display Type setting element. */
+#modal-content .view-settings-wrapper .form-item-view-settings {
+  display: inline;
+}
+
+#modal-content .view-settings-wrapper label {
+  display: inline;
   padding-right: 5px;
+  font-weight: normal;
+  font-size: 12px;
 }
 
 #modal-content .view-settings-wrapper .form-radios {
   display: inline;
   padding-right: 5px;
+}
+
+#modal-content .view-settings-wrapper .form-radio {
+  margin-left: 5px;
 }
 
 /**
@@ -196,4 +182,11 @@ div.ctools-modal-content #ctools_stylizer_color_scheme_form .form-item label {
   float: left;
   margin-right: 10px;
   margin-top: .25em;
+}
+
+/**
+ * Remove the Save as Default Option
+ */
+#panels-ipe-edit-control-form #panelizer-save-default {
+  display: none;
 }
