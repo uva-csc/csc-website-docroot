@@ -112,22 +112,33 @@ function panopoly_core_defaultconfig_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'jquery_update_jquery_version';
+  $strongarm->value = '1.7';
+  $export['jquery_update_jquery_version'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'panelizer_defaults_taxonomy_term_panopoly_categories';
   $strongarm->value = array(
     'status' => 1,
+    'help' => '',
     'view modes' => array(
       'page_manager' => array(
         'status' => 1,
+        'substitute' => '',
         'default' => 1,
         'choice' => 0,
       ),
       'default' => array(
         'status' => 1,
+        'substitute' => '',
         'default' => 1,
         'choice' => 0,
       ),
       'featured' => array(
         'status' => 1,
+        'substitute' => '',
         'default' => 1,
         'choice' => 0,
       ),
@@ -139,7 +150,7 @@ function panopoly_core_defaultconfig_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'panels_page_allowed_layouts';
-  $strongarm->value = 'O:22:"panels_allowed_layouts":4:{s:9:"allow_new";b:1;s:11:"module_name";s:11:"panels_page";s:23:"allowed_layout_settings";a:42:{s:8:"flexible";b:0;s:14:"twocol_stacked";b:0;s:13:"twocol_bricks";b:0;s:6:"twocol";b:0;s:25:"threecol_33_34_33_stacked";b:0;s:17:"threecol_33_34_33";b:0;s:25:"threecol_25_50_25_stacked";b:0;s:17:"threecol_25_50_25";b:0;s:6:"onecol";b:0;s:6:"whelan";b:1;s:12:"webb_flipped";b:1;s:5:"sutro";b:1;s:13:"selby_flipped";b:1;s:5:"selby";b:1;s:4:"pond";b:1;s:15:"moscone_flipped";b:1;s:7:"moscone";b:1;s:8:"mccoppin";b:1;s:15:"hewston_flipped";b:1;s:7:"hewston";b:1;s:6:"harris";b:1;s:5:"geary";b:1;s:12:"burr_flipped";b:1;s:4:"burr";b:1;s:5:"brown";b:1;s:15:"brenham_flipped";b:1;s:7:"brenham";b:1;s:16:"bartlett_flipped";b:1;s:8:"bartlett";b:1;s:17:"sanderson_flipped";b:1;s:9:"sanderson";b:1;s:6:"boxton";b:1;s:22:"bryant_flipped_flipped";b:1;s:6:"bryant";b:1;s:6:"phelan";b:1;s:14:"taylor_flipped";b:1;s:6:"taylor";b:1;s:12:"sutro_double";b:1;s:5:"rolph";b:1;s:4:"webb";b:1;s:10:"responsive";b:1;s:18:"responsive:default";b:0;}s:10:"form_state";N;}';
+  $strongarm->value = 'O:22:"panels_allowed_layouts":4:{s:9:"allow_new";b:1;s:11:"module_name";s:11:"panels_page";s:23:"allowed_layout_settings";a:74:{s:8:"flexible";b:0;s:14:"twocol_stacked";b:0;s:13:"twocol_bricks";b:0;s:6:"twocol";b:0;s:25:"threecol_33_34_33_stacked";b:0;s:17:"threecol_33_34_33";b:0;s:25:"threecol_25_50_25_stacked";b:0;s:17:"threecol_25_50_25";b:0;s:6:"onecol";b:0;s:6:"whelan";b:0;s:12:"webb_flipped";b:0;s:5:"sutro";b:0;s:13:"selby_flipped";b:0;s:5:"selby";b:0;s:4:"pond";b:0;s:15:"moscone_flipped";b:0;s:7:"moscone";b:0;s:8:"mccoppin";b:0;s:15:"hewston_flipped";b:0;s:7:"hewston";b:0;s:6:"harris";b:0;s:5:"geary";b:0;s:12:"burr_flipped";b:0;s:4:"burr";b:0;s:5:"brown";b:0;s:15:"brenham_flipped";b:0;s:7:"brenham";b:0;s:16:"bartlett_flipped";b:0;s:8:"bartlett";b:0;s:17:"sanderson_flipped";b:0;s:9:"sanderson";b:0;s:6:"boxton";b:0;s:22:"bryant_flipped_flipped";b:0;s:6:"bryant";b:0;s:6:"phelan";b:0;s:14:"taylor_flipped";b:0;s:6:"taylor";b:0;s:12:"sutro_double";b:0;s:5:"rolph";b:0;s:4:"webb";b:0;s:10:"responsive";b:1;s:18:"responsive:default";b:0;s:14:"bryant_flipped";b:0;s:14:"radix_bartlett";b:1;s:22:"radix_bartlett_flipped";b:1;s:12:"radix_boxton";b:1;s:13:"radix_brenham";b:1;s:21:"radix_brenham_flipped";b:1;s:11:"radix_brown";b:1;s:12:"radix_bryant";b:1;s:20:"radix_bryant_flipped";b:1;s:10:"radix_burr";b:1;s:18:"radix_burr_flipped";b:1;s:11:"radix_geary";b:1;s:12:"radix_harris";b:1;s:13:"radix_hewston";b:1;s:21:"radix_hewston_flipped";b:1;s:14:"radix_mccoppin";b:1;s:13:"radix_moscone";b:1;s:21:"radix_moscone_flipped";b:1;s:12:"radix_phelan";b:1;s:10:"radix_pond";b:1;s:11:"radix_rolph";b:1;s:15:"radix_sanderson";b:1;s:23:"radix_sanderson_flipped";b:1;s:11:"radix_selby";b:1;s:19:"radix_selby_flipped";b:1;s:11:"radix_sutro";b:1;s:18:"radix_sutro_double";b:1;s:12:"radix_taylor";b:1;s:20:"radix_taylor_flipped";b:1;s:10:"radix_webb";b:1;s:18:"radix_webb_flipped";b:1;s:12:"radix_whelan";b:1;}s:10:"form_state";N;}';
   $export['panels_page_allowed_layouts'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -160,7 +171,7 @@ function panopoly_core_defaultconfig_strongarm() {
     'node_form_title-node_form_title' => 'node_form_title-node_form_title',
     'node_attachments-node_attachments' => 'node_attachments-node_attachments',
     'node_author-node_author' => 'node_author-node_author',
-    'node_body-node_body' => 'node_body-node_body',
+    'node_body-node_body' => 0,
     'node_content-node_content' => 'node_content-node_content',
     'node_created-node_created' => 'node_created-node_created',
     'node_links-node_links' => 'node_links-node_links',
@@ -363,13 +374,13 @@ function panopoly_core_defaultconfig_strongarm() {
     'entity_form_field-fieldable_panels_pane:field_video_video' => 0,
     'entity_form_field-fieldable_panels_pane:field_basic_spotlight_items' => 0,
     'entity_form_field-fieldable_panels_pane:field_spotlight_rotation_time' => 0,
-    'entity_form_field-node:body' => 0,
-    'entity_form_field-node:field_featured_categories' => 0,
-    'entity_form_field-node:field_featured_image' => 0,
-    'entity_form_field-node:field_featured_status' => 0,
-    'entity_form_field-taxonomy_term:field_featured_image' => 0,
-    'entity_form_field-user:field_user_about' => 0,
-    'entity_form_field-user:field_user_picture' => 0,
+    'entity_form_field-node:body' => 'entity_form_field-node:body',
+    'entity_form_field-node:field_featured_categories' => 'entity_form_field-node:field_featured_categories',
+    'entity_form_field-node:field_featured_image' => 'entity_form_field-node:field_featured_image',
+    'entity_form_field-node:field_featured_status' => 'entity_form_field-node:field_featured_status',
+    'entity_form_field-taxonomy_term:field_featured_image' => 'entity_form_field-taxonomy_term:field_featured_image',
+    'entity_form_field-user:field_user_about' => 'entity_form_field-user:field_user_about',
+    'entity_form_field-user:field_user_picture' => 'entity_form_field-user:field_user_picture',
     'entity_field-fieldable_panels_pane:field_quick_links_links' => 'entity_field-fieldable_panels_pane:field_quick_links_links',
     'entity_field-fieldable_panels_pane:field_basic_file_file' => 'entity_field-fieldable_panels_pane:field_basic_file_file',
     'entity_field-fieldable_panels_pane:field_basic_file_text' => 'entity_field-fieldable_panels_pane:field_basic_file_text',
@@ -482,6 +493,13 @@ function panopoly_core_defaultconfig_strongarm() {
   $strongarm->value = 'categories/[term:name]';
   $export['pathauto_taxonomy_term_panopoly_categories_pattern'] = $strongarm;
 
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_update_action';
+  $strongarm->value = '1';
+  $export['pathauto_update_action'] = $strongarm;
+
   return $export;
 }
 
@@ -491,7 +509,7 @@ function panopoly_core_defaultconfig_strongarm() {
 function panopoly_core_defaultconfig_user_default_permissions() {
   $permissions = array();
 
-  // Exported permission: administer panels styles.
+  // Exported permission: 'administer panels styles'.
   $permissions['administer panels styles'] = array(
     'name' => 'administer panels styles',
     'roles' => array(
@@ -501,7 +519,7 @@ function panopoly_core_defaultconfig_user_default_permissions() {
     'module' => 'panels',
   );
 
-  // Exported permission: change layouts in place editing.
+  // Exported permission: 'change layouts in place editing'.
   $permissions['change layouts in place editing'] = array(
     'name' => 'change layouts in place editing',
     'roles' => array(
@@ -511,7 +529,7 @@ function panopoly_core_defaultconfig_user_default_permissions() {
     'module' => 'panels',
   );
 
-  // Exported permission: use page manager.
+  // Exported permission: 'use page manager'.
   $permissions['use page manager'] = array(
     'name' => 'use page manager',
     'roles' => array(
@@ -521,7 +539,7 @@ function panopoly_core_defaultconfig_user_default_permissions() {
     'module' => 'page_manager',
   );
 
-  // Exported permission: use panels in place editing.
+  // Exported permission: 'use panels in place editing'.
   $permissions['use panels in place editing'] = array(
     'name' => 'use panels in place editing',
     'roles' => array(
@@ -543,13 +561,13 @@ function panopoly_core_defaultconfig_user_default_roles() {
   // Exported role: administrator.
   $roles['administrator'] = array(
     'name' => 'administrator',
-    'weight' => '2',
+    'weight' => 2,
   );
 
   // Exported role: editor.
   $roles['editor'] = array(
     'name' => 'editor',
-    'weight' => '3',
+    'weight' => 3,
   );
 
   return $roles;

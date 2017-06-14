@@ -6,9 +6,11 @@ package = Responsive
 files[] = respondjs.module
 files[] = respondjs.admin.inc
 
-; Information added by drupal.org packaging script on 2012-03-17
-version = "7.x-1.1"
+configure = admin/config/media/respondjs
+
+; Information added by Drupal.org packaging script on 2015-03-12
+version = "7.x-1.5"
 core = "7.x"
 project = "respondjs"
-datestamp = "1331953244"
+datestamp = "1426164182"
 

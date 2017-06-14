@@ -2,8 +2,10 @@ name = Panopoly
 distribution_name = Panopoly
 description = A magical framework for building Drupal products based on the Panels module
 core = 7.x
+exclusive = 1
 
 ; Drupal Core
+dependencies[] = block
 dependencies[] = menu
 dependencies[] = image
 dependencies[] = list
@@ -33,21 +35,25 @@ dependencies[] = panopoly_pages
 dependencies[] = panopoly_search
 dependencies[] = panopoly_wysiwyg
 
-; Panopoly Recommended - Admin
+; Panopoly Recommended - Admin & UI
 dependencies[] = navbar
+dependencies[] = breakpoints
 dependencies[] = backports
 dependencies[] = simplified_menu_admin
 dependencies[] = save_draft
 dependencies[] = module_filter
 dependencies[] = date_popup_authored
+dependencies[] = views_ui
 
 ; Panopoly Recommended - Other
 dependencies[] = devel
+dependencies[] = distro_update
 dependencies[] = uuid
+dependencies[] = apps
 
-; Information added by drupal.org packaging script on 2013-04-22
-version = "7.x-1.0-rc4"
+; Information added by Drupal.org packaging script on 2017-05-11
+version = "7.x-1.45"
 core = "7.x"
 project = "panopoly"
-datestamp = "1366645521"
+datestamp = "1494508925"
 

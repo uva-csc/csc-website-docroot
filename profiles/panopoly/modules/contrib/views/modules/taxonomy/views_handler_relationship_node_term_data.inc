@@ -1,5 +1,5 @@
 <?php
-require_once('profiles/panopoly/modules/contrib/views/handlers/views_handler_relationship.inc');
+
 /**
  * @file
  * Definition of views_handler_relationship_node_term_data.
@@ -75,7 +75,9 @@ class views_handler_relationship_node_term_data extends views_handler_relationsh
       $query->addJoin($def['type'], 'taxonomy_vocabulary', 'tv', 'td.vid = tv.vid');
       $query->addJoin($def['type'], 'taxonomy_index', 'tn', 'tn.tid = td.tid');
       $query->condition('tv.machine_name', array_filter($this->options['vocabularies']));
-      $query->addTag('term_access');
+      if (empty($this->query->options['disable_sql_rewrite'])) {
+        $query->addTag('term_access');
+      }
       $query->fields('td');
       $query->fields('tn', array('nid'));
       $def['table formula'] = $query;
