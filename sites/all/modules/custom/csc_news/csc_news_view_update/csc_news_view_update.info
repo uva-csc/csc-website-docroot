@@ -1,0 +1,11 @@
+name = CSC News View Update
+description = Update to the News View for CSC
+core = 7.x
+package = CSC
+version = 7.x-1.24
+dependencies[] = views
+dependencies[] = views_content
+features[ctools][] = views:views_default:3.0
+features[features_api][] = api:2
+features[views_view][] = news
+features_exclude[dependencies][ctools] = ctools
