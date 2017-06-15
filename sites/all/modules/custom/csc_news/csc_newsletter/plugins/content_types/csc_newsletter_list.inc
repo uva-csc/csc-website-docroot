@@ -51,15 +51,10 @@ function csc_newsletter_list_admin_info($subtype, $conf, $contexts) {
 
 function csc_newsletter_list_render($subtype, $conf, $panel_args, $context = NULL) {
   global $base_root, $base_path;
-
-  $path = drupal_get_path('module', 'csc_newsletter');
-  /*
-  drupal_add_js($base_root . $base_path . 'profiles/panopoly/modules/contrib/jquery_update/replace/ui/ui/minified/jquery.ui.position.min.js');
-  drupal_add_js($base_root . $base_path . 'profiles/panopoly/modules/contrib/jquery_update/replace/ui/ui/minified/jquery.ui.dialog.min.js');
-  drupal_add_js($path . '/plugins/content_types/csc_newsletter.js');
-*/
-  $output = '<div class="csc-newsletter-liste"><h1>Newsletter List</h1><p>This is a list of the past N newsletters:</p></div>';
-  $output .= csc_newsletter_mc_query();
+   $numn = $conf['numn'];
+  $output = '<div class="csc-newsletter-liste"><h1>Newsletter List</h1><p>This is a list of the past ' . $numn . ' newsletters:</p>';
+  $output .= csc_newsletter_mc_query($panel_args);
+  $output .= '</div>';
   $block = new stdClass();
   $block->title = t('View Past News Letters');
   $block->content = $output;
@@ -88,13 +83,18 @@ function csc_newsletter_mc_query() {
     $results = json_decode($results);
     $newsletters = array();
     foreach($results->campaigns as $result) {
-        if($result->recipients->list_name == 'General Newsletter' && strstr($result->settings->subject_line, 'Newsletter') ) { $newsletters[] = $result; }
+        if($result->recipients->list_name == 'General Newsletter' && strstr($result->settings->subject_line, 'Newsletter') ) {
+             $d = strtotime($result->create_time);
+             $newsletters[$d] = $result; 
+        }
     }
+    krsort($newsletters);
     $out = '<ul>';
-    foreach($newsletters as $nsl) {
+    foreach($newsletters as $n => $nsl) {
         $nsl_date = date_create($nsl->create_time);
         $date_out = date_format($nsl_date, 'M j, Y');
         $out .= '<li><a href="' . $nsl->archive_url . '" target="_blank">' . $nsl->settings->title . ' (' . $date_out . ')</a></li>';
     }
     $out .= '</ul>';
+    return $out;
 }
