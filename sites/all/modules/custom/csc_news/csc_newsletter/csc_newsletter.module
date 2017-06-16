@@ -1,7 +1,5 @@
 <?php
 
-<<<<<<< HEAD
-=======
 function  csc_newsletter_menu() {
     $items = array();
     $items['admin/config/services/csc_newsletter'] = array(
@@ -36,7 +34,6 @@ function csc_newsletter_permission() {
     );
 }
 
->>>>>>> feature/csc-news-page/CSCWEB-254/ndg8f
 /**
  * Implements hook_ctools_plugin_directory().
  */
@@ -45,9 +42,6 @@ function csc_newsletter_ctools_plugin_directory($owner, $plugin_type) {
     return 'plugins/' . $plugin_type;
   }
 }
-<<<<<<< HEAD
-=======
-
 
 function csc_newsletter_cron() {
     module_load_include('inc', 'csc_newsletter', 'plugins/content_types/csc_newsletter_list');
@@ -55,4 +49,4 @@ function csc_newsletter_cron() {
     watchdog('csc_newsletter', 'Newsletter list updated from mailchimp');
     $res = csc_newsletter_list_set_cache();
 }
->>>>>>> feature/csc-news-page/CSCWEB-254/ndg8f
+
