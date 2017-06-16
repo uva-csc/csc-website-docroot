@@ -89,7 +89,7 @@ function csc_newsletter_mclist($reset = FALSE) {
 
 function csc_newsletter_list_set_cache() {
     $mcapi = 'https://us5.api.mailchimp.com/3.0/';
-    $apiKey = variable_get('csc_newsletter_mckey'); //739d6fc0b36d318ca00dad61f18b533b-us5
+    $apiKey = variable_get('csc_newsletter_mckey');
     if (!$apiKey || empty($apiKey)) { watchdog('csc_newsletter_list', "The CSC mailchimp API key has not been set for this site"); return; }
     $curl = curl_init();
     curl_setopt_array($curl, array(
