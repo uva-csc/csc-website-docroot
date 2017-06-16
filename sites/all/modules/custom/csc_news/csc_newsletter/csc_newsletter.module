@@ -1,5 +1,39 @@
 <?php
 
+function  csc_newsletter_menu() {
+    $items = array();
+    $items['admin/config/services/csc_newsletter'] = array(
+        'title' => 'CSC Newsletter Settings',
+        'description' => 'Settings for the CSC Newsletter plugin',
+        'page callback' => 'drupal_get_form',
+        'page arguments' => array('csc_newsletter_admin'),
+        'access arguments' => array('administer csc settings'),
+    );
+    return $items;
+}
+
+function csc_newsletter_admin() {
+    $form = array();
+    $form['csc_newsletter_mckey'] = array(
+        '#type' => 'textfield',
+        '#title' => t('MailChimp Key'),
+        '#default_value' => variable_get('csc_newsletter_mckey', 'NONE'),
+        '#size' => 50,
+        '#description' => t("The API key for Mailchimp account"),
+        '#required' => TRUE,
+    );
+    return system_settings_form($form);
+}
+
+function csc_newsletter_permission() {
+    return array(
+        'administer csc settings' => array(
+            'title' => t('Administer CSC Module Settings'),
+            'description' => t('Perform administration tasks for CSC cusom modules'),
+        ),
+    );
+}
+
 /**
  * Implements hook_ctools_plugin_directory().
  */
@@ -7,4 +41,12 @@ function csc_newsletter_ctools_plugin_directory($owner, $plugin_type) {
   if ($owner == 'ctools' && $plugin_type == 'content_types') {
     return 'plugins/' . $plugin_type;
   }
+}
+
+
+function csc_newsletter_cron() {
+    module_load_include('inc', 'csc_newsletter', 'plugins/content_types/csc_newsletter_list');
+    // Update the newsletter list cache from mailchimp if enabled.
+    watchdog('csc_newsletter', 'Newsletter list updated from mailchimp');
+    $res = csc_newsletter_list_set_cache();
 }
