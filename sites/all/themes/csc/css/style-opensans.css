@@ -5355,3 +5355,40 @@ div.csc-login-link * {
     padding-right: 6px;
     vertical-align: middle;
 }
+
+/** CSC News Page **/
+    
+.panel-pane.pane-csc-newsletter.in-page {
+    display: block;
+    clear: both;
+    float: none;
+    width: 100%;
+}
+
+.view-news.view-display-id-panel_pane_1 .views-table-image img {
+    min-width: 150px;
+}
+
+.view-news.view-display-id-panel_pane_1 .views-field {
+    border: none;
+}
+
+/** News List Page **/
+.view-news.view-display-id-page {
+    width: 75%;
+    margin-left: 10%;
+}
+
+.view-news.view-display-id-page .view-result-sum {
+    float: right;
+}
+
+.view-news div.news-item-img {
+    display: block;
+    float: left;
+    padding: 8px 12px 8px 6px;
+}
+
+.view-news div.news-item-detail {
+    
+}

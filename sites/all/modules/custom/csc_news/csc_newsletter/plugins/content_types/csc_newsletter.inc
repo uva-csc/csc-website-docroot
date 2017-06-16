@@ -15,7 +15,7 @@ $plugin = array(
 function csc_newsletter_admin_info($subtype, $conf, $contexts) {
   if (!empty($conf)) {
     $block = new stdClass;
-    $block->title = 'CSC Newsletter';
+    $block->title = 'CSC Newsletter Signup Form';
     $block->content = 'Newsletter subscription form';
     return $block;
   }
