@@ -9,18 +9,33 @@ $plugin = array(
   'admin info' => 'csc_newsletter_list_admin_info',
   'edit form' => 'csc_newsletter_list_edit_form',
   'defaults' => array(
-        'numn' => 5,
+        'list_title' => t('CSC Newsletter List'),
+        'list_text' => '',
+        'numn' => 10,
+        'show_count' => FALSE,
     ),
 );
 
 function csc_newsletter_list_edit_form($form, &$form_state) {
     $conf = $form_state['conf'];
-    
+    $form['list_text'] = array(
+        '#type' => 'textarea',
+        '#title' => t('Text above list'),
+        '#default_value' => (empty($conf['list_text'])) ? '' : $conf['list_text'],
+        '#description' => t('The descriptive text to appear above the list, leave blank for none.'),
+    );
     $form['numn'] = array(
         '#type' => 'textfield',
         '#title' => t('Number of Newletters to Show'),
-        '#default_value' => (empty($conf['numn'])) ? 5 : $conf['numn'],
+        '#default_value' => (empty($conf['numn'])) ? 10 : $conf['numn'],
         '#description' => t('How many newsletters do you want to list in this pane'),
+    );
+    
+    $form['show_count'] = array(
+        '#type' => 'checkbox',
+        '#title' => t('Display Count'),
+        '#default_value' => (empty($conf['show_count'])) ? FALSE : $conf['show_count'],
+        '#description' => t('Display "Showing n newsletters"?'),
     );
     return $form;
 }
@@ -44,7 +59,7 @@ function csc_newsletter_list_admin_info($subtype, $conf, $contexts) {
   if (!empty($conf)) {
     $block = new stdClass;
     $block->title = 'CSC Newsletter List';
-    $block->content = 'Newsletter subscription form';
+    $block->content = 'Block showing a list of past CSC newsletters';
     return $block;
   }
 }
@@ -52,13 +67,19 @@ function csc_newsletter_list_admin_info($subtype, $conf, $contexts) {
 function csc_newsletter_list_render($subtype, $conf, $panel_args, $context = NULL) {
   global $base_root, $base_path;
   $numn = isset($conf['numn']) ? $conf['numn'] : '';
-  $output = '<div class="csc-newsletter-liste"><h1>Newsletter List</h1><p>This is a list of the past ' . $numn . ' newsletters:</p>';
+  $output = '<div class="csc-newsletter-list">';
+  if (!empty ($conf['list_text']) || $conf['show_count']) {
+      $output .= '<p>' . $conf['list_text'];
+      if ($conf['show_count']) {
+          $output .= ' This is a list of the past ' . $numn . ' newsletters.';
+      }
+      $output .= '</p>';
+  }
   $output .= csc_newsletter_mclist($numn);
   $output .= '</div>';
   $block = new stdClass();
-  $block->title = t('View Past News Letters');
+  /*$block->title = $conf['list_title'];*/
   $block->content = $output;
-
   return $block;
 }
 
