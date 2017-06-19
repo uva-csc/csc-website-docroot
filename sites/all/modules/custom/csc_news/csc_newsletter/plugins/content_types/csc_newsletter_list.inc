@@ -53,7 +53,7 @@ function csc_newsletter_list_render($subtype, $conf, $panel_args, $context = NUL
   global $base_root, $base_path;
   $numn = isset($conf['numn']) ? $conf['numn'] : '';
   $output = '<div class="csc-newsletter-liste"><h1>Newsletter List</h1><p>This is a list of the past ' . $numn . ' newsletters:</p>';
-  $output .= csc_newsletter_mclist();
+  $output .= csc_newsletter_mclist($numn);
   $output .= '</div>';
   $block = new stdClass();
   $block->title = t('View Past News Letters');
@@ -65,7 +65,7 @@ function csc_newsletter_list_render($subtype, $conf, $panel_args, $context = NUL
 /**
  * Uses MailChimp API with key to get list of all newletter "campaigns" and processes into an html list
  */
-function csc_newsletter_mclist($reset = FALSE) {
+function csc_newsletter_mclist($numn = 10, $reset = FALSE) {
     static $nsl_list;
     if (!isset($nsl_list) || $reset) {
         if (!$reset && ($cache = cache_get('csc_newsletter_list_data')) && !empty($cache->data)) {
@@ -78,7 +78,10 @@ function csc_newsletter_mclist($reset = FALSE) {
     if (!is_array($nsl_list)) { $nsl_list = array(); }
     $out = '<ul>';
     if (empty($nsl_list)) { $out .= '<li>There was a problem retrieving the list of newsletters</li>'; }
+    $cnt = 0;
     foreach($nsl_list as $n => $nsl) {
+        $cnt++;
+        if ($cnt > $numn) { break; }
         $nsl_date = date_create($nsl->create_time);
         $date_out = date_format($nsl_date, 'M j, Y');
         $out .= '<li><a href="' . $nsl->archive_url . '" target="_blank">' . $nsl->settings->title . ' (' . $date_out . ')</a></li>';
