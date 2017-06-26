@@ -104,10 +104,11 @@ function csc_event_date_repeat_rule_render($rule, $t1='', $t2='') {
 				$dayst = implode(', ', $daylist) . " and $last";
 			}
 		}
-		
-		$enddate = date('M jS, Y', strtotime($rrule['UNTIL']));
+        $dtfmt = 'M jS, Y';
+		$startdate = (!empty($t1)) ? date($dtfmt, strtotime($t1)) : FALSE;
+		$enddate = date($dtfmt, strtotime($rrule['UNTIL']));
 		if(empty($t1)) {
-			$outstr = t('Every @int@day until @enddate', array(
+			$outstr = t('Every @int@day EMPTY until @enddate', array(
 										'@int' => $prefix, 
 										'@day' => $dayst, 
 										'@enddate' => $enddate,
@@ -120,11 +121,12 @@ function csc_event_date_repeat_rule_render($rule, $t1='', $t2='') {
 										'@enddate' => $enddate,
 								));
 		} else {
-			$outstr = t('Every @int@day from @starttime to @endtime until @enddate', array(
+			$outstr = t('Every @int@day @starttime to @endtime, @startdate through @enddate', array(
 										'@int' => $prefix, 
 										'@day' => $dayst, 
 										'@starttime' => csc_event_date_parse_time($t1),
 										'@endtime' => csc_event_date_parse_time($t2),
+										'@startdate' => $startdate,
 										'@enddate' => $enddate,
 								));
 		}
