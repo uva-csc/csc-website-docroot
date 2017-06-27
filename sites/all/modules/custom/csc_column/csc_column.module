@@ -151,7 +151,7 @@ function csc_column_search_original(){
 function csc_column_contact(){
   $path = drupal_get_path('module', 'csc_column');
 
-  //Load block CONNECT WITH US
+  //Load block Contact
   $block = block_load('block', 3);
   $render_array = _block_get_renderable_array(_block_render_blocks(array($block)));
   $output = render($render_array);
@@ -162,6 +162,17 @@ function csc_column_contact(){
   //$output.= drupal_render(drupal_get_form('csc_column_form'));
   //$output.= '</div>';
 
+  echo $output;
+}
+
+
+function csc_column_connect(){
+  $path = drupal_get_path('module', 'csc_column');
+
+  //Load block connect
+  $block = block_load('block', 8);
+  $render_array = _block_get_renderable_array(_block_render_blocks(array($block)));
+  $output = render($render_array);
   echo $output;
 }
 
@@ -188,6 +199,11 @@ function csc_column_menu(){
     'access arguments' => array('access content'),
   );
 
+   $items['csc_column/connect'] = array(
+    'page callback' => 'csc_column_connect',
+    'access arguments' => array('access content'),
+  );
+  
   $items['csc_column/explore'] = array(
     'page callback' => 'csc_column_explore',
     'access arguments' => array('access content'),
