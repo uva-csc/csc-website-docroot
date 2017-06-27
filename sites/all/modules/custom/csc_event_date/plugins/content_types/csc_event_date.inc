@@ -146,13 +146,22 @@ function csc_event_date_parse_time($d) {
 	$fd = format_date(strtotime($d), 'custom', 'g:i A', $est);
 	date_default_timezone_set($est);
 	// Account for daylight savings time
-	$timestamp = strtotime($d);
- 	$dls_start = strtotime("Second Sunday March ". date('Y', $timestamp));
-  $dls_end = strtotime("First Sunday November ". date('Y', $timestamp));
-	$is_dlst = ($timestamp >= $dls_start && $timestamp <= $dls_end)  ? TRUE : FALSE;
+	$timestamp = strtotime($d); // Given timestamp
+ 	$dls_start = strtotime("Second Sunday March ". date('Y', $timestamp)); // DLS Start
+    $dls_end = strtotime("First Sunday November ". date('Y', $timestamp)); // DLS End
+	$is_dlst = ($timestamp >= $dls_start && $timestamp <= $dls_end)  ? TRUE : FALSE; // Test if given timestamp in in DLS
 	if ($is_dlst) {
 		$pts = explode(':', $fd);
-		$pts[0] = ($pts[0] + 1) % 12;
+		$pts[0] = ($pts[0] + 1) % 12; // Adding 1 hr mod 12
+	    // if it is now 0, that means its gone past a meridian and is now 12 in the next AM or PM	
+        if ($pts[0] == 0) {
+            $pts[0] = 12;
+            if (strstr($pts[1], 'AM')) {
+                $pts[1] = str_replace('AM', 'PM', $pts[1]);
+            } else {
+                $pts[1] = str_replace('PM', 'AM', $pts[1]);
+            }
+        }
 		$fd = implode(':', $pts);
 	}
 	return $fd;
