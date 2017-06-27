@@ -4380,7 +4380,7 @@ body #content {
   /* line 3095, ../../../../../sass/sites/all/themes/csc/css/style.scss */
   body #content {
     top: 50px;
-    overflow-x: hidden;
+    /*overflow-x: hidden;*/
   }
 }
 /* line 3104, ../../../../../sass/sites/all/themes/csc/css/style.scss */
@@ -4773,7 +4773,7 @@ body.logged-in #content {
 /* line 3280, ../../../../../sass/sites/all/themes/csc/css/style.scss */
 .csc-connect-with-us {
   font-family: brandon, 'Helvetica Neue', helvetica, arial, sans-serif;
-  font-size: 1.2em;
+  font-size: 1.1em;
 }
 /* line 3287, ../../../../../sass/sites/all/themes/csc/css/style.scss */
 .csc-connect-with-us strong {
