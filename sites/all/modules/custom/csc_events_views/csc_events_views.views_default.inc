@@ -462,14 +462,23 @@ function csc_events_views_views_default_views() {
   $handler->display->display_options['header']['area']['field'] = 'area';
   $handler->display->display_options['header']['area']['label'] = 'View title';
   $handler->display->display_options['header']['area']['content'] = '<?php
-$nodeid = 0; $title = $head_title = "Events";
-if (arg(0) == \'events\' && is_numeric(arg(1))) $nodeid = arg(1);
+
+$args = arg();
+$cp = current_path();
+$nodeid = FALSE; $title = $head_title = "Events";
+if ($args[0] == \'events\' && is_numeric($args[1])) {$nodeid = $args[1];}
 if($nodeid){
   $qry = "SELECT title FROM {node} WHERE nid=$nodeid";
   $row = db_query($qry)->fetchObject();
   
   $title.= \'<span class="title-context"> for \' . $row->title . \'</span>\';
   $head_title .= \' | \' . $row->title;
+}
+
+if ($cp == \'events/all/future\') {
+    $title = $head_title = "Upcoming Events";
+} else if ($cp == \'events/all/past\') {
+    $title = $head_title = "Past Events";
 }
 
 drupal_set_title($head_title);
@@ -490,15 +499,36 @@ if (arg(0) == \'events\'){
 $GLOBALS[\'view_content_type\'] = \'event\';
 ?>';
   $handler->display->display_options['header']['area_1']['format'] = 'php_code';
-  /* No results behavior: Global: Unfiltered text */
-  $handler->display->display_options['empty']['area_text_custom']['id'] = 'area_text_custom';
-  $handler->display->display_options['empty']['area_text_custom']['table'] = 'views';
-  $handler->display->display_options['empty']['area_text_custom']['field'] = 'area_text_custom';
-  $handler->display->display_options['empty']['area_text_custom']['label'] = 'No Events Available';
-  $handler->display->display_options['empty']['area_text_custom']['empty'] = TRUE;
-  $handler->display->display_options['empty']['area_text_custom']['content'] = '<div class="view-header">
-      <h2 class="pane-title">Events</h2><div id="event-nav"><a href="/events/all/past">PAST</a><a href="/events/all/future">FUTURE</a><a href="/events">ALL</a></div>    </div>
-<p>There is no events to show at this time.</p>';
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['label'] = 'No Events Available';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = '<?php
+    $args = arg();
+    $pg = (count($args) > 2) ? $args[2] : FALSE;
+    $cp = current_path();
+
+    $title = $head_title = "Events";
+    if ($cp == \'events/all/future\') {
+        $title = $head_title = "Upcoming Events";
+    } else if ($cp == \'events/all/past\') {
+        $title = $head_title = "Past Events";
+    }
+drupal_set_title($title);
+?>
+<div class="view-header">
+      <h2 class="pane-title"><?php echo $head_title; ?></h2>
+      <div id="event-nav">
+         <a href="/events/all/past" <?php if($pg == \'past\') { echo \'class="active"\'; }?>>PAST</a>
+         <a href="/events/all/future" <?php if($pg == \'future\') { echo \'class="active"\'; }?>>FUTURE</a>
+         <a href="/events">ALL</a>
+      </div>    
+</div>
+<p>There is no events to show at this time.</p>
+';
+  $handler->display->display_options['empty']['area']['format'] = 'php_code';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
