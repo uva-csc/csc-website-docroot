@@ -1,12 +1,12 @@
-/* Global variables, mixins, etc. */
+
 /* line 100, ../../../../../../sass/_global.scss */
-#main-menu a.active, #main-menu > li.first a.active:hover {
+#main-menu > li.first a.active:hover {
   background-color: #444;
   color: white;
 }
 
 /* line 105, ../../../../../../sass/_global.scss */
-#main-menu a, #main-menu > li.first a.active {
+#main-menu a, #main-menu a.active { /*#main-menu > li.first a.active*/
   background-color: white;
   color: #444;
 }
@@ -38,9 +38,10 @@
 
 /* line 14, ../../../../../../sass/sites/all/modules/main_menu/plugins/content_types/main_menu.scss */
 #main-menu {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border-bottom: 1px solid #c0c0c0;
 }
 
 /* line 15, ../../../../../../sass/sites/all/modules/main_menu/plugins/content_types/main_menu.scss */

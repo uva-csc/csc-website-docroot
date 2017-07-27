@@ -3,7 +3,7 @@
       $content, $header, $cols;
 
   window.csc = window.csc || {};
-
+  
   window.csc.toggleMenu = function(){
     var css, clsFn;
     
@@ -170,3 +170,4 @@
     $('#header-mobile-nav').click(window.csc.toggleMenu);
   });
 })(jQuery);
+
