@@ -5392,3 +5392,10 @@ div.csc-login-link * {
 .view-news div.news-item-detail {
     
 }
+
+/** Events Page **/
+.page-events-all .csc-3col-first, .page-list .csc-panel-col-right {
+    display: block;
+    float: left;
+    min-width: 60%;
+}
