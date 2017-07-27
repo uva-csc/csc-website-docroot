@@ -5,14 +5,14 @@ $plugin = array(
   'title' => t('Main menu'),
   'description' => t('Shows main menu.'),
   'category' => t('CSC Plugins'),
-  'render callback' => 'csc_main_menu_render',
-  'admin info' => 'csc_main_menu_admin_info',
+  'render callback' => 'main_menu_render',
+  'admin info' => 'main_menu_admin_info',
 );
 
 /**
  * 'admin info' callback for panel pane.
  */
-function csc_main_menu_admin_info($subtype, $conf, $contexts) {
+function main_menu_admin_info($subtype, $conf, $contexts) {
   if (!empty($conf)) {
     $block = new stdClass;
     $block->title = 'Main menu';
@@ -25,9 +25,9 @@ function csc_main_menu_admin_info($subtype, $conf, $contexts) {
  * Run-time rendering of the body of the block (content type)
  * See ctools_plugin_examples for more advanced info
  */
-function csc_main_menu_render($subtype, $conf, $panel_args, $context = NULL) {
-  drupal_add_js(drupal_get_path('module', 'csc_main_menu') .'/plugins/content_types/csc_main_menu.js');
-  drupal_add_css(drupal_get_path('module', 'csc_main_menu') .'/plugins/content_types/csc_main_menu.css');
+function main_menu_render($subtype, $conf, $panel_args, $context = NULL) {
+  drupal_add_js(drupal_get_path('module', 'main_menu') .'/plugins/content_types/main_menu.js');
+  drupal_add_css(drupal_get_path('module', 'main_menu') .'/plugins/content_types/main_menu.css');
   
   $block = new stdClass();
 
@@ -35,8 +35,8 @@ function csc_main_menu_render($subtype, $conf, $panel_args, $context = NULL) {
 
   $tree = menu_tree_all_data('main-menu');
   $menu_array = menu_tree_output($tree);
-  $csc_main_menu = drupal_render($menu_array);
-  $block->content = '<ul id="main-menu"' . substr($csc_main_menu, 3);
+  $main_menu = drupal_render($menu_array);
+  $block->content = '<ul id="main-menu"' . substr($main_menu, 3);
   
   return $block;
 }
