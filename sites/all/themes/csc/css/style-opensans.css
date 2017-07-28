@@ -5409,6 +5409,6 @@ div.csc-login-link * {
 
 /** for Uva Affiliates page **/
 .panel-separator ~ .panel-pane.pane-csc-lists > h2.pane-title {
-    margin-top: 2rem;
+    padding-top: 2rem;
 }
     
