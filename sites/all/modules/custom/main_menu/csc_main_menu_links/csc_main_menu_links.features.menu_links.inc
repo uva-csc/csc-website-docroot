@@ -70,25 +70,6 @@ function csc_main_menu_links_menu_default_menu_links() {
     'weight' => -44,
     'customized' => 1,
   );
-  // Exported menu link: main-menu_contemplative-council:node/215.
-  $menu_links['main-menu_contemplative-council:node/215'] = array(
-    'menu_name' => 'main-menu',
-    'link_path' => 'node/215',
-    'router_path' => 'node/%',
-    'link_title' => 'Contemplative Council',
-    'options' => array(
-      'attributes' => array(),
-      'identifier' => 'main-menu_contemplative-council:node/215',
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -47,
-    'customized' => 1,
-    'parent_identifier' => 'main-menu_community:node/15',
-  );
   // Exported menu link: main-menu_contexts:node/3.
   $menu_links['main-menu_contexts:node/3'] = array(
     'menu_name' => 'main-menu',
@@ -126,7 +107,7 @@ function csc_main_menu_links_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -48,
+    'weight' => -49,
     'customized' => 1,
     'parent_identifier' => 'main-menu_classes:<front>',
   );
@@ -274,17 +255,17 @@ function csc_main_menu_links_menu_default_menu_links() {
     'customized' => 1,
     'parent_identifier' => 'main-menu_classes:<front>',
   );
-  // Exported menu link: main-menu_uva-courses:list/class/uvacourses.
-  $menu_links['main-menu_uva-courses:list/class/uvacourses'] = array(
+  // Exported menu link: main-menu_uva-courses:node/652.
+  $menu_links['main-menu_uva-courses:node/652'] = array(
     'menu_name' => 'main-menu',
-    'link_path' => 'list/class/uvacourses',
-    'router_path' => 'list/%',
+    'link_path' => 'node/652',
+    'router_path' => 'node/%',
     'link_title' => 'UVa Courses',
     'options' => array(
       'attributes' => array(
         'title' => '',
       ),
-      'identifier' => 'main-menu_uva-courses:list/class/uvacourses',
+      'identifier' => 'main-menu_uva-courses:node/652',
     ),
     'module' => 'menu',
     'hidden' => 0,
@@ -295,24 +276,22 @@ function csc_main_menu_links_menu_default_menu_links() {
     'customized' => 1,
     'parent_identifier' => 'main-menu_classes:<front>',
   );
-  // Exported menu link: main-menu_workshops:list/class/workshops.
-  $menu_links['main-menu_workshops:list/class/workshops'] = array(
+  // Exported menu link: main-menu_workshops:node/653.
+  $menu_links['main-menu_workshops:node/653'] = array(
     'menu_name' => 'main-menu',
-    'link_path' => 'list/class/workshops',
-    'router_path' => 'list/%',
+    'link_path' => 'node/653',
+    'router_path' => 'node/%',
     'link_title' => 'Workshops',
     'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
-      'identifier' => 'main-menu_workshops:list/class/workshops',
+      'attributes' => array(),
+      'identifier' => 'main-menu_workshops:node/653',
     ),
     'module' => 'menu',
     'hidden' => 0,
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -49,
+    'weight' => -48,
     'customized' => 1,
     'parent_identifier' => 'main-menu_classes:<front>',
   );
@@ -322,7 +301,6 @@ function csc_main_menu_links_menu_default_menu_links() {
   t('Activities');
   t('Classes');
   t('Community');
-  t('Contemplative Council');
   t('Contexts');
   t('Drop-In Classes');
   t('Events');
