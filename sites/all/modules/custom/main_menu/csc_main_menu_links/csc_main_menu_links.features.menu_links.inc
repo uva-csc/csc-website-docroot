@@ -27,7 +27,7 @@ function csc_main_menu_links_menu_default_menu_links() {
     'external' => 1,
     'has_children' => 1,
     'expanded' => 0,
-    'weight' => -48,
+    'weight' => -47,
     'customized' => 1,
   );
   // Exported menu link: main-menu_classes:<front>.
@@ -67,8 +67,26 @@ function csc_main_menu_links_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 1,
     'expanded' => 0,
-    'weight' => -44,
+    'weight' => -43,
     'customized' => 1,
+  );
+  // Exported menu link: main-menu_community:node/660.
+  $menu_links['main-menu_community:node/660'] = array(
+    'menu_name' => 'main-menu',
+    'link_path' => 'node/660',
+    'router_path' => 'node/%',
+    'link_title' => 'Community',
+    'options' => array(
+      'identifier' => 'main-menu_community:node/660',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -47,
+    'customized' => 1,
+    'parent_identifier' => 'main-menu_programs:<front>',
   );
   // Exported menu link: main-menu_contexts:node/3.
   $menu_links['main-menu_contexts:node/3'] = array(
@@ -87,7 +105,7 @@ function csc_main_menu_links_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 1,
     'expanded' => 0,
-    'weight' => -47,
+    'weight' => -46,
     'customized' => 1,
   );
   // Exported menu link: main-menu_drop-in-classes:node/654.
@@ -152,6 +170,24 @@ function csc_main_menu_links_menu_default_menu_links() {
     'customized' => 1,
     'parent_identifier' => 'main-menu_events-and-news:<front>',
   );
+  // Exported menu link: main-menu_faculty:node/658.
+  $menu_links['main-menu_faculty:node/658'] = array(
+    'menu_name' => 'main-menu',
+    'link_path' => 'node/658',
+    'router_path' => 'node/%',
+    'link_title' => 'Faculty',
+    'options' => array(
+      'identifier' => 'main-menu_faculty:node/658',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -50,
+    'customized' => 1,
+    'parent_identifier' => 'main-menu_programs:<front>',
+  );
   // Exported menu link: main-menu_initiatives:http://no.link.
   $menu_links['main-menu_initiatives:http://no.link'] = array(
     'menu_name' => 'main-menu',
@@ -169,7 +205,7 @@ function csc_main_menu_links_menu_default_menu_links() {
     'external' => 1,
     'has_children' => 1,
     'expanded' => 0,
-    'weight' => -46,
+    'weight' => -45,
     'customized' => 1,
   );
   // Exported menu link: main-menu_news:node/647.
@@ -210,7 +246,7 @@ function csc_main_menu_links_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 1,
     'expanded' => 0,
-    'weight' => -45,
+    'weight' => -44,
     'customized' => 1,
   );
   // Exported menu link: main-menu_past-events:events/all/past.
@@ -234,6 +270,26 @@ function csc_main_menu_links_menu_default_menu_links() {
     'customized' => 1,
     'parent_identifier' => 'main-menu_events-and-news:<front>',
   );
+  // Exported menu link: main-menu_programs:<front>.
+  $menu_links['main-menu_programs:<front>'] = array(
+    'menu_name' => 'main-menu',
+    'link_path' => '<front>',
+    'router_path' => '',
+    'link_title' => 'Programs',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'identifier' => 'main-menu_programs:<front>',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 1,
+    'has_children' => 1,
+    'expanded' => 0,
+    'weight' => -48,
+    'customized' => 1,
+  );
   // Exported menu link: main-menu_retreats:list/class/retreats.
   $menu_links['main-menu_retreats:list/class/retreats'] = array(
     'menu_name' => 'main-menu',
@@ -254,6 +310,42 @@ function csc_main_menu_links_menu_default_menu_links() {
     'weight' => -47,
     'customized' => 1,
     'parent_identifier' => 'main-menu_classes:<front>',
+  );
+  // Exported menu link: main-menu_staff:node/662.
+  $menu_links['main-menu_staff:node/662'] = array(
+    'menu_name' => 'main-menu',
+    'link_path' => 'node/662',
+    'router_path' => 'node/%',
+    'link_title' => 'Staff',
+    'options' => array(
+      'identifier' => 'main-menu_staff:node/662',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -48,
+    'customized' => 1,
+    'parent_identifier' => 'main-menu_programs:<front>',
+  );
+  // Exported menu link: main-menu_students:node/659.
+  $menu_links['main-menu_students:node/659'] = array(
+    'menu_name' => 'main-menu',
+    'link_path' => 'node/659',
+    'router_path' => 'node/%',
+    'link_title' => 'Students',
+    'options' => array(
+      'identifier' => 'main-menu_students:node/659',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -49,
+    'customized' => 1,
+    'parent_identifier' => 'main-menu_programs:<front>',
   );
   // Exported menu link: main-menu_uva-courses:node/652.
   $menu_links['main-menu_uva-courses:node/652'] = array(
@@ -305,11 +397,15 @@ function csc_main_menu_links_menu_default_menu_links() {
   t('Drop-In Classes');
   t('Events');
   t('Events and News');
+  t('Faculty');
   t('Initiatives');
   t('News');
   t('Opportunities');
   t('Past Events');
+  t('Programs');
   t('Retreats');
+  t('Staff');
+  t('Students');
   t('UVa Courses');
   t('Workshops');
 
