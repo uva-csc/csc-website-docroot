@@ -5393,9 +5393,16 @@ div.csc-login-link * {
     
 }
 
-/** Events Page **/
-.page-events-all .csc-3col-first, .page-list .csc-panel-col-right {
+/** Page Column Min Widths **/
+.page-events-all .csc-3col-first, 
+.page-list .csc-panel-col-right
+{
     display: block;
     float: left;
     min-width: 60%;
 }
+
+.page-classes .csc-3col-second {
+    display: none;
+}
+    
