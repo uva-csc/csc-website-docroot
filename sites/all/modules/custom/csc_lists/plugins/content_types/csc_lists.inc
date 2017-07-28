@@ -21,8 +21,8 @@ $plugin = array(
 function csc_lists_info($subtype, $conf, $contexts) {
   if (!empty($conf)) {
     $block = new stdClass;
-    $block->title = 'CSC List Nodes';
-    $block->content = 'Show Lists of Different type of nodes';
+    $block->title = 'CSC ' . ucfirst($conf['list_type']) . ' List';
+    $block->content = (empty($conf['list_params'])) ? "No Query Params" : "Query Params: " . $conf['list_params'];
     return $block;
   }
 }

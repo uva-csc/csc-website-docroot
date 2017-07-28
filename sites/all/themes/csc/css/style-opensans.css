@@ -5402,7 +5402,8 @@ div.csc-login-link * {
     min-width: 60%;
 }
 
-.page-classes .csc-3col-second {
+.page-classes .csc-3col-second, 
+.page-list .csc-3col-second {
     display: none;
 }
     
