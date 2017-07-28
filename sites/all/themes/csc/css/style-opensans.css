@@ -5406,4 +5406,9 @@ div.csc-login-link * {
 .page-list .csc-3col-second {
     display: none;
 }
+
+/** for Uva Affiliates page **/
+.panel-separator ~ .panel-pane.pane-csc-lists > h2.pane-title {
+    margin-top: 2rem;
+}
     
