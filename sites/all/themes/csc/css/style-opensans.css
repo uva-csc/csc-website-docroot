@@ -5411,4 +5411,10 @@ div.csc-login-link * {
 .panel-separator ~ .panel-pane.pane-csc-lists > h2.pane-title {
     padding-top: 2rem;
 }
+
+/** IMages in body of article **/
+.field-name-body .field-item img {
+    width: auto; 
+    margin: 0 8px;
+}
     
