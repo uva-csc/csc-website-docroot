@@ -2759,7 +2759,7 @@ a#menu-toggle:after {
 
 /* line 1937, ../../../../../sass/sites/all/themes/csc/css/style.scss */
 .csc-3col-first .csc-3col-inside {
-  padding: 1.5em 2.4em 1.3em 2.3em;
+  padding: 1.5em 2.4em 2.3em 2.3em;
   position: relative;
 }
 @media only screen and (max-width: 640px) {

@@ -32,7 +32,7 @@
       w = $(window).width();
       if(w > 640) {
         h = $(window).height() - $header.outerHeight();
-        $content.add($cols).height(h);
+        //$content.add($cols).height(h);
       } else {
         $content.add($cols).height('');
       }
