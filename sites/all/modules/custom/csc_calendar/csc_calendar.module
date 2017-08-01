@@ -63,6 +63,7 @@ function csc_calendar_view_form($form, &$form_state, $type = 'month') {
             'week' => t('Week'),
             'month' => t('Month'),
             'year' => t('Year'),
+            'list' => t('List'),
         ),
         '#default_value' => $type,
     );
