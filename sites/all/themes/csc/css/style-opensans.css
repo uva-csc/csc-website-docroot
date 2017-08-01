@@ -5421,6 +5421,7 @@ div.csc-login-link * {
 .csc-calendar-view-form .form-item-view-select {
     position: relative;
     top: -50px;
+    width: 25%;
 }
 
 .csc-calendar-view-form .form-item-view-select * {

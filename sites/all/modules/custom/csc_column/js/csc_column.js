@@ -34,10 +34,10 @@
         var rght = getRightOffset(this);
         $wedge.css('right', rght + 'px').show();
 
-
         $('#csc-column-title').html(title);
+        
         var ajax_url = this.href;
-
+        
         $.ajax({
           url: ajax_url,
           success: function(res){
