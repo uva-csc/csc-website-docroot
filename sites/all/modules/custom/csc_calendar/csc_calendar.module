@@ -5,15 +5,23 @@
 function csc_calendar_menu() {
   $items = array();
   $items['csc_calendar'] = array(
-     'page callback'    => 'csc_calendar_page',
+         'page callback'    => 'csc_calendar_page_ajax',
+         'page arguments' => array('month'), // TODO: change this to a CSC site setting
      'access arguments' => array('access content'),
      'type'             => MENU_NORMAL_ITEM,
+  );
+  $items['api/csc/calendar/block'] = array(
+         'page callback'    => 'csc_calendar_page_ajax',
+         'page arguments' => array(4),
+         'access arguments' => array('access content'),
+         'type'             => MENU_NORMAL_ITEM,
   );
   return $items;
 }
 
 function csc_calendar_init(){
   $path = drupal_get_path('module', 'csc_calendar'); 
+  // This script is for the pagination on the calendar views.
   $script = "
     (function($){
     $(window).load(function(){
@@ -22,8 +30,8 @@ function csc_calendar_init(){
       var url = $(this).attr('href');
       $('#csc-popup-calendar').empty().html('<img src=\"".$path."/status-active.gif\" style=\"margin-left:50%;\">');        
       $('#csc-popup-calendar').load(url,'ajax=1',function() {
-                      Drupal.attachBehaviors('#csc-popup-calendar');
-                      });
+             Drupal.attachBehaviors('#csc-popup-calendar');
+      });
       return false;
     });
     }); 
@@ -35,7 +43,28 @@ function csc_calendar_init(){
 /**
  * page callback
  */
-function csc_calendar_page(){ 
-  echo  '<div id="csc-popup-calendar">' . csc_readblock_get('event_calendar-block_3', 'views') . '</div>';
-  exit();
+
+function csc_calendar_page_ajax($length='month') {
+    $type = 'event_calendar-block_' . $length;
+    $view_select_form = drupal_get_form('csc_calendar_view_form', $length);
+    echo  '<div id="csc-popup-calendar" class="' . $length . '"> ' . drupal_render($view_select_form) . csc_readblock_get($type, 'views') . '</div>';
+    exit();
+}
+
+function csc_calendar_view_form($form, &$form_state, $type = 'month') {
+    $form = array(
+       '#attributes' => array('class' => 'csc-calendar-view-form'),
+    );
+    $form['view_select'] = array(
+        '#type' => 'select',
+        '#title' => t('View by'),
+        '#options' => array(
+            'day' => t('Day'),
+            'week' => t('Week'),
+            'month' => t('Month'),
+            'year' => t('Year'),
+        ),
+        '#default_value' => $type,
+    );
+    return $form;
 }
