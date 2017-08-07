@@ -5342,3 +5342,7 @@ margin: -12px 0 8px 0;
     margin: 1rem;
 }
 
+.page-node-edit .node-form div#edit-field-alternate-url {
+    display: block;
+    clear: both;
+}
