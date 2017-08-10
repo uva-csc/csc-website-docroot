@@ -3779,8 +3779,9 @@ body.page-node-21 .csc-people-detail:hover {
 }
 /* line 2692, ../../../../../sass/sites/all/themes/csc/css/style.scss */
 .csc-directors-wrapper:hover, .csc-role-wrapper:hover {
-  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=90);
-  opacity: 0.9;
+  /*filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=90);
+  opacity: 0.9;*/
+ background-color: #eee;
 }
 @media only screen and (min-width: 2001px) {
   /* line 2682, ../../../../../sass/sites/all/themes/csc/css/style.scss */

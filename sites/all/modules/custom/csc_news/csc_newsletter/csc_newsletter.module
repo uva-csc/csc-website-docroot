@@ -46,7 +46,6 @@ function csc_newsletter_ctools_plugin_directory($owner, $plugin_type) {
 function csc_newsletter_cron() {
     module_load_include('inc', 'csc_newsletter', 'plugins/content_types/csc_newsletter_list');
     // Update the newsletter list cache from mailchimp if enabled.
-    watchdog('csc_newsletter', 'Newsletter list updated from mailchimp');
     $res = csc_newsletter_list_set_cache();
 }
 
