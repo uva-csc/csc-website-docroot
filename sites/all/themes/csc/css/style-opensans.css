@@ -3048,7 +3048,7 @@ body.logged-in #content {
   min-width: 453px;
   float: left;
   position: relative;
-  padding: 12px 0px;
+  padding: 12px 0px 0px;
   background-color: #252525;
 }
 @media only screen and (max-width: 640px) {
@@ -5345,4 +5345,13 @@ margin: -12px 0 8px 0;
 .page-node-edit .node-form div#edit-field-alternate-url {
     display: block;
     clear: both;
+}
+
+/** Webform styles **/
+.page-node-done .webform-confirmation {
+    margin: 24px 24px 0px;
+}
+
+.page-node-done .webform-confirmation + .links {
+    margin: 0px 24px;
 }
