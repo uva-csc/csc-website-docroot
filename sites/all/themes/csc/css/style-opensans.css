@@ -5424,5 +5424,12 @@ div.csc-login-link * {
     display: block;
     clear: both;
 }
-    
 
+/** Webform styles **/
+.page-node-done .webform-confirmation {
+    margin: 24px 24px 0px;
+}
+
+.page-node-done .webform-confirmation + .links {
+    margin: 0px 24px;
+}
