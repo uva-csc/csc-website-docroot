@@ -151,8 +151,9 @@ function csc_class_date_repeat_rule_render($rule, $t1='', $t2='') {
 }
 
 function csc_class_date_parse_time($d, $type='time') {
-	// Convert Greenwich time to EST when Formatting date
-	// TODO: May have to remove or change when implementing user timezones or other timezone fixes
+	/* Old code
+    // Convert Greenwich time to EST when Formatting date
+    // TODO: May have to remove or change when implementing user timezones or other timezone fixes
 	if ($type == 'time' ) {
 		$est = date_default_timezone_get();
 		$gmt = 'Europe/London';
@@ -173,7 +174,17 @@ function csc_class_date_parse_time($d, $type='time') {
 	} else {
 		$fd = format_date(strtotime($d), 'custom', 'D. M j, Y');
 		return $fd;
-	}
+	}*/
+	
+	// New code: Add GMT timezone to date string '-00:00' so it properly converts    
+    $timestamp = strtotime($d . '-00:00');
+    if ($type == 'time' ) {
+        $fd = format_date($timestamp, 'custom', 'g:i A');
+        return $fd;
+    } else {
+        $fd = format_date($timestamp, 'custom', 'D. M j, Y');
+        return $fd;
+    }
 }
 
 /**
