@@ -5355,3 +5355,11 @@ margin: -12px 0 8px 0;
 .page-node-done .webform-confirmation + .links {
     margin: 0px 24px;
 }
+
+/** Calendar fixes **/
+.calendar-calendar .month-view .item:hover {
+    background-color:  #daf0f8 !important;
+}
+.calendar-calendar .month-view .item {
+    border-bottom: thin solid #eee;
+}
