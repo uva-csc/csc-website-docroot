@@ -18,13 +18,12 @@
 	      		$(this).hide();
 	      	}
 	      });
-	      // if field location empty, add TBA
+	      // if field location empty, hide it
 	      $('.views-field-field-location').each(function() {
 	      	var cnt = $(this).find('.field-content').html();
 	      	if(cnt == '') {
-	      		$(this).find('.field-content').text('TBA');
+	      		$(this).hide();
 	      	}
 	      });
-
     });          
 })(jQuery);
