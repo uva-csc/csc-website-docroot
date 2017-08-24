@@ -19,7 +19,7 @@
 	      	}
 	      });
 	      // if field location empty, hide it
-	      $('.views-field-field-location').each(function() {
+	      $('.view-events .views-field-field-location').each(function() {
 	      	var cnt = $(this).find('.field-content').html();
 	      	if(cnt == '') {
 	      		$(this).hide();
