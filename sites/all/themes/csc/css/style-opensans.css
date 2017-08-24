@@ -5358,8 +5358,5 @@ margin: -12px 0 8px 0;
 
 /** Calendar fixes **/
 .calendar-calendar .month-view .item:hover {
-    background-color:  #daf0f8 !important;
-}
-.calendar-calendar .month-view .item {
-    border-bottom: thin solid #eee;
+    background-color:  #e7f4fc !important;
 }
