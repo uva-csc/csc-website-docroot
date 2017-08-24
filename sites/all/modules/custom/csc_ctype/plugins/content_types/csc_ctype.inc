@@ -50,7 +50,8 @@ function csc_ctype_render($subtype, $conf, $panel_args, $context = NULL) {
       $type = 'Featured Story';
       break;
     case 'class':
-      $type = 'Instruction: ' . $class_array[$r->field_audience_value];
+      $linktext = 'Instruction: ' . $class_array[$r->field_audience_value];
+      $type = l($linktext, 'list/class', array('query' => array( 'audience' => $r->field_audience_value, 'q' => 'list/class', 'sort' => 'offered')));
       break;
     case 'research':
     case 'learning':

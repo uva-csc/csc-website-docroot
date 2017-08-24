@@ -182,7 +182,7 @@ function csc_class_date_parse_time($d, $type='time') {
         $fd = format_date($timestamp, 'custom', 'g:i A');
         return $fd;
     } else {
-        $fd = format_date($timestamp, 'custom', 'D. M j, Y');
+        $fd = format_date($timestamp, 'custom', 'D. M jS, Y');
         return $fd;
     }
 }
