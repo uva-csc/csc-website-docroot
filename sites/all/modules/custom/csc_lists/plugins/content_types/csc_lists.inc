@@ -5,9 +5,14 @@ $plugin = array(
   'title' => t('CSC List Nodes'),
   'description' => t('Shows List of Different type of nodes'),
   'category' => t('CSC Plugins'),
-  'admin info' => 'csc_lists_info',
-	'edit form' => 'csc_lists_edit_form',
   'render callback' => 'csc_lists_render',
+  'admin info' => 'csc_lists_info',
+  'edit form' => 'csc_lists_edit_form',
+  'defaults' => array(
+        'desc_text' => '',
+        'list_params' => '',
+        'list_type' => 'context',
+    ),
 );
 
 /**
@@ -16,8 +21,8 @@ $plugin = array(
 function csc_lists_info($subtype, $conf, $contexts) {
   if (!empty($conf)) {
     $block = new stdClass;
-    $block->title = 'CSC List Nodes';
-    $block->content = 'Show Lists of Different type of nodes';
+    $block->title = 'CSC ' . ucfirst($conf['list_type']) . ' List';
+    $block->content = (empty($conf['list_params'])) ? "No Query Params" : "Query Params: " . $conf['list_params'];
     return $block;
   }
 }
@@ -34,6 +39,27 @@ function csc_lists_edit_form($form, &$form_state) {
 		'#format' => NULL,
 		'#default_value' => (isset($form_state['conf'])) ? $form_state['conf']['desctxt'] : '',
 	);
+  $form['list_type'] = array(
+        '#type' => 'select',
+        '#title' => t('Type of List to Display'),
+        '#description' => t('Defaults to use page context and params from URL'),
+        '#format' => NULL,
+        '#options' => array(
+            'context' => t('Use Page Context'),
+            'class' => t('Classes'),
+            'people' => t('People'),
+            'organization' => t('Organizations'),
+        ),
+        '#default_value' => (isset($form_state['conf'])) ?  $form_state['conf']['list_type'] : 'context',
+  );
+  $form['list_params'] = array(
+        '#type' => 'textfield',
+        '#title' => t('List Params'),
+        '#description' => t('In the textbox above, enter the page query parameters for filtering and sorting results. Do not include the question mark (?).'),
+        '#format' => NULL,
+        '#size' => 80,
+        '#default_value' => (isset($form_state['conf'])) ? $form_state['conf']['list_params'] : '',
+    );
   return $form;
 }
 
@@ -42,11 +68,24 @@ function csc_lists_edit_form($form, &$form_state) {
  */
 function csc_lists_edit_form_submit($form, &$form_state) {
 	$form_state['conf']['desctxt'] = $form_state['values']['desctxt']['value'];
+    $form_state['conf']['list_params'] = $form_state['values']['list_params'];
+    $form_state['conf']['list_type'] = $form_state['values']['list_type'];
 }
 
 function csc_lists_render($subtype, $conf, $panel_args, $context = NULL) {
   $type = arg(1);
   $nid = (int)arg(2);
+  $page_panel = (!empty($conf['list_type']) && $conf['list_type'] != 'context') ? TRUE : FALSE;
+  $params = FALSE;
+  if ($page_panel) {
+      $type = $conf['list_type'];
+      $params = array();
+      $temp = explode('&', $conf['list_params']);
+      foreach($temp as $p) {
+          $pts = explode('=', $p);
+          $params[$pts[0]] = $pts[1];
+      }
+  }
   $types = array_keys(node_type_get_types());
   if(!in_array($type, $types)) return;
 
@@ -92,6 +131,7 @@ function csc_lists_render($subtype, $conf, $panel_args, $context = NULL) {
       $node_type = 'news';
       break;
   }
+  if ($page_panel) { $title = ''; }
 
   //*** Initializing ***
   $sort = isset($_GET['sort']) ? htmlspecialchars($_GET['sort']): '';
@@ -140,6 +180,9 @@ function csc_lists_render($subtype, $conf, $panel_args, $context = NULL) {
   //*** Audience ***
   if($type == 'class') {
     $audience = $_GET['audience'] == '' ? 'academic' : $_GET['audience'];
+    if ($page_panel && !empty($params['audience'])) {
+        $audience = $params['audience'];
+    }
     $tables .= ', {field_data_field_audience} fa';
     $where .= "AND fa.field_audience_value='". htmlspecialchars($audience) ."' AND fa.entity_id=n.nid AND fa.bundle='$node_type'";
   }
@@ -385,9 +428,10 @@ function csc_lists_select($sortArg) {
   //Audience filter
   if($type == 'class'){
     $class_array = array(
-      'academic' => 'Courses for UVa students',
-      'non-academic' => 'Courses for anyone',
-      'drop-in' => 'Drop-in classes for anyone'
+      'academic' => 'UVa Courses',
+      'non-academic' => 'Workshops',
+      'drop-in' => 'Drop-in Classes',
+      'retreat' => 'Retreat'
     );
 
     $base_link = 'list/' . $type;

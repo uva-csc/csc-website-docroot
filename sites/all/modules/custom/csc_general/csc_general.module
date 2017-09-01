@@ -1,4 +1,5 @@
 <?php
+
 /**
  * hook_form_alter
  */
@@ -12,7 +13,8 @@ function csc_general_form_alter(&$form, &$form_state, $form_id){
     $items = sizeof($form['field_related'][$lng]);
 
     $types = array();
-    if($items){
+    if ($items && isset($form['field_related'][$lng][0]['target_id']['#entity']->field_related[$lng]) 
+                    && is_array($form['field_related'][$lng][0]['target_id']['#entity']->field_related[$lng])) {
       foreach($form['field_related'][$lng][0]['target_id']['#entity']->field_related[$lng] as $fr){
         $types[] =  csc_general_get_type($fr['target_id']);
       }

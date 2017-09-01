@@ -562,7 +562,7 @@ ul.menu li a {
 /* line 344, ../../../../../sass/sites/all/themes/csc/css/style.scss */
 .region-content ul,
 .region-content ol {
-  margin: 1em 0;
+  margin: 1em 2em;
   padding: 0 0 0.25em 15px;
   /* LTR */
 }
@@ -2759,7 +2759,7 @@ a#menu-toggle:after {
 
 /* line 1937, ../../../../../sass/sites/all/themes/csc/css/style.scss */
 .csc-3col-first .csc-3col-inside {
-  padding: 1.5em 2.4em 1.3em 2.3em;
+  padding: 1.5em 2.4em 2.3em 2.3em;
   position: relative;
 }
 @media only screen and (max-width: 640px) {
@@ -3779,8 +3779,9 @@ body.page-node-21 .csc-people-detail:hover {
 }
 /* line 2692, ../../../../../sass/sites/all/themes/csc/css/style.scss */
 .csc-directors-wrapper:hover, .csc-role-wrapper:hover {
-  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=90);
-  opacity: 0.9;
+  /*filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=90);
+  opacity: 0.9;*/
+ background-color: #eee;
 }
 @media only screen and (min-width: 2001px) {
   /* line 2682, ../../../../../sass/sites/all/themes/csc/css/style.scss */
@@ -4380,7 +4381,7 @@ body #content {
   /* line 3095, ../../../../../sass/sites/all/themes/csc/css/style.scss */
   body #content {
     top: 50px;
-    overflow-x: hidden;
+    /*overflow-x: hidden;*/
   }
 }
 /* line 3104, ../../../../../sass/sites/all/themes/csc/css/style.scss */
@@ -4497,6 +4498,10 @@ body.logged-in #content {
 #content .pane-events-panel-pane-1 .views-field-field-small-teaser p {
   font-size: 1em;
 }
+.node-type-event .date-display-single .date-display-range {
+    display: inline-block;
+}
+
 /* line 3198, ../../../../../sass/sites/all/themes/csc/css/style.scss */
 #content .pane-research-panel-pane-1 .node, #content .pane-research-panel-pane-1 .views-field-title {
   margin: 10px 0px 3px 0px;
@@ -4773,7 +4778,7 @@ body.logged-in #content {
 /* line 3280, ../../../../../sass/sites/all/themes/csc/css/style.scss */
 .csc-connect-with-us {
   font-family: brandon, 'Helvetica Neue', helvetica, arial, sans-serif;
-  font-size: 1.2em;
+  font-size: 1.1em;
 }
 /* line 3287, ../../../../../sass/sites/all/themes/csc/css/style.scss */
 .csc-connect-with-us strong {
@@ -5342,6 +5347,83 @@ margin: -12px 0 8px 0;
     margin: 1rem;
 }
 
+/** Login link **/
+div.csc-login-link {
+    padding: 8px 36px;
+    border-top: 1px solid white;
+    clear: both;
+    font-size: 0.9em;
+}
+
+div.csc-login-link * {
+    display: inline;
+    padding-right: 6px;
+    vertical-align: middle;
+}
+
+/** CSC News Page **/
+    
+.panel-pane.pane-csc-newsletter.in-page {
+    display: block;
+    clear: both;
+    float: none;
+    width: 100%;
+}
+
+.view-news.view-display-id-panel_pane_1 .views-table-image img {
+    min-width: 150px;
+}
+
+.view-news.view-display-id-panel_pane_1 .views-field {
+    border: none;
+}
+
+/** News List Page **/
+.view-news.view-display-id-page {
+    width: 75%;
+    margin-left: 10%;
+}
+
+.view-news.view-display-id-page .view-result-sum {
+    float: right;
+}
+
+.view-news div.news-item-img {
+    display: block;
+    float: left;
+    padding: 8px 12px 8px 6px;
+}
+
+.view-news div.news-item-detail {
+    
+}
+
+/** Page Column Min Widths **/
+.page-events-all .csc-3col-first, 
+.page-list .csc-panel-col-right
+{
+    display: block;
+    float: left;
+    min-width: 60%;
+}
+
+.page-classes .csc-3col-second, 
+.page-list .csc-3col-second {
+    display: none;
+}
+
+/** for Uva Affiliates page **/
+.panel-separator ~ .panel-pane.pane-csc-lists > h2.pane-title {
+    padding-top: 2rem;
+}
+
+/** IMages in body of article **/
+.field-name-body .field-item img {
+    width: auto; 
+    margin: 0 8px;
+}
+
+/** Alt URL field in edit form **/
 .page-node-edit .node-form div#edit-field-alternate-url {
     display: block;
     clear: both;

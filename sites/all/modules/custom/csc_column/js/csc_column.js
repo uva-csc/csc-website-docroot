@@ -34,10 +34,10 @@
         var rght = getRightOffset(this);
         $wedge.css('right', rght + 'px').show();
 
-
         $('#csc-column-title').html(title);
+        
         var ajax_url = this.href;
-
+        
         $.ajax({
           url: ajax_url,
           success: function(res){
@@ -46,6 +46,9 @@
               $('#field-key').focus();
             } else if (~title.indexOf('account')) {
               $('#user-login-form').append('At present, login is restricted to CSC staff. We plan to add functionality in the future that will make the site more interactive and which may thus require users to login to access such features.');
+            }
+            if (~title.indexOf('Calendar')) {
+                 Drupal.attachBehaviors('#csc-popup-calendar');
             }
           }
         });

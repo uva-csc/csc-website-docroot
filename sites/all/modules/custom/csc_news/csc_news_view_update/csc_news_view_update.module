@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the CSC News View Update feature.
+ */
+
+include_once 'csc_news_view_update.features.inc';
