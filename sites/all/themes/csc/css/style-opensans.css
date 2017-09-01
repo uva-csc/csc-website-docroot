@@ -4498,6 +4498,10 @@ body.logged-in #content {
 #content .pane-events-panel-pane-1 .views-field-field-small-teaser p {
   font-size: 1em;
 }
+.node-type-event .date-display-single .date-display-range {
+    display: inline-block;
+}
+
 /* line 3198, ../../../../../sass/sites/all/themes/csc/css/style.scss */
 #content .pane-research-panel-pane-1 .node, #content .pane-research-panel-pane-1 .views-field-title {
   margin: 10px 0px 3px 0px;

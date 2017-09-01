@@ -51,7 +51,8 @@ function csc_event_date_render($subtype, $conf, $panel_args, $context = NULL) {
 				if($rrstr = csc_event_date_repeat_rule_render($item['rrule'], $v1,  $v2)) {
 					$output .= '<p>' . $rrstr . '</p>';
 				} else {
-					$output .= $dout[0]['#markup']; // if rule can't be rendered use default markup
+				    // Added preg_replace to put space between am/pm and time
+					$output .= preg_replace('/(\d)([a|p]m)/', '$1 $2', $dout[0]['#markup']); // if rule can't be rendered use default markup
 				}
 			} else {
 			// Otherwise use pre-rendered markup for each item (should only be one)
@@ -143,7 +144,7 @@ function csc_event_date_parse_time($d) {
 	$est = date_default_timezone_get();
 	$gmt = 'Europe/London';
 	date_default_timezone_set($gmt);
-	$fd = format_date(strtotime($d), 'custom', 'g:i A', $est);
+	$fd = format_date(strtotime($d), 'custom', 'g:i a', $est);
 	date_default_timezone_set($est);
 	// Account for daylight savings time
 	$timestamp = strtotime($d); // Given timestamp
@@ -156,10 +157,10 @@ function csc_event_date_parse_time($d) {
 	    // if it is now 0, that means its gone past a meridian and is now 12 in the next AM or PM	
         if ($pts[0] == 0) {
             $pts[0] = 12;
-            if (strstr($pts[1], 'AM')) {
-                $pts[1] = str_replace('AM', 'PM', $pts[1]);
+            if (strstr($pts[1], 'am')) {
+                $pts[1] = str_replace('am', 'pm', $pts[1]);
             } else {
-                $pts[1] = str_replace('PM', 'AM', $pts[1]);
+                $pts[1] = str_replace('pm', 'am', $pts[1]);
             }
         }
 		$fd = implode(':', $pts);
