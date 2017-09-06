@@ -29,6 +29,13 @@
                var newurl = '/api/csc/calendar/block/' + view_mode;
                $('#csc-right #csc-column-content').load(newurl, function() {
                    Drupal.attachBehaviors('#csc-popup-calendar');
+                   // Turn links in addresses into markup
+                  $('#csc-popup-calendar .views-field-field-location .location span.fn').each(function() {
+                      var txt = $(this).text();
+                      var ptn = /\[([^\|]+)\|(http[^\]]+)\]/;
+                      var myhtml = txt.replace(ptn, '<a href="$2" target="_blank">$1</a>');
+                      $(this).html(myhtml);
+                  });
                });
             });
         }
