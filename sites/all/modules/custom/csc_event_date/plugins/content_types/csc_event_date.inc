@@ -102,7 +102,7 @@ function csc_event_date_repeat_rule_render($rule, $t1='', $t2='') {
 				$dayst = implode(', ', $daylist) . " and $last";
 			}
 		}
-        $dtfmt = 'M jS, Y';
+        $dtfmt = 'M j, Y';
 		$startdate = (!empty($t1)) ? date($dtfmt, strtotime($t1)) : FALSE;
 		$enddate = date($dtfmt, strtotime($rrule['UNTIL']));
 		if(empty($t1)) {
