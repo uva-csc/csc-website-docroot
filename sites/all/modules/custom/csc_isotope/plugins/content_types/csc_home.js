@@ -204,6 +204,7 @@
     });
 
     window.csc.home_layout();  
+    window.scrollTo(0,0);
   }
 
   function getFilterText($el) {
