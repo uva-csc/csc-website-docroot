@@ -50,7 +50,7 @@ function csc_newsletter_render($subtype, $conf, $panel_args, $context = NULL) {
 
   $output = '
 
-    <div class="content">
+    <div class="content csc_newsletter_signup">
       <p>Click here to sign up for our newsletter and e-mail list.</p>
     </div>
   ';

@@ -3210,6 +3210,7 @@ body.logged-in #content {
   float: left;
   margin-top: -8px !important;
   margin-bottom: 12px;
+  border-top: 1px solid #ffffff;
   border-bottom: 1px solid #ffffff;
   background: #e8e7e5; /*#dbdad8;*/
   padding: 0px;

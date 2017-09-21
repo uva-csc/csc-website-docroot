@@ -1,10 +1,11 @@
 (function($) {
     $(document).ready(function() {
         /*
-         *  Find the #mcsignup (need to add that ID to the newsletter signup block in panoply interface)
+         *  Find the div.csc_newsletter_signup added by the block code in csc_newsletter.inc. Then get its pane parent and
          *  Wrap it in a link to the e-mail sign up in another window.
          */
-       $('div#mcsignup').wrap('<a href="http://eepurl.com/cSMDWr" target="_blank"></a>');
+       var el = $('div.csc_newsletter_signup').parents('.pane-csc-newsletter').eq(0);
+       el.wrap('<a href="http://eepurl.com/cSMDWr" target="_blank"></a>');
     });
 
 })(jQuery);
