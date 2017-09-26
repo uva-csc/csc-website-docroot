@@ -2965,8 +2965,8 @@ body.page-list .csc-panel-col-right {
 
 /* line 2078, ../../../../../sass/sites/all/themes/csc/css/style.scss */
 .pane-csc-isotope .pane-content {
-  background: #e8e7e5 url(../images/filter_bg.gif) top center no-repeat;
-  padding: 25px 0 40px 0;
+  /*background: #e8e7e5 url(../images/filter_bg.gif) top center no-repeat;*/
+  padding: 5px 0 40px 0;
 }
 
 /* line 2080, ../../../../../sass/sites/all/themes/csc/css/style.scss */
@@ -3208,14 +3208,25 @@ body.logged-in #content {
   bottom: 0px;
   width: 150px;
   float: left;
+  margin-top: -8px !important;
+  margin-bottom: 12px;
   border-top: 1px solid #ffffff;
-  background: #dbdad8;
+  border-bottom: 1px solid #ffffff;
+  background: #e8e7e5; /*#dbdad8;*/
   padding: 0px;
 }
+
+.pane-csc-newsletter:hover {
+  background: #c9c7c5;
+}
+
 /* line 2269, ../../../../../sass/sites/all/themes/csc/css/style.scss */
 .pane-csc-newsletter h2.pane-title {
   font-size: 0.9em !important;
   margin-bottom: 0px;
+}
+a .pane-csc-newsletter h2.pane-title {
+  color: #333;
 }
 /* line 2273, ../../../../../sass/sites/all/themes/csc/css/style.scss */
 .pane-csc-newsletter .pane-content {
@@ -3230,6 +3241,11 @@ body.logged-in #content {
 body.front .pane-csc-newsletter {
   margin-top: 13px;
 }
+
+div.pane-csc-isotope, div.pane-csc-isotope * {
+    background-color: #dbdad8 !important;
+}
+    
 @media only screen and (min-height: 1170px) {
   /* line 2260, ../../../../../sass/sites/all/themes/csc/css/style.scss */
   .pane-csc-newsletter {
@@ -4498,6 +4514,10 @@ body.logged-in #content {
 #content .pane-events-panel-pane-1 .views-field-field-small-teaser p {
   font-size: 1em;
 }
+.date-display-single .date-display-range {
+    display: inline-block;
+}
+
 /* line 3198, ../../../../../sass/sites/all/themes/csc/css/style.scss */
 #content .pane-research-panel-pane-1 .node, #content .pane-research-panel-pane-1 .views-field-title {
   margin: 10px 0px 3px 0px;

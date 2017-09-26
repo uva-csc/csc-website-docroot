@@ -16,12 +16,27 @@
                         $('#csc-right').get(0).scrollTop = 0;
                     });
                });
+               
+               // On events page deactive links on the day numbers because they don't display well.
+               $('.page-events .csc-events-calendar .month-view .inner .month.day').each(
+                   function() {
+                       $(this).html($(this).text()); // remove the <a> link and just display the number
+                   }
+               );
+
             }
             $('#csc-calendar-view-form #edit-view-select').change(function(e) {
                var view_mode = $(this).val(); 
                var newurl = '/api/csc/calendar/block/' + view_mode;
                $('#csc-right #csc-column-content').load(newurl, function() {
                    Drupal.attachBehaviors('#csc-popup-calendar');
+                   // Turn links in addresses into markup
+                  $('#csc-popup-calendar .views-field-field-location .location span.fn').each(function() {
+                      var txt = $(this).text();
+                      var ptn = /\[([^\|]+)\|(http[^\]]+)\]/;
+                      var myhtml = txt.replace(ptn, '<a href="$2" target="_blank">$1</a>');
+                      $(this).html(myhtml);
+                  });
                });
             });
         }

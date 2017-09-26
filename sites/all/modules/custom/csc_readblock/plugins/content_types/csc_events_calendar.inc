@@ -31,7 +31,7 @@ function csc_events_calendar_render($subtype, $conf, $panel_args, $context = NUL
   $block->title = '';
   
   //Load block Grants Buttons
-  $output = csc_readblock_get('event_calendar-block_1', 'views');
+  $output = csc_readblock_get('event_calendar-block_month', 'views');
   
   $block->content = '<div class="csc-events-calendar">' . $output . "</div>";
 

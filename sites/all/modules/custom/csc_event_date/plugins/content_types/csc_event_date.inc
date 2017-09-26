@@ -24,52 +24,50 @@ function csc_event_date_admin_info($subtype, $conf, $contexts) {
 
 
 function csc_event_date_render($subtype, $conf, $panel_args, $context = NULL) {
-  $nodeid = 0;
-  if (arg(0) == 'node' && is_numeric(arg(1))) $nodeid = arg(1);
-	if (empty($nodeid) && count($panel_args) > 0) { $nodeid = $panel_args[0]; }
-  if ($nodeid){
-    $node = node_load($nodeid);
-    $lng = $node->language;
-		$ew = entity_metadata_wrapper('node', $node);
-		$hd = $ew->field_hide_date->value();
-    if(!$hd && !empty($node->field_event_date)) {
-    	$tba = (empty($node->field_tba) || $node->field_tba['und'][0]['value'] == 0) ?  FALSE : TRUE;
-			
-			$dout = field_view_field('node', $node, 'field_event_date');
-			if($tba) {
-				$display = array('settings' => array('format_type' => 'panopoly_day'));
-				$dout = field_view_field('node', $node, 'field_event_date', $display);
-			}
-			
-      $output = '<div id="csc-event-date">';
-			
-			// If there's a repeat rule, custom format the string for presentation in block
-			if(!empty($dout['#items'][0]['rrule'])) {
-				$item = $dout['#items'][0];
-				$v1 = (isset($item['value'])) ? $item['value'] : '';
-				$v2 = (isset($item['value2'])) ? $item['value2'] : '';
-				if($rrstr = csc_event_date_repeat_rule_render($item['rrule'], $v1,  $v2)) {
-					$output .= '<p>' . $rrstr . '</p>';
-				} else {
-					$output .= $dout[0]['#markup']; // if rule can't be rendered use default markup
-				}
-			} else {
-			// Otherwise use pre-rendered markup for each item (should only be one)
-	      foreach($dout['#items'] as $n => $item) {
-	      	$output .= $dout[$n]['#markup'];
-	      }
-				if($tba) { $output .= ', Time TBA'; }
-			}
-			
-      $output.= "</div>\n";
-
-      $block = new stdClass();
-      $block->title = '';
-      $block->content = $output;
-      return $block;
+    $nodeid = 0;
+    if (arg(0) == 'node' && is_numeric(arg(1))) $nodeid = arg(1);
+    if (empty($nodeid) && count($panel_args) > 0) { $nodeid = $panel_args[0]; }
+    if ($nodeid){
+        $node = node_load($nodeid);
+        $lng = $node->language;
+        $ew = entity_metadata_wrapper('node', $node);
+        $hd = $ew->field_hide_date->value();
+        
+        if(!$hd && !empty($node->field_event_date)) {
+            $tba = (empty($node->field_tba) || $node->field_tba['und'][0]['value'] == 0) ?  FALSE : TRUE;
+            $dout = field_view_field('node', $node, 'field_event_date');
+            if($tba) {
+                $display = array('settings' => array('format_type' => 'panopoly_day'));
+                $dout = field_view_field('node', $node, 'field_event_date', $display);
+            }
+            $output = '<div id="csc-event-date">';
+            
+            // If there's a repeat rule, custom format the string for presentation in block
+            if(!empty($dout['#items'][0]['rrule'])) {
+                $item = $dout['#items'][0];
+                $v1 = (isset($item['value'])) ? $item['value'] : '';
+                $v2 = (isset($item['value2'])) ? $item['value2'] : '';
+                if($rrstr = csc_event_date_repeat_rule_render($item['rrule'], $v1,  $v2)) {
+                    $output .= '<p>' . $rrstr . '</p>';
+                } else {
+                    // Added preg_replace to put space between am/pm and time
+                    $output .= preg_replace('/(\d)([A|P]M)/', '$1 $2', $dout[0]['#markup']); // if rule can't be rendered use default markup
+                }
+            } else {
+                // Otherwise use pre-rendered markup for each item (should only be one)
+                foreach($dout['#items'] as $n => $item) {
+                    $output .= $dout[$n]['#markup'];
+                }
+                if($tba) { $output .= ', Time TBA'; }
+            }
+            
+            $output.= "</div>\n";
+            $block = new stdClass();
+            $block->title = '';
+            $block->content = $output;
+            return $block;
+        }
     }
-  }
-
 }
 
 function csc_event_date_repeat_rule_render($rule, $t1='', $t2='') {
@@ -104,7 +102,7 @@ function csc_event_date_repeat_rule_render($rule, $t1='', $t2='') {
 				$dayst = implode(', ', $daylist) . " and $last";
 			}
 		}
-        $dtfmt = 'M jS, Y';
+        $dtfmt = 'M j, Y';
 		$startdate = (!empty($t1)) ? date($dtfmt, strtotime($t1)) : FALSE;
 		$enddate = date($dtfmt, strtotime($rrule['UNTIL']));
 		if(empty($t1)) {

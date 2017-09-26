@@ -25,5 +25,12 @@
 	      		$(this).hide();
 	      	}
 	      });
+	      // Turn links in addresses into markup
+	      $('.field-type-location .location span.fn, .views-field-field-location .location span.fn').each(function() {
+	          var txt = $(this).text();
+	          var ptn = /\[([^\|]+)\|(http[^\]]+)\]/;
+	          var myhtml = txt.replace(ptn, '<a href="$2" target="_blank">$1</a>');
+	          $(this).html(myhtml);
+	      });
     });          
 })(jQuery);
