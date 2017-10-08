@@ -25,6 +25,7 @@
       if(!~cls.indexOf('active')) {
         this.className += ' active';
         title = $(this).attr('alt');
+        if (~title.indexOf('Calendar')) {  $('body').addClass('csc-calendar-on'); }
         clsAdd = 'csc-' + title.replace(/ /g, '-').toLowerCase();
 
         if(active_el)
@@ -63,6 +64,7 @@
       $(active_el).removeClass('active');
       active_el = null;
       $wedge.hide();
+      $('body').removeClass('csc-calendar-on');
       return false; 
     });    
     

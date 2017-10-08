@@ -75,10 +75,18 @@
 }
 /* line 50, ../../../../../sass/sites/all/modules/csc_column/css/csc_column.scss */
 #csc-right.csc-calendar {
-  width: 930px;
-  overflow: scroll;
-  max-width: 75%;
+    width: 930px;
+    overflow: visible;
+    max-width: 75%;
+    position: absolute;
+    top: 10px;
+    border-top: thin #c5c5c5 solid;
 }
+
+.csc-calendar-on .wedge {
+    top: 105px;
+}
+
 /* line 53, ../../../../../sass/sites/all/modules/csc_column/css/csc_column.scss */
 #csc-right.csc-calendar #csc-column-content {
   width: 891px;
