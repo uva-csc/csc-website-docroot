@@ -25,7 +25,7 @@
       if(!~cls.indexOf('active')) {
         this.className += ' active';
         title = $(this).attr('alt');
-        if (~title.indexOf('Calendar')) {  $('body').addClass('csc-calendar-on'); }
+        /*if (~title.indexOf('Calendar')) {  $('body').addClass('csc-calendar-on'); }*/
         clsAdd = 'csc-' + title.replace(/ /g, '-').toLowerCase();
 
         if(active_el)
@@ -39,6 +39,16 @@
         
         var ajax_url = this.href;
         
+        // If we are already in calendar and something else is clicked, save the calendar state
+        if ($('#csc-right').is('.csc-calendar', '.in')) {
+            
+            var calstate = $('#csc-popup-calendar #edit-view-select').val();
+            $.cookie('csc_calendar_state', calstate, { expires: 7, path: '/' });
+            $('#calendar-back').remove(); // remove old state if there, thought it shouldn't be
+            $('#csc-column-content').after('<div id="calendar-back" style="display: none;"></div>');
+            $('#calendar-back').html($('#csc-column-content').html());
+        }
+        
         $.ajax({
           url: ajax_url,
           success: function(res){
@@ -50,21 +60,33 @@
             }
             if (~title.indexOf('Calendar')) {
                  Drupal.attachBehaviors('#csc-popup-calendar');
-            }
+                 if ($.cookie('csc_calendar_state')) {
+                     $('#csc-popup-calendar').hide();
+                     $('#csc-popup-calendar #edit-view-select').val($.cookie('csc_calendar_state'));
+                     $('#csc-popup-calendar #edit-view-select').trigger('change', function() {$('#csc-popup-calendar').show();});
+                 }
+             } 
           }
         });
-
+        
         $('#csc-right').attr('class', clsAdd + ' in');
       }
     });
     
     //bind action to close buttons
     $('#csc-column-close').on("click",function(e){
+      // if we are in the calendar, save its state
+      if ($('#csc-right').is('.csc-calendar', '.in')) {
+          var calstate = $('#csc-popup-calendar #edit-view-select').val();
+          $.cookie('csc_calendar_state', calstate, { expires: 7, path: '/' });
+          $('#calendar-back').remove(); // remove old state if there, thought it shouldn't be
+          $('#csc-column-content').after('<div id="calendar-back" style="display: none;"></div>');
+          $('#calendar-back').html($('#csc-column-content').html());
+      }
       $('#csc-right').attr('class', '');
       $(active_el).removeClass('active');
       active_el = null;
       $wedge.hide();
-      $('body').removeClass('csc-calendar-on');
       return false; 
     });    
     

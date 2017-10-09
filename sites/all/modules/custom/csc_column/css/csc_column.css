@@ -21,9 +21,9 @@
   transform: translateX(591px);
   position: fixed;
   right: 0px;
-  top: 76px;
+  top: 105px;
   z-index: 50;
-  height: 100%;
+  /*height: 100%;*/
   width: 339px;
   min-height: 750px;
   opacity: 0.98;
@@ -79,13 +79,25 @@
     overflow: visible;
     max-width: 75%;
     position: absolute;
-    top: 10px;
+    top: 0px;
     border-top: thin #c5c5c5 solid;
 }
 
-.csc-calendar-on .wedge {
-    top: 105px;
+.wedge {
+    top: 105px !important;
 }
+
+/** Adjusting top of #csc-right when there are messages */
+#messages ~ #content > #csc-right.csc-calendar {
+    top: -75px;
+}
+
+#messages ~ #content > #csc-right.csc-contact-us,
+#messages ~ #content > #csc-right.csc-log-into-your-account,
+#messages ~ #content > #csc-right.csc-search-csc {
+    top: 108px;
+}
+
 
 /* line 53, ../../../../../sass/sites/all/modules/csc_column/css/csc_column.scss */
 #csc-right.csc-calendar #csc-column-content {
