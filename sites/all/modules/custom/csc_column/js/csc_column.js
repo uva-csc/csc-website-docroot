@@ -10,7 +10,7 @@
     };
 
     //create right column
-    $( '#content' ).append( '<div id="csc-right"><div id="csc-column-top"><h2 id="csc-column-title"></h2><div id="csc-column-close">x</div></div><div class="column-loader" style="display: none;"></div><div id="csc-column-content"></div></div>' );
+    $( '#content' ).append( '<div id="csc-right"><div id="csc-column-top"><h2 id="csc-column-title"></h2><div id="csc-column-close">x</div></div><div class="column-loader" style="display: none;"><img src="sites/all/modules/custom/csc_calendar/status-active.gif" style="margin-left: 50%;"></div><div id="csc-column-content"></div></div>' );
 
     //bind actions to top menu buttons
     $('.top-anchor').on("click",function(event){

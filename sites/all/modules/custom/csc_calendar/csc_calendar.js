@@ -28,6 +28,7 @@
                var view_mode = $(this).val(); 
                var newurl = '/api/csc/calendar/block/' + view_mode;
                $('#csc-right #csc-column-content').load(newurl, function() {
+                   if (view_mode == 'week') { $('#csc-popup-calendar .pager').hide(); } else { $('#csc-popup-calendar .pager').show(); }
                    Drupal.attachBehaviors('#csc-popup-calendar');
                    // Turn links in addresses into markup
                   $('#csc-popup-calendar .views-field-field-location .location span.fn').each(function() {
