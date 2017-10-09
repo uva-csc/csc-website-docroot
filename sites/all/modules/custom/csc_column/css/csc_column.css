@@ -21,7 +21,7 @@
   transform: translateX(591px);
   position: fixed;
   right: 0px;
-  top: 105px;
+  top: 75px;
   z-index: 50;
   /*height: 100%;*/
   width: 339px;
@@ -83,14 +83,21 @@
     border-top: thin #c5c5c5 solid;
 }
 
-.wedge {
+/** move slideout and wedge down if admin menu is showing **/
+body.admin-menu #csc-right:not(.csc-calendar), body.admin-menu .wedge { 
     top: 105px !important;
 }
 
 /** Adjusting top of #csc-right when there are messages */
 #messages ~ #content > #csc-right.csc-calendar {
-    top: -75px;
+    top: -85px !important;
 }
+
+/** Pager not working right. Hiding until it can be fixed
+#csc-popup-calendar .pager {
+    display: none;
+}
+**/
 
 #messages ~ #content > #csc-right.csc-contact-us,
 #messages ~ #content > #csc-right.csc-log-into-your-account,
@@ -223,4 +230,20 @@ form#csc-calendar-view-form {
 /* line 123, ../../../../../sass/sites/all/modules/csc_column/css/csc_column.scss */
 .csc-show {
   display: block;
+}
+
+/** loader spinner **/
+.column-loader {
+    margin: 15% 0 0 55%;
+    border: 4px solid #f3f3f3; /* Light grey */
+    border-top: 4px solid #5e94bd; /* Blue */
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }

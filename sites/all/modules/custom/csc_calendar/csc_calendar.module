@@ -7,8 +7,8 @@ function csc_calendar_menu() {
   $items['csc_calendar'] = array(
          'page callback'    => 'csc_calendar_page_ajax',
          'page arguments' => array('month'), // TODO: change this to a CSC site setting
-     'access arguments' => array('access content'),
-     'type'             => MENU_NORMAL_ITEM,
+         'access arguments' => array('access content'),
+         'type'             => MENU_NORMAL_ITEM,
   );
   $items['api/csc/calendar/block'] = array(
          'page callback'    => 'csc_calendar_page_ajax',
