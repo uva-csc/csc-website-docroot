@@ -45,6 +45,7 @@ function csc_calendar_init(){
  */
 
 function csc_calendar_page_ajax($length='month') {
+    $_SESSION['csc_calendar_type'] = $length;
     $type = 'event_calendar-block_' . $length;
     $view_select_form = drupal_get_form('csc_calendar_view_form', $length);
     echo  '<div id="csc-popup-calendar" class="' . $length . '"> ' . drupal_render($view_select_form) . csc_readblock_get($type, 'views') . '</div>';
