@@ -64,9 +64,9 @@
             }
             if (~title.indexOf('Calendar')) {
                  Drupal.attachBehaviors('#csc-popup-calendar');
-                 if ($.cookie('csc_calendar_state')) {
+                 if ($.cookie('csc_calendar_view_mode')) {
                      $('#csc-popup-calendar').hide();
-                     $('#csc-popup-calendar #edit-view-select').val($.cookie('csc_calendar_state'));
+                     $('#csc-popup-calendar #edit-view-select').val($.cookie('csc_calendar_view_mode'));
                      $('#csc-popup-calendar #edit-view-select').trigger('change', function() {$('#csc-popup-calendar').show();});
                  }
              } 

@@ -26,6 +26,7 @@
             }
             $('#csc-calendar-view-form #edit-view-select').change(function(e) {
                var view_mode = $(this).val(); 
+               $.cookie('csc_calendar_view_mode', view_mode, {'path':'/'});
                var newurl = '/api/csc/calendar/block/' + view_mode;
                $('#csc-right #csc-column-content').load(newurl, function() {
                    if (view_mode == 'week') { $('#csc-popup-calendar .pager').hide(); } else { $('#csc-popup-calendar .pager').show(); }
