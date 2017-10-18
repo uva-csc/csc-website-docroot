@@ -51,8 +51,8 @@
     <meta name="HandheldFriendly" content="true" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta http-equiv="cleartype" content="on" />
-    <meta property="og:title" content="<?php print $og_title; ?>" />
-    <meta property="og:description" content="The Contemplative Sciences Center at UVA promotes research, learning, and engagement related to contemplation." />
+    <!--meta property="og:title" content="<?php print $og_title; ?>" />
+    <meta property="og:description" content="The Contemplative Sciences Center at UVA promotes research, learning, and engagement related to contemplation." /-->
   <title><?php print $head_title; ?></title>
   <?php print $styles; ?>
   <?php print $scripts; ?>

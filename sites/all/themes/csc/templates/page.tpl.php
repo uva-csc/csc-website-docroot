@@ -45,7 +45,7 @@
   <?php endif; ?>
   <?php print render($page['content']); ?>
   <?php print $feed_icons; ?>
-  <?php if ($is_front && !$logged_in): ?>
+  <?php if ( !$logged_in): ?> <!--$is_front &&-->
       <div class="csc-login-link"><a class="top-anchor" alt="Log into your account" href="<?php echo url('csc_column/login');?>"><?php print_image('login_icon.png', 17, 24, "Login", 'class="top-icons" id="login-icon"');?><div class="header-icon-text">Log in</div></a></div>
    <?php endif; ?>
 </div></div> <!-- /.section, /#content -->
