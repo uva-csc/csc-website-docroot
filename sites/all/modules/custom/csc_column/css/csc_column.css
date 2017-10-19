@@ -134,6 +134,11 @@ body.admin-menu #csc-right:not(.csc-calendar), body.admin-menu .wedge {
   padding: 8px 15px;
 }
 
+/* for Firefox calendar select menu */
+#edit-view-select {
+    max-width: 150px;
+}
+
 .csc-calendar-view-form .form-item-view-select {
     position: relative;
     top: -50px;
