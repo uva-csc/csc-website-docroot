@@ -28,6 +28,8 @@
                var view_mode = $(this).val(); 
                $.cookie('csc_calendar_view_mode', view_mode, {'path':'/'});
                var newurl = '/api/csc/calendar/block/' + view_mode;
+               var basepath = Drupal.settings.basePath; 
+               $('#csc-right #csc-column-content').html('<img src="' + basepath + 'sites/all/modules/custom/csc_calendar/status-active.gif" style="margin-left:50%;">');
                $('#csc-right #csc-column-content').load(newurl, function() {
                    if (view_mode == 'week') { $('#csc-popup-calendar .pager').hide(); } else { $('#csc-popup-calendar .pager').show(); }
                    Drupal.attachBehaviors('#csc-popup-calendar');
