@@ -11,7 +11,7 @@
     <li><a class="top-anchor" alt="Connect with Us" id="connect-link" href="<?php echo url('csc_column/connect');?>"><?php print_image('handshake_icon.png', 32, 32, "Connect", 'class="top-icons" id="connect-icon"');?><div class="header-icon-text">Connect</div></a></li>-->
     <li><a class="top-anchor" alt="Calendar" id="calendar-link" href="<?php echo url('csc_calendar');?>"><?php print_image('calendar_icon.png', 24, 27, "Calendar", 'class="top-icons" id="calendar-icon"');?><div class="header-icon-text">calendar</div></a></li>
     <li><a class="top-anchor" alt="Contact Us" href="<?php echo url('csc_column/contact');?>"><?php print_image('contact_icon.png', 24, 24, "Contact", 'class="top-icons" id="contact-icon"');?><div class="header-icon-text">contact</div></a></li>
-    <li><a class="top-anchor" alt="Log into your account" href="<?php echo url('csc_column/login');?>"><?php print_image('login_icon.png', 17, 24, "Login", 'class="top-icons" id="login-icon"');?><div class="header-icon-text">log in</div></a></li> 
+    <!--li><a class="top-anchor" alt="Log into your account" href="<?php echo url('csc_column/login');?>"><?php print_image('login_icon.png', 17, 24, "Login", 'class="top-icons" id="login-icon"');?><div class="header-icon-text">log in</div></a></li--> 
     <li><a class="top-anchor" alt="Search CSC" href="<?php echo url('csc_column/search');?>"><?php print_image('search.png', 24, 24, "Search", 'class="top-icons" id="search-icon"');?><div class="header-icon-text">search</div></a></li>
   </ul>
 </div>
@@ -45,7 +45,7 @@
   <?php endif; ?>
   <?php print render($page['content']); ?>
   <?php print $feed_icons; ?>
-  <?php if ($is_front && !$logged_in): ?>
+  <?php if ( !$logged_in): ?> <!--$is_front &&-->
       <div class="csc-login-link"><a class="top-anchor" alt="Log into your account" href="<?php echo url('csc_column/login');?>"><?php print_image('login_icon.png', 17, 24, "Login", 'class="top-icons" id="login-icon"');?><div class="header-icon-text">Log in</div></a></div>
    <?php endif; ?>
 </div></div> <!-- /.section, /#content -->

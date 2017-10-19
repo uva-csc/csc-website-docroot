@@ -21,9 +21,9 @@
   transform: translateX(591px);
   position: fixed;
   right: 0px;
-  top: 76px;
+  top: 75px;
   z-index: 50;
-  height: 100%;
+  /*height: 100%;*/
   width: 339px;
   min-height: 750px;
   opacity: 0.98;
@@ -75,10 +75,37 @@
 }
 /* line 50, ../../../../../sass/sites/all/modules/csc_column/css/csc_column.scss */
 #csc-right.csc-calendar {
-  width: 930px;
-  overflow: scroll;
-  max-width: 75%;
+    width: 930px;
+    overflow: visible;
+    max-width: 75%;
+    position: absolute;
+    top: 0px;
+    border-top: thin #c5c5c5 solid;
 }
+
+/** move slideout and wedge down if admin menu is showing **/
+body.admin-menu #csc-right:not(.csc-calendar), body.admin-menu .wedge { 
+    top: 105px !important;
+}
+
+/** Adjusting top of #csc-right when there are messages */
+#messages ~ #content > #csc-right.csc-calendar {
+    top: -85px !important;
+}
+
+/** Pager not working right. Hiding until it can be fixed
+#csc-popup-calendar .pager {
+    display: none;
+}
+**/
+
+#messages ~ #content > #csc-right.csc-contact-us,
+#messages ~ #content > #csc-right.csc-log-into-your-account,
+#messages ~ #content > #csc-right.csc-search-csc {
+    top: 108px;
+}
+
+
 /* line 53, ../../../../../sass/sites/all/modules/csc_column/css/csc_column.scss */
 #csc-right.csc-calendar #csc-column-content {
   width: 891px;
@@ -105,6 +132,11 @@
 /* line 71, ../../../../../sass/sites/all/modules/csc_column/css/csc_column.scss */
 #csc-right.csc-calendar .item-list .pager a {
   padding: 8px 15px;
+}
+
+/* for Firefox calendar select menu */
+#edit-view-select {
+    max-width: 150px;
 }
 
 .csc-calendar-view-form .form-item-view-select {
@@ -203,4 +235,9 @@ form#csc-calendar-view-form {
 /* line 123, ../../../../../sass/sites/all/modules/csc_column/css/csc_column.scss */
 .csc-show {
   display: block;
+}
+
+/** loader spinner **/
+.column-loader {
+    margin-top: 75px;
 }
