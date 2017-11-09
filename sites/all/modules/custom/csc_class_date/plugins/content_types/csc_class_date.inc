@@ -59,7 +59,12 @@ function csc_class_date_render($subtype, $conf, $panel_args, $context = NULL) {
 	      	$output .= $dout[$n]['#markup'];
 	      }
 				if ($online) { $output = str_replace('class="date-display-single">', 'class="date-display-single">Beginning ', $output); }
-				else if($tba) { $output .= ', Time TBA'; }
+				else if($tba) {
+                    if (strstr($output, '</div>')) {
+                        $output = str_replace('</div>', ', Time TBA</div>', $output);  
+                   } else {
+                       $output .= '  Time TBA';
+                   }
 			}
 			
       $output.= "</div>\n";
