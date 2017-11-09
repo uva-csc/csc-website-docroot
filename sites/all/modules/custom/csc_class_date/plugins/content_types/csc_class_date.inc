@@ -65,6 +65,7 @@ function csc_class_date_render($subtype, $conf, $panel_args, $context = NULL) {
                    } else {
                        $output .= '  Time TBA';
                    }
+                }
 			}
 			
       $output.= "</div>\n";
