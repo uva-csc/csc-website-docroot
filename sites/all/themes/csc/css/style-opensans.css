@@ -4870,6 +4870,10 @@ body.logged-in #content {
   text-transform: none;
 }
 
+.node-type-class .pane-node-field-class-location {
+    margin-top: 12px;
+}
+
 /** Node type article **/
 .node-type-article .csc-3col-col-fluid.csc-3col-first {
     width: 100%;
