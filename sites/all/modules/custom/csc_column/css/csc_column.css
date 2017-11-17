@@ -19,7 +19,7 @@
   -ms-transform: translateX(591px);
   -o-transform: translateX(591px);
   transform: translateX(591px);
-  position: fixed;
+  position: absolute;
   right: 0px;
   top: 75px;
   z-index: 50;

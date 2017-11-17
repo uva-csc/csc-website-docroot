@@ -3172,7 +3172,7 @@ body.logged-in #content {
   display: none;
   position: absolute;
   z-index: 999;
-  top: 76px;
+  top: 105px;
   right: 197px;
 }
 @media only screen and (max-width: 640px) {
