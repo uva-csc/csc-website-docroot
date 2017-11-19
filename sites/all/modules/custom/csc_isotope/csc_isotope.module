@@ -7,3 +7,152 @@ function csc_isotope_ctools_plugin_directory($owner, $plugin_type) {
     return 'plugins/' . $plugin_type;
   }
 }
+
+/**
+ * Admin Settings for CSC Isotope
+ */
+function csc_isotope_menu() {
+    $items = array();
+    $items['admin/config/csc'] = array(
+        'title' => 'CSC Settings',
+        'description' => 'Settings for CSC',
+        'page callback' => 'drupal_get_form',
+        'page arguments' => array('csc_isotope_admin_form'),
+        'access arguments' => array('administer csc settings'),
+        'type' => MENU_NORMAL_ITEM,
+    );
+    return $items;
+}
+
+/**
+ * Need to make a drag and droppable table here of node's promoted. 
+ * See 
+ * https://www.curveagency.com/blog/creating-form-draggable-elements-using-drupaladdtabledrag
+ *  
+ */
+function csc_isotope_admin_form($form, $form_state) {
+    module_load_include('inc', 'csc_isotope', 'plugins/content_types/csc_isotope_page');
+    $form['header'] = array(
+        '#type' => 'markup',
+        '#markup' => t('<h2>Front Page Tile Order</h2>'),
+    );
+    $form['instructions'] = array(
+        '#type' => 'markup',
+        '#markup' => t('<p>The table below lists all the nodes that have been promoted to the front page. 
+        Drag and drop to place them in the order that you want them to appear on the page. 
+        (Note: they will be automatically interspersed with the color context tiles.)</p>'),
+    );
+    $form['front_node_table'] = array(
+        '#prefix' => '<div id="front-node-table">',
+        '#suffix' => '</div>',
+        '#tree' => TRUE,
+        '#theme' => 'front_node_table_drag_components',
+    );
+    $node_list = variable_get('front_node_list', array());
+    $nodes = node_load_multiple($node_list);
+    $rows = array();
+    $i = 0;
+    foreach ($nodes as $node) {
+        $i++;
+        $form['front_node_table'][$i]['item'] = array(
+            '#type' => 'item',
+            '#markup' => t('Tile') . ' ' . $i,
+        );
+        $form['front_node_table'][$i]['nid'] = array(
+            '#type' => 'markup', 
+            '#markup' => $node->nid,
+        );
+        $form['front_node_table'][$i]['title'] = array(
+            '#type' => 'markup', 
+            '#markup' => l($node->title, 'node/' . $node->nid),
+        );
+        $form['front_node_table'][$i]['type'] = array(
+            '#type' => 'markup', 
+            '#markup' => $node->type,
+        );
+        $form['front_node_table'][$i]['weight'] = array(
+            '#type' => 'textfield',
+            '#default_value' => $i,
+            '#size' => 3,
+            '#attributes' => array('class' => array('item-row-weight')),
+        ); 
+    }
+    $form['submit'] = array(
+        '#type' => 'submit',
+        '#value' => 'Submit',
+    );
+    return $form;
+}
+
+function csc_isotope_admin_form_submit($form, &$form_state) {
+    dpm($form_state);
+}
+
+/**
+ * Implements hook_theme().
+ */
+function csc_isotope_theme($existing, $type, $theme, $path) {
+  $themes = array(
+    'front_node_table_drag_components' => array(
+      'render element' => 'element'
+    ),
+  );
+  return $themes;
+}
+
+// Custom theme output.
+function theme_front_node_table_drag_components($vars) {
+  $element = $vars['element'];
+  drupal_add_tabledrag('front_node_table', 'order', 'sibling', 'item-row-weight');
+ 
+  $header = array( 
+        'item' => t('Item'),
+        'nid' => t('Node ID'), 
+        'title' => t('Title'), 
+        'type' => t('Type'), 
+        'weight' => t('Weight')
+    );
+ 
+  $rows = array();
+  foreach (element_children($element) as $key) {
+    $row = array();
+    $row['data'] = array();
+    foreach ($header as $fieldname => $title) {
+      $row['data'][] = drupal_render($element[$key][$fieldname]);
+      $row['class'] = array('draggable');
+    }
+    $rows[] = $row;
+  }
+ 
+  return theme('table', array(
+    'header' => $header, 
+    'rows' => $rows,
+    'attributes' => array('id' => 'front_node_table'),
+  ));
+}
+
+function csc_isotope_permission() {
+    return array(
+        'administer csc settings' => array(
+          'title' => t('Administer custom CSC settings'),
+          'description' => t('Perform administration tasks for CSC Site.'),
+        ),
+    );
+}
+
+
+/**
+ * Whenever a node is saved and it has the promote to front page box checked add it to the list
+ */
+function csc_isotope_node_presave($node) {
+    $node_list = variable_get('front_node_list', array());
+    if ($node->promote && !in_array($node->nid, $node_list)) {
+        dpm('adding ' . $node->nid);
+        $node_list[] = $node->nid;
+    } else if (in_array($node->nid, $node_list)) {
+        $ind = array_search($node->nid, $node_list);
+        unset($node_list[$ind]);
+        dpm($ind, $node_list);
+    }
+    variable_set('front_node_list', $node_list);
+}
