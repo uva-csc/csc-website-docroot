@@ -48,6 +48,11 @@ function csc_isotope_info($subtype, $conf, $contexts) {
     $body = substr($body, 0, 150);
     $act[] = csc_isotope_item(array('title' => $row->title, 'body' => $body, 'nid' => $row->nid, 'image' => $row->uri, 'type' => $row->type, 'created' => $row->created));
   }
+  // List of nodes with promoted checked. Created in csc_isotope.module/hook_node_presave function.
+  $node_list = variable_get('front_node_list', array());
+  $node_set = implode(',', $node_list);
+  // Condition for finding nodes in query below
+  $condition = (empty($node_list)) ? 'n.promote=1' : 'n.nid IN (' . $node_set . ')';
   //Get Nodes Promoted to front
   $qry = "    
     SELECT n.nid, n.type, n.title, fst.field_small_teaser_value as body, CONCAT_WS('', fded.field_event_date_value, fdfd.field_date_value) AS realdate, FROM_UNIXTIME(n.created) AS created, fm.uri, fau.field_alternate_url_target_id as target
@@ -58,9 +63,8 @@ function csc_isotope_info($subtype, $conf, $contexts) {
     LEFT JOIN field_data_field_alternate_url fau ON n.nid=fau.entity_id
     LEFT JOIN field_data_field_event_date fded ON fded.entity_id=fau.field_alternate_url_target_id
     LEFT JOIN field_data_field_date fdfd ON fdfd.entity_id=fau.field_alternate_url_target_id
-    WHERE n.promote=1
-        GROUP BY n.nid
-    ORDER BY realdate DESC";
+    WHERE $condition
+        GROUP BY n.nid";
     
   $r = db_query($qry);
 
@@ -71,9 +75,13 @@ function csc_isotope_info($subtype, $conf, $contexts) {
     $realdate = (empty($row->realdate)) ? strtotime($row->created) : strtotime($row->realdate);
     $tileitems[] = array('title' => $row->title, 'body' => $body, 'nid' => $row->nid, 'target' => $row->target, 'image' => $row->uri, 'type' => $row->type, 'created' => $realdate);
   }
+  // Sort tile results based on node list order
   usort($tileitems, function($a, $b) {
-      if ($a["created"] == $b["created"]) { return 0; }
-      return ($a["created"] > $b["created"]) ? -1 : 1;
+      if ($a["nid"] == $b["nid"]) { return 0; }
+      $aind = array_search($a['nid'], $node_set);
+      $bind = array_search($b['nid'], $node_set);
+      if ($aind == -1 || $bind == -1) { return 0; }
+      return ($aind < $bind) ? -1 : 1;
   });
   if (count($tileitems) > 15) { $tileitems = array_splice($tileitems, 0, 15); } // Trim down to maximum of 15 items on front page.
   $tiles = array();
@@ -103,30 +111,8 @@ function csc_isotope_info($subtype, $conf, $contexts) {
   return $block;
 }
  
- /* old code
-function csc_isotope_render($subtype, $conf, $panel_args, $context = NULL) {
-  drupal_add_css(drupal_get_path('module', 'csc_isotope') . '/plugins/content_types/css_isotope.css');
-  drupal_add_js(drupal_get_path('module', 'csc_isotope') . '/plugins/content_types/csc_home.js');
+ /* old query for nodes on front page
 
-  $block = new stdClass();
-
-  $block->title = 'Isotope Page';
-
-  //Get Activity nodes (the generic color tiles)
-  $qry = "SELECT n.nid, n.type, n.title, fst.field_small_teaser_value as body, n.created, fm.uri
-    FROM node n
-    LEFT JOIN field_data_field_featured_image fdfi ON fdfi.entity_id=n.nid
-    LEFT JOIN file_managed fm ON fdfi.field_featured_image_fid=fm.fid
-    LEFT JOIN field_data_field_small_teaser fst ON fst.entity_id=n.nid
-    WHERE n.status=1 AND n.type = 'initiatives'
-    ORDER BY n.created DESC";
-  $r = db_query($qry);
-  $act = array();
-  foreach($r as $row){
-    $body = strip_tags($row->body, '<br>');
-    $body = substr($body, 0, 150);
-    $act[] = csc_isotope_item(array('title' => $row->title, 'body' => $body, 'nid' => $row->nid, 'image' => $row->uri, 'type' => $row->type, 'created' => $row->created));
-  }
   //Get Feature and news (specific items)
   $qry = "    
     SELECT n.nid, n.type, n.title, fst.field_small_teaser_value as body, CONCAT_WS('', fded.field_event_date_value, fdfd.field_date_value) AS realdate, FROM_UNIXTIME(n.created) AS created, fm.uri, fau.field_alternate_url_target_id as target
@@ -143,46 +129,6 @@ function csc_isotope_render($subtype, $conf, $panel_args, $context = NULL) {
 		GROUP BY n.nid
     ORDER BY realdate DESC";
     
-  $r = db_query($qry);
-
-  $tileitems = array();
-  foreach($r as $row){
-    $body = strip_tags($row->body, '<br>');
-    $body = substr($body, 0, 150);
-    $realdate = (empty($row->realdate)) ? strtotime($row->created) : strtotime($row->realdate);
-    $tileitems[] = array('title' => $row->title, 'body' => $body, 'nid' => $row->nid, 'target' => $row->target, 'image' => $row->uri, 'type' => $row->type, 'created' => $realdate);
-  }
-  usort($tileitems, function($a, $b) {
-      if ($a["created"] == $b["created"]) { return 0; }
-      return ($a["created"] > $b["created"]) ? -1 : 1;
-  });
-  if (count($tileitems) > 15) { $tileitems = array_splice($tileitems, 0, 15); } // Trim down to maximum of 15 items on front page.
-  $tiles = array();
-  foreach ($tileitems as $tile) {
-      $tiles[] = csc_isotope_item($tile);
-  }
-  
-  //Build widget content
-  $nact = sizeof($act);
-  $ntiles = sizeof($tiles);
-  $ratio = floor($ntiles / $nact);
-  $activity_order = array(0, 2, 5, 8, 10);
-  $output = '<div id="iso-container" class="isotope">' . "\n";
-
-  for( $i = $k = $l = 0; $i < ($nact + $ntiles) ; $i++ ) {
-    if( in_array($i, $activity_order, true) ) {
-      $output .= $act[$k++];
-    } else if ($ntiles > $l) {
-      $output .= $tiles[$l++];
-    }
-  }
-
-  $output.= "</div>\n";
-
-  $block->content = $output;
-
-  return $block;
-}
 */
 
 /**
