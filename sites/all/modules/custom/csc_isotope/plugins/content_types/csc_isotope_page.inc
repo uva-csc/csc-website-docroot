@@ -135,6 +135,22 @@ function csc_isotope_info($subtype, $conf, $contexts) {
  * Implements theme function
  */
 function csc_isotope_item($var){
+  $type = $var['type'];
+  switch ($type) {
+    case 'class':
+    case 'event':
+        $var['type'] = 'feature';
+        break;
+        
+    case 'article':
+    case 'activities':
+    case 'content_page':
+    case 'panopoly_page':
+        $var['type'] = 'news';
+        break;
+        
+  }
+  
   $path = drupal_get_path('module', 'csc_isotope') . '/plugins/content_types/images/';
   //$url = l($var['title'], "node/" . $var['nid']);
   $class = 'type-' . $var['type'] . ' node-' . $var['nid'];
@@ -143,7 +159,7 @@ function csc_isotope_item($var){
   if($var['type'] != 'initiatives') {
     $body = '&nbsp; | &nbsp;' . $body;
   }
-
+  
   $icon = '';
   $nid = isset($var['target']) ? $var['target'] : $var['nid'];
   if($var['type'] == 'news') $icon = '<img class="iso-icon" src="/'. $path .'icon_news.png" width=25 height=25 alt="">';
