@@ -77,10 +77,10 @@ function csc_isotope_info($subtype, $conf, $contexts) {
   }
   // Sort tile results based on node list order
   usort($tileitems, function($a, $b) {
-      if ($a["nid"] == $b["nid"]) { return 0; }
-      $aind = array_search($a['nid'], $node_set);
-      $bind = array_search($b['nid'], $node_set);
-      if ($aind == -1 || $bind == -1) { return 0; }
+      $node_list = variable_get('front_node_list', array());
+      $aind = array_search($a["nid"], $node_list);
+      $bind = array_search($b["nid"], $node_list);
+      if ($aind == $bind) { return 0; }
       return ($aind < $bind) ? -1 : 1;
   });
   if (count($tileitems) > 15) { $tileitems = array_splice($tileitems, 0, 15); } // Trim down to maximum of 15 items on front page.

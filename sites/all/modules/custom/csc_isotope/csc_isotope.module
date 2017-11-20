@@ -62,6 +62,10 @@ function csc_isotope_admin_form($form, $form_state) {
             '#type' => 'markup', 
             '#markup' => $node->nid,
         );
+        $form['front_node_table'][$i]['nidval'] = array(
+            '#type' => 'hidden', 
+            '#value' => $node->nid,
+        );
         $form['front_node_table'][$i]['title'] = array(
             '#type' => 'markup', 
             '#markup' => l($node->title, 'node/' . $node->nid),
@@ -85,7 +89,17 @@ function csc_isotope_admin_form($form, $form_state) {
 }
 
 function csc_isotope_admin_form_submit($form, &$form_state) {
-    dpm($form_state);
+    //dpm($form_state);
+    $vals = $form_state['values']['front_node_table'];
+    usort($vals, function($a, $b) {
+        if ($a['weight'] == $b['weight']) { return 0; }
+       return ($a['weight'] < $b['weight'])  ? -1 : 1;
+    });
+    $node_list = array();
+    foreach ($vals as $n => $val) {
+        $node_list[] = $val['nidval'];
+    }
+    variable_set('front_node_list', $node_list);
 }
 
 /**
@@ -147,12 +161,10 @@ function csc_isotope_permission() {
 function csc_isotope_node_presave($node) {
     $node_list = variable_get('front_node_list', array());
     if ($node->promote && !in_array($node->nid, $node_list)) {
-        dpm('adding ' . $node->nid);
         $node_list[] = $node->nid;
-    } else if (in_array($node->nid, $node_list)) {
+    } else if (!$node->promote && in_array($node->nid, $node_list)) {
         $ind = array_search($node->nid, $node_list);
         unset($node_list[$ind]);
-        dpm($ind, $node_list);
     }
     variable_set('front_node_list', $node_list);
 }
