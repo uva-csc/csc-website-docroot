@@ -91,7 +91,6 @@
         output = [],
         tileIndex = 0;
         tileOrderIndex = 0;
-
     //if($allTiles.length - 1 < tileData[nCol].divideAfter) 
       $('.csc-panel-separator').hide();
 

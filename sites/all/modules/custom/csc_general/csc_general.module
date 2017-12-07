@@ -1,6 +1,31 @@
 <?php
 
 /**
+ * Implements hook_menu().
+ * Settings for CSC are found in csc_isotope, if more are added move here.
+ */
+function csc_general_menu() {
+  $items = array();
+
+  $items['entityreference/autocomplete/single/%/%/%'] = array(
+    'title' => 'Entity Reference Autocomplete',
+    'page callback' => 'csc_general_autocomplete_callback',
+    'page arguments' => array(2, 3, 4, 5),
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+
+  $items['csc/modules_weight'] = array(
+    'title' => 'Modules Weight',
+    'page callback' => 'csc_general_module_weight',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+
+  return $items;
+}
+
+/**
  * hook_form_alter
  */
 function csc_general_form_alter(&$form, &$form_state, $form_id){
@@ -28,30 +53,6 @@ function csc_general_form_alter(&$form, &$form_state, $form_id){
   
     if($type == 'People') drupal_add_js( drupal_get_path('module', 'csc_general') . '/form_node_people.js' );
   }
-}
-
-/**
- * Implements hook_menu().
- */
-function csc_general_menu() {
-  $items = array();
-
-  $items['entityreference/autocomplete/single/%/%/%'] = array(
-    'title' => 'Entity Reference Autocomplete',
-    'page callback' => 'csc_general_autocomplete_callback',
-    'page arguments' => array(2, 3, 4, 5),
-    'access arguments' => array('access content'),
-    'type' => MENU_CALLBACK,
-  );
-
-  $items['csc/modules_weight'] = array(
-    'title' => 'Modules Weight',
-    'page callback' => 'csc_general_module_weight',
-    'access arguments' => array('access content'),
-    'type' => MENU_CALLBACK,
-  );
-
-  return $items;
 }
 
 function csc_general_autocomplete_callback($type, $field_name, $entity_type, $bundle_name, $entity_id = '', $string = '') {

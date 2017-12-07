@@ -25,7 +25,7 @@ function csc_isotope_info($subtype, $conf, $contexts) {
 /**
  * Build Isotope container & childs
  */
-function csc_isotope_render($subtype, $conf, $panel_args, $context = NULL) {
+ function csc_isotope_render($subtype, $conf, $panel_args, $context = NULL) {
   drupal_add_css(drupal_get_path('module', 'csc_isotope') . '/plugins/content_types/css_isotope.css');
   drupal_add_js(drupal_get_path('module', 'csc_isotope') . '/plugins/content_types/csc_home.js');
 
@@ -48,7 +48,12 @@ function csc_isotope_render($subtype, $conf, $panel_args, $context = NULL) {
     $body = substr($body, 0, 150);
     $act[] = csc_isotope_item(array('title' => $row->title, 'body' => $body, 'nid' => $row->nid, 'image' => $row->uri, 'type' => $row->type, 'created' => $row->created));
   }
-  //Get Feature and news (specific items)
+  // List of nodes with promoted checked. Created in csc_isotope.module/hook_node_presave function.
+  $node_list = variable_get('front_node_list', array());
+  $node_set = implode(',', $node_list);
+  // Condition for finding nodes in query below
+  $condition = (empty($node_list)) ? 'n.promote=1' : 'n.nid IN (' . $node_set . ')';
+  //Get Nodes Promoted to front
   $qry = "    
     SELECT n.nid, n.type, n.title, fst.field_small_teaser_value as body, CONCAT_WS('', fded.field_event_date_value, fdfd.field_date_value) AS realdate, FROM_UNIXTIME(n.created) AS created, fm.uri, fau.field_alternate_url_target_id as target
     FROM node n
@@ -58,11 +63,8 @@ function csc_isotope_render($subtype, $conf, $panel_args, $context = NULL) {
     LEFT JOIN field_data_field_alternate_url fau ON n.nid=fau.entity_id
     LEFT JOIN field_data_field_event_date fded ON fded.entity_id=fau.field_alternate_url_target_id
     LEFT JOIN field_data_field_date fdfd ON fdfd.entity_id=fau.field_alternate_url_target_id
-    WHERE n.status=1
-    AND n.type IN ('feature', 'news')
-		AND TIMESTAMPDIFF(MONTH,FROM_UNIXTIME(n.created),CURDATE()) < 18
-		GROUP BY n.nid
-    ORDER BY realdate DESC";
+    WHERE $condition
+        GROUP BY n.nid";
     
   $r = db_query($qry);
 
@@ -73,9 +75,13 @@ function csc_isotope_render($subtype, $conf, $panel_args, $context = NULL) {
     $realdate = (empty($row->realdate)) ? strtotime($row->created) : strtotime($row->realdate);
     $tileitems[] = array('title' => $row->title, 'body' => $body, 'nid' => $row->nid, 'target' => $row->target, 'image' => $row->uri, 'type' => $row->type, 'created' => $realdate);
   }
+  // Sort tile results based on node list order
   usort($tileitems, function($a, $b) {
-      if ($a["created"] == $b["created"]) { return 0; }
-      return ($a["created"] > $b["created"]) ? -1 : 1;
+      $node_list = variable_get('front_node_list', array());
+      $aind = array_search($a["nid"], $node_list);
+      $bind = array_search($b["nid"], $node_list);
+      if ($aind == $bind) { return 0; }
+      return ($aind < $bind) ? -1 : 1;
   });
   if (count($tileitems) > 15) { $tileitems = array_splice($tileitems, 0, 15); } // Trim down to maximum of 15 items on front page.
   $tiles = array();
@@ -104,11 +110,47 @@ function csc_isotope_render($subtype, $conf, $panel_args, $context = NULL) {
 
   return $block;
 }
+ 
+ /* old query for nodes on front page
+
+  //Get Feature and news (specific items)
+  $qry = "    
+    SELECT n.nid, n.type, n.title, fst.field_small_teaser_value as body, CONCAT_WS('', fded.field_event_date_value, fdfd.field_date_value) AS realdate, FROM_UNIXTIME(n.created) AS created, fm.uri, fau.field_alternate_url_target_id as target
+    FROM node n
+    LEFT JOIN field_data_field_small_teaser fst on fst.entity_id=n.nid
+    LEFT JOIN field_data_field_featured_image fdfi ON fdfi.entity_id=n.nid
+    LEFT JOIN file_managed fm ON fdfi.field_featured_image_fid=fm.fid
+    LEFT JOIN field_data_field_alternate_url fau ON n.nid=fau.entity_id
+    LEFT JOIN field_data_field_event_date fded ON fded.entity_id=fau.field_alternate_url_target_id
+    LEFT JOIN field_data_field_date fdfd ON fdfd.entity_id=fau.field_alternate_url_target_id
+    WHERE n.status=1
+    AND n.type IN ('feature', 'news')
+		AND TIMESTAMPDIFF(MONTH,FROM_UNIXTIME(n.created),CURDATE()) < 18
+		GROUP BY n.nid
+    ORDER BY realdate DESC";
+    
+*/
 
 /**
  * Implements theme function
  */
 function csc_isotope_item($var){
+  $type = $var['type'];
+  switch ($type) {
+    case 'class':
+    case 'event':
+        $var['type'] = 'feature';
+        break;
+        
+    case 'article':
+    case 'activities':
+    case 'content_page':
+    case 'panopoly_page':
+        $var['type'] = 'news';
+        break;
+        
+  }
+  
   $path = drupal_get_path('module', 'csc_isotope') . '/plugins/content_types/images/';
   //$url = l($var['title'], "node/" . $var['nid']);
   $class = 'type-' . $var['type'] . ' node-' . $var['nid'];
@@ -117,7 +159,7 @@ function csc_isotope_item($var){
   if($var['type'] != 'initiatives') {
     $body = '&nbsp; | &nbsp;' . $body;
   }
-
+  
   $icon = '';
   $nid = isset($var['target']) ? $var['target'] : $var['nid'];
   if($var['type'] == 'news') $icon = '<img class="iso-icon" src="/'. $path .'icon_news.png" width=25 height=25 alt="">';
