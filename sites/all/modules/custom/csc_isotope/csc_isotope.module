@@ -174,5 +174,21 @@ function csc_isotope_node_presave($node) {
 }
 
 function csc_isotope_cron() {
-    
+    $node_list = variable_get('front_node_list');
+    foreach($node_list as $i => $nid) {
+        $node = node_load($nid);
+        if (!$node) {
+            unset($node_list[$i]);
+        }
+    }
+    variable_set('front_node_list', $node_list);
+}
+
+function csc_isotope_node_delete($node) {
+    $nid = $node->nid;
+    $node_list = variable_get('front_node_list');
+    if ($node_list && $i = array_search($nid, $node_list)) {
+        unset($node_list[$i]);
+    }
+    variable_set('front_node_list', $node_list);
 }
