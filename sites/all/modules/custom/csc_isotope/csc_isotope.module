@@ -50,6 +50,10 @@ function csc_isotope_admin_form($form, $form_state) {
     );
     $node_list = variable_get('front_node_list', array());
     $nodes = node_load_multiple($node_list);
+    if (count($nodes) < 7 ) {
+         drupal_set_message(t('There are only @CT nodes promoted to the front page. There must be at least 7. Please add more!', 
+            array('@CT' => count($nodes))), 'warning');
+    }
     $rows = array();
     $i = 0;
     foreach ($nodes as $node) {
@@ -167,4 +171,8 @@ function csc_isotope_node_presave($node) {
         unset($node_list[$ind]);
     }
     variable_set('front_node_list', $node_list);
+}
+
+function csc_isotope_cron() {
+    
 }
