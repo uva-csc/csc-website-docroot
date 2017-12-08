@@ -113,7 +113,7 @@ function csc_color_tile_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 3,
+      'weight' => 4,
     ),
   );
 
@@ -163,6 +163,52 @@ function csc_color_tile_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
+      'weight' => 3,
+    ),
+  );
+
+  // Exported field_instance: 'node-colortile-field_color'.
+  $field_instances['node-colortile-field_color'] = array(
+    'bundle' => 'colortile',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Background color for the tile',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'color_field',
+        'settings' => array(
+          'height' => 50,
+          'width' => 50,
+        ),
+        'type' => 'color_field_swatch',
+        'weight' => 3,
+      ),
+      'featured' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_color',
+    'label' => 'Color',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'color_field',
+      'settings' => array(),
+      'type' => 'color_field_default_widget',
       'weight' => 2,
     ),
   );
@@ -170,7 +216,9 @@ function csc_color_tile_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Alternate Path');
+  t('Background color for the tile');
   t('Body');
+  t('Color');
   t('If you want the tile to link to a view page or other page that is not a node, put the path for the page in this field');
   t('Node Link');
   t('Select the node that you want the tile to link to');
