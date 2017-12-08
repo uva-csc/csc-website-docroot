@@ -345,7 +345,7 @@ body.media-small .type-initiatives .iso-title {
 /* line 297, ../../../../../../sass/sites/all/modules/csc_isotope/plugins/content_types/css_isotope.scss */
 .iso-icon {
   position: absolute;
-  top: 0;
+  top: -5px;
   right: -1px;
 }
 
