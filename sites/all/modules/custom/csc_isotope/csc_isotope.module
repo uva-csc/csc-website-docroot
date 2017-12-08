@@ -269,7 +269,6 @@ function csc_isotope_permission() {
  */
 function csc_isotope_node_presave($node) {
     if ($node->type == 'colortile') {
-        dpm('colortile presave: ' . $node->nid);
         $color_tile_list = variable_get('front_color_tile_list', array());
         if ($node->promote == 1 && $node->status == 1 && !in_array($node->nid, $color_tile_list)) {
             $color_tile_list[] = $node->nid;
