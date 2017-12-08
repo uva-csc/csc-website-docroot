@@ -33,8 +33,21 @@ function csc_isotope_info($subtype, $conf, $contexts) {
 
   $block->title = 'Isotope Page';
   
+  // Color Tiles
+  $color_tile_list = variable_get('front_color_tile_list', array());
   $act = csc_isotope_get_color_tiles();
-  
+  usort($act, function($a, $b) {
+      $color_tile_list = variable_get('front_color_tile_list', array());
+      $anid = (preg_match('/"node-(\d+)"/', $a, $m)) ? $m[1] : FALSE;
+      $bnid = (preg_match('/"node-(\d+)"/', $b, $m)) ? $m[1] : FALSE;
+      if ($anid && $bnid && $anid != $bnid) {
+          $aindex = array_search($anid, $color_tile_list);
+          $bindex = array_search($bnid, $color_tile_list);
+          $cmp =($aindex < $bindex) ? -1 : 1;
+          return $cmp;
+      } 
+      return 0;
+  });
   // List of nodes with promoted checked. Created in csc_isotope.module/hook_node_presave function.
   $node_list = variable_get('front_node_list', array());
   $node_set = implode(',', $node_list);
