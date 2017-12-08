@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the CSC Color Tile feature.
+ */
+
+include_once 'csc_color_tile.features.inc';

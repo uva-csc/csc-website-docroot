@@ -32,28 +32,29 @@ function csc_isotope_info($subtype, $conf, $contexts) {
   $block = new stdClass();
 
   $block->title = 'Isotope Page';
-
-  //Get Activity nodes (the generic color tiles)
-  $qry = "SELECT n.nid, n.type, n.title, fst.field_small_teaser_value as body, n.created, fm.uri
-    FROM node n
-    LEFT JOIN field_data_field_featured_image fdfi ON fdfi.entity_id=n.nid
-    LEFT JOIN file_managed fm ON fdfi.field_featured_image_fid=fm.fid
-    LEFT JOIN field_data_field_small_teaser fst ON fst.entity_id=n.nid
-    WHERE n.status=1 AND n.type = 'initiatives'
-    ORDER BY n.created DESC";
-  $r = db_query($qry);
-  $act = array();
-  foreach($r as $row){
-    $body = strip_tags($row->body, '<br>');
-    $body = substr($body, 0, 150);
-    $act[] = csc_isotope_item(array('title' => $row->title, 'body' => $body, 'nid' => $row->nid, 'image' => $row->uri, 'type' => $row->type, 'created' => $row->created));
-  }
+  
+  // Color Tiles
+  $color_tile_list = variable_get('front_color_tile_list', array());
+  $act = csc_isotope_get_color_tiles();
+  usort($act, function($a, $b) {
+      $color_tile_list = variable_get('front_color_tile_list', array());
+      $anid = (preg_match('/"node-(\d+)"/', $a, $m)) ? $m[1] : FALSE;
+      $bnid = (preg_match('/"node-(\d+)"/', $b, $m)) ? $m[1] : FALSE;
+      if ($anid && $bnid && $anid != $bnid) {
+          $aindex = array_search($anid, $color_tile_list);
+          $bindex = array_search($bnid, $color_tile_list);
+          $cmp =($aindex < $bindex) ? -1 : 1;
+          return $cmp;
+      } 
+      return 0;
+  });
   // List of nodes with promoted checked. Created in csc_isotope.module/hook_node_presave function.
   $node_list = variable_get('front_node_list', array());
   $node_set = implode(',', $node_list);
   $node_set = str_replace(',,', ',', $node_set);
   // Condition for finding nodes in query below
   $condition = (empty($node_list)) ? 'n.promote=1' : 'n.nid IN (' . $node_set . ')';
+  $condition .= ' AND n.type!=\'colortile\'';
   //Get Nodes Promoted to front
   $qry = "    
     SELECT n.nid, n.type, n.title, fst.field_small_teaser_value as body, CONCAT_WS('', fded.field_event_date_value, fdfd.field_date_value) AS realdate, FROM_UNIXTIME(n.created) AS created, fm.uri, fau.field_alternate_url_target_id as target
@@ -180,4 +181,50 @@ function csc_isotope_item($var){
   $output = $output . $outputInside . '</div>';
 
   return $output;
+}
+
+function csc_isotope_get_color_tiles() {
+    /* Old code from above
+     * 
+     //Get Activity nodes (the generic color tiles)
+  $qry = "SELECT n.nid, n.type, n.title, fst.field_small_teaser_value as body, n.created, fm.uri
+    FROM node n
+    LEFT JOIN field_data_field_featured_image fdfi ON fdfi.entity_id=n.nid
+    LEFT JOIN file_managed fm ON fdfi.field_featured_image_fid=fm.fid
+    LEFT JOIN field_data_field_small_teaser fst ON fst.entity_id=n.nid
+    WHERE n.status=1 AND n.type = 'initiatives'
+    ORDER BY n.created DESC";
+  $r = db_query($qry);
+  $act = array();
+  foreach($r as $row){
+    $body = strip_tags($row->body, '<br>');
+    $body = substr($body, 0, 150);
+    $act[] = csc_isotope_item(array('title' => $row->title, 'body' => $body, 'nid' => $row->nid, 'image' => $row->uri, 'type' => $row->type, 'created' => $row->created));
+  }
+     */
+     $qry = "SELECT n.nid FROM node n WHERE n.status=1 AND n.promote=1 AND n.type='colortile' ORDER BY n.created DESC";
+     $r = db_query($qry);
+     $tiles = array();
+     foreach($r as $row) {
+         $node = node_load($row->nid);
+         $tiles[] = csc_isotope_make_color_tile($node);
+     }
+     return $tiles;
+}
+
+function csc_isotope_make_color_tile($node) {
+    $nid = $node->nid;
+    $title = $node->title;
+    $text = strip_tags($node->body['und'][0]['value']);
+    $color = $node->field_color['und'][0]['rgb'];
+    $url = '';
+    if (!empty($node->field_alternate_path)) {
+        $url = $node->field_alternate_path['und'][0]['value'];
+    } else if (!empty($node->field_alternate_url)) {
+        $url = url('node/' . $node->field_alternate_url['und'][0]['target_id']);
+    }
+    $markup = '<div id="node-' . $nid . '" class="isotope-item isotope-element type-initiatives node-' . $nid . '" style="background-color: ' . $color . ';">' .
+                        '<a href="' . $url .'"><div class="iso-text">' . 
+                        '<div class="iso-teaser"><h3 class="iso-title">' . $node->title . '</h3>' . $text . '</div></div></a></div>';
+    return $markup;
 }

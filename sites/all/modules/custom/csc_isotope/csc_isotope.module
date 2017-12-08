@@ -32,9 +32,10 @@ function csc_isotope_menu() {
  */
 function csc_isotope_admin_form($form, $form_state) {
     module_load_include('inc', 'csc_isotope', 'plugins/content_types/csc_isotope_page');
+    drupal_add_css('.colortilediv { margin-top: 36px; } #front-color-tile-table table.sticky-table th { min-width: 75px; }', array('type' => 'inline'));
     $form['header'] = array(
         '#type' => 'markup',
-        '#markup' => t('<h2>Front Page Tile Order</h2>'),
+        '#markup' => t('<h2>Front Page Item Tile Order</h2>'),
     );
     $form['instructions'] = array(
         '#type' => 'markup',
@@ -85,6 +86,63 @@ function csc_isotope_admin_form($form, $form_state) {
             '#attributes' => array('class' => array('item-row-weight')),
         ); 
     }
+    // Color TIle list
+    $form['ctheader'] = array(
+        '#type' => 'markup',
+        '#prefix' => '<div class="colortilediv" >',
+        '#markup' => t('<h2>Color Tile Order</h2>'),
+    );
+    $form['ctinstructions'] = array(
+        '#type' => 'markup',
+        '#markup' => t('<p>The table below lists all the color tile nodes that are published and promoted to the front page. 
+        Drag and drop to place them in the order that you want them to appear on the page. <br/>
+        (Note: <strong>ONLY THE FIRST 5 WILL APPEAR.</strong> They will be automatically interspersed with the content tiles.)</p>'),
+    );
+    $form['front_color_tile_table'] = array(
+        '#prefix' => '<div id="front-color-tile-table">',
+        '#suffix' => '</div></div>',
+        '#tree' => TRUE,
+        '#theme' => 'front_color_tile_table_drag_components',
+    );
+    
+    $ctrows = array();
+    $i = 0;
+    /*
+    $qry = "SELECT n.nid, n.title, b.body_value FROM node n LEFT JOIN field_data_body b ON b.entity_id=n.nid " .
+                "WHERE n.type='colortile' AND n.status=1 AND n.promote=1";
+    $r = db_query($qry);
+     * */
+    $color_tile_list = variable_get('front_color_tile_list', array());
+    $color_tiles = node_load_multiple($color_tile_list);
+    foreach($color_tiles as $node) {
+        $i++;
+        $form['front_color_tile_table'][$i]['item'] = array(
+            '#type' => 'item',
+            '#markup' => t('Tile') . ' ' . $i,
+        );
+        $form['front_color_tile_table'][$i]['nid'] = array(
+            '#type' => 'markup', 
+            '#markup' => $node->nid,
+        );
+        $form['front_color_tile_table'][$i]['nidval'] = array(
+            '#type' => 'hidden', 
+            '#value' => $node->nid,
+        );
+        $form['front_color_tile_table'][$i]['title'] = array(
+            '#type' => 'markup', 
+            '#markup' => l($node->title, 'node/' . $node->nid),
+        );
+        $form['front_color_tile_table'][$i]['body'] = array(
+            '#type' => 'markup', 
+            '#markup' => strip_tags($node->body['und'][0]['value']),
+        );
+        $form['front_color_tile_table'][$i]['weight'] = array(
+            '#type' => 'textfield',
+            '#default_value' => $i,
+            '#size' => 3,
+            '#attributes' => array('class' => array('item-row-weight')),
+        ); 
+    }
     $form['submit'] = array(
         '#type' => 'submit',
         '#value' => 'Submit',
@@ -93,7 +151,7 @@ function csc_isotope_admin_form($form, $form_state) {
 }
 
 function csc_isotope_admin_form_submit($form, &$form_state) {
-    //dpm($form_state);
+    // Node List Table
     $vals = $form_state['values']['front_node_table'];
     usort($vals, function($a, $b) {
         if ($a['weight'] == $b['weight']) { return 0; }
@@ -104,6 +162,18 @@ function csc_isotope_admin_form_submit($form, &$form_state) {
         $node_list[] = $val['nidval'];
     }
     variable_set('front_node_list', $node_list);
+    
+    // Color Tile Table
+    $vals = $form_state['values']['front_color_tile_table'];
+    usort($vals, function($a, $b) {
+        if ($a['weight'] == $b['weight']) { return 0; }
+       return ($a['weight'] < $b['weight'])  ? -1 : 1;
+    });
+    $color_tile_list = array();
+    foreach ($vals as $n => $val) {
+        $color_tile_list[] = $val['nidval'];
+    }
+    variable_set('front_color_tile_list', $color_tile_list);
 }
 
 /**
@@ -112,6 +182,9 @@ function csc_isotope_admin_form_submit($form, &$form_state) {
 function csc_isotope_theme($existing, $type, $theme, $path) {
   $themes = array(
     'front_node_table_drag_components' => array(
+      'render element' => 'element'
+    ),
+    'front_color_tile_table_drag_components' => array(
       'render element' => 'element'
     ),
   );
@@ -149,6 +222,38 @@ function theme_front_node_table_drag_components($vars) {
   ));
 }
 
+
+// Custom theme output.
+function theme_front_color_tile_table_drag_components($vars) {
+  $element = $vars['element'];
+  drupal_add_tabledrag('front_color_tile_table', 'order', 'sibling', 'item-row-weight');
+ 
+  $header = array( 
+        'item' => t('Item'),
+        'nid' => t('Node ID'), 
+        'title' => t('Title'), 
+        'body' => t('Text'), 
+        'weight' => t('Weight')
+    );
+ 
+  $rows = array();
+  foreach (element_children($element) as $key) {
+    $row = array();
+    $row['data'] = array();
+    foreach ($header as $fieldname => $title) {
+      $row['data'][] = drupal_render($element[$key][$fieldname]);
+      $row['class'] = array('draggable');
+    }
+    $rows[] = $row;
+  }
+ 
+  return theme('table', array(
+    'header' => $header, 
+    'rows' => $rows,
+    'attributes' => array('id' => 'front_color_tile_table'),
+  ));
+}
+
 function csc_isotope_permission() {
     return array(
         'administer csc settings' => array(
@@ -163,14 +268,26 @@ function csc_isotope_permission() {
  * Whenever a node is saved and it has the promote to front page box checked add it to the list
  */
 function csc_isotope_node_presave($node) {
-    $node_list = variable_get('front_node_list', array());
-    if ($node->promote && !in_array($node->nid, $node_list)) {
-        $node_list[] = $node->nid;
-    } else if (!$node->promote && in_array($node->nid, $node_list)) {
-        $ind = array_search($node->nid, $node_list);
-        unset($node_list[$ind]);
+    if ($node->type == 'colortile') {
+        dpm('colortile presave: ' . $node->nid);
+        $color_tile_list = variable_get('front_color_tile_list', array());
+        if ($node->promote == 1 && $node->status == 1 && !in_array($node->nid, $color_tile_list)) {
+            $color_tile_list[] = $node->nid;
+        } else if (($node->promote != 1 || $node->status != 1) && in_array($node->nid, $color_tile_list)) {
+            $ind = array_search($node->nid, $color_tile_list);
+            unset($color_tile_list[$ind]);
+        }
+        variable_set('front_color_tile_list', $color_tile_list);
+    } else {
+        $node_list = variable_get('front_node_list', array());
+        if ($node->promote == 1 && !in_array($node->nid, $node_list)) {
+            $node_list[] = $node->nid;
+        } else if ($node->promote != 1 && in_array($node->nid, $node_list)) {
+            $ind = array_search($node->nid, $node_list);
+            unset($node_list[$ind]);
+        }
+        variable_set('front_node_list', $node_list);
     }
-    variable_set('front_node_list', $node_list);
 }
 
 function csc_isotope_cron() {
@@ -182,6 +299,30 @@ function csc_isotope_cron() {
         }
     }
     variable_set('front_node_list', $node_list);
+    
+    $node_list = variable_get('front_color_tile_list');
+    foreach($node_list as $i => $nid) {
+        $node = node_load($nid);
+        if (!$node) {
+            unset($node_list[$i]);
+        }
+    }
+    variable_set('front_color_tile_list', $node_list);
+}
+
+function csc_isotope_node_view($node, $view_mode, $langcode) {
+    global $user;
+    if ($node->type == 'colortile' && $view_mode == 'full') {
+        if (!array_search('administrator', $user->roles)) {
+            $url = '';
+            if (!empty($node->field_alternate_path)) {
+                $url = url($node->field_alternate_path['und'][0]['value']);
+            } else if (!empty($node->field_alternate_url)) {
+                $url = url('node/' . $node->field_alternate_url['und'][0]['target_id']);
+            }
+            drupal_goto($url);
+        } 
+    }
 }
 
 function csc_isotope_node_delete($node) {
