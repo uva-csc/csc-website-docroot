@@ -2772,6 +2772,7 @@ a#menu-toggle:after {
 /* line 1945, ../../../../../sass/sites/all/themes/csc/css/style.scss */
 .csc-3col-second {
   background: #494949;
+  width: 40%;
 }
 /* line 1948, ../../../../../sass/sites/all/themes/csc/css/style.scss */
 .csc-3col-second h2 {
