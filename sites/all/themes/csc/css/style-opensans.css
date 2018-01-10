@@ -3173,9 +3173,14 @@ body.logged-in #content {
   display: none;
   position: absolute;
   z-index: 999;
-  top: 105px;
+  top: 75px;
   right: 197px;
 }
+
+.admin-menu .wedge {
+    top: 104px;
+}
+
 @media only screen and (max-width: 640px) {
   /* line 2233, ../../../../../sass/sites/all/themes/csc/css/style.scss */
   .wedge {

@@ -21,7 +21,7 @@
   transform: translateX(591px);
   position: absolute;
   right: 0px;
-  top: 75px;
+  top: -1px;
   z-index: 50;
   /*height: 100%;*/
   width: 339px;
@@ -83,11 +83,11 @@
     border-top: thin #c5c5c5 solid;
 }
 
-/** move slideout and wedge down if admin menu is showing **/
+/** move slideout and wedge down if admin menu is showing 
 body.admin-menu #csc-right:not(.csc-calendar), body.admin-menu .wedge { 
     top: 105px !important;
 }
-
+**/
 /** Adjusting top of #csc-right when there are messages */
 #messages ~ #content > #csc-right.csc-calendar {
     top: -85px !important;

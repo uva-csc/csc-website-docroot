@@ -158,6 +158,14 @@ function csc_isotope_item($var){
   $class = 'type-' . $var['type'] . ' node-' . $var['nid'];
   $date = date('d M Y', $var['created']);
   $body = strip_tags($var['body'], '<p><br>');
+  // If Small Teaser text (body) has |string| at the beginning use that for the date displayed in the title
+  $supdate = FALSE;
+  if (substr($body, 0, 1) == '|') {
+      // get the string between the pipes in |string| and assign to $supdate (supplied date)
+      $pos = strpos($body, '|', 1);
+      $supdate = substr($body, 1, $pos - 1);
+      $body = substr($body, $pos + 1);
+  }
   if($var['type'] != 'initiatives') {
     $body = '&nbsp; | &nbsp;' . $body;
   }
@@ -171,6 +179,7 @@ function csc_isotope_item($var){
   $image = ($var['image']) ? theme_image_style(array('style_name' => 'panopoly_image_featured','path' => $var['image'], 'alt' => $var['title'], 'title' => $var['title'], 'width' => '', 'height' => ''  )) : '';
   $output = '<div id="node-'.$var['nid'].'" class="isotope-item isotope-element '. $class .'">';
   $outputInside = ($image) ? '<div class="iso-image">'. $image . '</div>' : '';
+  if ($supdate) { $date = $supdate; } // If a date is supplied in small teaser, then use that instead of date field for tile
   $date = ($var['type'] == 'initiatives') ? '' : '<span class="iso-date">' . $date . '</span>' ;
   $outputInside .= '
     <div class="iso-text">'. $icon .'
