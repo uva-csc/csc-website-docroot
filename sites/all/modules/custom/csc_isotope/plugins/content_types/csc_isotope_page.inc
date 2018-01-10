@@ -166,7 +166,7 @@ function csc_isotope_item($var){
       $supdate = substr($body, 1, $pos - 1);
       $body = substr($body, $pos + 1);
   }
-  if($var['type'] != 'initiatives') {
+  if($var['type'] != 'initiatives' && $supdate != ' ') {
     $body = '&nbsp; | &nbsp;' . $body;
   }
   
