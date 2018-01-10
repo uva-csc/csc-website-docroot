@@ -181,6 +181,7 @@ function csc_isotope_item($var){
   $outputInside = ($image) ? '<div class="iso-image">'. $image . '</div>' : '';
   if ($supdate) { $date = $supdate; } // If a date is supplied in small teaser, then use that instead of date field for tile
   $date = ($var['type'] == 'initiatives') ? '' : '<span class="iso-date">' . $date . '</span>' ;
+  if ($supdate == ' ') {$date = ''; }
   $outputInside .= '
     <div class="iso-text">'. $icon .'
     <div class="iso-teaser"><h3 class="iso-title">' . $var['title'] . '</h3>' . $date . $body . '</div>
