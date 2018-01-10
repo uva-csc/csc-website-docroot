@@ -27,7 +27,7 @@ function auto_related_exists($eid, $tid){
 }
 
 function auto_related_entity_get($entity, $type){
-  if($type == 'node'){
+  if($type == 'node' && !empty($entity->field_related)){
     $lng = $entity->language;
     
     //Check if other relation exists
@@ -53,6 +53,7 @@ function auto_related_save_related($eid, $tid){
 }
 
 function auto_related_node_presave($n){
+    if (empty($n->field_related)) { return; }
   $lng = $n->language;
   $delta = sizeof($n->field_related[$lng]);
 
