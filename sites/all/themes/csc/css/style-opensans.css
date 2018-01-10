@@ -3262,7 +3262,7 @@ div.pane-csc-isotope, div.pane-csc-isotope * {
 }
 
 /* line 2293, ../../../../../sass/sites/all/themes/csc/css/style.scss */
-.pane-csc-newsletter h2 {
+.pane-csc-newsletter h2, .pane-social-media-links-social-media-links h2, .soclnks h2 {
   margin-top: 0px;
   font-family: brandon, 'Helvetica Neue', helvetica, arial, sans-serif;
   font-size: 12px !important;
@@ -5462,4 +5462,17 @@ div.csc-login-link * {
 /** Calendar fixes **/
 .calendar-calendar .month-view .item:hover {
     background-color:  #e7f4fc !important;
+}
+
+.pane-social-media-links-social-media-links, .soclnks {
+    text-align: center;
+}
+
+.pane-social-media-links-social-media-links ul.social-media-links, .soclnks ul.social-media-links {
+    margin: 0;
+    padding: 0;
+}
+
+.pane-social-media-links-social-media-links ul.social-media-links li, .soclnks ul.social-media-links li {
+    display: inline-block;
 }
