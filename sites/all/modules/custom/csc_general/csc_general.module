@@ -33,22 +33,23 @@ function csc_general_form_alter(&$form, &$form_state, $form_id){
     $types = node_type_get_types();
     $type = $types[$form['type']['#value']]->name;
     $form['title']['#prefix'] = "<h3>Content &gt; <strong>$type</strong></h3>";
-
-    $lng = $form['field_related']['#language'];
-    $items = sizeof($form['field_related'][$lng]);
-
-    $types = array();
-    if ($items && isset($form['field_related'][$lng][0]['target_id']['#entity']->field_related[$lng]) 
-                    && is_array($form['field_related'][$lng][0]['target_id']['#entity']->field_related[$lng])) {
-      foreach($form['field_related'][$lng][0]['target_id']['#entity']->field_related[$lng] as $fr){
-        $types[] =  csc_general_get_type($fr['target_id']);
-      }
-    }
-
-    for($i=0; $i < $items; $i++){
-      if(isset($form['field_related'][$lng][$i]['target_id']['#default_value']) && $form['field_related'][$lng][$i]['target_id']['#default_value'] <> ''){
-        $form['field_related'][$lng][$i]['target_id']['#description'] = "(" . $types[$i] . ")";
-      }
+    if (!empty($form['field_related'])) {
+        $lng = $form['field_related']['#language'];
+        $items = sizeof($form['field_related'][$lng]);
+    
+        $types = array();
+        if ($items && isset($form['field_related'][$lng][0]['target_id']['#entity']->field_related[$lng]) 
+                        && is_array($form['field_related'][$lng][0]['target_id']['#entity']->field_related[$lng])) {
+          foreach($form['field_related'][$lng][0]['target_id']['#entity']->field_related[$lng] as $fr){
+            $types[] =  csc_general_get_type($fr['target_id']);
+          }
+        }
+    
+        for($i=0; $i < $items; $i++){
+          if(isset($form['field_related'][$lng][$i]['target_id']['#default_value']) && $form['field_related'][$lng][$i]['target_id']['#default_value'] <> ''){
+            $form['field_related'][$lng][$i]['target_id']['#description'] = "(" . $types[$i] . ")";
+          }
+        }
     }
   
     if($type == 'People') drupal_add_js( drupal_get_path('module', 'csc_general') . '/form_node_people.js' );
