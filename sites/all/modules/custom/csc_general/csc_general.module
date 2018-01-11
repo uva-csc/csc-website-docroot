@@ -192,3 +192,59 @@ function csc_general_views_post_execute(&$view) {
     }
 }
 
+/**
+ * Defines the available iconsets for social_media_links contrib module
+ *
+ * @return array
+ *   An associative array whose keys define the key for the iconset
+ *   and contains information about the icons for the platforms. Each
+ *   iconset deinition is itself an associative array, with the
+ *   following key-value pairs:
+ *   - name: The name of the iconset.
+ *   - publisher: The name of the publisher.
+ *   - publisher url: The url for further informations about the iconset.
+ *   - styles: The available sizes/styles for the iconset.
+ *   - path callback: The name of the callback function that returns the
+ *     image urls.
+ *   - download url: The url to download the iconset.
+ */
+function csc_general_social_media_links_iconset_info() {
+    // Simple example for a iconset definition.
+    $icons['csc_social_icons'] = array(
+        'name' => 'CSC Icons',
+        'publisher' => 'Contemplative Sciences Center',
+        'publisher url' => 'http://www.uvacontemplation.org/',
+        'styles' => array(
+            '32' => '32x32',
+        ),
+        'path callback' => 'csc_general_social_media_links_path',
+        'download url' => '',
+    );
+    return $icons;
+}
+
+function csc_general_social_media_links_path($platform = 'twitter', $style = NULL) {
+    switch ($platform) {
+        case 'contact':
+            $platform = 'email';
+            break;
+            
+        case 'youtube_channel':
+            $platform = 'youtube';
+            break;
+    }
+    $path = drupal_get_path('theme', 'csc') . '/images/social_media/' . $platform . '.png';
+    return $path;
+}
+
+function csc_general_social_media_links_platform_info() {
+  $platforms = array();
+
+  // A simple example for twitter.
+  $platforms['newsletter'] = array(
+    'title' => t('Newsletter'),
+    'base url' => 'http://uvacontemplation.us5.list-manage1.com/subscribe?',
+  );
+
+  return $platforms;
+}
