@@ -58,7 +58,13 @@ function csc_event_date_render($subtype, $conf, $panel_args, $context = NULL) {
                 foreach($dout['#items'] as $n => $item) {
                     $output .= $dout[$n]['#markup'];
                 }
-                if($tba) { $output .= ', Time TBA'; }
+                if($tba) {
+                    if (strstr($output, '</div>')) {
+                        $output = str_replace('</div>', ', Time TBA</div>', $output);  
+                   } else {
+                       $output .= '  Time TBA';
+                   }
+                }
             }
             
             $output.= "</div>\n";
