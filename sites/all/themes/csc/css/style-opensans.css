@@ -3228,12 +3228,10 @@ body.logged-in #content {
 
 /* line 2269, ../../../../../sass/sites/all/themes/csc/css/style.scss */
 .pane-csc-newsletter h2.pane-title {
-  font-size: 0.9em !important;
+  font-size: 0.9em;
   margin-bottom: 0px;
 }
-a .pane-csc-newsletter h2.pane-title {
-  color: #333;
-}
+
 /* line 2273, ../../../../../sass/sites/all/themes/csc/css/style.scss */
 .pane-csc-newsletter .pane-content {
   margin: 5px;
@@ -3244,8 +3242,27 @@ a .pane-csc-newsletter h2.pane-title {
   font-size: 10px;
 }
 /* line 51, ../../../../../sass/_global.scss */
-body.front .pane-csc-newsletter {
+.csc-panel-col-left .pane-csc-newsletter {
   margin-top: 13px;
+  background-color: #2f2f2f;
+}
+
+.csc-panel-col-left .pane-csc-newsletter:hover {
+    background-color: #444444;
+}
+
+.csc-panel-col-left .pane-csc-newsletter a {
+    font-family: brandon, verdana, arial;
+    color: white;
+    font-weight: 200;
+    
+}
+
+.csc-panel-col-left .pane-csc-newsletter a h2.pane-title {
+    text-transform: none;
+    font-size: 18px;
+    text-align: center;
+    font-weight: 200;
 }
 
 div.pane-csc-isotope, div.pane-csc-isotope * {
@@ -3267,7 +3284,7 @@ div.pane-csc-isotope, div.pane-csc-isotope * {
 }
 
 /* line 2293, ../../../../../sass/sites/all/themes/csc/css/style.scss */
-.pane-csc-newsletter h2, .pane-social-media-links-social-media-links h2, .soclnks h2 {
+ .pane-social-media-links-social-media-links h2, .soclnks h2 {
   margin-top: 0px;
   font-family: brandon, 'Helvetica Neue', helvetica, arial, sans-serif;
   font-size: 12px !important;
