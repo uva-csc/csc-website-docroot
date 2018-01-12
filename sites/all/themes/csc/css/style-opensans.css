@@ -137,6 +137,12 @@ em strong, strong em {
   background: url(../images/rounded_black_arrow.png) right no-repeat;
   padding-right: 22px;
 }
+
+.csc-3col-second .pane-csc-related-classes .see-all a {
+    color: white;
+    background: url(../images/rounded_white_arrow.png) right no-repeat;
+}
+
 /* line 146, ../../../../../sass/_global.scss */
 .see-all a:hover, .see-all-research a:hover {
   color: #898989;
