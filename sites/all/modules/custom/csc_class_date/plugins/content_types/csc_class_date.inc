@@ -160,11 +160,11 @@ function csc_class_date_repeat_rule_render($rulestr, $t1='', $t2='') {
             }
             // Create the exception string for output
             $exstr = '<br/><em>Except for ';
-            if (count($exdates) > 1) {
-                $lastdate = array_pop($exdates);
-                $exstr .= implode(", ", $exdates) . ' and ' . $lastdate;
+            $lastdate = array_pop($exdates);
+            if (count($exdates) > 0) {
+                $exstr .= implode(", ", $exdates) . ' and ';
             }
-            $outstr .= $exstr . '</em>';
+            $outstr .= $exstr . $lastdate . '</em>';
         }
     }
 	return $outstr;
