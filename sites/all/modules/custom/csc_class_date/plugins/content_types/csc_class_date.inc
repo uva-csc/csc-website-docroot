@@ -75,7 +75,6 @@ function csc_class_date_render($subtype, $conf, $panel_args, $context = NULL) {
 
 function csc_class_date_repeat_rule_render($rulestr, $t1='', $t2='') {
 	$rrule = array();
-    dpm($rulestr, 'rule passed');
   $rules = explode(';', str_replace('RRULE:', '', $rulestr));
   foreach($rules as $rule) {
     $parts = explode('=', $rule);
