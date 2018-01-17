@@ -179,7 +179,7 @@ function csc_lists_render($subtype, $conf, $panel_args, $context = NULL) {
 
   //*** Audience ***
   if($type == 'class') {
-    $audience = $_GET['audience'] == '' ? 'academic' : $_GET['audience'];
+    $audience = (empty($_GET['audience'])) ? 'academic' : $_GET['audience'];
     if ($page_panel && !empty($params['audience'])) {
         $audience = $params['audience'];
     }
