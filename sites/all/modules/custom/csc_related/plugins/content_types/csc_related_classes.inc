@@ -6,7 +6,10 @@ $plugin = array(
   'description' => t('Shows Instruction related to current page'),
   'category' => t('CSC Plugins'),
   'render callback' => 'csc_related_classes_render',
-  'admin info' => 'csc_related_classes_info',
+  'edit form' => 'csc_related_edit_form',
+  'admin info' => 'csc_related_classes_info','defaults' => array(
+        'link_params' => '',  // parameter to add search string to the "All" link
+    ),
 );
 
 /**
@@ -21,6 +24,34 @@ function csc_related_classes_info($subtype, $conf, $contexts) {
   }
 }
 
+/**
+ * 'Edit form' callback for the class list settings.
+ */
+function csc_related_edit_form($form, &$form_state) {
+
+    $conf = $form_state['conf'];
+    
+    $form['link_params'] = array(
+        '#type' => 'textfield',
+        '#title' => t('Link Parameters'),
+        '#default_value' => (empty($conf['link_params'])) ? '' : $conf['link_params'],
+        '#description' => t('Add "search" string to append after "all" link with parameters. Do not include the "?"'),
+    );
+    return $form;
+
+}
+
+/**
+ * The submit form stores the data in $conf. Saving settings submitted
+ */
+ 
+function csc_related_edit_form_submit($form, &$form_state) {
+  foreach (array_keys($form_state['plugin']['defaults']) as $key) {
+    if (isset($form_state['values'][$key])) {
+      $form_state['conf'][$key] = $form_state['values'][$key];
+    }
+  }
+}
 
 /**
  * Build blocks for Related events
@@ -29,10 +60,11 @@ function csc_related_classes_render($subtype, $conf, $panel_args, $context = NUL
   module_load_include('inc', 'csc_related', 'csc_related');
 
   $type = 'class';
+  $params = (!empty($conf['link_params'])) ? '?' . $conf['link_params'] : '';  // Get the search string param from the settings
   $nids = csc_related_get_nodes($type);
-
+   
   if(is_array($nids) && sizeof($nids) > 0){
-    $output = '<div class="see-all"><a href="'. url('list/class/' . csc_related_current_nid()) .'">SEE ALL</a></div>';
+    $output = '<div class="see-all"><a href="'. url('list/class/' . csc_related_current_nid()) . $params . '">SEE ALL</a></div>';
     foreach($nids as $nid){
       $node = node_load($nid);
       $lng = $node->language;
