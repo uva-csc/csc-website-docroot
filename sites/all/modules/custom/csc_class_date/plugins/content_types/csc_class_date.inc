@@ -79,9 +79,9 @@ function csc_class_date_render($subtype, $conf, $panel_args, $context = NULL) {
 
 }
 
-function csc_class_date_repeat_rule_render($rule, $t1='', $t2='') {
+function csc_class_date_repeat_rule_render($rulestr, $t1='', $t2='') {
 	$rrule = array();
-  $rules = explode(';', str_replace('RRULE:', '', $rule));
+  $rules = explode(';', str_replace('RRULE:', '', $rulestr));
   foreach($rules as $rule) {
     $parts = explode('=', $rule);
     $key = $parts[0];
@@ -153,6 +153,26 @@ function csc_class_date_repeat_rule_render($rule, $t1='', $t2='') {
 	} else {
 		// Add Other Rules here as needed for repeat rule render
 	} 
+    // Code to add Exceptions to Date String. Exceptions are encoded as "EXDATE:20180130T050000Z,20180213T050000Z"
+    if (strstr($rulestr, 'EXDATE:')) {
+        // Get the exception string if it exists
+        $pts = explode("EXDATE:", $rulestr);
+        $exdates = explode(",", $pts[1]); // break into separate dates
+        if (!empty($exdates)) {
+            // Process each date string (e.g., 20180130T050000Z) into a formated date (e.g., Jan 30)
+            foreach($exdates as $n => $exdate) {
+                $ts = strtotime($exdate);
+                $exdates[$n] = date('M j', $ts);
+            }
+            // Create the exception string for output
+            $exstr = '<br/><em>Except for ';
+            $lastdate = array_pop($exdates);
+            if (count($exdates) > 0) {
+                $exstr .= implode(", ", $exdates) . ' and ';
+            }
+            $outstr .= $exstr . $lastdate . '</em>';
+        }
+    }
 	return $outstr;
 }
 
