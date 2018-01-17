@@ -181,6 +181,11 @@ function csc_lists_render($subtype, $conf, $panel_args, $context = NULL) {
   if($type == 'class') {
       
     $audience = csc_lists_get_audience($page_panel);
+
+    $audience = (empty($_GET['audience'])) ? 'academic' : $_GET['audience'];
+    if ($page_panel && !empty($params['audience'])) {
+        $audience = $params['audience'];
+    }
     $tables .= ', {field_data_field_audience} fa';
     $where .= "AND fa.field_audience_value='". htmlspecialchars($audience) ."' AND fa.entity_id=n.nid AND fa.bundle='$node_type'";
   }
@@ -428,8 +433,12 @@ function csc_lists_select($sortArg) {
     $class_array = array(
       'academic' => 'UVa Courses',
       'drop-in' => 'Drop-in Classes',
+<<<<<<< HEAD
       'non-academic' => 'Workshops',
       'retreat' => 'Retreat'
+=======
+      'retreat' => 'Retreats'
+>>>>>>> hotfix/7.x-1.27.1
     );
     $url_array = array(
       'academic' => '/list/class/uvacourses',
@@ -613,6 +622,11 @@ function csc_lists_year_render($qry){
 function csc_lists_semester_render($qry){
   $r = db_query($qry);
   $output = ''; $semester = '';
+  // Figure out current semester to make sure a heading is printed for it
+  $today = date('Ymd');
+  $current_semester = csc_list_calculate_semester($today, $today);
+  // Only set current heading not printed if it is a Spring or Fall semester
+  $curr_is_printed = (preg_match('/Spring|Fall/', $current_semester)) ? FALSE : TRUE;
   foreach($r as $row){
     $node = node_load($row->nid);
     $lng = $node->language;
@@ -624,6 +638,14 @@ function csc_lists_semester_render($qry){
 
     $mysemester = csc_list_calculate_semester($row->dfv, $row->maxdfv);
     if($mysemester <> $semester){
+       // If current semester heading is not printed, check to make sure first class is in current semester
+       if ($mysemester == $current_semester) { $curr_is_printed = TRUE; }
+       // If not then print a header for current semester with "To Be Announced".
+       if (!$curr_is_printed) {
+          $output .= "<div class='clear'></div><h2 class='lower'>$current_semester</h2>\n";
+          $output .= "<p class=\"tbap\">To Be Announced!</p>"; // class p.tbap called in csc-lists.js to add class type
+          $curr_is_printed = TRUE;
+       }
       $semester = $mysemester;
       $output .= "<div class='clear'></div><h2 class='lower'>$semester</h2>\n";
       $output .= "<div class='list-group'>$item";
