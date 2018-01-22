@@ -45,7 +45,7 @@ function auto_related_save_related($eid, $tid){
   $node = node_load($eid);
   
   $lng = $node->language;
-  $delta = sizeof($node->field_related[$lng]);
+  $delta = (isset($node->field_related[$lng])) ? sizeof($node->field_related[$lng]) : 0;
   
   $node->field_related[$lng][$delta]['target_id'] = $tid;
 
@@ -59,10 +59,12 @@ function auto_related_node_presave($n){
 
   //Get node''s ids of related fields
   $p = array();
-  for($i=0; $i < sizeof($_POST['field_related'][$lng]); $i++){
-    $start = strrpos($_POST['field_related'][$lng][$i]['target_id'], '(', -1) +1;
-    $len = strlen($_POST['field_related'][$lng][$i]['target_id']);
-    $p[] = substr($_POST['field_related'][$lng][$i]['target_id'], $start, $len - $start -1);
+  if (!empty($_POST['field_related'])) {
+      for($i=0; $i < sizeof($_POST['field_related'][$lng]); $i++){
+        $start = strrpos($_POST['field_related'][$lng][$i]['target_id'], '(', -1) +1;
+        $len = strlen($_POST['field_related'][$lng][$i]['target_id']);
+        $p[] = substr($_POST['field_related'][$lng][$i]['target_id'], $start, $len - $start -1);
+      }
   }
 
   //Remove duplicated nodes
@@ -74,10 +76,12 @@ function auto_related_node_presave($n){
       }
     }
   }
-
+  
   //check deleted "Related to" fields
-  foreach($n->original->field_related[$lng] as $k => $v){
-    if(!in_array($v['target_id'], $p)) auto_related_remove_field($v['target_id'],$n->nid);
+  if (!empty($n->original->field_related[$lng])) {
+      foreach($n->original->field_related[$lng] as $k => $v){
+        if(!in_array($v['target_id'], $p)) auto_related_remove_field($v['target_id'],$n->nid);
+      }
   }
   
 }
