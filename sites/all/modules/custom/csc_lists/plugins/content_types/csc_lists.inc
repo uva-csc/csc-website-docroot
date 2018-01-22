@@ -428,18 +428,14 @@ function csc_lists_select($sortArg) {
   //Audience filter
   if($type == 'class'){
     $class_array = array(
-      'academic' => 'UVa Courses',
       'drop-in' => 'Drop-in Classes',
-<<<<<<< HEAD
+      'academic' => 'UVa Courses',
       'non-academic' => 'Workshops',
       'retreat' => 'Retreat'
-=======
-      'retreat' => 'Retreats'
->>>>>>> hotfix/7.x-1.27.1
     );
     $url_array = array(
-      'academic' => '/list/class/uvacourses',
       'drop-in' => '/list/class/dropins',
+      'academic' => '/list/class/uvacourses',
       'non-academic' => '/list/class/workshops',
       'retreat' => '/list/class/retreats'
     );

@@ -5284,10 +5284,16 @@ white-space: pre;
   color: #444;
 }
 /* line 3581, ../../../../../sass/sites/all/themes/csc/css/style.scss */
-.list-filter-wrapper .audience-filter a:hover, .list-filter-wrapper .audience-filter a.selected {
-  color: #fff;
-  background-color: #444;
+.list-filter-wrapper .audience-filter a:hover {
+    color: #fff;
+    background-color: #ecb176;
 }
+
+.list-filter-wrapper .audience-filter a.selected {
+  color: #fff;
+  background-color: #e57200;
+}
+
 @media only screen and (max-width: 640px) {
   /* line 3578, ../../../../../sass/sites/all/themes/csc/css/style.scss */
   .list-filter-wrapper .audience-filter a {
