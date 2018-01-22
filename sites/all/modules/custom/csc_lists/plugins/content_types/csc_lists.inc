@@ -75,6 +75,7 @@ function csc_lists_edit_form_submit($form, &$form_state) {
 function csc_lists_render($subtype, $conf, $panel_args, $context = NULL) {
   $type = arg(1);
   $nid = (int)arg(2);
+  dpm($type, 'in render');
   $page_panel = (!empty($conf['list_type']) && $conf['list_type'] != 'context') ? TRUE : FALSE;
   $params = FALSE;
   if ($page_panel) {
@@ -117,6 +118,10 @@ function csc_lists_render($subtype, $conf, $panel_args, $context = NULL) {
     case 'organization':
       $title = 'Affiliations';
       $node_type = 'organization';
+      break;
+    case 'project':
+      $title = 'Projects';
+      $node_type = 'research';
       break;
     case 'school':
       $title = 'Schools';
@@ -316,7 +321,7 @@ function csc_lists_render($subtype, $conf, $panel_args, $context = NULL) {
     }
   }
 
-  if($type == 'research' or $type == 'learning' or $type=='engagement'){
+  if($type == 'project' or $type == 'research' or $type == 'learning' or $type=='engagement'){
     switch($sort){
       case 'date_asc':
         $sort_by = 'n.created';
@@ -357,8 +362,8 @@ function csc_lists_render($subtype, $conf, $panel_args, $context = NULL) {
         break;
     }
   }
-
-  $qry = "SELECT n.nid $fields FROM {node} n $join $tables WHERE n.status = '1' AND n.type = '$node_type' $where $group ORDER BY $sort_by $order";
+  $typestr = ($type == 'project') ? "n.type IN ('research','learning','engagement')" : "n.type = '$node_type'";
+  $qry = "SELECT n.nid $fields FROM {node} n $join $tables WHERE n.status = '1' AND $typestr $where $group ORDER BY $sort_by $order";
   //$output = csc_lists_select();
   $output = '<div class="list-items ' . $render_function . '">' . $render_function($qry) . '</div>';
   $output .= '<script>jQuery(".list-item").dotdotdot({watch: true, height: 150})</script>';
