@@ -4508,9 +4508,14 @@ body.logged-in #content {
   font-size: 0.8em;
 }
 /* line 3167, ../../../../../sass/sites/all/themes/csc/css/style.scss */
-#event-nav a.active, #event-nav a:hover {
+ #event-nav a:hover {
   color: #fff;
-  background-color: #444;
+  background-color: #ecb176;
+
+}
+#event-nav a.active {
+  color: #fff;
+  background-color: #e57200;
 }
 
 /* event items */
