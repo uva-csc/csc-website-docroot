@@ -3224,7 +3224,7 @@ body.logged-in #content {
   margin-bottom: 12px;
   border-top: 1px solid #ffffff;
   border-bottom: 1px solid #ffffff;
-  background: #e8e7e5; /*#dbdad8;*/
+  background: #222222; /*#e8e7e5; /*#dbdad8;*/
   padding: 0px;
 }
 
@@ -3232,10 +3232,18 @@ body.logged-in #content {
   background: #c9c7c5;
 }
 
+.pane-csc-newsletter:hover h2.pane-title {
+    color: #222222;
+}
+
 /* line 2269, ../../../../../sass/sites/all/themes/csc/css/style.scss */
 .pane-csc-newsletter h2.pane-title {
   font-size: 0.9em;
   margin-bottom: 0px;
+    text-transform: none;
+    text-align: center;
+    font-weight: 200;
+    color: #ededed;
 }
 
 /* line 2273, ../../../../../sass/sites/all/themes/csc/css/style.scss */
@@ -3266,9 +3274,13 @@ body.logged-in #content {
 
 .csc-panel-col-left .pane-csc-newsletter a h2.pane-title {
     text-transform: none;
-    font-size: 18px;
+    font-size: 1em;
     text-align: center;
     font-weight: 200;
+}
+
+.csc-panel-col-left .pane-csc-newsletter:hover a h2.pane-title {
+    color: #ededed;
 }
 
 div.pane-csc-isotope, div.pane-csc-isotope * {
