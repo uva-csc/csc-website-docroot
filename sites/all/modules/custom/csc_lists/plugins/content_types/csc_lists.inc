@@ -86,8 +86,9 @@ function csc_lists_render($subtype, $conf, $panel_args, $context = NULL) {
           $params[$pts[0]] = $pts[1];
       }
   }
+  
   $types = array_keys(node_type_get_types());
-  if(!in_array($type, $types)) return;
+  if(!in_array($type, $types) && $type != 'project') return;
 
   switch($type){
     case 'class':
@@ -117,6 +118,10 @@ function csc_lists_render($subtype, $conf, $panel_args, $context = NULL) {
     case 'organization':
       $title = 'Affiliations';
       $node_type = 'organization';
+      break;
+    case 'project':
+      $title = 'Projects';
+      $node_type = 'research';
       break;
     case 'school':
       $title = 'Schools';
@@ -159,6 +164,7 @@ function csc_lists_render($subtype, $conf, $panel_args, $context = NULL) {
         break;
     }
   }
+
 
   if($type == 'school'){
     //Default filter for schools
@@ -316,7 +322,7 @@ function csc_lists_render($subtype, $conf, $panel_args, $context = NULL) {
     }
   }
 
-  if($type == 'research' or $type == 'learning' or $type=='engagement'){
+  if($type == 'project' or $type == 'research' or $type == 'learning' or $type=='engagement'){
     switch($sort){
       case 'date_asc':
         $sort_by = 'n.created';
@@ -351,14 +357,17 @@ function csc_lists_render($subtype, $conf, $panel_args, $context = NULL) {
         $render_function = isset($_GET['group']) ? 'csc_lists_default_render' : 'csc_lists_alpha_render';
         break;
       default:
-        $sort = 'date_desc';
-        $sort_by = 'n.created';
-        $order = 'DESC';
+      /* $sort = 'date_desc';
+        $sort_by = 'n.created';*/
+        $sort = 'title_asc';
+        $sort_by = 'n.title';
+        $order = 'ASC';
         break;
     }
   }
+  $typestr = ($type == 'project') ? "n.type IN ('research','learning','engagement')" : "n.type = '$node_type'";
+  $qry = "SELECT n.nid $fields FROM {node} n $join $tables WHERE n.status = '1' AND $typestr $where $group ORDER BY $sort_by $order";
 
-  $qry = "SELECT n.nid $fields FROM {node} n $join $tables WHERE n.status = '1' AND n.type = '$node_type' $where $group ORDER BY $sort_by $order";
   //$output = csc_lists_select();
   $output = '<div class="list-items ' . $render_function . '">' . $render_function($qry) . '</div>';
   $output .= '<script>jQuery(".list-item").dotdotdot({watch: true, height: 150})</script>';
