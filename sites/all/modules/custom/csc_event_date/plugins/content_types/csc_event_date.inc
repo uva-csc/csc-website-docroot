@@ -71,7 +71,7 @@ function csc_event_date_render($subtype, $conf, $panel_args, $context = NULL) {
 }
 
 function csc_event_date_repeat_rule_render($rule, $t1='', $t2='') {
-	$rrule = array();
+  $rrule = array();
   $rules = explode(';', str_replace('RRULE:', '', $rule));
   foreach($rules as $rule) {
     $parts = explode('=', $rule);

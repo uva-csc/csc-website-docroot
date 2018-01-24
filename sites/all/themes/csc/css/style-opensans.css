@@ -5391,6 +5391,7 @@ div.csc-login-link {
     border-top: 1px solid white;
     clear: both;
     font-size: 0.9em;
+    width: 100px;
 }
 
 div.csc-login-link * {
