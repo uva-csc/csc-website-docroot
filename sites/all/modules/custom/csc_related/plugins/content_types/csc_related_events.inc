@@ -122,6 +122,7 @@ function theme_csc_related_events_item($var){
     $stamp2 = strtotime($var['date']['value2']);
     $date1 = date('Y-m-d', $stamp1);
     $date2 = date('Y-m-d', $stamp2);
+    
     $arg = array('date1' => format_date($stamp1, 'custom', 'F j, Y - g:ia', 'UTC'),
                  'date2' => format_date($stamp2, 'custom', 'F j, Y - g:ia', 'UTC'),
                  'timezone' => '',
@@ -135,9 +136,9 @@ function theme_csc_related_events_item($var){
     }
     //Same date, diferent hour
     elseif($stamp2 - $stamp1 <= 86400){
-      $arg['date'] = $arg['date1'];
-      $when = theme('date_display_single',$arg);
-      $when .= ' to ' . format_date($stamp2, 'custom', 'g:ia', 'UTC');
+      $node = node_load($var['nid']);
+      $display = array('label'=> 'hidden', 'settings' => array('format_type' => 'long'));
+      $when = render(field_view_field('node', $node, 'field_event_date', $display));
     }else{
       $when = theme('date_display_range',$arg);
     }
