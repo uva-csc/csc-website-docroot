@@ -3283,6 +3283,13 @@ body.logged-in #content {
     color: #ededed;
 }
 
+/** News List & Items **/
+.news-list-image {
+    width: 220px;
+    padding: 8px;
+    float: left;
+}
+
 div.pane-csc-isotope, div.pane-csc-isotope * {
     background-color: #dbdad8 !important;
 }
@@ -5438,9 +5445,10 @@ margin: -12px 0 8px 0;
 /** Login link **/
 div.csc-login-link {
     padding: 8px 36px;
-    border-top: 1px solid white;
+    /*border-top: 1px solid white;*/
     clear: both;
     font-size: 0.9em;
+    width: 100px
 }
 
 div.csc-login-link * {
