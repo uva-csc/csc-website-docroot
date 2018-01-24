@@ -136,6 +136,11 @@ function theme_csc_related_events_item($var){
     }
     //Same date, diferent hour
     elseif($stamp2 - $stamp1 <= 86400){
+        /* was:
+              $arg['date'] = $arg['date1'];
+              $when = theme('date_display_single',$arg);
+              $when .= ' to ' . format_date($stamp2, 'custom', 'g:ia', 'UTC');
+         */
       $node = node_load($var['nid']);
       $display = array('label'=> 'hidden', 'settings' => array('format_type' => 'long'));
       $when = render(field_view_field('node', $node, 'field_event_date', $display));
