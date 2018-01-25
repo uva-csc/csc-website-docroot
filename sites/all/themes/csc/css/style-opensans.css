@@ -3796,11 +3796,14 @@ body.page-node-21 .csc-people-detail:hover {
 }
 
 /* line 2649, ../../../../../sass/sites/all/themes/csc/css/style.scss */
+
 .pane-csc-directors, .pane-csc-role {
   margin-right: 1em;
   clear: both;
   background: #ffffff;
+  width: 100%;
 }
+
 /* line 2653, ../../../../../sass/sites/all/themes/csc/css/style.scss */
 .pane-csc-directors > h2, .pane-csc-role > h2 {
   width: 100%;
