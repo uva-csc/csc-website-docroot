@@ -3308,16 +3308,6 @@ div.pane-csc-isotope, div.pane-csc-isotope * {
   }
 }
 
-/* line 2293, ../../../../../sass/sites/all/themes/csc/css/style.scss */
- .pane-social-media-links-social-media-links h2, .soclnks h2 {
-  margin-top: 0px;
-  font-family: brandon, 'Helvetica Neue', helvetica, arial, sans-serif;
-  font-size: 12px !important;
-  font-weight: normal; /* was bold*/
-  padding-top: 14px;
-  text-transform: uppercase;
-  text-align: center;
-}
 
 /* line 2303, ../../../../../sass/sites/all/themes/csc/css/style.scss */
 .pane-csc-newsletter .content {
@@ -5539,8 +5529,21 @@ div.csc-login-link * {
     background-color:  #e7f4fc !important;
 }
 
+
 .pane-social-media-links-social-media-links, .soclnks {
     text-align: center;
+    min-height: 200px;
+}
+
+/* line 2293, ../../../../../sass/sites/all/themes/csc/css/style.scss */
+ .pane-social-media-links-social-media-links h2, .soclnks h2 {
+  margin-top: 0px;
+  font-family: brandon, 'Helvetica Neue', helvetica, arial, sans-serif;
+  font-size: 1em;
+  font-weight: bold;
+  padding-top: 14px;
+  text-transform: uppercase;
+  text-align: center;
 }
 
 .pane-social-media-links-social-media-links ul.social-media-links, .soclnks ul.social-media-links {
@@ -5550,4 +5553,7 @@ div.csc-login-link * {
 
 .pane-social-media-links-social-media-links ul.social-media-links li, .soclnks ul.social-media-links li {
     display: inline-block;
+    float: left;
+    margin-left: 18px;
+    margin-top: 6px;
 }   
