@@ -22,7 +22,7 @@ function csc_news_view_update_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'CSC News';
+  $handler->display->display_options['title'] = '<none>';
   $handler->display->display_options['css_class'] = 'news-list all';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
@@ -253,12 +253,13 @@ function csc_news_view_update_views_default_views() {
 
   /* Display: News Page */
   $handler = $view->new_display('page', 'News Page', 'page');
+  $handler->display->display_options['enabled'] = FALSE;
   $handler->display->display_options['path'] = 'csc-news-all';
 
   /* Display: News Content pane */
   $handler = $view->new_display('panel_pane', 'News Content pane', 'news_list_pane');
+  $handler->display->display_options['enabled'] = FALSE;
   $handler->display->display_options['defaults']['use_more'] = FALSE;
-  $handler->display->display_options['use_more'] = TRUE;
   $handler->display->display_options['defaults']['use_more_always'] = FALSE;
   $handler->display->display_options['defaults']['use_more_always'] = FALSE;
   $handler->display->display_options['use_more_always'] = FALSE;
@@ -275,6 +276,15 @@ function csc_news_view_update_views_default_views() {
   $handler->display->display_options['header']['area']['field'] = 'area';
   $handler->display->display_options['header']['area']['content'] = '<p>This is the latest CSC News:</p>';
   $handler->display->display_options['header']['area']['format'] = 'panopoly_html_text';
+  $handler->display->display_options['defaults']['footer'] = FALSE;
+  /* Footer: Global: Text area */
+  $handler->display->display_options['footer']['area']['id'] = 'area';
+  $handler->display->display_options['footer']['area']['table'] = 'views';
+  $handler->display->display_options['footer']['area']['field'] = 'area';
+  $handler->display->display_options['footer']['area']['content'] = '<div class="more-link">
+  <a href="/news/all"> View All </a>
+</div>';
+  $handler->display->display_options['footer']['area']['format'] = 'panopoly_html_text';
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Field: Primary Image */
   $handler->display->display_options['fields']['field_featured_image']['id'] = 'field_featured_image';
@@ -362,7 +372,8 @@ function csc_news_view_update_views_default_views() {
   $handler->display->display_options['header']['area']['id'] = 'area';
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
-  $handler->display->display_options['header']['area']['content'] = '<p>This is the latest CSC News:</p>';
+  $handler->display->display_options['header']['area']['content'] = '<h1>CSC News</h1>
+<p>This page lists all the news for the Contemplative Sciences Center with the most recent items at the top:</p>';
   $handler->display->display_options['header']['area']['format'] = 'panopoly_html_text';
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Field: Primary Image */
