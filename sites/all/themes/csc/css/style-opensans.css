@@ -3273,10 +3273,11 @@ body.logged-in #content {
 }
 
 .csc-panel-col-left .pane-csc-newsletter a h2.pane-title {
-    text-transform: none;
-    font-size: 1em;
+    text-transform: uppercase !important;
+    font-size: 1.2em !important;
     text-align: center;
-    font-weight: 200;
+    font-weight: bold;
+    letter-space: 1px;
 }
 
 .csc-panel-col-left .pane-csc-newsletter:hover a h2.pane-title {
@@ -5532,7 +5533,7 @@ div.csc-login-link * {
 
 .pane-social-media-links-social-media-links, .soclnks {
     text-align: center;
-    min-height: 200px;
+    min-height: 250px;
 }
 
 /* line 2293, ../../../../../sass/sites/all/themes/csc/css/style.scss */

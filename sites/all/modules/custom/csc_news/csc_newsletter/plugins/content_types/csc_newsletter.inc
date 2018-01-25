@@ -54,7 +54,7 @@ function csc_newsletter_render($subtype, $conf, $panel_args, $context = NULL) {
   ';
 
   $block = new stdClass();
-  $block->title = 'Sign up for our Newsletter';
+  $block->title = 'Sign up <br/> for our <br/> Newsletter';
   $block->content = $output;
 
   return $block;
