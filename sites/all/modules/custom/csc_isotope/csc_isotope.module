@@ -13,14 +13,23 @@ function csc_isotope_ctools_plugin_directory($owner, $plugin_type) {
  */
 function csc_isotope_menu() {
     $items = array();
-    $items['admin/config/csc'] = array(
+    
+  $items['admin/config/csc'] = array(
         'title' => 'CSC Settings',
         'description' => 'Settings for CSC',
         'page callback' => 'drupal_get_form',
         'page arguments' => array('csc_isotope_admin_form'),
-        'access arguments' => array('administer csc settings'),
-        'type' => MENU_NORMAL_ITEM,
+        'access arguments' => array('administer csc settings'), // THis permission is defined in csc_general
+        'type' => MENU_LOCAL_TASK | MENU_NORMAL_ITEM,
+        // See csc_newletter for mailchip newsletter settings
     );
+    
+    $items['admin/config/csc/frontpage'] = array(
+        'title' => 'Front Page',
+        'description' => 'Settings for CSC front page',
+        'type' => MENU_DEFAULT_LOCAL_TASK,
+    );
+  
     return $items;
 }
 

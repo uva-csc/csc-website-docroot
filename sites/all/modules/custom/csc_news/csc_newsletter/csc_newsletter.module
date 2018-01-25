@@ -2,12 +2,13 @@
 
 function  csc_newsletter_menu() {
     $items = array();
-    $items['admin/config/services/csc_newsletter'] = array(
-        'title' => 'CSC Newsletter Settings',
+    $items['admin/config/csc/newsletter'] = array(
+        'title' => 'Newsletter',
         'description' => 'Settings for the CSC Newsletter plugin',
         'page callback' => 'drupal_get_form',
         'page arguments' => array('csc_newsletter_admin'),
         'access arguments' => array('administer csc settings'),
+        'type' => MENU_LOCAL_TASK,
     );
     return $items;
 }
