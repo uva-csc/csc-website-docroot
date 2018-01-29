@@ -32,7 +32,7 @@ function csc_ctype_render($subtype, $conf, $panel_args, $context = NULL) {
       'academic' => 'UVa Courses',
       'non-academic' => 'Workshops',
       'drop-in' => 'Drop-in Classes',
-      'retreat' => 'Retreat'
+      'retreat' => 'Retreats'
     );
   
   //$qry = "SELECT n.type, nt.name FROM {node} n, {node_type} nt WHERE n.nid=$nid AND nt.type=n.type";

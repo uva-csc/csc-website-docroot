@@ -440,7 +440,7 @@ function csc_lists_select($sortArg) {
       'drop-in' => 'Drop-in Classes',
       'academic' => 'UVa Courses',
       'non-academic' => 'Workshops',
-      'retreat' => 'Retreat'
+      'retreat' => 'Retreats'
     );
     $url_array = array(
       'drop-in' => '/list/class/dropins',
