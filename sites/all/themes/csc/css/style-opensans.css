@@ -4486,7 +4486,11 @@ body.logged-in #content {
   top: 0px;
 }
 
-/* Events list */
+/* Events Page and Lists */
+.page-events .csc-3col-col-fluid.csc-3col-first {
+    width: 85%;
+}
+
 /* line 3140, ../../../../../sass/sites/all/themes/csc/css/style.scss */
 #content .pane-events-panel-pane-1 .views-field-field-location {
 	display: inline-block;
