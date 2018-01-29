@@ -300,22 +300,24 @@ function csc_isotope_node_presave($node) {
 
 function csc_isotope_cron() {
     $node_list = variable_get('front_node_list');
-    foreach($node_list as $i => $nid) {
-        $node = node_load($nid);
-        if (!$node) {
-            unset($node_list[$i]);
+    if (is_array($node_list)) {
+        foreach($node_list as $i => $nid) {
+            $node = node_load($nid);
+            if (!$node) {
+                unset($node_list[$i]);
+            }
         }
-    }
-    variable_set('front_node_list', $node_list);
-    
-    $node_list = variable_get('front_color_tile_list');
-    foreach($node_list as $i => $nid) {
-        $node = node_load($nid);
-        if (!$node) {
-            unset($node_list[$i]);
+        variable_set('front_node_list', $node_list);
+        
+        $node_list = variable_get('front_color_tile_list');
+        foreach($node_list as $i => $nid) {
+            $node = node_load($nid);
+            if (!$node) {
+                unset($node_list[$i]);
+            }
         }
+        variable_set('front_color_tile_list', $node_list);
     }
-    variable_set('front_color_tile_list', $node_list);
 }
 
 function csc_isotope_node_view($node, $view_mode, $langcode) {
