@@ -5410,6 +5410,7 @@ margin: -12px 0 8px 0;
 .pane-csc-directors > .pane-content, .pane-csc-role > .pane-content {
   float: left;
   margin-bottom: 20px;
+  width: 100%;
 }
 
 /* line 3663, ../../../../../sass/sites/all/themes/csc/css/style.scss */
