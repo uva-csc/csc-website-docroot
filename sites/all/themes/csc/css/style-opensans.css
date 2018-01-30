@@ -5577,3 +5577,23 @@ div.csc-login-link * {
     margin-left: 18px;
     margin-top: 6px;
 }   
+
+.restricted .csc-3col-col-fluid.csc-3col-first  {
+    width: 100%;
+}
+
+.restricted .csc-3col-col-fluid.csc-3col-first .csc-3col-inside {
+    min-height: 800px;
+}
+
+.restricted .csc-3col-col-fluid.csc-3col-first .csc-3col-inside img {
+    float: none;
+}
+
+.not-logged-in.restricted .csc-3col-inside .logged-in-msg {
+    display: none;
+}
+
+.logged-in.restricted .csc-3col-inside .not-logged-in-msg {
+    display: none;
+}
