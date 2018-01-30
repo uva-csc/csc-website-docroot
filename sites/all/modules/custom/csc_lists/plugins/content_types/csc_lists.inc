@@ -451,7 +451,7 @@ function csc_lists_select($sortArg) {
   if($type == 'class'){
     $class_array = array(
       'drop-in' => 'Drop-in Classes',
-      'academic' => 'UVa Courses',
+      'academic' => 'UVA Courses',
       'non-academic' => 'Workshops',
       'retreat' => 'Retreats'
     );
