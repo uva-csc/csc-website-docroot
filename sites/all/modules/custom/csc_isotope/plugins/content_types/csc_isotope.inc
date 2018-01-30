@@ -45,3 +45,4 @@ function csc_isotope_admin_render($subtype, $conf, $panel_args, $context = NULL)
 
   return $block;
 }
+
