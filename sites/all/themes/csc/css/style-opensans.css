@@ -5580,6 +5580,7 @@ div.csc-login-link * {
 
 .restricted .csc-3col-col-fluid.csc-3col-first  {
     width: 100%;
+    min-width: 600px;
 }
 
 .restricted .csc-3col-col-fluid.csc-3col-first .csc-3col-inside {
