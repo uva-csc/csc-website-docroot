@@ -4487,8 +4487,12 @@ body.logged-in #content {
 }
 
 /* Events Page and Lists */
+.page-events-all .csc-3col-first {
+    min-width: 50% !important;
+}
+
 .page-events .csc-3col-col-fluid.csc-3col-first {
-    width: 85%;
+    width: 50%;
 }
 
 /* line 3140, ../../../../../sass/sites/all/themes/csc/css/style.scss */
@@ -4513,7 +4517,7 @@ body.logged-in #content {
 /* line 3156, ../../../../../sass/sites/all/themes/csc/css/style.scss */
 #event-nav {
   position: absolute;
-  top: 0.3em;
+  top: 3em;
   right: 0px;
   margin-top: 0.4em;
 }
