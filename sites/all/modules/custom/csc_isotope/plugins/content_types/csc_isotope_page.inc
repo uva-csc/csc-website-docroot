@@ -141,12 +141,14 @@ function csc_isotope_item($var){
   switch ($type) {
     case 'class':
     case 'event':
+    case 'organization':
         $var['type'] = 'feature';
         break;
         
     case 'article':
     case 'activities':
     case 'content_page':
+    case 'news':
     case 'panopoly_page':
         $var['type'] = 'news';
         break;
