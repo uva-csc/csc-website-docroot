@@ -185,10 +185,23 @@ function csc_lists_render($subtype, $conf, $panel_args, $context = NULL) {
 
   //*** Audience ***
   if($type == 'class') {
+    // Sniff audience from parameters (old way)
     $audience = (empty($_GET['audience'])) ? 'academic' : $_GET['audience'];
     if ($page_panel && !empty($params['audience'])) {
         $audience = $params['audience'];
     }
+    // Check URL for specific type of class and adjust audience if it is one of those urls (new way)
+    $url_array = array(
+      'drop-in' => 'list/class/dropins',
+      'academic' => 'list/class/uvacourses',
+      'non-academic' => 'list/class/workshops',
+      'retreat' => 'list/class/retreats'
+    );
+    $cp = current_path();
+    $ind = array_search($cp, $url_array);
+    if ($ind) { $audience = $ind; }
+    
+    // Create Query condition for audience
     $tables .= ', {field_data_field_audience} fa';
     $where .= "AND fa.field_audience_value='". htmlspecialchars($audience) ."' AND fa.entity_id=n.nid AND fa.bundle='$node_type'";
   }
