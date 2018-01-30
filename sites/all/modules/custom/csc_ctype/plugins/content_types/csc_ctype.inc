@@ -29,7 +29,7 @@ function csc_ctype_render($subtype, $conf, $panel_args, $context = NULL) {
     return;
 
    $class_array = array(
-      'academic' => 'UVa Courses',
+      'academic' => 'UVA Courses',
       'non-academic' => 'Workshops',
       'drop-in' => 'Drop-in Classes',
       'retreat' => 'Retreats'
