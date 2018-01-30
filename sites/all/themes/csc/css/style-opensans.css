@@ -3260,6 +3260,7 @@ body.logged-in #content {
 .csc-panel-col-left .pane-csc-newsletter {
   margin-top: 13px;
   background-color: #2f2f2f;
+  margin-bottom: 0;
 }
 
 .csc-panel-col-left .pane-csc-newsletter:hover {
