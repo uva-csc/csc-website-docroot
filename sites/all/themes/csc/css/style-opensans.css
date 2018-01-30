@@ -128,6 +128,10 @@ em strong, strong em {
   color: #888888;
 }
 
+#content .pane-news-new-list-all h2 {
+    border-bottom: thin solid #e2e2e2;
+}
+
 /* line 137, ../../../../../sass/_global.scss */
 .see-all a, .see-all-research a, .pane-csc-related-classes .see-all a {
   position: relative;
