@@ -51,7 +51,7 @@ function csc_isotope_info($subtype, $conf, $contexts) {
   // List of nodes with promoted checked. Created in csc_isotope.module/hook_node_presave function.
   $node_list = variable_get('front_node_list', array());
   $node_set = implode(',', $node_list);
-  $node_set = str_replace(',,', ',', $node_set);
+  $node_set = trim(str_replace(',,', ',', $node_set), ', ');
   // Condition for finding nodes in query below
   $condition = (empty($node_list)) ? 'n.promote=1' : 'n.nid IN (' . $node_set . ')';
   $condition .= ' AND n.type!=\'colortile\'';
@@ -141,12 +141,14 @@ function csc_isotope_item($var){
   switch ($type) {
     case 'class':
     case 'event':
+    case 'organization':
         $var['type'] = 'feature';
         break;
         
     case 'article':
     case 'activities':
     case 'content_page':
+    case 'news':
     case 'panopoly_page':
         $var['type'] = 'news';
         break;

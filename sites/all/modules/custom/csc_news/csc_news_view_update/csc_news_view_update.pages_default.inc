@@ -106,10 +106,10 @@ function csc_news_view_update_default_page_manager_pages() {
   $display->content['new-03858bfc-9d03-4aa9-af34-86e45cae4f3c'] = $pane;
   $display->panels['fluid1'][0] = 'new-03858bfc-9d03-4aa9-af34-86e45cae4f3c';
   $pane = new stdClass();
-  $pane->pid = 'new-16ec4119-40d0-4e1b-b1f8-a14f2594a5f1';
+  $pane->pid = 'new-71356547-218b-4da9-8760-d3630b19fa95';
   $pane->panel = 'fluid2';
   $pane->type = 'fieldable_panels_pane';
-  $pane->subtype = 'vuuid:9dfaf947-f7f5-4a56-a4e1-736700d687d3';
+  $pane->subtype = 'vuuid:2b769142-d4e0-4fb0-a194-9764c16a42ac';
   $pane->shown = TRUE;
   $pane->access = array();
   $pane->configuration = array(
@@ -123,51 +123,9 @@ function csc_news_view_update_default_page_manager_pages() {
   $pane->extras = array();
   $pane->position = 0;
   $pane->locks = array();
-  $pane->uuid = '16ec4119-40d0-4e1b-b1f8-a14f2594a5f1';
-  $display->content['new-16ec4119-40d0-4e1b-b1f8-a14f2594a5f1'] = $pane;
-  $display->panels['fluid2'][0] = 'new-16ec4119-40d0-4e1b-b1f8-a14f2594a5f1';
-  $pane = new stdClass();
-  $pane->pid = 'new-a6880fc7-b5d3-4303-8b7d-f080bd9042f5';
-  $pane->panel = 'fluid2';
-  $pane->type = 'fieldable_panels_pane';
-  $pane->subtype = 'vuuid:ba35d028-7255-4a03-9051-3c8bd0d7e188';
-  $pane->shown = TRUE;
-  $pane->access = array();
-  $pane->configuration = array(
-    'view_mode' => 'full',
-  );
-  $pane->cache = array();
-  $pane->style = array(
-    'settings' => NULL,
-  );
-  $pane->css = array();
-  $pane->extras = array();
-  $pane->position = 1;
-  $pane->locks = array();
-  $pane->uuid = 'a6880fc7-b5d3-4303-8b7d-f080bd9042f5';
-  $display->content['new-a6880fc7-b5d3-4303-8b7d-f080bd9042f5'] = $pane;
-  $display->panels['fluid2'][1] = 'new-a6880fc7-b5d3-4303-8b7d-f080bd9042f5';
-  $pane = new stdClass();
-  $pane->pid = 'new-6e63852e-3611-4a8a-820d-917a6e716694';
-  $pane->panel = 'fluid2';
-  $pane->type = 'fieldable_panels_pane';
-  $pane->subtype = 'vuuid:d8a2ab96-bda1-43e2-8c9e-a9d435d11f1d';
-  $pane->shown = TRUE;
-  $pane->access = array();
-  $pane->configuration = array(
-    'view_mode' => 'full',
-  );
-  $pane->cache = array();
-  $pane->style = array(
-    'settings' => NULL,
-  );
-  $pane->css = array();
-  $pane->extras = array();
-  $pane->position = 2;
-  $pane->locks = array();
-  $pane->uuid = '6e63852e-3611-4a8a-820d-917a6e716694';
-  $display->content['new-6e63852e-3611-4a8a-820d-917a6e716694'] = $pane;
-  $display->panels['fluid2'][2] = 'new-6e63852e-3611-4a8a-820d-917a6e716694';
+  $pane->uuid = '71356547-218b-4da9-8760-d3630b19fa95';
+  $display->content['new-71356547-218b-4da9-8760-d3630b19fa95'] = $pane;
+  $display->panels['fluid2'][0] = 'new-71356547-218b-4da9-8760-d3630b19fa95';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = 'new-bceabf47-571b-4281-a817-ad928fb973c5';
   $handler->conf['display'] = $display;

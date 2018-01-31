@@ -22,7 +22,7 @@ function csc_news_view_update_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = '<none>';
+  $handler->display->display_options['title'] = 'News';
   $handler->display->display_options['css_class'] = 'news-list all';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
@@ -372,8 +372,7 @@ function csc_news_view_update_views_default_views() {
   $handler->display->display_options['header']['area']['id'] = 'area';
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
-  $handler->display->display_options['header']['area']['content'] = '<h1>CSC News</h1>
-<p>This page lists all the news for the Contemplative Sciences Center with the most recent items at the top:</p>';
+  $handler->display->display_options['header']['area']['content'] = '<p>This page lists all the news for the Contemplative Sciences Center with the most recent items at the top:</p>';
   $handler->display->display_options['header']['area']['format'] = 'panopoly_html_text';
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Field: Primary Image */
@@ -417,12 +416,20 @@ function csc_news_view_update_views_default_views() {
   $handler->display->display_options['fields']['path']['element_wrapper_type'] = '0';
   $handler->display->display_options['fields']['path']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['path']['empty'] = '/';
+  /* Field: Content: Path */
+  $handler->display->display_options['fields']['path_1']['id'] = 'path_1';
+  $handler->display->display_options['fields']['path_1']['table'] = 'node';
+  $handler->display->display_options['fields']['path_1']['field'] = 'path';
+  $handler->display->display_options['fields']['path_1']['relationship'] = 'field_alternate_url_target_id';
+  $handler->display->display_options['fields']['path_1']['label'] = '';
+  $handler->display->display_options['fields']['path_1']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['path_1']['element_label_colon'] = FALSE;
   /* Field: Global: Custom text */
   $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['label'] = '';
-  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="news-list-image">[field_featured_image]</div><div class="new-list-desc"><h3><a href="[path]">[title]</a></h3>
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="news-list-image"><a class="alturl" href="[path_1]" data-alturl="[path]">[field_featured_image]</a></div><div class="new-list-desc"><h3><a class="alturl" href="[path_1]" data-alturl="[path]">[title]</a></h3>
 <p>[field_teaser]</p></div>';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['nothing']['element_wrapper_type'] = '0';

@@ -285,7 +285,7 @@ function csc_isotope_node_presave($node) {
             $ind = array_search($node->nid, $color_tile_list);
             unset($color_tile_list[$ind]);
         }
-        variable_set('front_color_tile_list', $color_tile_list);
+        variable_set('front_color_tile_list', array_filter($color_tile_list));
     } else {
         $node_list = variable_get('front_node_list', array());
         if ($node->promote == 1 && !in_array($node->nid, $node_list)) {
@@ -294,28 +294,30 @@ function csc_isotope_node_presave($node) {
             $ind = array_search($node->nid, $node_list);
             unset($node_list[$ind]);
         }
-        variable_set('front_node_list', $node_list);
+        variable_set('front_node_list', array_filter($node_list));
     }
 }
 
 function csc_isotope_cron() {
     $node_list = variable_get('front_node_list');
-    foreach($node_list as $i => $nid) {
-        $node = node_load($nid);
-        if (!$node) {
-            unset($node_list[$i]);
+    if (is_array($node_list)) {
+        foreach($node_list as $i => $nid) {
+            $node = node_load($nid);
+            if (!$node) {
+                unset($node_list[$i]);
+            }
         }
-    }
-    variable_set('front_node_list', $node_list);
-    
-    $node_list = variable_get('front_color_tile_list');
-    foreach($node_list as $i => $nid) {
-        $node = node_load($nid);
-        if (!$node) {
-            unset($node_list[$i]);
+        variable_set('front_node_list', array_filter($node_list));
+        
+        $node_list = variable_get('front_color_tile_list');
+        foreach($node_list as $i => $nid) {
+            $node = node_load($nid);
+            if (!$node) {
+                unset($node_list[$i]);
+            }
         }
+        variable_set('front_color_tile_list', array_filter($node_list));
     }
-    variable_set('front_color_tile_list', $node_list);
 }
 
 function csc_isotope_node_view($node, $view_mode, $langcode) {
@@ -333,8 +335,19 @@ function csc_isotope_node_view($node, $view_mode, $langcode) {
     }
 }
 
+function csc_isotope_node_update($node) {
+    if ($node->promote == 0) {
+        csc_isotope_remove_nid($nid);
+    }
+}
+
 function csc_isotope_node_delete($node) {
     $nid = $node->nid;
+     csc_isotope_remove_nid($nid);
+}
+
+function csc_isotope_remove_nid($nid) {
+    if (is_object($nid) && !empty($nid->nid)) { $nid = $nid->nid; }
     $node_list = variable_get('front_node_list');
     if ($node_list && $i = array_search($nid, $node_list)) {
         unset($node_list[$i]);
