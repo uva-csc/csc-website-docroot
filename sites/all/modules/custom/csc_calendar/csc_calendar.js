@@ -23,6 +23,7 @@
                        $(this).html($(this).text()); // remove the <a> link and just display the number
                    }
                );
+
             }
             $('#csc-calendar-view-form #edit-view-select').change(function(e) {
                var view_mode = $(this).val(); 

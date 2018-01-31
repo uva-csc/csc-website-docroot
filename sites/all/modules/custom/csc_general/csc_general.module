@@ -1,41 +1,12 @@
 <?php
 
 /**
- * hook_form_alter
- */
-function csc_general_form_alter(&$form, &$form_state, $form_id){
-  if(isset($form['#node_edit_form'])){
-    $types = node_type_get_types();
-    $type = $types[$form['type']['#value']]->name;
-    $form['title']['#prefix'] = "<h3>Content &gt; <strong>$type</strong></h3>";
-
-    $lng = $form['field_related']['#language'];
-    $items = sizeof($form['field_related'][$lng]);
-
-    $types = array();
-    if ($items && isset($form['field_related'][$lng][0]['target_id']['#entity']->field_related[$lng]) 
-                    && is_array($form['field_related'][$lng][0]['target_id']['#entity']->field_related[$lng])) {
-      foreach($form['field_related'][$lng][0]['target_id']['#entity']->field_related[$lng] as $fr){
-        $types[] =  csc_general_get_type($fr['target_id']);
-      }
-    }
-
-    for($i=0; $i < $items; $i++){
-      if(isset($form['field_related'][$lng][$i]['target_id']['#default_value']) && $form['field_related'][$lng][$i]['target_id']['#default_value'] <> ''){
-        $form['field_related'][$lng][$i]['target_id']['#description'] = "(" . $types[$i] . ")";
-      }
-    }
-  
-    if($type == 'People') drupal_add_js( drupal_get_path('module', 'csc_general') . '/form_node_people.js' );
-  }
-}
-
-/**
  * Implements hook_menu().
+ * Settings for CSC are found in csc_isotope, if more are added move here.
  */
 function csc_general_menu() {
   $items = array();
-
+  
   $items['entityreference/autocomplete/single/%/%/%'] = array(
     'title' => 'Entity Reference Autocomplete',
     'page callback' => 'csc_general_autocomplete_callback',
@@ -52,6 +23,37 @@ function csc_general_menu() {
   );
 
   return $items;
+}
+
+/**
+ * hook_form_alter
+ */
+function csc_general_form_alter(&$form, &$form_state, $form_id){
+  if(isset($form['#node_edit_form'])){
+    $types = node_type_get_types();
+    $type = $types[$form['type']['#value']]->name;
+    $form['title']['#prefix'] = "<h3>Content &gt; <strong>$type</strong></h3>";
+    if (!empty($form['field_related'])) {
+        $lng = $form['field_related']['#language'];
+        $items = sizeof($form['field_related'][$lng]);
+    
+        $types = array();
+        if ($items && isset($form['field_related'][$lng][0]['target_id']['#entity']->field_related[$lng]) 
+                        && is_array($form['field_related'][$lng][0]['target_id']['#entity']->field_related[$lng])) {
+          foreach($form['field_related'][$lng][0]['target_id']['#entity']->field_related[$lng] as $fr){
+            $types[] =  csc_general_get_type($fr['target_id']);
+          }
+        }
+    
+        for($i=0; $i < $items; $i++){
+          if(isset($form['field_related'][$lng][$i]['target_id']['#default_value']) && $form['field_related'][$lng][$i]['target_id']['#default_value'] <> ''){
+            $form['field_related'][$lng][$i]['target_id']['#description'] = "(" . $types[$i] . ")";
+          }
+        }
+    }
+  
+    if($type == 'People') drupal_add_js( drupal_get_path('module', 'csc_general') . '/form_node_people.js' );
+  }
 }
 
 function csc_general_autocomplete_callback($type, $field_name, $entity_type, $bundle_name, $entity_id = '', $string = '') {
@@ -161,4 +163,88 @@ function csc_general_node_delete($_node){
     
     field_attach_update('node', $node);
   }
+}
+
+/*
+ * Implement hook_views_post_execute
+ */
+function csc_general_views_post_execute(&$view) {
+    //dpm($view, 'view');
+    if ($view->name == 'classes' && $view->current_display == 'panel_pane_for_page') {
+        $context_nid = $view->args[0];
+        $cnode = node_load($context_nid);
+        $order = array();
+        foreach($cnode->field_related['und'] as $n => $item) {
+            $order[] = (int)$item['target_id'];
+        }
+        $resorder = array();
+        foreach($view->result as $n => $res) {
+            $resorder[] = $res->nid;
+        }
+        $newres = array();
+        foreach ($order as $n => $nid) {
+            $oldind = array_search($nid, $resorder);
+            if ($oldind) {
+                $newres[$n] = $resorder[$oldind];
+            }
+        }
+        $view->result = $newres;
+    }
+}
+
+/**
+ * Defines the available iconsets for social_media_links contrib module
+ *
+ * @return array
+ *   An associative array whose keys define the key for the iconset
+ *   and contains information about the icons for the platforms. Each
+ *   iconset deinition is itself an associative array, with the
+ *   following key-value pairs:
+ *   - name: The name of the iconset.
+ *   - publisher: The name of the publisher.
+ *   - publisher url: The url for further informations about the iconset.
+ *   - styles: The available sizes/styles for the iconset.
+ *   - path callback: The name of the callback function that returns the
+ *     image urls.
+ *   - download url: The url to download the iconset.
+ */
+function csc_general_social_media_links_iconset_info() {
+    // Simple example for a iconset definition.
+    $icons['csc_social_icons'] = array(
+        'name' => 'CSC Icons',
+        'publisher' => 'Contemplative Sciences Center',
+        'publisher url' => 'http://www.uvacontemplation.org/',
+        'styles' => array(
+            '32' => '32x32',
+        ),
+        'path callback' => 'csc_general_social_media_links_path',
+        'download url' => '',
+    );
+    return $icons;
+}
+
+function csc_general_social_media_links_path($platform = 'twitter', $style = NULL) {
+    switch ($platform) {
+        case 'contact':
+            $platform = 'email';
+            break;
+            
+        case 'youtube_channel':
+            $platform = 'youtube';
+            break;
+    }
+    $path = drupal_get_path('theme', 'csc') . '/images/social_media/' . $platform . '.png';
+    return $path;
+}
+
+function csc_general_social_media_links_platform_info() {
+  $platforms = array();
+
+  // A simple example for twitter.
+  $platforms['newsletter'] = array(
+    'title' => t('Newsletter'),
+    'base url' => 'http://uvacontemplation.us5.list-manage1.com/subscribe?',
+  );
+
+  return $platforms;
 }

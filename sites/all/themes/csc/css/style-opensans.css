@@ -76,12 +76,12 @@ em strong, strong em {
 
 /* Global variables, mixins, etc. */
 /* line 96, ../../../../../sass/_global.scss */
-#content .pane-events-panel-pane-1 h2.pane-title, #content .pane-research-panel-pane-1 h2.pane-title, #content .pane-learning-panel-pane-1 h2.pane-title, #content .pane-engagement-panel-pane-1 h2.pane-title, #content .pane-classes-panel-pane-1 h2.pane-title, #content .pane-people-panel-pane-1 h2.pane-title, #content .pane-organizations-panel-pane-1 h2.pane-title, .view-panopoly-database-search h2.pane-title, .pane-csc-lists h2, .pane-csc-directors > h2, .pane-csc-role > h2, #content .pane-events-panel-pane-1 .views-label, .pane-node-field-event-date h2.pane-title, .pane-node-field-location h2, .pane-csc-event-date h2, .page-node-264 .pane-node-body h2, .page-node-215 .pane-node-body h2, .filter-tip, .pane-csc-related-research h2 a, .pane-csc-related-events h2 a, .pane-csc-related-activities h2 a, .pane-csc-related-classes h2 a, .pane-csc-important-dates h3, .pane-csc-latest-news h3 a, #content .pane-events-panel-pane-1 .node h2 a, #content .pane-events-panel-pane-1 .node span a, #content .pane-events-panel-pane-1 .views-field-title h2 a, #content .pane-events-panel-pane-1 .views-field-title span a, #content .pane-research-panel-pane-1 .node h2 a, #content .pane-research-panel-pane-1 .node span a, #content .pane-research-panel-pane-1 .views-field-title h2 a, #content .pane-research-panel-pane-1 .views-field-title span a, #content .pane-learning-panel-pane-1 .node h2 a, #content .pane-learning-panel-pane-1 .node span a, #content .pane-learning-panel-pane-1 .views-field-title h2 a, #content .pane-learning-panel-pane-1 .views-field-title span a, #content .pane-engagement-panel-pane-1 .node h2 a, #content .pane-engagement-panel-pane-1 .node span a, #content .pane-engagement-panel-pane-1 .views-field-title h2 a, #content .pane-engagement-panel-pane-1 .views-field-title span a, #content .pane-classes-panel-pane-1 .node h2 a, #content .pane-classes-panel-pane-1 .node span a, #content .pane-classes-panel-pane-1 .views-field-title h2 a, #content .pane-classes-panel-pane-1 .views-field-title span a, #content .pane-people-panel-pane-1 .node h2 a, #content .pane-people-panel-pane-1 .node span a, #content .pane-people-panel-pane-1 .views-field-title h2 a, #content .pane-people-panel-pane-1 .views-field-title span a, #content .pane-organizations-panel-pane-1 .node h2 a, #content .pane-organizations-panel-pane-1 .node span a, #content .pane-organizations-panel-pane-1 .views-field-title h2 a, #content .pane-organizations-panel-pane-1 .views-field-title span a, .view-panopoly-database-search .node h2 a, .view-panopoly-database-search .node span a, .view-panopoly-database-search .views-field-title h2 a, .view-panopoly-database-search .views-field-title span a, .csc-connect-with-us em, .csc-lists-container .list-item-title, .see-all a, .see-all-research a, .pane-csc-related-activities .see-all a, .pane-csc-related-classes .see-all a {
+#content .pane-news-new-list-all h2.pane-title, #content .pane-events-panel-pane-1 h2.pane-title, #content .pane-research-panel-pane-1 h2.pane-title, #content .pane-learning-panel-pane-1 h2.pane-title, #content .pane-engagement-panel-pane-1 h2.pane-title, #content .pane-classes-panel-pane-1 h2.pane-title, #content .pane-people-panel-pane-1 h2.pane-title, #content .pane-organizations-panel-pane-1 h2.pane-title, .view-panopoly-database-search h2.pane-title, .pane-csc-lists h2, .pane-csc-directors > h2, .pane-csc-role > h2, #content .pane-events-panel-pane-1 .views-label, .pane-node-field-event-date h2.pane-title, .pane-node-field-location h2, .pane-csc-event-date h2, .page-node-264 .pane-node-body h2, .page-node-215 .pane-node-body h2, .filter-tip, .pane-csc-related-research h2 a, .pane-csc-related-events h2 a, .pane-csc-related-activities h2 a, .pane-csc-related-classes h2 a, .pane-csc-important-dates h3, .pane-csc-latest-news h3 a, #content .pane-events-panel-pane-1 .node h2 a, #content .pane-events-panel-pane-1 .node span a, #content .pane-events-panel-pane-1 .views-field-title h2 a, #content .pane-events-panel-pane-1 .views-field-title span a, #content .pane-research-panel-pane-1 .node h2 a, #content .pane-research-panel-pane-1 .node span a, #content .pane-research-panel-pane-1 .views-field-title h2 a, #content .pane-research-panel-pane-1 .views-field-title span a, #content .pane-learning-panel-pane-1 .node h2 a, #content .pane-learning-panel-pane-1 .node span a, #content .pane-learning-panel-pane-1 .views-field-title h2 a, #content .pane-learning-panel-pane-1 .views-field-title span a, #content .pane-engagement-panel-pane-1 .node h2 a, #content .pane-engagement-panel-pane-1 .node span a, #content .pane-engagement-panel-pane-1 .views-field-title h2 a, #content .pane-engagement-panel-pane-1 .views-field-title span a, #content .pane-classes-panel-pane-1 .node h2 a, #content .pane-classes-panel-pane-1 .node span a, #content .pane-classes-panel-pane-1 .views-field-title h2 a, #content .pane-classes-panel-pane-1 .views-field-title span a, #content .pane-people-panel-pane-1 .node h2 a, #content .pane-people-panel-pane-1 .node span a, #content .pane-people-panel-pane-1 .views-field-title h2 a, #content .pane-people-panel-pane-1 .views-field-title span a, #content .pane-organizations-panel-pane-1 .node h2 a, #content .pane-organizations-panel-pane-1 .node span a, #content .pane-organizations-panel-pane-1 .views-field-title h2 a, #content .pane-organizations-panel-pane-1 .views-field-title span a, .view-panopoly-database-search .node h2 a, .view-panopoly-database-search .node span a, .view-panopoly-database-search .views-field-title h2 a, .view-panopoly-database-search .views-field-title span a, .csc-connect-with-us em, .csc-lists-container .list-item-title, .see-all a, .see-all-research a, .pane-csc-related-activities .see-all a, .pane-csc-related-classes .see-all a {
   font-family: brandon, 'Helvetica Neue', helvetica, arial, sans-serif;
 }
 
 /* line 110, ../../../../../sass/_global.scss */
-#content .pane-events-panel-pane-1 h2.pane-title, #content .pane-csc-class-date h2.pane-title, #content .pane-research-panel-pane-1 h2.pane-title, #content .pane-learning-panel-pane-1 h2.pane-title, #content .pane-engagement-panel-pane-1 h2.pane-title, #content .pane-classes-panel-pane-1 h2.pane-title, #content .pane-people-panel-pane-1 h2.pane-title, #content .pane-organizations-panel-pane-1 h2.pane-title, .view-panopoly-database-search h2.pane-title, .pane-csc-lists h2, .pane-csc-directors > h2, .pane-csc-role > h2, #content .pane-events-panel-pane-1 .views-label, .pane-node-field-event-date h2.pane-title, .pane-node-field-location h2, .pane-csc-event-date h2, .page-node-264 .pane-node-body h2, .page-node-215 .pane-node-body h2, .filter-tip {
+#content .pane-news-new-list-all h2.pane-title, #content .pane-events-panel-pane-1 h2.pane-title, #content .pane-csc-class-date h2.pane-title, #content .pane-research-panel-pane-1 h2.pane-title, #content .pane-learning-panel-pane-1 h2.pane-title, #content .pane-engagement-panel-pane-1 h2.pane-title, #content .pane-classes-panel-pane-1 h2.pane-title, #content .pane-people-panel-pane-1 h2.pane-title, #content .pane-organizations-panel-pane-1 h2.pane-title, .view-panopoly-database-search h2.pane-title, .pane-csc-lists h2, .pane-csc-directors > h2, .pane-csc-role > h2, #content .pane-events-panel-pane-1 .views-label, .pane-node-field-event-date h2.pane-title, .pane-node-field-location h2, .pane-csc-event-date h2, .page-node-264 .pane-node-body h2, .page-node-215 .pane-node-body h2, .filter-tip {
   text-transform: uppercase;
   font-weight: normal; /* was bold*/
 }
@@ -96,20 +96,20 @@ em strong, strong em {
 }
 
 /* line 116, ../../../../../sass/_global.scss */
-#content .pane-events-panel-pane-1 h2.pane-title, #content .pane-research-panel-pane-1 h2.pane-title, #content .pane-learning-panel-pane-1 h2.pane-title, #content .pane-engagement-panel-pane-1 h2.pane-title, #content .pane-classes-panel-pane-1 h2.pane-title, #content .pane-people-panel-pane-1 h2.pane-title, #content .pane-organizations-panel-pane-1 h2.pane-title, .view-panopoly-database-search h2.pane-title, .pane-csc-lists h2 {
+#content .pane-news-new-list-all h2.pane-title, #content .pane-events-panel-pane-1 h2.pane-title, #content .pane-research-panel-pane-1 h2.pane-title, #content .pane-learning-panel-pane-1 h2.pane-title, #content .pane-engagement-panel-pane-1 h2.pane-title, #content .pane-classes-panel-pane-1 h2.pane-title, #content .pane-people-panel-pane-1 h2.pane-title, #content .pane-organizations-panel-pane-1 h2.pane-title, .view-panopoly-database-search h2.pane-title, .pane-csc-lists h2 {
   font-size: 2em;
   margin-top: 0px;
   margin-bottom: 20px;
 }
 @media only screen and (min-width: 1280px) and (max-width: 2000px) {
   /* line 116, ../../../../../sass/_global.scss */
-  #content .pane-events-panel-pane-1 h2.pane-title, #content .pane-research-panel-pane-1 h2.pane-title, #content .pane-learning-panel-pane-1 h2.pane-title, #content .pane-engagement-panel-pane-1 h2.pane-title, #content .pane-classes-panel-pane-1 h2.pane-title, #content .pane-people-panel-pane-1 h2.pane-title, #content .pane-organizations-panel-pane-1 h2.pane-title, .view-panopoly-database-search h2.pane-title, .pane-csc-lists h2 {
+  #content .pane-news-new-list-all h2.pane-title, #content .pane-events-panel-pane-1 h2.pane-title, #content .pane-research-panel-pane-1 h2.pane-title, #content .pane-learning-panel-pane-1 h2.pane-title, #content .pane-engagement-panel-pane-1 h2.pane-title, #content .pane-classes-panel-pane-1 h2.pane-title, #content .pane-people-panel-pane-1 h2.pane-title, #content .pane-organizations-panel-pane-1 h2.pane-title, .view-panopoly-database-search h2.pane-title, .pane-csc-lists h2 {
     font-size: 3em;
   }
 }
 @media only screen and (min-width: 2001px) {
   /* line 116, ../../../../../sass/_global.scss */
-  #content .pane-events-panel-pane-1 h2.pane-title, #content .pane-research-panel-pane-1 h2.pane-title, #content .pane-learning-panel-pane-1 h2.pane-title, #content .pane-engagement-panel-pane-1 h2.pane-title, #content .pane-classes-panel-pane-1 h2.pane-title, #content .pane-people-panel-pane-1 h2.pane-title, #content .pane-organizations-panel-pane-1 h2.pane-title, .view-panopoly-database-search h2.pane-title, .pane-csc-lists h2 {
+  #content .pane-news-new-list-all h2.pane-title, #content .pane-events-panel-pane-1 h2.pane-title, #content .pane-research-panel-pane-1 h2.pane-title, #content .pane-learning-panel-pane-1 h2.pane-title, #content .pane-engagement-panel-pane-1 h2.pane-title, #content .pane-classes-panel-pane-1 h2.pane-title, #content .pane-people-panel-pane-1 h2.pane-title, #content .pane-organizations-panel-pane-1 h2.pane-title, .view-panopoly-database-search h2.pane-title, .pane-csc-lists h2 {
     font-size: 3em;
   }
 }
@@ -126,6 +126,10 @@ em strong, strong em {
 /* line 132, ../../../../../sass/_global.scss */
 .pane-csc-related-research h2 a:hover, .pane-csc-related-events h2 a:hover, .pane-csc-related-activities h2 a:hover, .pane-csc-related-classes h2 a:hover, .pane-csc-important-dates h3:hover, .pane-csc-latest-news h3 a:hover, #content .pane-events-panel-pane-1 .node h2 a:hover, #content .pane-events-panel-pane-1 .node span a:hover, #content .pane-events-panel-pane-1 .views-field-title h2 a:hover, #content .pane-events-panel-pane-1 .views-field-title span a:hover, #content .pane-research-panel-pane-1 .node h2 a:hover, #content .pane-research-panel-pane-1 .node span a:hover, #content .pane-research-panel-pane-1 .views-field-title h2 a:hover, #content .pane-research-panel-pane-1 .views-field-title span a:hover, #content .pane-learning-panel-pane-1 .node h2 a:hover, #content .pane-learning-panel-pane-1 .node span a:hover, #content .pane-learning-panel-pane-1 .views-field-title h2 a:hover, #content .pane-learning-panel-pane-1 .views-field-title span a:hover, #content .pane-engagement-panel-pane-1 .node h2 a:hover, #content .pane-engagement-panel-pane-1 .node span a:hover, #content .pane-engagement-panel-pane-1 .views-field-title h2 a:hover, #content .pane-engagement-panel-pane-1 .views-field-title span a:hover, #content .pane-classes-panel-pane-1 .node h2 a:hover, #content .pane-classes-panel-pane-1 .node span a:hover, #content .pane-classes-panel-pane-1 .views-field-title h2 a:hover, #content .pane-classes-panel-pane-1 .views-field-title span a:hover, #content .pane-people-panel-pane-1 .node h2 a:hover, #content .pane-people-panel-pane-1 .node span a:hover, #content .pane-people-panel-pane-1 .views-field-title h2 a:hover, #content .pane-people-panel-pane-1 .views-field-title span a:hover, #content .pane-organizations-panel-pane-1 .node h2 a:hover, #content .pane-organizations-panel-pane-1 .node span a:hover, #content .pane-organizations-panel-pane-1 .views-field-title h2 a:hover, #content .pane-organizations-panel-pane-1 .views-field-title span a:hover, .view-panopoly-database-search .node h2 a:hover, .view-panopoly-database-search .node span a:hover, .view-panopoly-database-search .views-field-title h2 a:hover, .view-panopoly-database-search .views-field-title span a:hover, .csc-connect-with-us em:hover, .csc-lists-container .list-item-title:hover {
   color: #888888;
+}
+
+#content .pane-news-new-list-all h2 {
+    border-bottom: thin solid #e2e2e2;
 }
 
 /* line 137, ../../../../../sass/_global.scss */
@@ -2778,6 +2782,7 @@ a#menu-toggle:after {
 /* line 1945, ../../../../../sass/sites/all/themes/csc/css/style.scss */
 .csc-3col-second {
   background: #494949;
+  width: 40%;
 }
 /* line 1948, ../../../../../sass/sites/all/themes/csc/css/style.scss */
 .csc-3col-second h2 {
@@ -3178,9 +3183,14 @@ body.logged-in #content {
   display: none;
   position: absolute;
   z-index: 999;
-  top: 76px;
+  top: 75px;
   right: 197px;
 }
+
+.admin-menu .wedge {
+    top: 104px;
+}
+
 @media only screen and (max-width: 640px) {
   /* line 2233, ../../../../../sass/sites/all/themes/csc/css/style.scss */
   .wedge {
@@ -3210,30 +3220,37 @@ body.logged-in #content {
  */
 /* line 2260, ../../../../../sass/sites/all/themes/csc/css/style.scss */
 .pane-csc-newsletter {
-  position: static;
+  /*position: static;
   bottom: 0px;
   width: 150px;
-  float: left;
+  float: left;*/
   margin-top: -8px !important;
   margin-bottom: 12px;
   border-top: 1px solid #ffffff;
   border-bottom: 1px solid #ffffff;
-  background: #e8e7e5; /*#dbdad8;*/
+  background-color: #2F2F2F !important; /*#e8e7e5; /*#dbdad8;*/
   padding: 0px;
 }
 
 .pane-csc-newsletter:hover {
-  background: #c9c7c5;
+  background: #444444;
 }
-
+/*
+.pane-csc-newsletter:hover h2.pane-title {
+    color: #222222;
+}
+*/
 /* line 2269, ../../../../../sass/sites/all/themes/csc/css/style.scss */
 .pane-csc-newsletter h2.pane-title {
-  font-size: 0.9em !important;
+  font-size: 0.9em;
   margin-bottom: 0px;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: bold;
+    color: #ededed;
+    font-size: 1.2em;
 }
-a .pane-csc-newsletter h2.pane-title {
-  color: #333;
-}
+
 /* line 2273, ../../../../../sass/sites/all/themes/csc/css/style.scss */
 .pane-csc-newsletter .pane-content {
   margin: 5px;
@@ -3244,8 +3261,40 @@ a .pane-csc-newsletter h2.pane-title {
   font-size: 10px;
 }
 /* line 51, ../../../../../sass/_global.scss */
-body.front .pane-csc-newsletter {
+.csc-panel-col-left .pane-csc-newsletter {
   margin-top: 13px;
+  background-color: #2f2f2f;
+  margin-bottom: 0;
+}
+
+.csc-panel-col-left .pane-csc-newsletter:hover {
+    background-color: #444444;
+}
+
+.csc-panel-col-left .pane-csc-newsletter a {
+    font-family: brandon, verdana, arial;
+    color: white;
+    font-weight: 200;
+    
+}
+
+.csc-panel-col-left .pane-csc-newsletter a h2.pane-title {
+    text-transform: uppercase !important;
+    font-size: 1.2em !important;
+    text-align: center;
+    font-weight: bold;
+    letter-space: 1px;
+}
+
+.csc-panel-col-left .pane-csc-newsletter:hover a h2.pane-title {
+    color: #ededed;
+}
+
+/** News List & Items **/
+.news-list-image {
+    width: 220px;
+    padding: 8px;
+    float: left;
 }
 
 div.pane-csc-isotope, div.pane-csc-isotope * {
@@ -3266,16 +3315,6 @@ div.pane-csc-isotope, div.pane-csc-isotope * {
   }
 }
 
-/* line 2293, ../../../../../sass/sites/all/themes/csc/css/style.scss */
-.pane-csc-newsletter h2 {
-  margin-top: 0px;
-  font-family: brandon, 'Helvetica Neue', helvetica, arial, sans-serif;
-  font-size: 12px !important;
-  font-weight: normal; /* was bold*/
-  padding-top: 14px;
-  text-transform: uppercase;
-  text-align: center;
-}
 
 /* line 2303, ../../../../../sass/sites/all/themes/csc/css/style.scss */
 .pane-csc-newsletter .content {
@@ -3763,11 +3802,14 @@ body.page-node-21 .csc-people-detail:hover {
 }
 
 /* line 2649, ../../../../../sass/sites/all/themes/csc/css/style.scss */
+
 .pane-csc-directors, .pane-csc-role {
   margin-right: 1em;
   clear: both;
   background: #ffffff;
+  width: 100%;
 }
+
 /* line 2653, ../../../../../sass/sites/all/themes/csc/css/style.scss */
 .pane-csc-directors > h2, .pane-csc-role > h2 {
   width: 100%;
@@ -4450,7 +4492,15 @@ body.logged-in #content {
   top: 0px;
 }
 
-/* Events list */
+/* Events Page and Lists */
+.page-events-all .csc-3col-first {
+    min-width: 50% !important;
+}
+
+.page-events .csc-3col-col-fluid.csc-3col-first {
+    width: 50%;
+}
+
 /* line 3140, ../../../../../sass/sites/all/themes/csc/css/style.scss */
 #content .pane-events-panel-pane-1 .views-field-field-location {
 	display: inline-block;
@@ -4473,7 +4523,7 @@ body.logged-in #content {
 /* line 3156, ../../../../../sass/sites/all/themes/csc/css/style.scss */
 #event-nav {
   position: absolute;
-  top: 0.3em;
+  top: 3em;
   right: 0px;
   margin-top: 0.4em;
 }
@@ -4485,9 +4535,14 @@ body.logged-in #content {
   font-size: 0.8em;
 }
 /* line 3167, ../../../../../sass/sites/all/themes/csc/css/style.scss */
-#event-nav a.active, #event-nav a:hover {
+ #event-nav a:hover {
   color: #fff;
-  background-color: #444;
+  background-color: #ecb176;
+
+}
+#event-nav a.active {
+  color: #fff;
+  background-color: #e57200;
 }
 
 /* event items */
@@ -4888,6 +4943,10 @@ body.logged-in #content {
   text-transform: none;
 }
 
+.node-type-class .pane-node-field-class-location {
+    margin-top: 12px;
+}
+
 /** Node type article **/
 .node-type-article .csc-3col-col-fluid.csc-3col-first {
     width: 100%;
@@ -5257,10 +5316,16 @@ white-space: pre;
   color: #444;
 }
 /* line 3581, ../../../../../sass/sites/all/themes/csc/css/style.scss */
-.list-filter-wrapper .audience-filter a:hover, .list-filter-wrapper .audience-filter a.selected {
-  color: #fff;
-  background-color: #444;
+.list-filter-wrapper .audience-filter a:hover {
+    color: #fff;
+    background-color: #ecb176;
 }
+
+.list-filter-wrapper .audience-filter a.selected {
+  color: #fff;
+  background-color: #e57200;
+}
+
 @media only screen and (max-width: 640px) {
   /* line 3578, ../../../../../sass/sites/all/themes/csc/css/style.scss */
   .list-filter-wrapper .audience-filter a {
@@ -5359,6 +5424,7 @@ margin: -12px 0 8px 0;
 .pane-csc-directors > .pane-content, .pane-csc-role > .pane-content {
   float: left;
   margin-bottom: 20px;
+  width: 100%;
 }
 
 /* line 3663, ../../../../../sass/sites/all/themes/csc/css/style.scss */
@@ -5388,10 +5454,11 @@ margin: -12px 0 8px 0;
 /** Login link **/
 div.csc-login-link {
     padding: 8px 36px;
-    border-top: 1px solid white;
+    /*border-top: 1px solid white;*/
     clear: both;
     font-size: 0.9em;
-    width: 100px;
+    width: 78px;
+    background-color: #e8e7e5;
 }
 
 div.csc-login-link * {
@@ -5480,4 +5547,54 @@ div.csc-login-link * {
 /** Calendar fixes **/
 .calendar-calendar .month-view .item:hover {
     background-color:  #e7f4fc !important;
+}
+
+
+.pane-social-media-links-social-media-links, .soclnks {
+    text-align: center;
+    min-height: 160px;
+}
+
+/* line 2293, ../../../../../sass/sites/all/themes/csc/css/style.scss */
+ .pane-social-media-links-social-media-links h2, .soclnks h2 {
+  margin-top: 0px;
+  font-family: brandon, 'Helvetica Neue', helvetica, arial, sans-serif;
+  font-size: 1em;
+  font-weight: bold;
+  padding-top: 14px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.pane-social-media-links-social-media-links ul.social-media-links, .soclnks ul.social-media-links {
+    margin: 0;
+    padding: 0;
+}
+
+.pane-social-media-links-social-media-links ul.social-media-links li, .soclnks ul.social-media-links li {
+    display: inline-block;
+    float: left;
+    margin-left: 18px;
+    margin-top: 6px;
+}   
+
+.restricted .csc-3col-col-fluid.csc-3col-first  {
+    width: 100%;
+    min-width: 600px;
+}
+
+.restricted .csc-3col-col-fluid.csc-3col-first .csc-3col-inside {
+    min-height: 800px;
+}
+
+.restricted .csc-3col-col-fluid.csc-3col-first .csc-3col-inside img {
+    float: none;
+}
+
+.not-logged-in.restricted .csc-3col-inside .logged-in-msg {
+    display: none;
+}
+
+.logged-in.restricted .csc-3col-inside .not-logged-in-msg {
+    display: none;
 }

@@ -34,6 +34,7 @@ function csc_role_get_roles($index = FALSE) {
 		3 => t('Executive'),
 		1 => t('Director'),
 		2 => t('Staff'),
+        4 => t('Intern'),
 	);
 	if($index) { return $roles[$index]; } else { return $roles; }
 }

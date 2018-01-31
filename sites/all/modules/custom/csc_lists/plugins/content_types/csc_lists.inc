@@ -86,8 +86,9 @@ function csc_lists_render($subtype, $conf, $panel_args, $context = NULL) {
           $params[$pts[0]] = $pts[1];
       }
   }
+  
   $types = array_keys(node_type_get_types());
-  if(!in_array($type, $types)) return;
+  if(!in_array($type, $types) && $type != 'project') return;
 
   switch($type){
     case 'class':
@@ -117,6 +118,10 @@ function csc_lists_render($subtype, $conf, $panel_args, $context = NULL) {
     case 'organization':
       $title = 'Affiliations';
       $node_type = 'organization';
+      break;
+    case 'project':
+      $title = 'Projects';
+      $node_type = 'research';
       break;
     case 'school':
       $title = 'Schools';
@@ -160,6 +165,7 @@ function csc_lists_render($subtype, $conf, $panel_args, $context = NULL) {
     }
   }
 
+
   if($type == 'school'){
     //Default filter for schools
     $tables = ', {field_data_field_organization_type} ot';
@@ -179,10 +185,23 @@ function csc_lists_render($subtype, $conf, $panel_args, $context = NULL) {
 
   //*** Audience ***
   if($type == 'class') {
+    // Sniff audience from parameters (old way)
     $audience = (empty($_GET['audience'])) ? 'academic' : $_GET['audience'];
     if ($page_panel && !empty($params['audience'])) {
         $audience = $params['audience'];
     }
+    // Check URL for specific type of class and adjust audience if it is one of those urls (new way)
+    $url_array = array(
+      'drop-in' => 'list/class/dropins',
+      'academic' => 'list/class/uvacourses',
+      'non-academic' => 'list/class/workshops',
+      'retreat' => 'list/class/retreats'
+    );
+    $cp = current_path();
+    $ind = array_search($cp, $url_array);
+    if ($ind) { $audience = $ind; }
+    
+    // Create Query condition for audience
     $tables .= ', {field_data_field_audience} fa';
     $where .= "AND fa.field_audience_value='". htmlspecialchars($audience) ."' AND fa.entity_id=n.nid AND fa.bundle='$node_type'";
   }
@@ -316,7 +335,7 @@ function csc_lists_render($subtype, $conf, $panel_args, $context = NULL) {
     }
   }
 
-  if($type == 'research' or $type == 'learning' or $type=='engagement'){
+  if($type == 'project' or $type == 'research' or $type == 'learning' or $type=='engagement'){
     switch($sort){
       case 'date_asc':
         $sort_by = 'n.created';
@@ -351,14 +370,17 @@ function csc_lists_render($subtype, $conf, $panel_args, $context = NULL) {
         $render_function = isset($_GET['group']) ? 'csc_lists_default_render' : 'csc_lists_alpha_render';
         break;
       default:
-        $sort = 'date_desc';
-        $sort_by = 'n.created';
-        $order = 'DESC';
+      /* $sort = 'date_desc';
+        $sort_by = 'n.created';*/
+        $sort = 'title_asc';
+        $sort_by = 'n.title';
+        $order = 'ASC';
         break;
     }
   }
+  $typestr = ($type == 'project') ? "n.type IN ('research','learning','engagement')" : "n.type = '$node_type'";
+  $qry = "SELECT n.nid $fields FROM {node} n $join $tables WHERE n.status = '1' AND $typestr $where $group ORDER BY $sort_by $order";
 
-  $qry = "SELECT n.nid $fields FROM {node} n $join $tables WHERE n.status = '1' AND n.type = '$node_type' $where $group ORDER BY $sort_by $order";
   //$output = csc_lists_select();
   $output = '<div class="list-items ' . $render_function . '">' . $render_function($qry) . '</div>';
   $output .= '<script>jQuery(".list-item").dotdotdot({watch: true, height: 150})</script>';
@@ -428,19 +450,26 @@ function csc_lists_select($sortArg) {
   //Audience filter
   if($type == 'class'){
     $class_array = array(
-      'academic' => 'UVa Courses',
-      'non-academic' => 'Workshops',
       'drop-in' => 'Drop-in Classes',
+      'academic' => 'UVA Courses',
+      'non-academic' => 'Workshops',
       'retreat' => 'Retreats'
+    );
+    $url_array = array(
+      'drop-in' => '/list/class/dropins',
+      'academic' => '/list/class/uvacourses',
+      'non-academic' => '/list/class/workshops',
+      'retreat' => '/list/class/retreats'
     );
 
     $base_link = 'list/' . $type;
     $base_link.= ($nid) ? "/$nid" : '';
-    $class = isset($_GET['audience']) ? $_GET['audience'] : 'academic';
+    $class = csc_lists_get_audience();
     $output .= '<div id="audience-filter" class="audience-filter '. $class .'">';
 
     foreach($class_array as $k => $v) {
-      $output .= '<a href="#" class="' . ($class == $k ? 'selected' : '') . '" data-value="' . $k . '">' . $v . '</a>';
+        $link = $url_array[$k];
+        $output .= '<a href="' . $link . '" class="' . ($class == $k ? 'selected' : '') . '" data-value="' . $k . '">' . $v . '</a>';
     }
 
     $output .= '</div>';
@@ -492,6 +521,31 @@ function csc_lists_select($sortArg) {
   return $output;
 }
 
+function csc_lists_get_audience($page_panel = FALSE) {
+    $audience = (!empty($_GET['audience'])) ? $_GET['audience'] : FALSE;
+    if ($page_panel && !empty($params['audience'])) {
+        $audience = $params['audience'];
+    }
+    $pth = current_path();
+    if (preg_match('/list\/class\/(.+)\/?$/', $pth, $mtch)) {
+        $audience = $mtch[1];
+        switch($audience) {
+            case 'dropins':
+                $audience = 'drop-in';
+                break;
+            case 'workshops':
+                $audience = 'non-academic';
+                break;
+            case 'retreats':
+                $audience = 'retreat';
+                break;
+            default:
+                $audience = 'academic';
+        }
+    }
+    if (!$audience) { $audience = 'academic'; }
+    return $audience;
+}
 
 function csc_lists_default_render($qry){
   $r = db_query($qry);

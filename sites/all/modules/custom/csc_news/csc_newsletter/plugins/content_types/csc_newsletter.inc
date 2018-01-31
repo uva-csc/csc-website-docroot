@@ -49,14 +49,12 @@ function csc_newsletter_render($subtype, $conf, $panel_args, $context = NULL) {
   drupal_add_js($path . '/plugins/content_types/csc_newsletter.js');
 
   $output = '
-
     <div class="content csc_newsletter_signup">
-      <p>Click here to sign up for our newsletter and e-mail list.</p>
     </div>
   ';
 
   $block = new stdClass();
-  $block->title = 'Sign up for our Newsletter';
+  $block->title = 'Sign up <br/> for our <br/> Newsletter';
   $block->content = $output;
 
   return $block;
