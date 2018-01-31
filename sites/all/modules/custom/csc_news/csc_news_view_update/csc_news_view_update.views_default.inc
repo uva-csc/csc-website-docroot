@@ -429,7 +429,7 @@ function csc_news_view_update_views_default_views() {
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['label'] = '';
-  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="news-list-image">[field_featured_image]</div><div class="new-list-desc"><h3><a class="alturl" href="[path_1]" data-alturl="[path]">[title]</a></h3>
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="news-list-image"><a class="alturl" href="[path_1]" data-alturl="[path]">[field_featured_image]</a></div><div class="new-list-desc"><h3><a class="alturl" href="[path_1]" data-alturl="[path]">[title]</a></h3>
 <p>[field_teaser]</p></div>';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['nothing']['element_wrapper_type'] = '0';
