@@ -11,4 +11,16 @@
             }
         }
     };
+    
+    // For News Item list sniff for item's with class alturl if the url is '/node/' then use alt ulr data
+    Drupal.behaviors.alturl = {
+        attach: function(context, settings) {
+            if (context == document) {
+                $('a.alturl').each(function() {
+                    var href = $(this).attr('href');
+                    if (href == '/node/') { $(this).attr('href', $(this).data('alturl')); }
+                });
+            }
+        }
+    };
 }) (jQuery);
