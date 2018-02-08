@@ -3218,59 +3218,44 @@ body.logged-in #content {
 /**
  * Newsletter block
  */
+
 /* line 2260, ../../../../../sass/sites/all/themes/csc/css/style.scss */
-.pane-csc-newsletter {
-  /*position: static;
+ /*.pane-csc-newsletter {
+ position: static;
   bottom: 0px;
   width: 150px;
-  float: left;*/
-  margin-top: -8px !important;
-  margin-bottom: 12px;
-  border-top: 1px solid #ffffff;
-  border-bottom: 1px solid #ffffff;
-  background-color: #2F2F2F !important; /*#e8e7e5; /*#dbdad8;*/
-  padding: 0px;
+  float: left;
 }
 
+
+/*
 .pane-csc-newsletter:hover {
   background: #444444;
 }
-/*
 .pane-csc-newsletter:hover h2.pane-title {
     color: #222222;
 }
 */
-/* line 2269, ../../../../../sass/sites/all/themes/csc/css/style.scss */
-.pane-csc-newsletter h2.pane-title {
-  font-size: 0.9em;
-  margin-bottom: 0px;
-    text-transform: uppercase;
-    text-align: center;
-    font-weight: bold;
-    color: #ededed;
-    font-size: 1.2em;
-}
 
-/* line 2273, ../../../../../sass/sites/all/themes/csc/css/style.scss */
-.pane-csc-newsletter .pane-content {
-  margin: 5px;
-}
-/* line 2277, ../../../../../sass/sites/all/themes/csc/css/style.scss */
-.pane-csc-newsletter .form-item input {
-  width: 90%;
-  font-size: 10px;
-}
 /* line 51, ../../../../../sass/_global.scss */
 .csc-panel-col-left .pane-csc-newsletter {
+  margin-top: -8px !important;
+  margin-bottom: 12px;
+  border-top: 1px solid #ffffff;
+  border-bottom: 1px solid #ffffff;
+  background-color: #eeeeee; /*#2F2F2F !important; /*#e8e7e5; /*#dbdad8;*/
+  padding: 25px 0px 30px
+  /*
   margin-top: 13px;
   background-color: #2f2f2f;
   margin-bottom: 0;
   padding-top: 15px;
   min-height: 120px;
+  */
 }
 
 .csc-panel-col-left .pane-csc-newsletter:hover {
-    background-color: #444444;
+    background-color: #aaaaaa;
 }
 
 .csc-panel-col-left .pane-csc-newsletter a {
@@ -3290,6 +3275,27 @@ body.logged-in #content {
 
 .csc-panel-col-left .pane-csc-newsletter:hover a h2.pane-title {
     color: #ededed;
+}
+
+/* line 2269, ../../../../../sass/sites/all/themes/csc/css/style.scss */
+.pane-csc-newsletter h2.pane-title {
+  font-size: 0.9em;
+  margin-bottom: 0px;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: bold;
+    color: #444444;
+    font-size: 1.2em;
+}
+
+/* line 2273, ../../../../../sass/sites/all/themes/csc/css/style.scss */
+.pane-csc-newsletter .pane-content {
+  margin: 5px;
+}
+/* line 2277, ../../../../../sass/sites/all/themes/csc/css/style.scss */
+.pane-csc-newsletter .form-item input {
+  width: 90%;
+  font-size: 10px;
 }
 
 /** News List & Items **/
@@ -5592,7 +5598,6 @@ div.csc-login-link * {
     height: 40px;
     width: 40px;
 }
-
 
 /* Restricted and not found pages */
 .restricted .csc-3col-col-fluid.csc-3col-first  {
