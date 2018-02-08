@@ -5578,6 +5578,10 @@ div.csc-login-link * {
     margin-top: 6px;
 }   
 
+.pane-social-media-links-social-media-links ul.social-media-links li img {
+    width: 32px;
+}
+
 .restricted .csc-3col-col-fluid.csc-3col-first  {
     width: 100%;
     min-width: 600px;
