@@ -3265,6 +3265,8 @@ body.logged-in #content {
   margin-top: 13px;
   background-color: #2f2f2f;
   margin-bottom: 0;
+  padding-top: 15px;
+  min-height: 120px;
 }
 
 .csc-panel-col-left .pane-csc-newsletter:hover {
@@ -5552,7 +5554,7 @@ div.csc-login-link * {
 
 .pane-social-media-links-social-media-links, .soclnks {
     text-align: center;
-    min-height: 160px;
+    min-height: 150px;
 }
 
 /* line 2293, ../../../../../sass/sites/all/themes/csc/css/style.scss */
@@ -5573,15 +5575,26 @@ div.csc-login-link * {
 
 .pane-social-media-links-social-media-links ul.social-media-links li, .soclnks ul.social-media-links li {
     display: inline-block;
-    float: left;
-    margin-left: 18px;
-    margin-top: 6px;
+    margin: 6px 2px;
 }   
 
 .pane-social-media-links-social-media-links ul.social-media-links li img {
     width: 32px;
+    height: 32px;
 }
 
+/* contact us flyout social media */
+.contact-block-links {
+    text-align: center;
+}
+
+.contact-block-links a img {
+    height: 40px;
+    width: 40px;
+}
+
+
+/* Restricted and not found pages */
 .restricted .csc-3col-col-fluid.csc-3col-first  {
     width: 100%;
     min-width: 600px;
