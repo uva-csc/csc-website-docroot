@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the CSC Panopoly Feature Overrides feature.
+ */
+
+include_once 'csc_panopoly_feature_overrides.features.inc';
