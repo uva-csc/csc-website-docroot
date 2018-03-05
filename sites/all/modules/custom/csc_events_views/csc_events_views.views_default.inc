@@ -845,7 +845,7 @@ if($nodeid){
 }
 
 if ($cp == \'events/all/future\') {
-    $title = $head_title = "Upcoming Events";
+    $title = $head_title = "Future Events";
 } else if ($cp == \'events/all/past\') {
     $title = $head_title = "Past Events";
 }

@@ -107,6 +107,10 @@ function panopoly_widgets_update_dependencies() {
       'linkit' => 7301,
     );
   }
+  $deps['panopoly_widgets'][7021] = array(
+    // Wait for tablefield to update itself.
+    'tablefield' => 7006,
+  );
   return $deps;
 }
 
@@ -441,4 +445,15 @@ function panopoly_widgets_update_7020() {
         ->execute();
     }
   }
+}
+
+/**
+ * Grant new tablefield permission to admin roles. Update field settings.
+ */
+function panopoly_widgets_update_7021() {
+  $roles = user_roles(TRUE, 'configure tablefield');
+  foreach ($roles as $rid => $role) {
+    user_role_grant_permissions($rid, array('always use additional datasources'));
+  }
+  features_revert(array('panopoly_widgets' => array('field_base', 'field_instance')));
 }

@@ -1,0 +1,137 @@
+diff --git a/panopoly_widgets.features.field_base.inc b/panopoly_widgets.features.field_base.inc
+index 0aa3c62..6ddb4d5 100644
+--- a/panopoly_widgets.features.field_base.inc
++++ b/panopoly_widgets.features.field_base.inc
+@@ -195,10 +195,7 @@ function panopoly_widgets_field_default_field_bases() {
+     'indexes' => array(),
+     'locked' => 0,
+     'module' => 'tablefield',
+-    'settings' => array(
+-      'cell_processing' => 0,
+-      'lock_values' => 0,
+-    ),
++    'settings' => array(),
+     'translatable' => 0,
+     'type' => 'tablefield',
+   );
+diff --git a/panopoly_widgets.features.field_instance.inc b/panopoly_widgets.features.field_instance.inc
+index aabd9f7..14b37bf 100644
+--- a/panopoly_widgets.features.field_instance.inc
++++ b/panopoly_widgets.features.field_instance.inc
+@@ -500,21 +500,31 @@ function panopoly_widgets_field_default_field_instances() {
+     'default_value' => array(
+       0 => array(
+         'tablefield' => array(
+-          'cell_0_0' => '',
+-          'cell_0_1' => '',
+-          'cell_1_0' => '',
+-          'cell_1_1' => '',
+-          'cell_2_0' => '',
+-          'cell_2_1' => '',
++          'caption' => NULL,
+           'import' => array(
+             'rebuild_field_basic_table_table_0' => 'Upload CSV',
+             'tablefield_csv_field_basic_table_table_0' => '',
+           ),
++          'paste' => NULL,
+           'rebuild' => array(
+             'count_cols' => 2,
+             'count_rows' => 3,
+             'rebuild' => 'Rebuild Table',
+           ),
++          'tabledata' => array(
++            'row_0' => array(
++              'col_0' => '',
++              'col_1' => '',
++            ),
++            'row_1' => array(
++              'col_0' => '',
++              'col_1' => '',
++            ),
++            'row_2' => array(
++              'col_0' => '',
++              'col_1' => '',
++            ),
++          ),
+         ),
+       ),
+     ),
+@@ -524,7 +534,19 @@ function panopoly_widgets_field_default_field_instances() {
+       'default' => array(
+         'label' => 'hidden',
+         'module' => 'tablefield',
+-        'settings' => array(),
++        'settings' => array(
++          'export_csv' => 0,
++          'header_orientation' => 'Horizontal',
++          'hide_cols_skip_head' => 0,
++          'hide_empty_cols' => 0,
++          'hide_empty_rows' => 0,
++          'hide_header' => 0,
++          'sortable' => FALSE,
++          'sticky_header' => 1,
++          'striping' => 1,
++          'trim_trailing_cols' => 1,
++          'trim_trailing_rows' => 1,
++        ),
+         'type' => 'tablefield_default',
+         'weight' => 0,
+       ),
+@@ -539,7 +561,11 @@ function panopoly_widgets_field_default_field_instances() {
+     'widget' => array(
+       'active' => 0,
+       'module' => 'tablefield',
+-      'settings' => array(),
++      'settings' => array(
++        'cell_processing' => 0,
++        'lock_values' => 0,
++        'restrict_rebuild' => 0,
++      ),
+       'type' => 'tablefield',
+       'weight' => -4,
+     ),
+diff --git a/panopoly_widgets.install b/panopoly_widgets.install
+index 5e7b67b..75b5947 100644
+--- a/panopoly_widgets.install
++++ b/panopoly_widgets.install
+@@ -107,6 +107,10 @@ function panopoly_widgets_update_dependencies() {
+       'linkit' => 7301,
+     );
+   }
++  $deps['panopoly_widgets'][7021] = array(
++    // Wait for tablefield to update itself.
++    'tablefield' => 7006,
++  );
+   return $deps;
+ }
+ 
+@@ -442,3 +446,14 @@ function panopoly_widgets_update_7020() {
+     }
+   }
+ }
++
++/**
++ * Grant new tablefield permission to admin roles. Update field settings.
++ */
++function panopoly_widgets_update_7021() {
++  $roles = user_roles(TRUE, 'configure tablefield');
++  foreach ($roles as $rid => $role) {
++    user_role_grant_permissions($rid, array('always use additional datasources'));
++  }
++  features_revert(array('panopoly_widgets' => array('field_base', 'field_instance')));
++}
+diff --git a/panopoly_widgets.make b/panopoly_widgets.make
+index 497d791..61f33d1 100644
+--- a/panopoly_widgets.make
++++ b/panopoly_widgets.make
+@@ -5,8 +5,9 @@ core = 7.x
+ 
+ ; Panopoly - Contrib - Fields
+ 
+-projects[tablefield][version] = 2.4
++projects[tablefield][version] = 3.1
+ projects[tablefield][subdir] = contrib
++projects[tablefield][patch][2923462] = https://www.drupal.org/files/issues/tablefield-7.x-3.1-duplicate-ids-2923462-14.patch
+ 
+ projects[simple_gmap][version] = 1.2
+ projects[simple_gmap][subdir] = contrib

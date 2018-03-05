@@ -31,10 +31,11 @@ function csc_role_info($subtype, $conf, $contexts) {
 function csc_role_get_roles($index = FALSE) {
 	$roles = array(
 		0 => t('None'),
-		3 => t('Executive'),
-		1 => t('Director'),
-		2 => t('Staff'),
+        5 => t('Advisory Board'),
+        1 => t('Council Member'),
+		3 => t('Executive Circle'),
         4 => t('Intern'),
+		2 => t('Staff'),
 	);
 	if($index) { return $roles[$index]; } else { return $roles; }
 }
