@@ -195,7 +195,10 @@ function panopoly_widgets_field_default_field_bases() {
     'indexes' => array(),
     'locked' => 0,
     'module' => 'tablefield',
-    'settings' => array(),
+    'settings' => array(
+      'cell_processing' => 0,
+      'lock_values' => 0,
+    ),
     'translatable' => 0,
     'type' => 'tablefield',
   );
