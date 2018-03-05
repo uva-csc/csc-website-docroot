@@ -1,7 +1,7 @@
 name = CSC Panopoly Feature Overrides
 description = Panopoly Overrides for CSC Website
 core = 7.x
-package = Features
+package = CSC
 version = 7.x-2.1
 dependencies[] = admin_views
 dependencies[] = apps
