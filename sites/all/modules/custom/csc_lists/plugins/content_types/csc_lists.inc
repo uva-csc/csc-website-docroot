@@ -652,7 +652,7 @@ function csc_lists_semester_render($qry) {
       $node = node_load($row->nid);
       $lng = $node->language;
       if (!empty($node->field_date[$lng][0]['rrule']) && strstr($node->field_date[$lng][0]['rrule'], 'NEVER=1')) {
-          $nerows[] =  theme('csc_lists_item', array('title' => $node->title,
+          $nerows[$node->title] =  theme('csc_lists_item', array('title' => $node->title,
                                           'nid' => $node->nid,
                                           'teaser' => isset($node->field_small_teaser[$lng][0]['value']) ? $node->field_teaser[$lng][0]['value'] : '',
                                           'image' => isset($node->field_featured_image[$lng][0]['uri'])? $node->field_featured_image[$lng][0]['uri'] : '',
@@ -664,6 +664,7 @@ function csc_lists_semester_render($qry) {
   
   // Create the on-going (not-ending = ne) rows
   if (count($nerows) > 0) {
+      ksort($nerows);
       $output .= "<div class='clear'></div><h2 class='lower'>" . t('Ongoing') . "</h2><div class='list-group'>\n";
       foreach($nerows as $rowhtml) {
            $output .= $rowhtml; 
