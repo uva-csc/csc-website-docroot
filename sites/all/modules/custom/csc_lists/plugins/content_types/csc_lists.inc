@@ -521,29 +521,33 @@ function csc_lists_select($sortArg) {
   return $output;
 }
 
+/**
+ * Determine the audience for the class list page
+ */
 function csc_lists_get_audience($page_panel = FALSE) {
-    $audience = (!empty($_GET['audience'])) ? $_GET['audience'] : FALSE;
-    if ($page_panel && !empty($params['audience'])) {
+    $audience = $_GET['audience']; // first check for ?audience=... parameter
+    if ($page_panel && !empty($params['audience'])) { // And check if panel page with panel parameter
         $audience = $params['audience'];
-    }
-    $pth = current_path();
-    if (preg_match('/list\/class\/(.+)\/?$/', $pth, $mtch)) {
-        $audience = $mtch[1];
-        switch($audience) {
-            case 'dropins':
-                $audience = 'drop-in';
-                break;
-            case 'workshops':
-                $audience = 'non-academic';
-                break;
-            case 'retreats':
-                $audience = 'retreat';
-                break;
-            default:
-                $audience = 'academic';
+    } else if (empty($audience)) {  // If audience is empty, then check the path for the class type
+        $pth = current_path();
+        if (preg_match('/list\/class\/(.+)\/?$/', $pth, $mtch)) {
+            $audience = $mtch[1];
+            switch($audience) {
+                case 'dropins':
+                    $audience = 'drop-in';
+                    break;
+                case 'workshops':
+                    $audience = 'non-academic';
+                    break;
+                case 'retreats':
+                    $audience = 'retreat';
+                    break;
+                default:
+                    $audience = 'academic';
+            }
         }
     }
-    if (!$audience) { $audience = 'academic'; }
+    if (empty($audience)) { $audience = 'academic'; } // If it's still empty, then default to academic  Just in case...
     return $audience;
 }
 
