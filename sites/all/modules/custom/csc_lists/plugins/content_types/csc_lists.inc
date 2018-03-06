@@ -607,7 +607,7 @@ function csc_lists_alpha_render($qry){
 
 function csc_lists_year_render($qry){
   $r = db_query($qry);
-
+dpm($qry, 'query in year render');
   $output = ''; $year = '';
   foreach($r as $row){
     $node = node_load($row->nid);

@@ -32,5 +32,10 @@
 	          var myhtml = txt.replace(ptn, '<a href="$2" target="_blank">$1</a>');
 	          $(this).html(myhtml);
 	      });
+	      
+	      // Replace broken images with generic image
+          $('img').on('error', function() {
+                $(this).attr('src', '/sites/all/themes/csc/css/images/generic-image-icon.png');
+          });
     });          
 })(jQuery);
