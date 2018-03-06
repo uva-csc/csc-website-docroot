@@ -6,7 +6,6 @@
             document.getElementById('csc-list-form').submit();
             return false;
         });
-        console.log("here");
         if (window.location.pathname == '/list/class') {
             var ctype = $('.list-filter-wrapper a.selected').text();
             $('p.tbap').prepend(ctype + ' ');
