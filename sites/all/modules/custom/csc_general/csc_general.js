@@ -23,4 +23,31 @@
             }
         }
     };
+    
+    /**
+     * Modify the class node new and edit forms
+     */
+    Drupal.behaviors.classnodeforms = {
+        attach: function(context, settings) {
+            if (context == document) {
+                // Hide the never option on any node page with date *EXCEPT* class edit pages where audience is already 'drop-in'
+                if (!$('body').is('.node-type-class') || $('.form-item-field-audience-und input[checked=checked]').val() != 'drop-in') {
+                    $('#edit-field-date-und-0-rrule-range-of-repeat-count').attr('checked', 'checked');
+                    $('#edit-field-date-und-0-rrule-range-of-repeat-never').parent().hide();
+                } 
+                
+                // Listen to change in class type to show the never option only for classes of type drop-in
+                if ($('body').is('.page-node-add-class') || $('body').is('.page-node-edit.node-type-class')) {
+                    $('#edit-field-audience-und').on('change', function(ev) {
+                        if($(ev.target).val() == 'drop-in') {
+                            $('#edit-field-date-und-0-rrule-range-of-repeat-never').parent().show();
+                        } else {
+                            $('#edit-field-date-und-0-rrule-range-of-repeat-count').attr('checked', 'checked');
+                            $('#edit-field-date-und-0-rrule-range-of-repeat-never').parent().hide();
+                        }
+                    });
+                }
+            }
+        }
+    };
 }) (jQuery);

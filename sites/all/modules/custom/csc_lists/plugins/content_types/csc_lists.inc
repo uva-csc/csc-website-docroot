@@ -555,7 +555,7 @@ function csc_lists_default_render($qry){
     $lng = $node->language;
     $output.= theme('csc_lists_item', array('title' => $node->title,
                                             'nid' => $node->nid,
-                                            'teaser' => isset($node->field_small_teaser[$lng][0]['value']) ? $node->field_small_teaser[$lng][0]['value'] : '',
+                                            'teaser' => isset($node->field_small_teaser[$lng][0]['value']) ? $node->field_teaser[$lng][0]['value'] : '',
                                             'image' => isset($node->field_featured_image[$lng][0]['uri'])? $node->field_featured_image[$lng][0]['uri'] : '',
                                            ));
   }
@@ -578,7 +578,7 @@ function csc_lists_alpha_render($qry){
 		
     $item = theme('csc_lists_item', array('title' => $node->title,
                                           'nid' => $node->nid,
-                                          'teaser' => isset($node->field_small_teaser[$lng][0]['value']) ? $node->field_small_teaser[$lng][0]['value'] : '',
+                                          'teaser' => isset($node->field_small_teaser[$lng][0]['value']) ? $node->field_teaser[$lng][0]['value'] : '',
                                           'image' => $img,
                                          ));
 
@@ -607,14 +607,13 @@ function csc_lists_alpha_render($qry){
 
 function csc_lists_year_render($qry){
   $r = db_query($qry);
-
   $output = ''; $year = '';
   foreach($r as $row){
     $node = node_load($row->nid);
     $lng = $node->language;
     $item = theme('csc_lists_item', array('title' => $node->title,
                                           'nid' => $node->nid,
-                                          'teaser' => isset($node->field_small_teaser[$lng][0]['value']) ? $node->field_small_teaser[$lng][0]['value'] : '',
+                                          'teaser' => isset($node->field_small_teaser[$lng][0]['value']) ? $node->field_teaser[$lng][0]['value'] : '',
                                           'image' => isset($node->field_featured_image[$lng][0]['uri'])? $node->field_featured_image[$lng][0]['uri'] : '',
                                          ));
 
@@ -634,20 +633,51 @@ function csc_lists_year_render($qry){
 /**
  * Organize classes by semester (Fall 2015, etc.). This is default view.
  */
-function csc_lists_semester_render($qry){
+function csc_lists_semester_render($qry) {
   $r = db_query($qry);
+  $ourres = array();
   $output = ''; $semester = '';
   // Figure out current semester to make sure a heading is printed for it
   $today = date('Ymd');
   $current_semester = csc_list_calculate_semester($today, $today);
   // Only set current heading not printed if it is a Spring or Fall semester
   $curr_is_printed = (preg_match('/Spring|Fall/', $current_semester)) ? FALSE : TRUE;
-  foreach($r as $row){
+  
+  // Filter out never ending drop-in classes. Fill array with their markup to append to output
+  $nerows = array();  // not ending or ongoing rows
+  $regrows = array(); // regular rows
+  
+  // Iterate through results and separate the two
+  foreach ($r as $row) {
+      $node = node_load($row->nid);
+      $lng = $node->language;
+      if (!empty($node->field_date[$lng][0]['rrule']) && strstr($node->field_date[$lng][0]['rrule'], 'NEVER=1')) {
+          $nerows[] =  theme('csc_lists_item', array('title' => $node->title,
+                                          'nid' => $node->nid,
+                                          'teaser' => isset($node->field_small_teaser[$lng][0]['value']) ? $node->field_teaser[$lng][0]['value'] : '',
+                                          'image' => isset($node->field_featured_image[$lng][0]['uri'])? $node->field_featured_image[$lng][0]['uri'] : '',
+                                         ));
+      } else {
+          $regrows[] = $row;
+      }
+  }
+  
+  // Create the on-going (not-ending = ne) rows
+  if (count($nerows) > 0) {
+      $output .= "<div class='clear'></div><h2 class='lower'>" . t('Ongoing') . "</h2><div class='list-group'>\n";
+      foreach($nerows as $rowhtml) {
+           $output .= $rowhtml; 
+      }
+      $output .= '</div>';
+  }
+  
+  // Process regular rows into $output
+  foreach ($regrows as $row) {
     $node = node_load($row->nid);
     $lng = $node->language;
     $item = theme('csc_lists_item', array('title' => $node->title,
                                           'nid' => $node->nid,
-                                          'teaser' => isset($node->field_small_teaser[$lng][0]['value']) ? $node->field_small_teaser[$lng][0]['value'] : '',
+                                          'teaser' => isset($node->field_small_teaser[$lng][0]['value']) ? $node->field_teaser[$lng][0]['value'] : '',
                                           'image' => isset($node->field_featured_image[$lng][0]['uri'])? $node->field_featured_image[$lng][0]['uri'] : '',
                                          ));
 
@@ -664,7 +694,7 @@ function csc_lists_semester_render($qry){
       $semester = $mysemester;
       $output .= "<div class='clear'></div><h2 class='lower'>$semester</h2>\n";
       $output .= "<div class='list-group'>$item";
-    }else{
+    } else {
       $output .= $item;
     }
   }
@@ -694,7 +724,7 @@ function csc_lists_school_render($qry){
     $lng = $node->language;
     $item = theme('csc_lists_item', array('title' => $node->title,
                                           'nid' => $node->nid,
-                                          'teaser' => isset($node->field_small_teaser[$lng][0]['value']) ? $node->field_small_teaser[$lng][0]['value'] : '',
+                                          'teaser' => isset($node->field_small_teaser[$lng][0]['value']) ? $node->field_teaser[$lng][0]['value'] : '',
                                           'image' => isset($node->field_featured_image[$lng][0]['uri'])? $node->field_featured_image[$lng][0]['uri'] : '',
                                          ));
 
@@ -721,7 +751,7 @@ function csc_lists_offered_render($qry){
     $lng = $node->language;
     $item = theme('csc_lists_item', array('title' => $node->title,
                                           'nid' => $node->nid,
-                                          'teaser' => isset($node->field_small_teaser[$lng][0]['value']) ? $node->field_small_teaser[$lng][0]['value'] : '',
+                                          'teaser' => isset($node->field_small_teaser[$lng][0]['value']) ? $node->field_teaser[$lng][0]['value'] : '',
                                           'image' => isset($node->field_featured_image[$lng][0]['uri'])? $node->field_featured_image[$lng][0]['uri'] : '',
                                          ));
 
@@ -759,7 +789,7 @@ function csc_lists_consolidate_render($qry){
     $lng = $node->language;
     $item = theme('csc_lists_item', array('title' => $node->title,
                                           'nid' => $node->nid,
-                                          'teaser' => isset($node->field_small_teaser[$lng][0]['value']) ? $node->field_small_teaser[$lng][0]['value'] : '',
+                                          'teaser' => isset($node->field_small_teaser[$lng][0]['value']) ? $node->field_teaser[$lng][0]['value'] : '',
                                           'image' => isset($node->field_featured_image[$lng][0]['uri'])? $node->field_featured_image[$lng][0]['uri'] : '',
                                          ));
 
