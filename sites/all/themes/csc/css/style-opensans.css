@@ -2072,6 +2072,12 @@ input.form-button-disabled:active,
   color: #717171;
 }
 
+/* Specific Form Elements */
+/* Hide the how far in advance to do repeat for never ending dates */
+#edit-field-date-und-0-rrule-range-of-repeat-never + div + div.form-wrapper * {
+    display: none;
+}
+
 /* Animated throbber */
 /* line 1430, ../../../../../sass/sites/all/themes/csc/css/style.scss */
 .js input.form-autocomplete {
