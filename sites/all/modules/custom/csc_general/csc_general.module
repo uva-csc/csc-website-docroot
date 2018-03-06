@@ -29,6 +29,18 @@ function csc_general_menu() {
  * hook_form_alter
  */
 function csc_general_form_alter(&$form, &$form_state, $form_id){
+  // For Class edit forms store the repeat rule in the form so it can be accessed by JS
+  // In csc_general.js use the repeat rule to set the repeat type if it is set because NEVER patch always sets it to on
+  if ($form_id == 'class_node_form') {
+       $node = $form_state['node'];
+      if(!empty($node->field_date['und'][0]['rrule'])) {
+          $form['repeat_rule'] = array(
+                '#type' => 'hidden',
+                '#name' => 'rrule',
+                '#value' => $node->field_date['und'][0]['rrule'],
+           );
+      }
+  }
   if(isset($form['#node_edit_form'])){
     $types = node_type_get_types();
     $type = $types[$form['type']['#value']]->name;
