@@ -1,4 +1,5 @@
 (function($){
+      
     $(window).load(function(){
         $(".add-scroll").mCustomScrollbar();
         if($('#m-3223').find('a').length > 0) { $('#m-3223').find('a')[0].target = '_blank'; }
@@ -33,9 +34,11 @@
 	          $(this).html(myhtml);
 	      });
 	      
-	      // Replace broken images with generic image
-          $('img').on('error', function() {
-                $(this).attr('src', '/sites/all/themes/csc/css/images/generic-image-icon.png');
+	      // Fixing broken images for dev and stage
+          $('img').each(function() {
+                if (!this.complete || typeof this.naturalWidth == "undefined" || this.naturalWidth == 0) {
+                    this.src = '/sites/all/themes/csc/css/images/generic-image-icon.png';
+                }
           });
     });          
 })(jQuery);
