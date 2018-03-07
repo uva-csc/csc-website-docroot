@@ -11,6 +11,7 @@ $plugin = array(
   'defaults' => array(
         'position' => 'right',
         'order' => 'title',
+        'node_count' => '3',
         'link_params' => '',  // parameter to add search string to the "All" link
     ),
 );
@@ -47,6 +48,12 @@ function csc_related_edit_form($form, &$form_state) {
         '#default_value' => (empty($conf['order'])) ? 'right' : $conf['order'],
         '#description' => t('Chose whether to sort list alphabetically by title or by order of the node references'),
     );
+    $form['node_count'] = array(
+        '#type' => 'textfield',
+        '#title' => t('Number of Classes to Show'),
+        '#default_value' => (empty($conf['node_count'])) ? '3' : $conf['node_count'],
+        '#description' => t('How many classes should show in the list? Type "all" to show all nodes'),
+    );
     $form['link_params'] = array(
         '#type' => 'textfield',
         '#title' => t('Link Parameters'),
@@ -77,15 +84,11 @@ function csc_related_classes_render($subtype, $conf, $panel_args, $context = NUL
   $type = 'class';
   $position = (!empty($conf['position'])) ? $conf['position'] : 'right';
   $order = (!empty($conf['order'])) ? $conf['order'] : 'title';
+  $node_count = (!empty($conf['node_count'])) ? $conf['node_count'] : 3;
   $params = (!empty($conf['link_params'])) ? '?' . $conf['link_params'] : '';  // Get the search string param from the settings
   $nids = csc_related_get_nodes($type);
-  dpm($order, $position);
-  if ($order == 'noderef') {
-      $node = menu_get_object();
-      dpm($nids, 'nodes before');
-      _csc_related_classes_order_nodes($nids); 
-      dpm($nids, 'nodes after');
-  }
+  $nids = _csc_related_classes_order_nodes($nids, $order); 
+  $nids = array_slice($nids, 0, $node_count);
   if(is_array($nids) && sizeof($nids) > 0){
     $output = '<div class="see-all"><a href="'. url('list/class/' . csc_related_current_nid()) . $params . '">SEE ALL</a></div>';
     foreach($nids as $nid){
@@ -111,17 +114,25 @@ function csc_related_classes_render($subtype, $conf, $panel_args, $context = NUL
   }
 }
 
-function _csc_related_classes_order_nodes(&$nids) {
+function _csc_related_classes_order_nodes($nids, $order_type) {
     $node = menu_get_object();
-    if (is_object($node) && !empty($node->field_related)) {
-        $order = array();
-        watchdog('csc_related node id', $nid);
-        foreach ($node->field_related['und'] as $n => $ref) {
-            $refid = $ref->target_id;
-            if (in_array($refid, $nids)) { $order[] = $refid; }
+    $order = array();
+    if ($order_type == 'noderef') {
+        if (is_object($node) && !empty($node->field_related)) {
+            foreach ($node->field_related['und'] as $n => $ref) {
+                $refid = $ref['target_id'];
+                if (in_array($refid, $nids)) { $order[] = $refid; }
+            }
         }
-        $nids = $order;
+    } else {
+        foreach ($nids as $nid) {
+            $anod = node_load($nid);
+            $order[$anod->nid] = $anod->title;
+        }
+        asort($order);
+        $order = array_keys($order);
     }
+    return $order;
 }
 
 /**

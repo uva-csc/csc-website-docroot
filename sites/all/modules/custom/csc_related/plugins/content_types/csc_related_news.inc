@@ -28,7 +28,7 @@ function csc_related_news_render($subtype, $conf, $panel_args, $context = NULL) 
   module_load_include('inc', 'csc_related', 'csc_related');
 
   $type = 'news';
-  $nids = csc_related_get_nodes($type);
+  $nids = csc_related_get_nodes($type, 3);
   
   if($nids){
     $output = '<div class="see-all"><a href="'. url('list/news/' . csc_related_current_nid()) .'">SEE ALL</a></div>';
