@@ -7,6 +7,7 @@
                 if ($('.csc-login-link').length > 0 && $('.csc-panel-col-left .csc-panel-inside').length > 0 )  {
                     var llink = $('.csc-login-link').detach();
                     $('.csc-panel-col-left .csc-panel-inside').append(llink);
+                    $('.csc-login-link a').click(function() { window.scrollTo(0,0); }); // Scroll to top of page when clicked
                 }
             }
         }
