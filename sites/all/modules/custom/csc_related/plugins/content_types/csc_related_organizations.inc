@@ -29,7 +29,7 @@ function csc_related_organizations_render($subtype, $conf, $panel_args, $context
   module_load_include('inc', 'csc_related', 'csc_related');
 
   $type = 'organization';
-  $nids = csc_related_get_nodes($type);
+  $nids = csc_related_get_nodes($type, 3);
 
   if($nids){
     $output = '<div class="see-all"><a href="'. url('list/organization/' . csc_related_current_nid()) .'">SEE ALL</a></div>';

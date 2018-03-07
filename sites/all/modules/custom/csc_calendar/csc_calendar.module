@@ -28,7 +28,7 @@ function csc_calendar_init(){
     $('body').on('click','#csc-popup-calendar ul.pager > li > a',function(e){          
       $(this).addClass('my_ajax-processed');
       var url = $(this).attr('href');
-      $('#csc-popup-calendar').empty().html('<img src=\"".$path."/status-active.gif\" style=\"margin-left:50%;\">');        
+      $('#csc-popup-calendar').empty().html('<img src=\"/sites/all/modules/custom/csc_calendar/status-active.gif\" style=\"margin-left:50%;\">');        
       $('#csc-popup-calendar').load(url,'ajax=1',function() {
              Drupal.attachBehaviors('#csc-popup-calendar');
       });

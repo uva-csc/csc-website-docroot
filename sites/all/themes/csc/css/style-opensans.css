@@ -3716,6 +3716,36 @@ div.pane-csc-isotope, div.pane-csc-isotope * {
   border-top: 1px solid #505050;
   position: relative;
 }
+
+/* related classes in middle column should have white background with black font */
+.csc-3col-col-fluid.csc-3col-first .pane-csc-related-classes {
+    background-color: white;
+    color: #222;
+}
+
+.csc-3col-col-fluid.csc-3col-first .pane-csc-related-classes .pane-title {
+    padding-left: 0px;
+}
+
+.csc-3col-col-fluid.csc-3col-first .pane-csc-related-classes article.node h2 a {
+    color: #000000;
+    font-size: 1.3em;
+}
+
+.csc-3col-col-fluid.csc-3col-first .pane-csc-related-classes article.node h2 a:hover {
+    color: #555;
+}
+
+.csc-3col-col-fluid.csc-3col-first .pane-csc-related-classes .see-all a, 
+.csc-3col-col-fluid.csc-3col-first .pane-csc-related-classes article.node .node-readmore a {
+    color: #707070;
+}
+
+.csc-3col-col-fluid.csc-3col-first .pane-csc-related-classes .see-all a:hover, 
+.csc-3col-col-fluid.csc-3col-first .pane-csc-related-classes article.node .node-readmore a:hover {
+    color: #222222;
+}
+
 /* line 2589, ../../../../../sass/sites/all/themes/csc/css/style.scss */
 .pane-csc-related-people h2 a,
 .pane-csc-related-news h2 a {
