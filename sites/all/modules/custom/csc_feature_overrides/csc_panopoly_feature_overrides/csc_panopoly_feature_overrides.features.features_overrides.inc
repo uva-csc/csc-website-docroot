@@ -17,11 +17,14 @@ function csc_panopoly_feature_overrides_features_override_default_overrides() {
   // Exported overrides for: field_instance
   $overrides["field_instance.fieldable_panels_pane-basic_file-field_basic_file_file.widget|settings|imce_filefield_on"] = 0;
   $overrides["field_instance.fieldable_panels_pane-image-field_basic_image_image.settings|image_field_caption"] = 0;
+  $overrides["field_instance.fieldable_panels_pane-image-field_basic_image_image.settings|image_field_caption_wrapper"] = array(
+    'image_field_caption_default' => array(
+      'format' => 'plain_text',
+      'value' => '',
+    ),
+  );
   $overrides["field_instance.fieldable_panels_pane-image-field_basic_image_image.widget|settings|imce_filefield_on"] = 0;
-  $overrides["field_instance.fieldable_panels_pane-image-field_basic_image_link.fieldable_panels_pane-image-field_basic_image_link"]["DELETED"] = TRUE;
-  $overrides["field_instance.fieldable_panels_pane-spotlight-field_basic_spotlight_duration.fieldable_panels_pane-spotlight-field_basic_spotlight_duration"]["DELETED"] = TRUE;
-  $overrides["field_instance.fieldable_panels_pane-spotlight-field_basic_spotlight_pager.fieldable_panels_pane-spotlight-field_basic_spotlight_pager"]["DELETED"] = TRUE;
-  $overrides["field_instance.node-colortile-field_color.widget|type"] = 'color_field_plain_text';
+  $overrides["field_instance.fieldable_panels_pane-image-field_basic_image_image.widget|settings|manualcrop_styles_list|panopoly_image_full"]["DELETED"] = TRUE;
   $overrides["field_instance.node-panopoly_page-body.display|default|module"]["DELETED"] = TRUE;
   $overrides["field_instance.node-panopoly_page-body.display|default|type"] = 'hidden';
   $overrides["field_instance.node-panopoly_page-body.display|featured|module"]["DELETED"] = TRUE;
@@ -45,6 +48,12 @@ function csc_panopoly_feature_overrides_features_override_default_overrides() {
   $overrides["field_instance.node-panopoly_page-field_featured_image.display|teaser|settings|image_style"]["DELETED"] = TRUE;
   $overrides["field_instance.node-panopoly_page-field_featured_image.display|teaser|type"] = 'hidden';
   $overrides["field_instance.node-panopoly_page-field_featured_image.settings|image_field_caption"] = 0;
+  $overrides["field_instance.node-panopoly_page-field_featured_image.settings|image_field_caption_wrapper"] = array(
+    'image_field_caption_default' => array(
+      'format' => 'plain_text',
+      'value' => '',
+    ),
+  );
   $overrides["field_instance.node-panopoly_page-field_featured_image.widget|module"] = 'media';
   $overrides["field_instance.node-panopoly_page-field_featured_image.widget|settings|allowed_schemes"] = array(
     'public' => 'public',
@@ -54,6 +63,7 @@ function csc_panopoly_feature_overrides_features_override_default_overrides() {
   );
   $overrides["field_instance.node-panopoly_page-field_featured_image.widget|settings|browser_plugins"] = array();
   $overrides["field_instance.node-panopoly_page-field_featured_image.widget|settings|imce_filefield_on"] = 0;
+  $overrides["field_instance.node-panopoly_page-field_featured_image.widget|settings|manualcrop_styles_list|panopoly_image_full"]["DELETED"] = TRUE;
   $overrides["field_instance.node-panopoly_page-field_featured_image.widget|type"] = 'media_generic';
   $overrides["field_instance.node-panopoly_page-field_featured_status.display|default|module"]["DELETED"] = TRUE;
   $overrides["field_instance.node-panopoly_page-field_featured_status.display|default|type"] = 'hidden';
@@ -62,7 +72,14 @@ function csc_panopoly_feature_overrides_features_override_default_overrides() {
   $overrides["field_instance.taxonomy_term-panopoly_categories-field_featured_image.display|default|settings|image_style"]["DELETED"] = TRUE;
   $overrides["field_instance.taxonomy_term-panopoly_categories-field_featured_image.display|default|type"] = 'hidden';
   $overrides["field_instance.taxonomy_term-panopoly_categories-field_featured_image.settings|image_field_caption"] = 0;
+  $overrides["field_instance.taxonomy_term-panopoly_categories-field_featured_image.settings|image_field_caption_wrapper"] = array(
+    'image_field_caption_default' => array(
+      'format' => 'plain_text',
+      'value' => '',
+    ),
+  );
   $overrides["field_instance.taxonomy_term-panopoly_categories-field_featured_image.widget|settings|imce_filefield_on"] = 0;
+  $overrides["field_instance.taxonomy_term-panopoly_categories-field_featured_image.widget|settings|manualcrop_styles_list|panopoly_image_full"]["DELETED"] = TRUE;
   $overrides["field_instance.user-user-field_user_about.display|default|module"]["DELETED"] = TRUE;
   $overrides["field_instance.user-user-field_user_about.display|default|type"] = 'hidden';
   $overrides["field_instance.user-user-field_user_picture.display|default|module"]["DELETED"] = TRUE;
@@ -70,7 +87,14 @@ function csc_panopoly_feature_overrides_features_override_default_overrides() {
   $overrides["field_instance.user-user-field_user_picture.display|default|settings|image_style"]["DELETED"] = TRUE;
   $overrides["field_instance.user-user-field_user_picture.display|default|type"] = 'hidden';
   $overrides["field_instance.user-user-field_user_picture.settings|image_field_caption"] = 0;
+  $overrides["field_instance.user-user-field_user_picture.settings|image_field_caption_wrapper"] = array(
+    'image_field_caption_default' => array(
+      'format' => 'plain_text',
+      'value' => '',
+    ),
+  );
   $overrides["field_instance.user-user-field_user_picture.widget|settings|imce_filefield_on"] = 0;
+  $overrides["field_instance.user-user-field_user_picture.widget|settings|manualcrop_styles_list|panopoly_image_full"]["DELETED"] = TRUE;
 
   // Exported overrides for: file_display
   $overrides["file_display.image__default__file_field_file_default.status"] = FALSE;
@@ -124,13 +148,13 @@ function csc_panopoly_feature_overrides_features_override_default_overrides() {
   $overrides["filter.panopoly_wysiwyg_text.filters|wysiwyg|settings|style_table|table-layout"] = 'table-layout';
   $overrides["filter.panopoly_wysiwyg_text.filters|wysiwyg|settings|style_user|cursor"] = 'cursor';
   $overrides["filter.panopoly_wysiwyg_text.filters|wysiwyg|settings|valid_elements"] = '@[style|class],
-  a[!href|target<_blank|title],
-  div[align<center?justify?left?right],
-  br,em,i,strong,cite,code,blockquote,ul,ol,li,dl,dt,dd,hr,
-  span,p,
-  h1,h2,h3,h4,h5,h6,
-  img[!src|title|alt|width|height|hspace|vspace],
-  table,tr,th,td';
+      a[!href|target<_blank|title],
+      div[align<center?justify?left?right],
+      br,em,i,strong,cite,code,blockquote,ul,ol,li,dl,dt,dd,hr,
+      span,p,
+      h1,h2,h3,h4,h5,h6,
+      img[!src|title|alt|width|height|hspace|vspace],
+      table,tr,th,td';
 
   // Exported overrides for: image
   $overrides["image.apps_featured_screenshot.label"] = 'apps_featured_screenshot';
@@ -141,6 +165,7 @@ function csc_panopoly_feature_overrides_features_override_default_overrides() {
   $overrides["image.panopoly_image_featured.effects|0|data|width"] = 720;
   $overrides["image.panopoly_image_featured.effects|1|data|height"] = 390;
   $overrides["image.panopoly_image_featured.effects|1|data|width"] = 720;
+  $overrides["image.panopoly_image_featured.effects|1|weight"] = 2;
   $overrides["image.panopoly_image_featured.effects|2"]["DELETED"] = TRUE;
   $overrides["image.panopoly_image_full.effects|0"]["DELETED"] = TRUE;
   $overrides["image.panopoly_image_full.effects|1"]["DELETED"] = TRUE;
@@ -202,10 +227,6 @@ function csc_panopoly_feature_overrides_features_override_default_overrides() {
   $overrides["linkit_profiles.content_editors.data|search_plugins|entity:search_api_server"]["DELETED"] = TRUE;
   $overrides["linkit_profiles.content_editors.data|text_formats"]["DELETED"] = TRUE;
   $overrides["linkit_profiles.content_editors.profile_type"] = 2;
-
-  // Exported overrides for: node
-  $overrides["node.panopoly_landing_page.help"] = '<p>Here you can set the <em>Landing Page\'s</em> metadata, for example the title, path and menu options.</p>
-  <p>To add content to the page, first save this form and then click the "Customize this page" button.</p>';
 
   // Exported overrides for: page_manager_handlers
   $overrides["page_manager_handlers.node_edit_panel_context.conf|display|content|new-0581ce01-43a7-4745-b1fb-b10754d71419"] = (object) array(
@@ -502,70 +523,6 @@ function csc_panopoly_feature_overrides_features_override_default_overrides() {
   $overrides["page_manager_handlers.node_edit_panel_context.conf|display|uuid"] = '2f3914a5-73cc-4a8c-81b7-4b7400fba22a';
 
   // Exported overrides for: page_manager_pages
-  $overrides["page_manager_pages.news_all_page.default_handlers|page_news_all_page__panel|conf|display|content|new-2aef9923-e74c-4203-bada-42c74f65e1b5"] = (object) array(
-      'pid' => 'new-2aef9923-e74c-4203-bada-42c74f65e1b5',
-      'panel' => 'fixed',
-      'type' => 'csc_newsletter',
-      'subtype' => 'csc_newsletter',
-      'shown' => TRUE,
-      'access' => array(),
-      'configuration' => array(),
-      'cache' => array(),
-      'style' => array(
-        'settings' => NULL,
-      ),
-      'css' => array(),
-      'extras' => array(),
-      'position' => 1,
-      'locks' => array(),
-      'uuid' => '2aef9923-e74c-4203-bada-42c74f65e1b5',
-    );
-  $overrides["page_manager_pages.news_all_page.default_handlers|page_news_all_page__panel|conf|display|content|new-63fef401-36cb-4f74-9283-a0a6f6f2e673"] = (object) array(
-      'pid' => 'new-63fef401-36cb-4f74-9283-a0a6f6f2e673',
-      'panel' => 'fixed',
-      'type' => 'block',
-      'subtype' => 'social_media_links-social-media-links',
-      'shown' => TRUE,
-      'access' => array(),
-      'configuration' => array(
-        'override_title' => 0,
-        'override_title_text' => '',
-        'override_title_heading' => 'h2',
-      ),
-      'cache' => array(),
-      'style' => array(
-        'settings' => NULL,
-      ),
-      'css' => array(),
-      'extras' => array(),
-      'position' => 2,
-      'locks' => array(),
-      'uuid' => '63fef401-36cb-4f74-9283-a0a6f6f2e673',
-    );
-  $overrides["page_manager_pages.news_all_page.default_handlers|page_news_all_page__panel|conf|display|content|new-71356547-218b-4da9-8760-d3630b19fa95"]["DELETED"] = TRUE;
-  $overrides["page_manager_pages.news_all_page.default_handlers|page_news_all_page__panel|conf|display|content|new-c013f47d-68fc-44b0-a126-22e4a69f76f8"] = (object) array(
-      'pid' => 'new-c013f47d-68fc-44b0-a126-22e4a69f76f8',
-      'panel' => 'fluid2',
-      'type' => 'fieldable_panels_pane',
-      'subtype' => 'vuuid:1b9c2510-2b29-48c3-a234-b147275f8ff2',
-      'shown' => TRUE,
-      'access' => array(),
-      'configuration' => array(
-        'view_mode' => 'full',
-      ),
-      'cache' => array(),
-      'style' => array(
-        'settings' => NULL,
-      ),
-      'css' => array(),
-      'extras' => array(),
-      'position' => 0,
-      'locks' => array(),
-      'uuid' => 'c013f47d-68fc-44b0-a126-22e4a69f76f8',
-    );
-  $overrides["page_manager_pages.news_all_page.default_handlers|page_news_all_page__panel|conf|display|panels|fixed|1"] = 'new-2aef9923-e74c-4203-bada-42c74f65e1b5';
-  $overrides["page_manager_pages.news_all_page.default_handlers|page_news_all_page__panel|conf|display|panels|fixed|2"] = 'new-63fef401-36cb-4f74-9283-a0a6f6f2e673';
-  $overrides["page_manager_pages.news_all_page.default_handlers|page_news_all_page__panel|conf|display|panels|fluid2|0"] = 'new-c013f47d-68fc-44b0-a126-22e4a69f76f8';
   $overrides["page_manager_pages.panopoly_search.default_handlers|page_panopoly_search_panel_context_3|conf|display|content|new-0c89e409-2d28-4af8-ac83-c25b4875c518"] = (object) array(
       'pid' => 'new-0c89e409-2d28-4af8-ac83-c25b4875c518',
       'panel' => 'fixed',
@@ -1259,7 +1216,6 @@ function csc_panopoly_feature_overrides_features_override_default_overrides() {
 
   // Exported overrides for: variable
   $overrides["variable.date_popup_authored_enabled_panopoly_landing_page.value"] = 1;
-  $overrides["variable.field_bundle_settings_node__panopoly_landing_page.field_bundle_settings_node__panopoly_landing_page"]["DELETED"] = TRUE;
   $overrides["variable.field_bundle_settings_node__panopoly_page.value|extra_fields|form|path|weight"] = 1;
   $overrides["variable.field_bundle_settings_node__panopoly_page.value|view_modes|email_html"] = array(
     'custom_settings' => FALSE,
@@ -1278,9 +1234,6 @@ function csc_panopoly_feature_overrides_features_override_default_overrides() {
   $overrides["variable.panelizer_defaults_node_panopoly_landing_page.value|view modes|featured"]["DELETED"] = TRUE;
   $overrides["variable.panelizer_defaults_node_panopoly_landing_page.value|view modes|page_manager"]["DELETED"] = TRUE;
   $overrides["variable.panelizer_defaults_node_panopoly_landing_page.value|view modes|teaser"]["DELETED"] = TRUE;
-  $overrides["variable.panelizer_node:panopoly_landing_page:page_manager_selection.panelizer_node:panopoly_landing_page:page_manager_selection"]["DELETED"] = TRUE;
-  $overrides["variable.panelizer_node:panopoly_landing_page_allowed_layouts_default.panelizer_node:panopoly_landing_page_allowed_layouts_default"]["DELETED"] = TRUE;
-  $overrides["variable.panelizer_node:panopoly_landing_page_allowed_types_default.panelizer_node:panopoly_landing_page_allowed_types_default"]["DELETED"] = TRUE;
 
   // Exported overrides for: views_view
   $overrides["views_view.admin_views_file.display|default|display_options|fields|views_bulk_operations|vbo_operations|action::panelizer_set_status_action"]["DELETED"] = TRUE;
@@ -1434,9 +1387,6 @@ function csc_panopoly_feature_overrides_features_override_default_overrides() {
   $overrides["views_view.location_directory.display|default|display_options|arguments|city|summary"] = array(
     'format' => 'default_summary',
   );
-  $overrides["views_view.location_directory.display|default|display_options|arguments|city|summary_options"] = array(
-    'items_per_page' => 25,
-  );
   $overrides["views_view.location_directory.display|default|display_options|arguments|city|title_enable"] = TRUE;
   $overrides["views_view.location_directory.display|default|display_options|arguments|city|transform_dash"]["DELETED"] = TRUE;
   $overrides["views_view.location_directory.display|default|display_options|arguments|city|validate_argument_nid_type"]["DELETED"] = TRUE;
@@ -1462,9 +1412,6 @@ function csc_panopoly_feature_overrides_features_override_default_overrides() {
   $overrides["views_view.location_directory.display|default|display_options|arguments|country|summary"] = array(
     'format' => 'default_summary',
   );
-  $overrides["views_view.location_directory.display|default|display_options|arguments|country|summary_options"] = array(
-    'items_per_page' => 25,
-  );
   $overrides["views_view.location_directory.display|default|display_options|arguments|country|title_enable"] = TRUE;
   $overrides["views_view.location_directory.display|default|display_options|arguments|country|validate_argument_nid_type"]["DELETED"] = TRUE;
   $overrides["views_view.location_directory.display|default|display_options|arguments|country|validate_argument_node_access"]["DELETED"] = TRUE;
@@ -1488,9 +1435,6 @@ function csc_panopoly_feature_overrides_features_override_default_overrides() {
   $overrides["views_view.location_directory.display|default|display_options|arguments|province|style_plugin"]["DELETED"] = TRUE;
   $overrides["views_view.location_directory.display|default|display_options|arguments|province|summary"] = array(
     'format' => 'default_summary',
-  );
-  $overrides["views_view.location_directory.display|default|display_options|arguments|province|summary_options"] = array(
-    'items_per_page' => 25,
   );
   $overrides["views_view.location_directory.display|default|display_options|arguments|province|title_enable"] = TRUE;
   $overrides["views_view.location_directory.display|default|display_options|arguments|province|validate_argument_nid_type"]["DELETED"] = TRUE;
@@ -1543,7 +1487,6 @@ function csc_panopoly_feature_overrides_features_override_default_overrides() {
   $overrides["views_view.location_directory.display|default|display_options|items_per_page"]["DELETED"] = TRUE;
   $overrides["views_view.location_directory.display|default|display_options|offset"]["DELETED"] = TRUE;
   $overrides["views_view.location_directory.display|default|display_options|pager|options"]["DELETED"] = TRUE;
-  $overrides["views_view.location_directory.display|default|display_options|pager|type"] = 'none';
   $overrides["views_view.location_directory.display|default|display_options|row_options"]["DELETED"] = TRUE;
   $overrides["views_view.location_directory.display|default|display_options|row_plugin"]["DELETED"] = TRUE;
   $overrides["views_view.location_directory.display|default|display_options|style_options|order"]["DELETED"] = TRUE;
@@ -1607,7 +1550,6 @@ function csc_panopoly_feature_overrides_features_override_default_overrides() {
   $overrides["views_view.location_table.display|default|display_options|items_per_page"]["DELETED"] = TRUE;
   $overrides["views_view.location_table.display|default|display_options|offset"]["DELETED"] = TRUE;
   $overrides["views_view.location_table.display|default|display_options|pager|options"]["DELETED"] = TRUE;
-  $overrides["views_view.location_table.display|default|display_options|pager|type"] = 'none';
   $overrides["views_view.location_table.display|default|display_options|row_options"]["DELETED"] = TRUE;
   $overrides["views_view.location_table.display|default|display_options|row_plugin"]["DELETED"] = TRUE;
   $overrides["views_view.location_table.display|default|display_options|style_options|order"]["DELETED"] = TRUE;
@@ -1688,7 +1630,6 @@ function csc_panopoly_feature_overrides_features_override_default_overrides() {
   $overrides["views_view.user_location_table.display|default|display_options|items_per_page"]["DELETED"] = TRUE;
   $overrides["views_view.user_location_table.display|default|display_options|offset"]["DELETED"] = TRUE;
   $overrides["views_view.user_location_table.display|default|display_options|pager|options"]["DELETED"] = TRUE;
-  $overrides["views_view.user_location_table.display|default|display_options|pager|type"] = 'none';
   $overrides["views_view.user_location_table.display|default|display_options|row_options"]["DELETED"] = TRUE;
   $overrides["views_view.user_location_table.display|default|display_options|row_plugin"]["DELETED"] = TRUE;
   $overrides["views_view.user_location_table.display|default|display_options|style_options|order"]["DELETED"] = TRUE;
