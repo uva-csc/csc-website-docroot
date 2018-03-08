@@ -21,6 +21,7 @@ function csc_panopoly_feature_overrides_features_override_default_overrides() {
   $overrides["field_instance.fieldable_panels_pane-image-field_basic_image_link.fieldable_panels_pane-image-field_basic_image_link"]["DELETED"] = TRUE;
   $overrides["field_instance.fieldable_panels_pane-spotlight-field_basic_spotlight_duration.fieldable_panels_pane-spotlight-field_basic_spotlight_duration"]["DELETED"] = TRUE;
   $overrides["field_instance.fieldable_panels_pane-spotlight-field_basic_spotlight_pager.fieldable_panels_pane-spotlight-field_basic_spotlight_pager"]["DELETED"] = TRUE;
+  $overrides["field_instance.node-colortile-field_color.widget|type"] = 'color_field_plain_text';
   $overrides["field_instance.node-panopoly_page-body.display|default|module"]["DELETED"] = TRUE;
   $overrides["field_instance.node-panopoly_page-body.display|default|type"] = 'hidden';
   $overrides["field_instance.node-panopoly_page-body.display|featured|module"]["DELETED"] = TRUE;
@@ -501,6 +502,70 @@ function csc_panopoly_feature_overrides_features_override_default_overrides() {
   $overrides["page_manager_handlers.node_edit_panel_context.conf|display|uuid"] = '2f3914a5-73cc-4a8c-81b7-4b7400fba22a';
 
   // Exported overrides for: page_manager_pages
+  $overrides["page_manager_pages.news_all_page.default_handlers|page_news_all_page__panel|conf|display|content|new-2aef9923-e74c-4203-bada-42c74f65e1b5"] = (object) array(
+      'pid' => 'new-2aef9923-e74c-4203-bada-42c74f65e1b5',
+      'panel' => 'fixed',
+      'type' => 'csc_newsletter',
+      'subtype' => 'csc_newsletter',
+      'shown' => TRUE,
+      'access' => array(),
+      'configuration' => array(),
+      'cache' => array(),
+      'style' => array(
+        'settings' => NULL,
+      ),
+      'css' => array(),
+      'extras' => array(),
+      'position' => 1,
+      'locks' => array(),
+      'uuid' => '2aef9923-e74c-4203-bada-42c74f65e1b5',
+    );
+  $overrides["page_manager_pages.news_all_page.default_handlers|page_news_all_page__panel|conf|display|content|new-63fef401-36cb-4f74-9283-a0a6f6f2e673"] = (object) array(
+      'pid' => 'new-63fef401-36cb-4f74-9283-a0a6f6f2e673',
+      'panel' => 'fixed',
+      'type' => 'block',
+      'subtype' => 'social_media_links-social-media-links',
+      'shown' => TRUE,
+      'access' => array(),
+      'configuration' => array(
+        'override_title' => 0,
+        'override_title_text' => '',
+        'override_title_heading' => 'h2',
+      ),
+      'cache' => array(),
+      'style' => array(
+        'settings' => NULL,
+      ),
+      'css' => array(),
+      'extras' => array(),
+      'position' => 2,
+      'locks' => array(),
+      'uuid' => '63fef401-36cb-4f74-9283-a0a6f6f2e673',
+    );
+  $overrides["page_manager_pages.news_all_page.default_handlers|page_news_all_page__panel|conf|display|content|new-71356547-218b-4da9-8760-d3630b19fa95"]["DELETED"] = TRUE;
+  $overrides["page_manager_pages.news_all_page.default_handlers|page_news_all_page__panel|conf|display|content|new-c013f47d-68fc-44b0-a126-22e4a69f76f8"] = (object) array(
+      'pid' => 'new-c013f47d-68fc-44b0-a126-22e4a69f76f8',
+      'panel' => 'fluid2',
+      'type' => 'fieldable_panels_pane',
+      'subtype' => 'vuuid:1b9c2510-2b29-48c3-a234-b147275f8ff2',
+      'shown' => TRUE,
+      'access' => array(),
+      'configuration' => array(
+        'view_mode' => 'full',
+      ),
+      'cache' => array(),
+      'style' => array(
+        'settings' => NULL,
+      ),
+      'css' => array(),
+      'extras' => array(),
+      'position' => 0,
+      'locks' => array(),
+      'uuid' => 'c013f47d-68fc-44b0-a126-22e4a69f76f8',
+    );
+  $overrides["page_manager_pages.news_all_page.default_handlers|page_news_all_page__panel|conf|display|panels|fixed|1"] = 'new-2aef9923-e74c-4203-bada-42c74f65e1b5';
+  $overrides["page_manager_pages.news_all_page.default_handlers|page_news_all_page__panel|conf|display|panels|fixed|2"] = 'new-63fef401-36cb-4f74-9283-a0a6f6f2e673';
+  $overrides["page_manager_pages.news_all_page.default_handlers|page_news_all_page__panel|conf|display|panels|fluid2|0"] = 'new-c013f47d-68fc-44b0-a126-22e4a69f76f8';
   $overrides["page_manager_pages.panopoly_search.default_handlers|page_panopoly_search_panel_context_3|conf|display|content|new-0c89e409-2d28-4af8-ac83-c25b4875c518"] = (object) array(
       'pid' => 'new-0c89e409-2d28-4af8-ac83-c25b4875c518',
       'panel' => 'fixed',
@@ -1660,6 +1725,7 @@ function csc_panopoly_feature_overrides_features_override_default_overrides() {
   $overrides["wysiwyg.panopoly_wysiwyg_text.settings|buttons|default|Font"] = 1;
   $overrides["wysiwyg.panopoly_wysiwyg_text.settings|buttons|default|FontSize"] = 1;
   $overrides["wysiwyg.panopoly_wysiwyg_text.settings|buttons|default|HorizontalRule"] = 1;
+  $overrides["wysiwyg.panopoly_wysiwyg_text.settings|buttons|default|Image"] = 1;
   $overrides["wysiwyg.panopoly_wysiwyg_text.settings|buttons|default|Indent"] = 1;
   $overrides["wysiwyg.panopoly_wysiwyg_text.settings|buttons|default|Italic"] = 1;
   $overrides["wysiwyg.panopoly_wysiwyg_text.settings|buttons|default|JustifyBlock"] = 1;
