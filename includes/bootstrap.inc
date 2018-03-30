@@ -8,7 +8,11 @@
 /**
  * The current system version.
  */
+<<<<<<< HEAD
 define('VERSION', '7.57');
+=======
+define('VERSION', '7.58');
+>>>>>>> hotfix/7.x-2.0.1
 
 /**
  * Core API compatibility.
@@ -2632,6 +2636,10 @@ function _drupal_bootstrap_configuration() {
   timer_start('page');
   // Initialize the configuration, including variables from settings.php.
   drupal_settings_initialize();
+
+  // Sanitize unsafe keys from the request.
+  require_once DRUPAL_ROOT . '/includes/request-sanitizer.inc';
+  DrupalRequestSanitizer::sanitize();
 }
 
 /**
