@@ -8,11 +8,7 @@
 /**
  * The current system version.
  */
-<<<<<<< HEAD
-define('VERSION', '7.57');
-=======
 define('VERSION', '7.58');
->>>>>>> hotfix/7.x-2.0.1
 
 /**
  * Core API compatibility.
