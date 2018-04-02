@@ -32,7 +32,8 @@
                var basepath = Drupal.settings.basePath; 
                $('#csc-right #csc-column-content').html('<img src="/sites/all/modules/custom/csc_calendar/status-active.gif" style="margin-left:50%;">');
                $('#csc-right #csc-column-content').load(newurl, function() {
-                   if (view_mode == 'week') { $('#csc-popup-calendar .pager').hide(); } else { $('#csc-popup-calendar .pager').show(); }
+                   // Week nav arrows hidden because they didn't work. Trying to fix in: CSCWEB-277
+                   //if (view_mode == 'week') { $('#csc-popup-calendar .pager').hide(); } else { $('#csc-popup-calendar .pager').show(); }
                    Drupal.attachBehaviors('#csc-popup-calendar');
                    // Turn links in addresses into markup
                   $('#csc-popup-calendar .views-field-field-location .location span.fn').each(function() {

@@ -3,20 +3,20 @@
  * Implements hook_menu().
  */
 function csc_calendar_menu() {
-  $items = array();
-  $items['csc_calendar'] = array(
+    $items = array();
+    $items['csc_calendar'] = array(
          'page callback'    => 'csc_calendar_page_ajax',
          'page arguments' => array('month'), // TODO: change this to a CSC site setting
          'access arguments' => array('access content'),
          'type'             => MENU_NORMAL_ITEM,
-  );
-  $items['api/csc/calendar/block'] = array(
+    );
+    $items['api/csc/calendar/block'] = array(
          'page callback'    => 'csc_calendar_page_ajax',
-         'page arguments' => array(4),
+         'page arguments' => array(4, 5),
          'access arguments' => array('access content'),
          'type'             => MENU_NORMAL_ITEM,
-  );
-  return $items;
+    );
+    return $items;
 }
 
 function csc_calendar_init(){
@@ -40,15 +40,30 @@ function csc_calendar_init(){
   drupal_add_js($script, 'inline');
 }
 
+
 /**
- * page callback
+ * page callbacks
  */
 
-function csc_calendar_page_ajax($length='month') {
+function csc_calendar_page_ajax($length='month', $week=FALSE) {
     $_SESSION['csc_calendar_type'] = $length;
     $type = 'event_calendar-block_' . $length;
+    if ($length == 'week' && $week) {
+        $type = 'event_calendar-block_week_other';
+    }
     $view_select_form = drupal_get_form('csc_calendar_view_form', $length);
     echo  '<div id="csc-popup-calendar" class="' . $length . '"> ' . drupal_render($view_select_form) . csc_readblock_get($type, 'views') . '</div>';
+    exit();
+}
+
+/**
+ * Ajax week callback for when week is giving as parameter. Calls event_calendar-block_week_other view-display
+ */
+function csc_calendar_page_ajax_week_other() {
+    $_SESSION['csc_calendar_type'] = 'week';
+    $type = 'event_calendar-block_week_other';
+    $view_select_form = drupal_get_form('csc_calendar_view_form', 'week');
+    echo  '<div id="csc-popup-calendar" class="week"> ' . drupal_render($view_select_form) . csc_readblock_get($type, 'views') . '</div>';
     exit();
 }
 
@@ -69,4 +84,18 @@ function csc_calendar_view_form($form, &$form_state, $type = 'month') {
         '#default_value' => $type,
     );
     return $form;
+}
+
+function csc_calendar_views_post_render(&$view, &$output, &$cache) {
+    $vname = $view->name;
+    $display = $view->current_display;
+    $mini = (!empty($_GET['mini'])) ? $_GET['mini'] : FALSE;
+    dpm($display, $vname);
+    if ($vname == 'event_calendar' && ($display == 'block_week' || $mini)) {
+        dpm($mini, 'mini');
+        $sstr = '/\/api\/csc\/calendar\/block\/week[^"]+"/';
+        $repstr = '/api/csc/calendar/block/week/' . $mini . '"';
+        $output = preg_replace($sstr, $repstr, $output);
+        dpm("here");
+    }
 }

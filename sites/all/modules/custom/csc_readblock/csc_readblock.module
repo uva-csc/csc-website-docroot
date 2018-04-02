@@ -12,6 +12,7 @@ function csc_readblock_ctools_plugin_directory($owner, $plugin_type) {
 function csc_readblock_get($delta, $module = 'block'){
   //Load block Important Dates
   $block = block_load($module, $delta);
-  $render_array = _block_get_renderable_array(_block_render_blocks(array($block)));
+  $blocks_render = _block_render_blocks(array($block));
+  $render_array = _block_get_renderable_array($blocks_render);
   return render($render_array);
 }
