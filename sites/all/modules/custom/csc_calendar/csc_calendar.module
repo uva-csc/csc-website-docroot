@@ -6,7 +6,7 @@ function csc_calendar_menu() {
     $items = array();
     $items['csc_calendar'] = array(
          'page callback'    => 'csc_calendar_page_ajax',
-         'page arguments' => array('month'), // TODO: change this to a CSC site setting
+         'page arguments' => array('week'), // TODO: change this to a CSC site setting
          'access arguments' => array('access content'),
          'type'             => MENU_NORMAL_ITEM,
     );
@@ -45,7 +45,7 @@ function csc_calendar_init(){
  * page callbacks
  */
 
-function csc_calendar_page_ajax($length='month', $week=FALSE) {
+function csc_calendar_page_ajax($length='week', $week=FALSE) {
     $_SESSION['csc_calendar_type'] = $length;
     $type = 'event_calendar-block_' . $length;
     if ($length == 'week' && $week) {
@@ -67,7 +67,7 @@ function csc_calendar_page_ajax_week_other() {
     exit();
 }
 
-function csc_calendar_view_form($form, &$form_state, $type = 'month') {
+function csc_calendar_view_form($form, &$form_state, $type = 'week') {
     $form = array(
        '#attributes' => array('class' => 'csc-calendar-view-form'),
     );
@@ -79,7 +79,7 @@ function csc_calendar_view_form($form, &$form_state, $type = 'month') {
             'week' => t('Week'),
             'month' => t('Month'),
             'year' => t('Year'),
-            'list' => t('List'),
+            /*'list' => t('List'),*/
         ),
         '#default_value' => $type,
     );

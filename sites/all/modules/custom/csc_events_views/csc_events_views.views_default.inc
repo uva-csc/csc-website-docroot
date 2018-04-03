@@ -499,6 +499,14 @@ function csc_events_views_views_default_views() {
   $handler->display->display_options['row_plugin'] = 'calendar_entity';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['header'] = FALSE;
+  $handler->display->display_options['defaults']['empty'] = FALSE;
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = '<div class="no-results">No events have been planned for this week yet.</div>';
+  $handler->display->display_options['empty']['area']['format'] = 'panopoly_wysiwyg_text';
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
@@ -702,11 +710,11 @@ function csc_events_views_views_default_views() {
   $handler->display->display_options['arguments']['date_argument']['field'] = 'date_argument';
   $handler->display->display_options['arguments']['date_argument']['default_action'] = 'default';
   $handler->display->display_options['arguments']['date_argument']['default_argument_type'] = 'date';
-  $handler->display->display_options['arguments']['date_argument']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['date_argument']['granularity'] = 'year';
   $handler->display->display_options['arguments']['date_argument']['granularity_reset'] = 0;
   $handler->display->display_options['arguments']['date_argument']['add_delta'] = 'yes';
   $handler->display->display_options['arguments']['date_argument']['date_fields'] = array(
+    'field_data_field_date.field_date_value' => 'field_data_field_date.field_date_value',
     'field_data_field_event_date.field_event_date_value' => 'field_data_field_event_date.field_event_date_value',
   );
 
@@ -795,7 +803,8 @@ function csc_events_views_views_default_views() {
   $handler->display->display_options['arguments']['date_argument']['field'] = 'date_argument';
   $handler->display->display_options['arguments']['date_argument']['default_action'] = 'default';
   $handler->display->display_options['arguments']['date_argument']['default_argument_type'] = 'date';
-  $handler->display->display_options['arguments']['date_argument']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['date_argument']['granularity'] = 'week';
+  $handler->display->display_options['arguments']['date_argument']['granularity_reset'] = 0;
   $handler->display->display_options['arguments']['date_argument']['add_delta'] = 'yes';
   $handler->display->display_options['arguments']['date_argument']['date_fields'] = array(
     'field_data_field_date.field_date_value' => 'field_data_field_date.field_date_value',
@@ -823,6 +832,14 @@ function csc_events_views_views_default_views() {
   $handler->display->display_options['row_plugin'] = 'calendar_entity';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['header'] = FALSE;
+  $handler->display->display_options['defaults']['empty'] = FALSE;
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = '<div class="no-results">No events have been planned for this week yet.</div>';
+  $handler->display->display_options['empty']['area']['format'] = 'panopoly_wysiwyg_text';
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
