@@ -5655,3 +5655,13 @@ div.csc-login-link * {
 .logged-in.restricted .csc-3col-inside .not-logged-in-msg {
     display: none;
 }
+
+/** Maintenance page **/
+.maintenance-page, .maintenance-page *, .maintenance-page * * {
+  background-color: #252525 !important;
+  border: none !important;
+}
+
+.maintenance-page #content .section {
+  color: #ffffff;
+}
