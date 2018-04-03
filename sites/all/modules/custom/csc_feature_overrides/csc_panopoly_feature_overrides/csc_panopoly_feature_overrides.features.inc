@@ -643,18 +643,18 @@ function csc_panopoly_feature_overrides_default_page_manager_handlers_alter(&$da
           'locks' => array(),
           'uuid' => 'edd5febf-95e6-4554-a486-4481da969e37',
         ); /* WAS: '' */
-    $data['node_edit_panel_context']->conf['display']->panels['contentmain'][0] = 'new-a33ad46b-8f12-4020-bb22-95d5055c6097'; /* WAS: 'new-73569090-5f67-47b1-b6a5-634bc8104c2b' */
-    $data['node_edit_panel_context']->conf['display']->panels['contentmain'][1] = 'new-646a54da-4dce-4c04-a911-3d4cbbbe8b9c'; /* WAS: 'new-17fa67de-e033-46f2-bdd8-a138e91da0e4' */
-    $data['node_edit_panel_context']->conf['display']->panels['contentmain'][2] = 'new-850eeb5b-d2f5-4e30-8cde-170ddff1467a'; /* WAS: 'new-fb4920fb-24fa-425e-b6fc-958b5ccd2d52' */
-    $data['node_edit_panel_context']->conf['display']->panels['sidebar'][0] = 'new-6b9f3387-e850-4081-ad22-70e8e0fcb583'; /* WAS: 'new-373bd769-1e08-4ec5-85b6-0a1d2fc759fd' */
-    $data['node_edit_panel_context']->conf['display']->panels['sidebar'][1] = 'new-bf0d67ac-6135-482f-af87-4ffb78f4fcb7'; /* WAS: 'new-51126c95-cf51-4ad6-a27a-11e4260d8023' */
-    $data['node_edit_panel_context']->conf['display']->panels['sidebar'][2] = 'new-1557fa3f-0820-4917-b5a3-2e94dab584d3'; /* WAS: 'new-99f6c0bd-36fd-411b-9833-c0be0fab7548' */
-    $data['node_edit_panel_context']->conf['display']->panels['sidebar'][3] = 'new-c457a13f-1434-40ea-b081-46264ac49bc4'; /* WAS: 'new-e38ab3a3-24d0-4ac2-900e-4ddb0248be0c' */
-    $data['node_edit_panel_context']->conf['display']->panels['sidebar'][4] = 'new-96febc9f-78f6-4052-b0d7-5f079124b924'; /* WAS: 'new-9176b962-e64f-44a6-8ebe-e03ebf0f6c3d' */
-    $data['node_edit_panel_context']->conf['display']->panels['sidebar'][5] = 'new-1f8f9b3f-280d-41c0-ace8-d9d7a65b05cb'; /* WAS: 'new-6e4a98d8-3738-41b9-8c33-4b4c905c6834' */
-    $data['node_edit_panel_context']->conf['display']->panels['sidebar'][6] = 'new-edd5febf-95e6-4554-a486-4481da969e37'; /* WAS: 'new-c0926cca-059c-4bb1-bccd-2838ec7a93f2' */
-    $data['node_edit_panel_context']->conf['display']->panels['sidebar'][7] = 'new-27461e33-2142-496b-bdef-3b4f4f37f390'; /* WAS: '' */
-    $data['node_edit_panel_context']->conf['display']->panels['sidebar'][8] = 'new-0581ce01-43a7-4745-b1fb-b10754d71419'; /* WAS: '' */
+    $data['node_edit_panel_context']->conf['display']->panels['contentmain'][0] = 'new-646a54da-4dce-4c04-a911-3d4cbbbe8b9c'; /* WAS: 'new-73569090-5f67-47b1-b6a5-634bc8104c2b' */
+    $data['node_edit_panel_context']->conf['display']->panels['contentmain'][1] = 'new-850eeb5b-d2f5-4e30-8cde-170ddff1467a'; /* WAS: 'new-17fa67de-e033-46f2-bdd8-a138e91da0e4' */
+    $data['node_edit_panel_context']->conf['display']->panels['contentmain'][2] = 'new-a33ad46b-8f12-4020-bb22-95d5055c6097'; /* WAS: 'new-fb4920fb-24fa-425e-b6fc-958b5ccd2d52' */
+    $data['node_edit_panel_context']->conf['display']->panels['sidebar'][0] = 'new-0581ce01-43a7-4745-b1fb-b10754d71419'; /* WAS: 'new-373bd769-1e08-4ec5-85b6-0a1d2fc759fd' */
+    $data['node_edit_panel_context']->conf['display']->panels['sidebar'][1] = 'new-1557fa3f-0820-4917-b5a3-2e94dab584d3'; /* WAS: 'new-51126c95-cf51-4ad6-a27a-11e4260d8023' */
+    $data['node_edit_panel_context']->conf['display']->panels['sidebar'][2] = 'new-1f8f9b3f-280d-41c0-ace8-d9d7a65b05cb'; /* WAS: 'new-99f6c0bd-36fd-411b-9833-c0be0fab7548' */
+    $data['node_edit_panel_context']->conf['display']->panels['sidebar'][3] = 'new-27461e33-2142-496b-bdef-3b4f4f37f390'; /* WAS: 'new-e38ab3a3-24d0-4ac2-900e-4ddb0248be0c' */
+    $data['node_edit_panel_context']->conf['display']->panels['sidebar'][4] = 'new-6b9f3387-e850-4081-ad22-70e8e0fcb583'; /* WAS: 'new-9176b962-e64f-44a6-8ebe-e03ebf0f6c3d' */
+    $data['node_edit_panel_context']->conf['display']->panels['sidebar'][5] = 'new-96febc9f-78f6-4052-b0d7-5f079124b924'; /* WAS: 'new-6e4a98d8-3738-41b9-8c33-4b4c905c6834' */
+    $data['node_edit_panel_context']->conf['display']->panels['sidebar'][6] = 'new-bf0d67ac-6135-482f-af87-4ffb78f4fcb7'; /* WAS: 'new-c0926cca-059c-4bb1-bccd-2838ec7a93f2' */
+    $data['node_edit_panel_context']->conf['display']->panels['sidebar'][7] = 'new-c457a13f-1434-40ea-b081-46264ac49bc4'; /* WAS: '' */
+    $data['node_edit_panel_context']->conf['display']->panels['sidebar'][8] = 'new-edd5febf-95e6-4554-a486-4481da969e37'; /* WAS: '' */
     $data['node_edit_panel_context']->conf['display']->title_pane = 'new-850eeb5b-d2f5-4e30-8cde-170ddff1467a'; /* WAS: 'new-fb4920fb-24fa-425e-b6fc-958b5ccd2d52' */
     $data['node_edit_panel_context']->conf['display']->uuid = '2f3914a5-73cc-4a8c-81b7-4b7400fba22a'; /* WAS: '56f6d0a5-d0cb-4670-8442-80de25b84871' */
     unset($data['node_edit_panel_context']->conf['display']->content['new-17fa67de-e033-46f2-bdd8-a138e91da0e4']);
@@ -849,19 +849,19 @@ function csc_panopoly_feature_overrides_default_page_manager_pages_alter(&$data)
     $data['panopoly_search']->default_handlers['page_panopoly_search_panel_context_3']->conf['display']->panel_settings['style_settings']['fluid1'] = NULL; /* WAS: '' */
     $data['panopoly_search']->default_handlers['page_panopoly_search_panel_context_3']->conf['display']->panel_settings['style_settings']['fluid2'] = NULL; /* WAS: '' */
     $data['panopoly_search']->default_handlers['page_panopoly_search_panel_context_3']->conf['display']->panels['fixed'] = array(
-      0 => 'new-78b2ab61-7841-4c9e-b063-3ed0e19f9528',
-      1 => 'new-9708aa7d-5cb0-4a6f-9580-c6400ef66e63',
-      2 => 'new-0c89e409-2d28-4af8-ac83-c25b4875c518',
+      0 => 'new-0c89e409-2d28-4af8-ac83-c25b4875c518',
+      1 => 'new-78b2ab61-7841-4c9e-b063-3ed0e19f9528',
+      2 => 'new-9708aa7d-5cb0-4a6f-9580-c6400ef66e63',
     ); /* WAS: '' */
     $data['panopoly_search']->default_handlers['page_panopoly_search_panel_context_3']->conf['display']->panels['fluid1'] = array(
       0 => 'new-3e13a5f8-cf24-4d72-adb1-9fc1cc2e5cbd',
-      1 => 'new-f4183e6c-42a9-4eee-b148-14c9559a3523',
-      2 => 'new-cbef272f-253a-4c15-9d8b-7e907a6618aa',
+      1 => 'new-cbef272f-253a-4c15-9d8b-7e907a6618aa',
+      2 => 'new-f4183e6c-42a9-4eee-b148-14c9559a3523',
     ); /* WAS: '' */
     $data['panopoly_search']->default_handlers['page_panopoly_search_panel_context_3']->conf['display']->panels['fluid2'] = array(
       0 => 'new-70a065f1-4c36-4835-9354-644ecee826f9',
     ); /* WAS: '' */
-    $data['panopoly_search']->default_handlers['page_panopoly_search_panel_context_3']->conf['display']->title_pane = 0; /* WAS: 'new-2693d0e2-3b32-4ca3-87b6-fa2ccec54399' */
+    $data['panopoly_search']->default_handlers['page_panopoly_search_panel_context_3']->conf['display']->title_pane = 'new-f4183e6c-42a9-4eee-b148-14c9559a3523'; /* WAS: 'new-2693d0e2-3b32-4ca3-87b6-fa2ccec54399' */
     $data['panopoly_search']->default_handlers['page_panopoly_search_panel_context_3']->conf['display']->uuid = '8b2bd2f9-1e2b-475a-8d6d-078396b6c17b'; /* WAS: '2d27c2cb-916a-4d51-8a64-9eba5a57a81e' */
     $data['panopoly_search']->default_handlers['page_panopoly_search_panel_context']->conf['display']->content['new-0b8b4180-9210-4ae7-b9e3-0233bbdf0c40'] = (object) array(
           'pid' => 'new-0b8b4180-9210-4ae7-b9e3-0233bbdf0c40',
@@ -965,11 +965,11 @@ function csc_panopoly_feature_overrides_default_page_manager_pages_alter(&$data)
           'uuid' => 'a2f7b2c1-be52-4ef1-81f8-cb414bd52f0e',
         ); /* WAS: '' */
     $data['panopoly_search']->default_handlers['page_panopoly_search_panel_context']->conf['display']->hide_title = 0; /* WAS: 2 */
-    $data['panopoly_search']->default_handlers['page_panopoly_search_panel_context']->conf['display']->panels['contentmain'][0] = 'new-89d7b6f1-fb52-4b6e-a446-732a2b0e4d16'; /* WAS: 'new-15f4a1d6-8bf1-43cd-8ef3-a8b484aabe79' */
-    $data['panopoly_search']->default_handlers['page_panopoly_search_panel_context']->conf['display']->panels['contentmain'][1] = 'new-2da563e5-9dda-43e3-a6db-364c4536091e'; /* WAS: 'new-9315ef28-12fb-4ed8-a491-1c628e698406' */
+    $data['panopoly_search']->default_handlers['page_panopoly_search_panel_context']->conf['display']->panels['contentmain'][0] = 'new-2da563e5-9dda-43e3-a6db-364c4536091e'; /* WAS: 'new-15f4a1d6-8bf1-43cd-8ef3-a8b484aabe79' */
+    $data['panopoly_search']->default_handlers['page_panopoly_search_panel_context']->conf['display']->panels['contentmain'][1] = 'new-89d7b6f1-fb52-4b6e-a446-732a2b0e4d16'; /* WAS: 'new-9315ef28-12fb-4ed8-a491-1c628e698406' */
     $data['panopoly_search']->default_handlers['page_panopoly_search_panel_context']->conf['display']->panels['contentmain'][2] = 'new-a2f7b2c1-be52-4ef1-81f8-cb414bd52f0e'; /* WAS: 'new-25ec26bf-8e25-4163-bf5c-406fed80259d' */
     $data['panopoly_search']->default_handlers['page_panopoly_search_panel_context']->conf['display']->panels['sidebar'][0] = 'new-0b8b4180-9210-4ae7-b9e3-0233bbdf0c40'; /* WAS: 'new-3d1478d7-0f89-424e-824f-82483bc89651' */
-    $data['panopoly_search']->default_handlers['page_panopoly_search_panel_context']->conf['display']->title_pane = 0; /* WAS: 'new-15f4a1d6-8bf1-43cd-8ef3-a8b484aabe79' */
+    $data['panopoly_search']->default_handlers['page_panopoly_search_panel_context']->conf['display']->title_pane = 'new-a2f7b2c1-be52-4ef1-81f8-cb414bd52f0e'; /* WAS: 'new-15f4a1d6-8bf1-43cd-8ef3-a8b484aabe79' */
     $data['panopoly_search']->default_handlers['page_panopoly_search_panel_context']->conf['display']->uuid = 'b00a586b-3993-43f8-a5b5-90afa896347b'; /* WAS: 'b369b7fe-466f-4e52-b315-5070800e6d63' */
     unset($data['panopoly_search']->default_handlers['page_panopoly_search_panel_context_3']->conf['display']->content['new-2693d0e2-3b32-4ca3-87b6-fa2ccec54399']);
     unset($data['panopoly_search']->default_handlers['page_panopoly_search_panel_context_3']->conf['display']->content['new-44eb1f21-6415-4344-ae5a-45172ed2cb8c']);
@@ -1270,22 +1270,22 @@ function csc_panopoly_feature_overrides_panelizer_defaults_override_alter(&$data
     $data['node:panopoly_page:default']->display->panels['fixed'] = array(
       0 => 'new-4e2e56d2-e059-4650-a12d-ba50e9868401',
       1 => 'new-835b50a6-bbd7-4971-81c0-9a7d76abae4c',
-      2 => 'new-f89132a4-56c1-436e-82ae-77eccf45b18c',
-      3 => 'new-ed4d2a85-1473-401f-a4e0-e0d94c2ca699',
+      2 => 'new-ed4d2a85-1473-401f-a4e0-e0d94c2ca699',
+      3 => 'new-f89132a4-56c1-436e-82ae-77eccf45b18c',
     ); /* WAS: '' */
     $data['node:panopoly_page:default']->display->panels['fluid1'] = array(
       0 => 'new-5a7d057c-bc5b-4e5a-9ebe-29b215bbf6da',
-      1 => 'new-e2df6280-bb65-4a65-bbde-9127e87852bc',
+      1 => 'new-70bae994-6dcf-4034-9825-181f454cc884',
       2 => 'new-d79f2d84-4cc9-4eb7-8b14-69fdde8e8509',
-      3 => 'new-70bae994-6dcf-4034-9825-181f454cc884',
+      3 => 'new-e2df6280-bb65-4a65-bbde-9127e87852bc',
     ); /* WAS: '' */
     $data['node:panopoly_page:default']->display->panels['fluid2'] = array(
-      0 => 'new-a8ea8e1c-4cc2-4172-a62a-6e1ea5d5f3d6',
-      1 => 'new-f00439f4-eb70-4eaf-9284-7957047bc727',
+      0 => 'new-2bc509db-cdf6-44ba-a300-59da4e59cf67',
+      1 => 'new-a8ea8e1c-4cc2-4172-a62a-6e1ea5d5f3d6',
       2 => 'new-b570b4d9-b1f8-4ab2-a536-4a739809af00',
-      3 => 'new-2bc509db-cdf6-44ba-a300-59da4e59cf67',
+      3 => 'new-f00439f4-eb70-4eaf-9284-7957047bc727',
     ); /* WAS: '' */
-    $data['node:panopoly_page:default']->display->title_pane = 0; /* WAS: 'new-34b4f35e-bc4b-4819-905c-6b6bf84bffe1' */
+    $data['node:panopoly_page:default']->display->title_pane = 'new-f89132a4-56c1-436e-82ae-77eccf45b18c'; /* WAS: 'new-34b4f35e-bc4b-4819-905c-6b6bf84bffe1' */
     $data['node:panopoly_page:default']->display->uuid = 'e4c588ce-e8eb-43ff-aae6-9f58c56cd20e'; /* WAS: '16346c80-6fcf-4cee-bf7a-9c0173fc2916' */
     $data['node:panopoly_page:default']->pipeline = 'standard'; /* WAS: 'ipe' */
     unset($data['node:panopoly_page:default']->display->content['new-0a2c7b96-5f45-4e85-8e00-88fee50f4f71']);
@@ -1777,7 +1777,6 @@ function csc_panopoly_feature_overrides_views_default_views_alter(&$data) {
     $data['panopoly_database_search']->display['default']->display_options['fields']['body']['settings']['trim_length'] = 300; /* WAS: 600 */
     $data['panopoly_database_search']->display['default']->display_options['fields']['field_featured_image']['delta_first_last'] = TRUE; /* WAS: '' */
     $data['panopoly_database_search']->display['default']->display_options['fields']['field_featured_image']['delta_limit'] = 10; /* WAS: '' */
-    $data['panopoly_database_search']->display['default']->display_options['fields']['field_featured_image']['delta_offset'] = 0; /* WAS: '' */
     $data['panopoly_database_search']->display['search_database_results']->display_options['allow']['use_pager'] = 'use_pager'; /* WAS: 0 */
     unset($data['panopoly_database_search']->display['default']->display_options['fields']['body']['alter']);
     unset($data['panopoly_database_search']->display['default']->display_options['fields']['title']['element_type']);
@@ -1872,7 +1871,6 @@ function csc_panopoly_feature_overrides_wysiwyg_default_profiles_alter(&$data) {
   }
   if (isset($data['panopoly_wysiwyg_text'])) {
     $data['panopoly_wysiwyg_text']['editor'] = 'ckeditor'; /* WAS: 'tinymce' */
-    $data['panopoly_wysiwyg_text']['preferences']['add_to_summaries'] = 0; /* WAS: FALSE */
     $data['panopoly_wysiwyg_text']['preferences']['show_toggle'] = 1; /* WAS: 0 */
     $data['panopoly_wysiwyg_text']['preferences']['version'] = '3.6.3.7474'; /* WAS: '3.5.11' */
     $data['panopoly_wysiwyg_text']['settings']['block_formats'] = 'p,address,pre,h2,h3,h4,h5,h6,div'; /* WAS: '' */
