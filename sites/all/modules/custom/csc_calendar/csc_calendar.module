@@ -105,5 +105,9 @@ function csc_calendar_views_post_render(&$view, &$output, &$cache) {
         $sstr = '/\/api\/csc\/calendar\/block\/week\?[^m]*mini=([^"\&]+)[^"]*"/';
         $repstr = '/api/csc/calendar/block/week/$1"';
         $output = preg_replace($sstr, $repstr, $output);
+        // for beginning week urls: http://www.csc-dev.uvawork.com/csc_calendar?mini=2018-W15
+        $sstr = '/csc_calendar\?mini=(\d+\-W\d+)[^"]*"/';
+        $repstr = '/api/csc/calendar/block/week/$1"';
+        $output = preg_replace($sstr, $repstr, $output);
     }
 }
