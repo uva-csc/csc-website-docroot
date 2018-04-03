@@ -382,8 +382,9 @@ function csc_lists_render($subtype, $conf, $panel_args, $context = NULL) {
   $qry = "SELECT n.nid $fields FROM {node} n $join $tables WHERE n.status = '1' AND $typestr $where $group ORDER BY $sort_by $order";
 
   //$output = csc_lists_select();
-  $output = '<div class="list-items ' . $render_function . '">' . $render_function($qry) . '</div>';
-  $output .= '<script>jQuery(".list-item").dotdotdot({watch: true, height: 150})</script>';
+    $intro = _csc_lists_get_intro_text($panel_args);
+    $output = $intro . '<div class="list-items ' . $render_function . '">' . $render_function($qry) . '</div>';
+    $output .= '<script>jQuery(".list-item").dotdotdot({watch: true, height: 150})</script>';
 
 	$desc = '';
 	/*if ( $type == 'class' ) {
@@ -395,6 +396,45 @@ function csc_lists_render($subtype, $conf, $panel_args, $context = NULL) {
   $block->content = $conf['desctxt'] . csc_lists_select($sort) . '<div class="csc-lists-container">' . $output . '</div><div class="clear"></div>';
 
   return $block;
+}
+
+/**
+ * Get's intro text for certain list pages based on the imploded panel arguments.
+ * First example is class_dropins. Made a custom block in block interface
+ *
+ * @param $pargs
+ * @return string
+ */
+function _csc_lists_get_intro_text($pargs) {
+    $blockname = strtolower(implode(' ', $pargs) . ' list block');  // Create the block name from the panel args
+    //watchdog('csc_lists blockname', $blockname);
+    // Get list of all blocks
+    module_load_include('inc', 'block', 'block.admin');
+    $blocks = block_admin_display_prepare_blocks('csc');
+    // Set vars
+    $module = 'block';
+    $bid = -1;
+    $content = '';
+    //$all = array();
+
+    // Iterate all blocks looking for this lists block
+    foreach($blocks as $block) {
+        //$all[] = strtolower($block['info']);
+        if (strtolower($block['info']) == $blockname) {
+            $bid = $block['delta'];
+            $module = $block['module'];
+            break;
+        }
+    }
+    // If found, return the blocks content
+    if ($bid > -1) {
+        $fn = $module . '_block_view';
+        $block = $fn($bid);
+        if (!empty($block['content'])) {
+            $content = $block['content'];
+        }
+    }
+    return $content; // If nothing matches, this is an empty string
 }
 
 function csc_lists_select($sortArg) {
