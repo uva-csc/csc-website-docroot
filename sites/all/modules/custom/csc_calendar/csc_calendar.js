@@ -2,6 +2,7 @@
     // CSC Calendar behavior to switch views using AJAX.
     Drupal.behaviors.csc_calendar = {
         attach: function(context, settings) {
+            // Only Document context
             if (context == document) {
                 // For year and month mode, redo all day links to load in the calendar slideout.
                 $(document).on('click', '#csc-popup-calendar.year a, #csc-popup-calendar.month .month.day a', function(e) {
@@ -25,6 +26,8 @@
                );
 
             }
+            // For all Contexts
+            // When calendar select is changed
             $('#csc-calendar-view-form #edit-view-select').change(function(e) {
                var view_mode = $(this).val(); 
                $.cookie('csc_calendar_view_mode', view_mode, {'path':'/'});
@@ -44,6 +47,20 @@
                   });
                });
             });
-        }
+
+            // Empty week calendar view
+            var sel = $('.view-display-id-block_week_other .view-content .calendar-calendar .week-view table tbody');
+            if (sel.length > 0) {
+                var eltxt = $.trim($(sel).text());
+                if (eltxt == '') {
+                    $('.view-display-id-block_week_other .view-content .calendar-calendar .week-view table tbody')
+                        .append(
+                            '<!-- added by csc_calendar.js -->' +
+                            '<tr><td colspan="8" style="width: 100%; text-align: center;">' +
+                            'No events scheduled for this week.</td></tr>'
+                    );
+                }
+            }
+        } // end of attach function
     };
 })(jQuery);
