@@ -407,7 +407,7 @@ function csc_lists_render($subtype, $conf, $panel_args, $context = NULL) {
  */
 function _csc_lists_get_intro_text($pargs) {
     $blockname = strtolower(implode(' ', $pargs) . ' list block');  // Create the block name from the panel args
-    watchdog('csc_lists blockname', $blockname);
+    //watchdog('csc_lists blockname', $blockname);
     // Get list of all blocks
     module_load_include('inc', 'block', 'block.admin');
     $blocks = block_admin_display_prepare_blocks('csc');
