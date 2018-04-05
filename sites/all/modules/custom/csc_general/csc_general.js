@@ -35,14 +35,16 @@
                 // NEVER patch automatically checks that one in all cases
                 if ($('body').is('.page-node-edit.node-type-class')) {
                     var rrule = $('input[name=rrule]').val();
-                    if (rrule.search(/UNTIL/) > -1) {
-                        $('#edit-field-date-und-0-rrule-range-of-repeat-until').attr('checked', 'checked');
-                    } else if (rrule.search(/COUNT/) > -1) {
-                         $('#edit-field-date-und-0-rrule-range-of-repeat-count').attr('checked', 'checked');
-                    } else if (rrule.search(/NEVER/) > -1) {
-                        $('#edit-field-date-und-0-rrule-range-of-repeat-never').attr('checked', 'checked');
-                    } else {
-                        $('#edit-field-date-und-0-rrule-range-of-repeat-until').attr('checked', 'checked');
+                    if (typeof(rrule) == 'string' ) {
+                        if (rrule.search(/UNTIL/) > -1) {
+                            $('#edit-field-date-und-0-rrule-range-of-repeat-until').attr('checked', 'checked');
+                        } else if (rrule.search(/COUNT/) > -1) {
+                            $('#edit-field-date-und-0-rrule-range-of-repeat-count').attr('checked', 'checked');
+                        } else if (rrule.search(/NEVER/) > -1) {
+                            $('#edit-field-date-und-0-rrule-range-of-repeat-never').attr('checked', 'checked');
+                        } else {
+                            $('#edit-field-date-und-0-rrule-range-of-repeat-until').attr('checked', 'checked');
+                        }
                     }
                     if ($('.form-item-field-audience-und input[checked=checked]').val() != 'drop-in') {
                         $('#edit-field-date-und-0-rrule-range-of-repeat-never').parent().hide();
