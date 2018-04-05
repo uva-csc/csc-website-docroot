@@ -431,7 +431,7 @@ function _csc_lists_get_intro_text($pargs) {
         $fn = $module . '_block_view';
         $block = $fn($bid);
         if (!empty($block['content'])) {
-            $content = $block['content'];
+            $content = '<div class="list-intro">' . $block['content'] . '</div>';
         }
     }
     return $content; // If nothing matches, this is an empty string

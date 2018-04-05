@@ -4588,6 +4588,12 @@ body.logged-in #content {
   background-color: #e57200;
 }
 
+.pane-csc-lists .list-intro {
+  width: 90%;
+  margin-bottom: -12px;
+}
+
+
 /* event items */
 /* line 3182, ../../../../../sass/sites/all/themes/csc/css/style.scss */
 .pane-node-field-location {
@@ -5395,7 +5401,7 @@ white-space: pre;
 }
 /* line 51, ../../../../../sass/_global.scss */
 body.page-list-class .list-filter-wrapper form {
-  top: 24px;
+  top: 0px;
   right: 0px;
   position: absolute;
 }
