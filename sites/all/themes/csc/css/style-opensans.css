@@ -5510,6 +5510,15 @@ div.csc-login-link * {
     vertical-align: middle;
 }
 
+@media only screen and (max-width: 640px) {
+  div.csc-login-link {
+    display: none;
+    visibility: hidden;
+    height: 0px;
+    width: 0px;
+  }
+}
+
 /** CSC News Page **/
     
 .panel-pane.pane-csc-newsletter.in-page {
