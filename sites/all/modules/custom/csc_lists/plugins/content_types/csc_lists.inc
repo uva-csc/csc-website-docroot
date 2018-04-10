@@ -431,7 +431,7 @@ function _csc_lists_get_intro_text($pargs) {
         $fn = $module . '_block_view';
         $block = $fn($bid);
         if (!empty($block['content'])) {
-            $content = $block['content'];
+            $content = '<div class="list-intro">' . $block['content'] . '</div>';
         }
     }
     return $content; // If nothing matches, this is an empty string
@@ -731,7 +731,9 @@ function csc_lists_semester_render($qry) {
        // If current semester heading is not printed, check to make sure first class is in current semester
        if ($mysemester == $current_semester) { $curr_is_printed = TRUE; }
        // If not then print a header for current semester with "To Be Announced".
-       if (!$curr_is_printed) {
+       $is_prior = _semester_prior_to($mysemester, $current_semester);
+       //dpm($is_prior, 'is prior');
+       if (!$curr_is_printed && $is_prior) {
           $output .= "<div class='clear'></div><h2 class='lower'>$current_semester</h2>\n";
           $output .= "<p class=\"tbap\">To Be Announced!</p>"; // class p.tbap called in csc-lists.js to add class type
           $curr_is_printed = TRUE;
@@ -745,6 +747,39 @@ function csc_lists_semester_render($qry) {
   }
   $output .= '</div>';
   return $output;
+}
+
+// Parses two semester headers e.g. "Spring 2018" and returns whether the first is prior to the second
+function _semester_prior_to($sem1, $sem2) {
+    $sem1 = explode(' ', $sem1);
+    $sem1[0] = strtolower($sem1[0]);
+    $sem2 = explode(' ', $sem2);
+    $sem2[0] = strtolower($sem2[0]);
+
+    // Check year
+    if ($sem1[1] < $sem2[1]) { return TRUE; } // if sem1 year is lesser, then 1 is prior to 2
+    if ($sem1[1] > $sem2[1]) { return FALSE; } // if sem1 year is greater, then 1 is not prior to 2
+
+    // If the year is the same check the semester
+    switch ($sem1[0]) {
+        case 'fall':  // if sem1 is in fall, nothing is greater so it must be lesser
+            return FALSE;
+            break;
+
+        case 'j-term':
+            return TRUE;
+            break;
+
+        case 'spring':
+            if ($sem2[0] == 'summer' || $sem2[0] == 'fall') { return TRUE;}
+            return FALSE;
+            break;
+
+        case 'summer':
+            if ($sem2[0] == 'fall') { return TRUE;}
+            return FALSE;
+            break;
+    }
 }
 
 function csc_list_calculate_semester($start, $end) {
