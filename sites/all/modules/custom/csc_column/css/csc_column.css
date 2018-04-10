@@ -141,7 +141,7 @@ body.admin-menu #csc-right:not(.csc-calendar), body.admin-menu .wedge {
 
 .csc-calendar-view-form .form-item-view-select {
     position: relative;
-    top: -50px;
+    top: -25px;
     width: 25%;
 }
 

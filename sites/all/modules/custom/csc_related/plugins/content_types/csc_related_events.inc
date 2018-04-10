@@ -143,7 +143,8 @@ function theme_csc_related_events_item($var){
          */
       $node = node_load($var['nid']);
       $display = array('label'=> 'hidden', 'settings' => array('format_type' => 'long'));
-      $when = render(field_view_field('node', $node, 'field_event_date', $display));
+      $ra = field_view_field('node', $node, 'field_event_date', $display);
+      $when = render($ra);
     }else{
       $when = theme('date_display_range',$arg);
     }

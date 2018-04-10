@@ -227,7 +227,7 @@ function csc_isotope_get_color_tiles() {
 function csc_isotope_make_color_tile($node) {
     $nid = $node->nid;
     $title = $node->title;
-    $text = strip_tags($node->body['und'][0]['value']);
+    $text = (!empty($node->body['und'])) ? strip_tags($node->body['und'][0]['value']) : '';
     $color = $node->field_color['und'][0]['rgb'];
     $url = '';
     if (!empty($node->field_alternate_path)) {

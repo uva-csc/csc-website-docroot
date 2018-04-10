@@ -31,7 +31,7 @@ function csc_related_research_render($subtype, $conf, $panel_args, $context = NU
   $res = array();
   $types = array('research', 'learning', 'engagement');
   foreach($types as $type){
-    $nids = csc_related_get_nodes($type);
+    $nids = csc_related_get_nodes($type, 3);
     if($nids) $res[] = array('type' => $type, 'nid' => $nids[0]);
   }
 

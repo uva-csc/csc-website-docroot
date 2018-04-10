@@ -1998,7 +1998,6 @@ input.form-submit:focus {
 /* line 1371, ../../../../../sass/sites/all/themes/csc/css/style.scss */
 .form-item {
   margin-bottom: 1em;
-  margin-top: 2px;
 }
 
 /* line 1375, ../../../../../sass/sites/all/themes/csc/css/style.scss */
@@ -2071,6 +2070,12 @@ input.form-button-disabled:active,
 /* line 1425, ../../../../../sass/sites/all/themes/csc/css/style.scss */
 .form-disabled label {
   color: #717171;
+}
+
+/* Specific Form Elements */
+/* Hide the how far in advance to do repeat for never ending dates */
+#edit-field-date-und-0-rrule-range-of-repeat-never + div + div.form-wrapper * {
+    display: none;
 }
 
 /* Animated throbber */
@@ -3218,57 +3223,44 @@ body.logged-in #content {
 /**
  * Newsletter block
  */
+
 /* line 2260, ../../../../../sass/sites/all/themes/csc/css/style.scss */
-.pane-csc-newsletter {
-  /*position: static;
+ /*.pane-csc-newsletter {
+ position: static;
   bottom: 0px;
   width: 150px;
-  float: left;*/
-  margin-top: -8px !important;
-  margin-bottom: 12px;
-  border-top: 1px solid #ffffff;
-  border-bottom: 1px solid #ffffff;
-  background-color: #2F2F2F !important; /*#e8e7e5; /*#dbdad8;*/
-  padding: 0px;
+  float: left;
 }
 
+
+/*
 .pane-csc-newsletter:hover {
   background: #444444;
 }
-/*
 .pane-csc-newsletter:hover h2.pane-title {
     color: #222222;
 }
 */
-/* line 2269, ../../../../../sass/sites/all/themes/csc/css/style.scss */
-.pane-csc-newsletter h2.pane-title {
-  font-size: 0.9em;
-  margin-bottom: 0px;
-    text-transform: uppercase;
-    text-align: center;
-    font-weight: bold;
-    color: #ededed;
-    font-size: 1.2em;
-}
 
-/* line 2273, ../../../../../sass/sites/all/themes/csc/css/style.scss */
-.pane-csc-newsletter .pane-content {
-  margin: 5px;
-}
-/* line 2277, ../../../../../sass/sites/all/themes/csc/css/style.scss */
-.pane-csc-newsletter .form-item input {
-  width: 90%;
-  font-size: 10px;
-}
 /* line 51, ../../../../../sass/_global.scss */
 .csc-panel-col-left .pane-csc-newsletter {
+  margin-top: -8px !important;
+  margin-bottom: 12px;
+  border-top: 1px solid #ffffff;
+  border-bottom: 1px solid #ffffff;
+  background-color: #eeeeee; /*#2F2F2F !important; /*#e8e7e5; /*#dbdad8;*/
+  padding: 25px 0px 30px
+  /*
   margin-top: 13px;
   background-color: #2f2f2f;
   margin-bottom: 0;
+  padding-top: 15px;
+  min-height: 120px;
+  */
 }
 
 .csc-panel-col-left .pane-csc-newsletter:hover {
-    background-color: #444444;
+    background-color: #aaaaaa;
 }
 
 .csc-panel-col-left .pane-csc-newsletter a {
@@ -3280,7 +3272,7 @@ body.logged-in #content {
 
 .csc-panel-col-left .pane-csc-newsletter a h2.pane-title {
     text-transform: uppercase !important;
-    font-size: 1.2em !important;
+    font-size: 1.1em !important;
     text-align: center;
     font-weight: bold;
     letter-space: 1px;
@@ -3288,6 +3280,27 @@ body.logged-in #content {
 
 .csc-panel-col-left .pane-csc-newsletter:hover a h2.pane-title {
     color: #ededed;
+}
+
+/* line 2269, ../../../../../sass/sites/all/themes/csc/css/style.scss */
+.pane-csc-newsletter h2.pane-title {
+  font-size: 0.9em;
+  margin-bottom: 0px;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: bold;
+    color: #444444;
+    font-size: 1.2em;
+}
+
+/* line 2273, ../../../../../sass/sites/all/themes/csc/css/style.scss */
+.pane-csc-newsletter .pane-content {
+  margin: 5px;
+}
+/* line 2277, ../../../../../sass/sites/all/themes/csc/css/style.scss */
+.pane-csc-newsletter .form-item input {
+  width: 90%;
+  font-size: 10px;
 }
 
 /** News List & Items **/
@@ -3703,6 +3716,36 @@ div.pane-csc-isotope, div.pane-csc-isotope * {
   border-top: 1px solid #505050;
   position: relative;
 }
+
+/* related classes in middle column should have white background with black font */
+.csc-3col-col-fluid.csc-3col-first .pane-csc-related-classes {
+    background-color: white;
+    color: #222;
+}
+
+.csc-3col-col-fluid.csc-3col-first .pane-csc-related-classes .pane-title {
+    padding-left: 0px;
+}
+
+.csc-3col-col-fluid.csc-3col-first .pane-csc-related-classes article.node h2 a {
+    color: #000000;
+    font-size: 1.3em;
+}
+
+.csc-3col-col-fluid.csc-3col-first .pane-csc-related-classes article.node h2 a:hover {
+    color: #555;
+}
+
+.csc-3col-col-fluid.csc-3col-first .pane-csc-related-classes .see-all a, 
+.csc-3col-col-fluid.csc-3col-first .pane-csc-related-classes article.node .node-readmore a {
+    color: #707070;
+}
+
+.csc-3col-col-fluid.csc-3col-first .pane-csc-related-classes .see-all a:hover, 
+.csc-3col-col-fluid.csc-3col-first .pane-csc-related-classes article.node .node-readmore a:hover {
+    color: #222222;
+}
+
 /* line 2589, ../../../../../sass/sites/all/themes/csc/css/style.scss */
 .pane-csc-related-people h2 a,
 .pane-csc-related-news h2 a {
@@ -4545,6 +4588,12 @@ body.logged-in #content {
   background-color: #e57200;
 }
 
+.pane-csc-lists .list-intro {
+  width: 90%;
+  margin-bottom: -12px;
+}
+
+
 /* event items */
 /* line 3182, ../../../../../sass/sites/all/themes/csc/css/style.scss */
 .pane-node-field-location {
@@ -5352,7 +5401,7 @@ white-space: pre;
 }
 /* line 51, ../../../../../sass/_global.scss */
 body.page-list-class .list-filter-wrapper form {
-  top: 24px;
+  top: 0px;
   right: 0px;
   position: absolute;
 }
@@ -5467,6 +5516,15 @@ div.csc-login-link * {
     vertical-align: middle;
 }
 
+@media only screen and (max-width: 640px) {
+  div.csc-login-link {
+    display: none;
+    visibility: hidden;
+    height: 0px;
+    width: 0px;
+  }
+}
+
 /** CSC News Page **/
     
 .panel-pane.pane-csc-newsletter.in-page {
@@ -5552,7 +5610,7 @@ div.csc-login-link * {
 
 .pane-social-media-links-social-media-links, .soclnks {
     text-align: center;
-    min-height: 160px;
+    min-height: 150px;
 }
 
 /* line 2293, ../../../../../sass/sites/all/themes/csc/css/style.scss */
@@ -5573,11 +5631,25 @@ div.csc-login-link * {
 
 .pane-social-media-links-social-media-links ul.social-media-links li, .soclnks ul.social-media-links li {
     display: inline-block;
-    float: left;
-    margin-left: 18px;
-    margin-top: 6px;
+    margin: 6px 2px;
 }   
 
+.pane-social-media-links-social-media-links ul.social-media-links li img {
+    width: 32px;
+    height: 32px;
+}
+
+/* contact us flyout social media */
+.contact-block-links {
+    text-align: center;
+}
+
+.contact-block-links a img {
+    height: 40px;
+    width: 40px;
+}
+
+/* Restricted and not found pages */
 .restricted .csc-3col-col-fluid.csc-3col-first  {
     width: 100%;
     min-width: 600px;
@@ -5597,4 +5669,14 @@ div.csc-login-link * {
 
 .logged-in.restricted .csc-3col-inside .not-logged-in-msg {
     display: none;
+}
+
+/** Maintenance page **/
+.maintenance-page, .maintenance-page *, .maintenance-page * * {
+  background-color: #252525 !important;
+  border: none !important;
+}
+
+.maintenance-page #content .section {
+  color: #ffffff;
 }

@@ -382,8 +382,9 @@ function csc_lists_render($subtype, $conf, $panel_args, $context = NULL) {
   $qry = "SELECT n.nid $fields FROM {node} n $join $tables WHERE n.status = '1' AND $typestr $where $group ORDER BY $sort_by $order";
 
   //$output = csc_lists_select();
-  $output = '<div class="list-items ' . $render_function . '">' . $render_function($qry) . '</div>';
-  $output .= '<script>jQuery(".list-item").dotdotdot({watch: true, height: 150})</script>';
+    $intro = _csc_lists_get_intro_text($panel_args);
+    $output = $intro . '<div class="list-items ' . $render_function . '">' . $render_function($qry) . '</div>';
+    $output .= '<script>jQuery(".list-item").dotdotdot({watch: true, height: 150})</script>';
 
 	$desc = '';
 	/*if ( $type == 'class' ) {
@@ -395,6 +396,45 @@ function csc_lists_render($subtype, $conf, $panel_args, $context = NULL) {
   $block->content = $conf['desctxt'] . csc_lists_select($sort) . '<div class="csc-lists-container">' . $output . '</div><div class="clear"></div>';
 
   return $block;
+}
+
+/**
+ * Get's intro text for certain list pages based on the imploded panel arguments.
+ * First example is class_dropins. Made a custom block in block interface
+ *
+ * @param $pargs
+ * @return string
+ */
+function _csc_lists_get_intro_text($pargs) {
+    $blockname = strtolower(implode(' ', $pargs) . ' list block');  // Create the block name from the panel args
+    //watchdog('csc_lists blockname', $blockname);
+    // Get list of all blocks
+    module_load_include('inc', 'block', 'block.admin');
+    $blocks = block_admin_display_prepare_blocks('csc');
+    // Set vars
+    $module = 'block';
+    $bid = -1;
+    $content = '';
+    //$all = array();
+
+    // Iterate all blocks looking for this lists block
+    foreach($blocks as $block) {
+        //$all[] = strtolower($block['info']);
+        if (strtolower($block['info']) == $blockname) {
+            $bid = $block['delta'];
+            $module = $block['module'];
+            break;
+        }
+    }
+    // If found, return the blocks content
+    if ($bid > -1) {
+        $fn = $module . '_block_view';
+        $block = $fn($bid);
+        if (!empty($block['content'])) {
+            $content = '<div class="list-intro">' . $block['content'] . '</div>';
+        }
+    }
+    return $content; // If nothing matches, this is an empty string
 }
 
 function csc_lists_select($sortArg) {
@@ -521,29 +561,33 @@ function csc_lists_select($sortArg) {
   return $output;
 }
 
+/**
+ * Determine the audience for the class list page
+ */
 function csc_lists_get_audience($page_panel = FALSE) {
-    $audience = (!empty($_GET['audience'])) ? $_GET['audience'] : FALSE;
-    if ($page_panel && !empty($params['audience'])) {
+    $audience = $_GET['audience']; // first check for ?audience=... parameter
+    if ($page_panel && !empty($params['audience'])) { // And check if panel page with panel parameter
         $audience = $params['audience'];
-    }
-    $pth = current_path();
-    if (preg_match('/list\/class\/(.+)\/?$/', $pth, $mtch)) {
-        $audience = $mtch[1];
-        switch($audience) {
-            case 'dropins':
-                $audience = 'drop-in';
-                break;
-            case 'workshops':
-                $audience = 'non-academic';
-                break;
-            case 'retreats':
-                $audience = 'retreat';
-                break;
-            default:
-                $audience = 'academic';
+    } else if (empty($audience)) {  // If audience is empty, then check the path for the class type
+        $pth = current_path();
+        if (preg_match('/list\/class\/(.+)\/?$/', $pth, $mtch)) {
+            $audience = $mtch[1];
+            switch($audience) {
+                case 'dropins':
+                    $audience = 'drop-in';
+                    break;
+                case 'workshops':
+                    $audience = 'non-academic';
+                    break;
+                case 'retreats':
+                    $audience = 'retreat';
+                    break;
+                default:
+                    $audience = 'academic';
+            }
         }
     }
-    if (!$audience) { $audience = 'academic'; }
+    if (empty($audience)) { $audience = 'academic'; } // If it's still empty, then default to academic  Just in case...
     return $audience;
 }
 
@@ -555,7 +599,7 @@ function csc_lists_default_render($qry){
     $lng = $node->language;
     $output.= theme('csc_lists_item', array('title' => $node->title,
                                             'nid' => $node->nid,
-                                            'teaser' => isset($node->field_small_teaser[$lng][0]['value']) ? $node->field_small_teaser[$lng][0]['value'] : '',
+                                            'teaser' => isset($node->field_small_teaser[$lng][0]['value']) ? $node->field_teaser[$lng][0]['value'] : '',
                                             'image' => isset($node->field_featured_image[$lng][0]['uri'])? $node->field_featured_image[$lng][0]['uri'] : '',
                                            ));
   }
@@ -578,7 +622,7 @@ function csc_lists_alpha_render($qry){
 		
     $item = theme('csc_lists_item', array('title' => $node->title,
                                           'nid' => $node->nid,
-                                          'teaser' => isset($node->field_small_teaser[$lng][0]['value']) ? $node->field_small_teaser[$lng][0]['value'] : '',
+                                          'teaser' => isset($node->field_small_teaser[$lng][0]['value']) ? $node->field_teaser[$lng][0]['value'] : '',
                                           'image' => $img,
                                          ));
 
@@ -607,14 +651,13 @@ function csc_lists_alpha_render($qry){
 
 function csc_lists_year_render($qry){
   $r = db_query($qry);
-
   $output = ''; $year = '';
   foreach($r as $row){
     $node = node_load($row->nid);
     $lng = $node->language;
     $item = theme('csc_lists_item', array('title' => $node->title,
                                           'nid' => $node->nid,
-                                          'teaser' => isset($node->field_small_teaser[$lng][0]['value']) ? $node->field_small_teaser[$lng][0]['value'] : '',
+                                          'teaser' => isset($node->field_small_teaser[$lng][0]['value']) ? $node->field_teaser[$lng][0]['value'] : '',
                                           'image' => isset($node->field_featured_image[$lng][0]['uri'])? $node->field_featured_image[$lng][0]['uri'] : '',
                                          ));
 
@@ -634,20 +677,52 @@ function csc_lists_year_render($qry){
 /**
  * Organize classes by semester (Fall 2015, etc.). This is default view.
  */
-function csc_lists_semester_render($qry){
+function csc_lists_semester_render($qry) {
   $r = db_query($qry);
+  $ourres = array();
   $output = ''; $semester = '';
   // Figure out current semester to make sure a heading is printed for it
   $today = date('Ymd');
   $current_semester = csc_list_calculate_semester($today, $today);
   // Only set current heading not printed if it is a Spring or Fall semester
   $curr_is_printed = (preg_match('/Spring|Fall/', $current_semester)) ? FALSE : TRUE;
-  foreach($r as $row){
+  
+  // Filter out never ending drop-in classes. Fill array with their markup to append to output
+  $nerows = array();  // not ending or ongoing rows
+  $regrows = array(); // regular rows
+  
+  // Iterate through results and separate the two
+  foreach ($r as $row) {
+      $node = node_load($row->nid);
+      $lng = $node->language;
+      if (!empty($node->field_date[$lng][0]['rrule']) && strstr($node->field_date[$lng][0]['rrule'], 'NEVER=1')) {
+          $nerows[$node->title] =  theme('csc_lists_item', array('title' => $node->title,
+                                          'nid' => $node->nid,
+                                          'teaser' => isset($node->field_small_teaser[$lng][0]['value']) ? $node->field_teaser[$lng][0]['value'] : '',
+                                          'image' => isset($node->field_featured_image[$lng][0]['uri'])? $node->field_featured_image[$lng][0]['uri'] : '',
+                                         ));
+      } else {
+          $regrows[] = $row;
+      }
+  }
+  
+  // Create the on-going (not-ending = ne) rows
+  if (count($nerows) > 0) {
+      ksort($nerows);
+      $output .= "<div class='clear'></div><h2 class='lower'>" . t('Ongoing') . "</h2><div class='list-group'>\n";
+      foreach($nerows as $rowhtml) {
+           $output .= $rowhtml; 
+      }
+      $output .= '</div>';
+  }
+  
+  // Process regular rows into $output
+  foreach ($regrows as $row) {
     $node = node_load($row->nid);
     $lng = $node->language;
     $item = theme('csc_lists_item', array('title' => $node->title,
                                           'nid' => $node->nid,
-                                          'teaser' => isset($node->field_small_teaser[$lng][0]['value']) ? $node->field_small_teaser[$lng][0]['value'] : '',
+                                          'teaser' => isset($node->field_small_teaser[$lng][0]['value']) ? $node->field_teaser[$lng][0]['value'] : '',
                                           'image' => isset($node->field_featured_image[$lng][0]['uri'])? $node->field_featured_image[$lng][0]['uri'] : '',
                                          ));
 
@@ -656,7 +731,9 @@ function csc_lists_semester_render($qry){
        // If current semester heading is not printed, check to make sure first class is in current semester
        if ($mysemester == $current_semester) { $curr_is_printed = TRUE; }
        // If not then print a header for current semester with "To Be Announced".
-       if (!$curr_is_printed) {
+       $is_prior = _semester_prior_to($mysemester, $current_semester);
+       //dpm($is_prior, 'is prior');
+       if (!$curr_is_printed && $is_prior) {
           $output .= "<div class='clear'></div><h2 class='lower'>$current_semester</h2>\n";
           $output .= "<p class=\"tbap\">To Be Announced!</p>"; // class p.tbap called in csc-lists.js to add class type
           $curr_is_printed = TRUE;
@@ -664,12 +741,45 @@ function csc_lists_semester_render($qry){
       $semester = $mysemester;
       $output .= "<div class='clear'></div><h2 class='lower'>$semester</h2>\n";
       $output .= "<div class='list-group'>$item";
-    }else{
+    } else {
       $output .= $item;
     }
   }
   $output .= '</div>';
   return $output;
+}
+
+// Parses two semester headers e.g. "Spring 2018" and returns whether the first is prior to the second
+function _semester_prior_to($sem1, $sem2) {
+    $sem1 = explode(' ', $sem1);
+    $sem1[0] = strtolower($sem1[0]);
+    $sem2 = explode(' ', $sem2);
+    $sem2[0] = strtolower($sem2[0]);
+
+    // Check year
+    if ($sem1[1] < $sem2[1]) { return TRUE; } // if sem1 year is lesser, then 1 is prior to 2
+    if ($sem1[1] > $sem2[1]) { return FALSE; } // if sem1 year is greater, then 1 is not prior to 2
+
+    // If the year is the same check the semester
+    switch ($sem1[0]) {
+        case 'fall':  // if sem1 is in fall, nothing is greater so it must be lesser
+            return FALSE;
+            break;
+
+        case 'j-term':
+            return TRUE;
+            break;
+
+        case 'spring':
+            if ($sem2[0] == 'summer' || $sem2[0] == 'fall') { return TRUE;}
+            return FALSE;
+            break;
+
+        case 'summer':
+            if ($sem2[0] == 'fall') { return TRUE;}
+            return FALSE;
+            break;
+    }
 }
 
 function csc_list_calculate_semester($start, $end) {
@@ -694,7 +804,7 @@ function csc_lists_school_render($qry){
     $lng = $node->language;
     $item = theme('csc_lists_item', array('title' => $node->title,
                                           'nid' => $node->nid,
-                                          'teaser' => isset($node->field_small_teaser[$lng][0]['value']) ? $node->field_small_teaser[$lng][0]['value'] : '',
+                                          'teaser' => isset($node->field_small_teaser[$lng][0]['value']) ? $node->field_teaser[$lng][0]['value'] : '',
                                           'image' => isset($node->field_featured_image[$lng][0]['uri'])? $node->field_featured_image[$lng][0]['uri'] : '',
                                          ));
 
@@ -721,7 +831,7 @@ function csc_lists_offered_render($qry){
     $lng = $node->language;
     $item = theme('csc_lists_item', array('title' => $node->title,
                                           'nid' => $node->nid,
-                                          'teaser' => isset($node->field_small_teaser[$lng][0]['value']) ? $node->field_small_teaser[$lng][0]['value'] : '',
+                                          'teaser' => isset($node->field_small_teaser[$lng][0]['value']) ? $node->field_teaser[$lng][0]['value'] : '',
                                           'image' => isset($node->field_featured_image[$lng][0]['uri'])? $node->field_featured_image[$lng][0]['uri'] : '',
                                          ));
 
@@ -759,7 +869,7 @@ function csc_lists_consolidate_render($qry){
     $lng = $node->language;
     $item = theme('csc_lists_item', array('title' => $node->title,
                                           'nid' => $node->nid,
-                                          'teaser' => isset($node->field_small_teaser[$lng][0]['value']) ? $node->field_small_teaser[$lng][0]['value'] : '',
+                                          'teaser' => isset($node->field_small_teaser[$lng][0]['value']) ? $node->field_teaser[$lng][0]['value'] : '',
                                           'image' => isset($node->field_featured_image[$lng][0]['uri'])? $node->field_featured_image[$lng][0]['uri'] : '',
                                          ));
 

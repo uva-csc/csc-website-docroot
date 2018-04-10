@@ -1,4 +1,5 @@
 (function($){
+      
     $(window).load(function(){
         $(".add-scroll").mCustomScrollbar();
         if($('#m-3223').find('a').length > 0) { $('#m-3223').find('a')[0].target = '_blank'; }
@@ -32,5 +33,15 @@
 	          var myhtml = txt.replace(ptn, '<a href="$2" target="_blank">$1</a>');
 	          $(this).html(myhtml);
 	      });
+	      
+	      // Fixing broken images for dev and stage
+          $('img').each(function() {
+                if (!this.complete || typeof this.naturalWidth == "undefined" || this.naturalWidth == 0) {
+                    this.src = '/sites/all/themes/csc/css/images/generic-image-icon.png';
+                }
+          });
+          
+          // login link
+          $('.csc-login-link a').click(function() { window.scrollTo(0,0); });
     });          
 })(jQuery);

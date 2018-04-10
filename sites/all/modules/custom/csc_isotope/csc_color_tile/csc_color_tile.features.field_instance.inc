@@ -208,7 +208,7 @@ function csc_color_tile_field_default_field_instances() {
       'active' => 0,
       'module' => 'color_field',
       'settings' => array(),
-      'type' => 'color_field_default_widget',
+      'type' => 'color_field_plain_text',
       'weight' => 2,
     ),
   );

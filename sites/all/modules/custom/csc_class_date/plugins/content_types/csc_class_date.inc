@@ -124,7 +124,15 @@ function csc_class_date_repeat_rule_render($rulestr, $t1='', $t2='') {
 										'@starttime' => csc_class_date_parse_time($t1),
 										'@enddate' => $enddate,
 								));
-		} else {
+		} elseif (empty($enddate)) {
+            $outstr = t("Beginning @startdate<br/>Every @int@day from @starttime to @endtime", array(
+                                        '@int' => $prefix, 
+                                        '@day' => $dayst, 
+                                        '@starttime' => csc_class_date_parse_time($t1),
+                                        '@startdate' => csc_class_date_parse_time($t1, 'date'),
+                                        '@endtime' => csc_class_date_parse_time($t2),
+                                ));
+        } else {
 			$outstr = t("@startdate - @enddate<br/>Every @int@day from @starttime to @endtime", array(
 										'@int' => $prefix, 
 										'@day' => $dayst, 
