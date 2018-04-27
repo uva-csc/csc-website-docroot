@@ -8,3 +8,5 @@ sites/*/private
 # IDE Files
 .idea
 .idea/*
+.project
+.editorconfig

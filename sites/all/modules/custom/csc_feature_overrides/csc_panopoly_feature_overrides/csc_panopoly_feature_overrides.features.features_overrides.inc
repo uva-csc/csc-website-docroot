@@ -148,13 +148,13 @@ function csc_panopoly_feature_overrides_features_override_default_overrides() {
   $overrides["filter.panopoly_wysiwyg_text.filters|wysiwyg|settings|style_table|table-layout"] = 'table-layout';
   $overrides["filter.panopoly_wysiwyg_text.filters|wysiwyg|settings|style_user|cursor"] = 'cursor';
   $overrides["filter.panopoly_wysiwyg_text.filters|wysiwyg|settings|valid_elements"] = '@[style|class],
-      a[!href|target<_blank|title],
-      div[align<center?justify?left?right],
-      br,em,i,strong,cite,code,blockquote,ul,ol,li,dl,dt,dd,hr,
-      span,p,
-      h1,h2,h3,h4,h5,h6,
-      img[!src|title|alt|width|height|hspace|vspace],
-      table,tr,th,td';
+          a[!href|target<_blank|title],
+          div[align<center?justify?left?right],
+          br,em,i,strong,cite,code,blockquote,ul,ol,li,dl,dt,dd,hr,
+          span,p,
+          h1,h2,h3,h4,h5,h6,
+          img[!src|title|alt|width|height|hspace|vspace],
+          table,tr,th,td';
 
   // Exported overrides for: image
   $overrides["image.apps_featured_screenshot.label"] = 'apps_featured_screenshot';
@@ -162,6 +162,7 @@ function csc_panopoly_feature_overrides_features_override_default_overrides() {
   $overrides["image.apps_logo_small.label"] = 'apps_logo_small';
   $overrides["image.apps_screenshot.label"] = 'apps_screenshot';
   $overrides["image.linkit_thumb.label"] = 'linkit_thumb';
+  $overrides["image.panopoly_image_featured.effects|0|data|upscale"] = 1;
   $overrides["image.panopoly_image_featured.effects|0|data|width"] = 720;
   $overrides["image.panopoly_image_featured.effects|1|data|height"] = 390;
   $overrides["image.panopoly_image_featured.effects|1|data|width"] = 720;
@@ -407,7 +408,7 @@ function csc_panopoly_feature_overrides_features_override_default_overrides() {
       ),
       'css' => array(),
       'extras' => array(),
-      'position' => 4,
+      'position' => 3,
       'locks' => array(),
       'uuid' => '96febc9f-78f6-4052-b0d7-5f079124b924',
     );
@@ -479,7 +480,7 @@ function csc_panopoly_feature_overrides_features_override_default_overrides() {
       ),
       'css' => array(),
       'extras' => array(),
-      'position' => 3,
+      'position' => 4,
       'locks' => array(),
       'uuid' => 'c457a13f-1434-40ea-b081-46264ac49bc4',
     );
@@ -507,18 +508,18 @@ function csc_panopoly_feature_overrides_features_override_default_overrides() {
       'uuid' => 'edd5febf-95e6-4554-a486-4481da969e37',
     );
   $overrides["page_manager_handlers.node_edit_panel_context.conf|display|content|new-fb4920fb-24fa-425e-b6fc-958b5ccd2d52"]["DELETED"] = TRUE;
-  $overrides["page_manager_handlers.node_edit_panel_context.conf|display|panels|contentmain|0"] = 'new-646a54da-4dce-4c04-a911-3d4cbbbe8b9c';
-  $overrides["page_manager_handlers.node_edit_panel_context.conf|display|panels|contentmain|1"] = 'new-850eeb5b-d2f5-4e30-8cde-170ddff1467a';
-  $overrides["page_manager_handlers.node_edit_panel_context.conf|display|panels|contentmain|2"] = 'new-a33ad46b-8f12-4020-bb22-95d5055c6097';
-  $overrides["page_manager_handlers.node_edit_panel_context.conf|display|panels|sidebar|0"] = 'new-0581ce01-43a7-4745-b1fb-b10754d71419';
-  $overrides["page_manager_handlers.node_edit_panel_context.conf|display|panels|sidebar|1"] = 'new-1557fa3f-0820-4917-b5a3-2e94dab584d3';
-  $overrides["page_manager_handlers.node_edit_panel_context.conf|display|panels|sidebar|2"] = 'new-1f8f9b3f-280d-41c0-ace8-d9d7a65b05cb';
-  $overrides["page_manager_handlers.node_edit_panel_context.conf|display|panels|sidebar|3"] = 'new-27461e33-2142-496b-bdef-3b4f4f37f390';
-  $overrides["page_manager_handlers.node_edit_panel_context.conf|display|panels|sidebar|4"] = 'new-6b9f3387-e850-4081-ad22-70e8e0fcb583';
-  $overrides["page_manager_handlers.node_edit_panel_context.conf|display|panels|sidebar|5"] = 'new-96febc9f-78f6-4052-b0d7-5f079124b924';
-  $overrides["page_manager_handlers.node_edit_panel_context.conf|display|panels|sidebar|6"] = 'new-bf0d67ac-6135-482f-af87-4ffb78f4fcb7';
-  $overrides["page_manager_handlers.node_edit_panel_context.conf|display|panels|sidebar|7"] = 'new-c457a13f-1434-40ea-b081-46264ac49bc4';
-  $overrides["page_manager_handlers.node_edit_panel_context.conf|display|panels|sidebar|8"] = 'new-edd5febf-95e6-4554-a486-4481da969e37';
+  $overrides["page_manager_handlers.node_edit_panel_context.conf|display|panels|contentmain|0"] = 'new-a33ad46b-8f12-4020-bb22-95d5055c6097';
+  $overrides["page_manager_handlers.node_edit_panel_context.conf|display|panels|contentmain|1"] = 'new-646a54da-4dce-4c04-a911-3d4cbbbe8b9c';
+  $overrides["page_manager_handlers.node_edit_panel_context.conf|display|panels|contentmain|2"] = 'new-850eeb5b-d2f5-4e30-8cde-170ddff1467a';
+  $overrides["page_manager_handlers.node_edit_panel_context.conf|display|panels|sidebar|0"] = 'new-6b9f3387-e850-4081-ad22-70e8e0fcb583';
+  $overrides["page_manager_handlers.node_edit_panel_context.conf|display|panels|sidebar|1"] = 'new-bf0d67ac-6135-482f-af87-4ffb78f4fcb7';
+  $overrides["page_manager_handlers.node_edit_panel_context.conf|display|panels|sidebar|2"] = 'new-1557fa3f-0820-4917-b5a3-2e94dab584d3';
+  $overrides["page_manager_handlers.node_edit_panel_context.conf|display|panels|sidebar|3"] = 'new-96febc9f-78f6-4052-b0d7-5f079124b924';
+  $overrides["page_manager_handlers.node_edit_panel_context.conf|display|panels|sidebar|4"] = 'new-c457a13f-1434-40ea-b081-46264ac49bc4';
+  $overrides["page_manager_handlers.node_edit_panel_context.conf|display|panels|sidebar|5"] = 'new-1f8f9b3f-280d-41c0-ace8-d9d7a65b05cb';
+  $overrides["page_manager_handlers.node_edit_panel_context.conf|display|panels|sidebar|6"] = 'new-edd5febf-95e6-4554-a486-4481da969e37';
+  $overrides["page_manager_handlers.node_edit_panel_context.conf|display|panels|sidebar|7"] = 'new-27461e33-2142-496b-bdef-3b4f4f37f390';
+  $overrides["page_manager_handlers.node_edit_panel_context.conf|display|panels|sidebar|8"] = 'new-0581ce01-43a7-4745-b1fb-b10754d71419';
   $overrides["page_manager_handlers.node_edit_panel_context.conf|display|title_pane"] = 'new-850eeb5b-d2f5-4e30-8cde-170ddff1467a';
   $overrides["page_manager_handlers.node_edit_panel_context.conf|display|uuid"] = '2f3914a5-73cc-4a8c-81b7-4b7400fba22a';
 
