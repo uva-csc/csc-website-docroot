@@ -372,7 +372,6 @@ function csc_news_view_update_views_default_views() {
   $handler->display->display_options['header']['area']['id'] = 'area';
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
-  $handler->display->display_options['header']['area']['content'] = '<p>This page lists all the news for the Contemplative Sciences Center with the most recent items at the top:</p>';
   $handler->display->display_options['header']['area']['format'] = 'panopoly_html_text';
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Field: Primary Image */
