@@ -996,7 +996,7 @@ drupal_set_title($title);
          <a href="/events">ALL</a>
       </div>    
 </div>
-<p>There is no events to show at this time.</p>
+<p>There are no events to show at this time.</p>
 ';
   $handler->display->display_options['empty']['area']['format'] = 'php_code';
   /* Field: Content: Title */
