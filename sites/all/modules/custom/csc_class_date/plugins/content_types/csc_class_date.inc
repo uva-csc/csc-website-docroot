@@ -80,12 +80,22 @@ function csc_class_date_render($subtype, $conf, $panel_args, $context = NULL) {
 }
 
 function csc_class_date_repeat_rule_render($rulestr, $t1='', $t2='') {
-	$rrule = array();
+	$rrule = array(
+	    'exdates' => array(),
+    );
   $rules = explode(';', str_replace('RRULE:', '', $rulestr));
   foreach($rules as $rule) {
     $parts = explode('=', $rule);
     $key = $parts[0];
     $value = $parts[1];
+    if (strstr($value, 'EXDATE:')) {
+        $vpts = explode('EXDATE:', $value);
+        $value = trim($vpts[0]);
+        if (count($vpts) > 1) {
+            $exdates = explode(',', $vpts[1]);
+            $rrule['exdates'] = $exdates;
+        }
+    }
     $rrule[$key] = $value;
   }
 	$outstr = FALSE;
@@ -98,8 +108,14 @@ function csc_class_date_repeat_rule_render($rulestr, $t1='', $t2='') {
 		if (isset($rrule['UNTIL'])) {
 			$enddate = date('D. M j, Y', strtotime($rrule['UNTIL']));
 			$weeks = ceil((strtotime($rrule['UNTIL'], 0) - strtotime($t1, 0)) / 604800);
+			$mtgs = $weeks - count($rrule['exdates']);
 			$pl = ($weeks > 1) ? 's' : '';
-			$enddate .= " ($weeks week{$pl})";
+			$mpl = ($mtgs > 1) ? 'es' : '';
+			if ($mtgs < $weeks) {
+                $enddate .= " ($mtgs class{$mpl} over $weeks week{$pl})";
+            } else {
+                $enddate .= " ($weeks week{$pl})";
+            }
 		} else if (isset($rrule['COUNT'])) {
 			$enddate = date('D. M j, Y', strtotime($t1 . " + {$rrule['COUNT']} weeks")) . " ({$rrule['COUNT']} weeks)";
 		}
