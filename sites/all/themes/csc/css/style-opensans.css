@@ -3317,7 +3317,7 @@ div.pane-csc-isotope, div.pane-csc-isotope * {
 @media only screen and (min-height: 1170px) {
   /* line 2260, ../../../../../sass/sites/all/themes/csc/css/style.scss */
   .pane-csc-newsletter {
-    position: fixed;
+    /*position: fixed;*/
   }
 }
 @media only screen and (max-height: 810px) {
