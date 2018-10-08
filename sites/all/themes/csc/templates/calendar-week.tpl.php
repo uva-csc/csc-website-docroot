@@ -39,9 +39,13 @@ foreach ($day_names as $key => $value) {
       <?php if($by_hour_count > 0 || !empty($start_times)) :?>
       <th class="calendar-agenda-hour"><?php print t('Time')?></th>
       <?php endif;?>
-      <?php foreach ($day_names as $cell): ?>
+      <?php
+        $hct = 0;
+        foreach ($day_names as $cell): ?>
         <th class="<?php print $cell['class']; ?>" id="<?php print $cell['header_id']; ?>">
           <?php print $cell['data']; ?>
+          <?php print ' (' . $view->date_info->month .'/' . (intval($view->date_info->day) + $hct) . ') ';  ?>
+          <?php $hct++;  ?>
         </th>
       <?php endforeach; ?>
     </tr>
