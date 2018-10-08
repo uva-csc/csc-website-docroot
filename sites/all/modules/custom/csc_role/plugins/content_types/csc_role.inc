@@ -32,6 +32,7 @@ function csc_role_get_roles($index = FALSE) {
 	$roles = array(
 		0 => t('None'),
         5 => t('Advisory Board'),
+        6 => t('Contemplative Instructor'),
         1 => t('Council Member'),
 		3 => t('Executive Circle'),
         4 => t('Intern'),
