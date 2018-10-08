@@ -31,6 +31,18 @@ $header_ids = array();
 foreach ($day_names as $key => $value) {
   $header_ids[$key] = $value['header_id'];
 }
+
+// Calculate month and year to add to week day headers.
+// TODO: Move this to php function (?)
+$currmon = $view->date_info->month;
+$curryear = $view->date_info->year;
+$days_in_month = cal_days_in_month(CAL_GREGORIAN, $currmon, $curryear);
+$nextmon = intval($currmon) + 1;
+$nextyear = $curryear;
+if ($nextmon > 12) {
+    $nextmon = 1;
+    $nextyear = intval($nextyear) + 1;
+}
 ?>
 <div class="calendar-calendar"><div class="week-view">
 <table class="full">
@@ -40,12 +52,19 @@ foreach ($day_names as $key => $value) {
       <th class="calendar-agenda-hour"><?php print t('Time')?></th>
       <?php endif;?>
       <?php
-        $hct = 0;
+        $currdate = intval($view->date_info->day);
         foreach ($day_names as $cell): ?>
         <th class="<?php print $cell['class']; ?>" id="<?php print $cell['header_id']; ?>">
           <?php print $cell['data']; ?>
-          <?php print ' (' . $view->date_info->month .'/' . (intval($view->date_info->day) + $hct) . ') ';  ?>
-          <?php $hct++;  ?>
+          <?php print ' (' . $currmon .'/' .  $currdate . ') ';  ?>
+          <?php
+            $currdate++;
+            if ($currdate > $days_in_month) {
+                $currdate = 1;
+                $currmon = $nextmon;
+                $curryear = $nextyear;
+            }
+           ?>
         </th>
       <?php endforeach; ?>
     </tr>
