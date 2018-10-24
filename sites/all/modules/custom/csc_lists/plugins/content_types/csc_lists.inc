@@ -790,7 +790,7 @@ function csc_list_calculate_semester($start, $end) {
     $endmonth = $enddt['month'];
 	$day = $dt['day'];
 	$term = t('Spring');
-	if ($month == 1 && $day < 16) { $term = t('J-Term'); } //else if ($month < 3 && $endmonth < 3) { $term = t('Winter');}
+	if ($month == 1 && $day < 13) { $term = t('J-Term'); } //else if ($month < 3 && $endmonth < 3) { $term = t('Winter');}
 	if ($month > 5 && $month < 8) { $term = t('Summer'); }
 	if ($month > 7) { $term = t('Fall'); }
 	return "$term $year"; 	
