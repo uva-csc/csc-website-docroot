@@ -148,6 +148,7 @@ function csc_panopoly_feature_overrides_file_default_displays_alter(&$data) {
   }
   if (isset($data['video__default__media_youtube_video'])) {
     $data['video__default__media_youtube_video']->settings['modestbranding'] = 1; /* WAS: 0 */
+    $data['video__default__media_youtube_video']->settings['rel'] = 1; /* WAS: 0 */
   }
   if (isset($data['video__preview__file_field_file_default'])) {
     $data['video__preview__file_field_file_default']->status = FALSE; /* WAS: TRUE */
@@ -182,7 +183,15 @@ function csc_panopoly_feature_overrides_file_default_types_alter(&$data) {
  * Implements hook_filter_default_formats_alter().
  */
 function csc_panopoly_feature_overrides_filter_default_formats_alter(&$data) {
+  if (isset($data['panopoly_html_text'])) {
+    $data['panopoly_html_text']['filters']['wysiwyg']['settings']['rule_bypass_style_urls'] = 0; /* WAS: '' */
+    $data['panopoly_html_text']['filters']['wysiwyg']['settings']['rule_bypass_valid_classes'] = 0; /* WAS: '' */
+    $data['panopoly_html_text']['filters']['wysiwyg']['settings']['rule_bypass_valid_ids'] = 0; /* WAS: '' */
+  }
   if (isset($data['panopoly_wysiwyg_text'])) {
+    $data['panopoly_wysiwyg_text']['filters']['wysiwyg']['settings']['rule_bypass_style_urls'] = 0; /* WAS: '' */
+    $data['panopoly_wysiwyg_text']['filters']['wysiwyg']['settings']['rule_bypass_valid_classes'] = 0; /* WAS: '' */
+    $data['panopoly_wysiwyg_text']['filters']['wysiwyg']['settings']['rule_bypass_valid_ids'] = 0; /* WAS: '' */
     $data['panopoly_wysiwyg_text']['filters']['wysiwyg']['settings']['style_border-1']['border'] = 'border'; /* WAS: 0 */
     $data['panopoly_wysiwyg_text']['filters']['wysiwyg']['settings']['style_box']['margin'] = 'margin'; /* WAS: 0 */
     $data['panopoly_wysiwyg_text']['filters']['wysiwyg']['settings']['style_box']['margin-bottom'] = 'margin-bottom'; /* WAS: 0 */
@@ -994,6 +1003,24 @@ function csc_panopoly_feature_overrides_default_page_manager_pages_alter(&$data)
  */
 function csc_panopoly_feature_overrides_panelizer_defaults_override_alter(&$data) {
   if (isset($data['node:panopoly_page:default'])) {
+    $data['node:panopoly_page:default']->display->content['new-1e4a2e89-fc55-406c-bf48-e97e5baccf00'] = (object) array(
+          'pid' => 'new-1e4a2e89-fc55-406c-bf48-e97e5baccf00',
+          'panel' => 'fluid2',
+          'type' => 'csc_related_news',
+          'subtype' => 'csc_related_news',
+          'shown' => TRUE,
+          'access' => array(),
+          'configuration' => array(),
+          'cache' => array(),
+          'style' => array(
+            'settings' => NULL,
+          ),
+          'css' => array(),
+          'extras' => array(),
+          'position' => 4,
+          'locks' => array(),
+          'uuid' => '1e4a2e89-fc55-406c-bf48-e97e5baccf00',
+        ); /* WAS: '' */
     $data['node:panopoly_page:default']->display->content['new-2bc509db-cdf6-44ba-a300-59da4e59cf67'] = (object) array(
           'pid' => 'new-2bc509db-cdf6-44ba-a300-59da4e59cf67',
           'panel' => 'fluid2',
@@ -1008,7 +1035,7 @@ function csc_panopoly_feature_overrides_panelizer_defaults_override_alter(&$data
           ),
           'css' => array(),
           'extras' => array(),
-          'position' => 3,
+          'position' => 1,
           'locks' => array(),
           'uuid' => '2bc509db-cdf6-44ba-a300-59da4e59cf67',
         ); /* WAS: '' */
@@ -1070,7 +1097,7 @@ function csc_panopoly_feature_overrides_panelizer_defaults_override_alter(&$data
           ),
           'css' => array(),
           'extras' => array(),
-          'position' => 3,
+          'position' => 1,
           'locks' => array(),
           'uuid' => '70bae994-6dcf-4034-9825-181f454cc884',
         ); /* WAS: '' */
@@ -1092,6 +1119,24 @@ function csc_panopoly_feature_overrides_panelizer_defaults_override_alter(&$data
           'locks' => array(),
           'uuid' => '835b50a6-bbd7-4971-81c0-9a7d76abae4c',
         ); /* WAS: '' */
+    $data['node:panopoly_page:default']->display->content['new-9b436078-d0da-44a0-86f3-023fd3848add'] = (object) array(
+          'pid' => 'new-9b436078-d0da-44a0-86f3-023fd3848add',
+          'panel' => 'fluid2',
+          'type' => 'csc_related_events',
+          'subtype' => 'csc_related_events',
+          'shown' => TRUE,
+          'access' => array(),
+          'configuration' => array(),
+          'cache' => array(),
+          'style' => array(
+            'settings' => NULL,
+          ),
+          'css' => array(),
+          'extras' => array(),
+          'position' => 3,
+          'locks' => array(),
+          'uuid' => '9b436078-d0da-44a0-86f3-023fd3848add',
+        ); /* WAS: '' */
     $data['node:panopoly_page:default']->display->content['new-a8ea8e1c-4cc2-4172-a62a-6e1ea5d5f3d6'] = (object) array(
           'pid' => 'new-a8ea8e1c-4cc2-4172-a62a-6e1ea5d5f3d6',
           'panel' => 'fluid2',
@@ -1110,6 +1155,24 @@ function csc_panopoly_feature_overrides_panelizer_defaults_override_alter(&$data
           'locks' => array(),
           'uuid' => 'a8ea8e1c-4cc2-4172-a62a-6e1ea5d5f3d6',
         ); /* WAS: '' */
+    $data['node:panopoly_page:default']->display->content['new-b0a0704e-69fd-49b0-bd95-29f938214359'] = (object) array(
+          'pid' => 'new-b0a0704e-69fd-49b0-bd95-29f938214359',
+          'panel' => 'fluid2',
+          'type' => 'csc_related_activities',
+          'subtype' => 'csc_related_activities',
+          'shown' => TRUE,
+          'access' => array(),
+          'configuration' => array(),
+          'cache' => array(),
+          'style' => array(
+            'settings' => NULL,
+          ),
+          'css' => array(),
+          'extras' => array(),
+          'position' => 2,
+          'locks' => array(),
+          'uuid' => 'b0a0704e-69fd-49b0-bd95-29f938214359',
+        ); /* WAS: '' */
     $data['node:panopoly_page:default']->display->content['new-b570b4d9-b1f8-4ab2-a536-4a739809af00'] = (object) array(
           'pid' => 'new-b570b4d9-b1f8-4ab2-a536-4a739809af00',
           'panel' => 'fluid2',
@@ -1124,7 +1187,7 @@ function csc_panopoly_feature_overrides_panelizer_defaults_override_alter(&$data
           ),
           'css' => array(),
           'extras' => array(),
-          'position' => 2,
+          'position' => 5,
           'locks' => array(),
           'uuid' => 'b570b4d9-b1f8-4ab2-a536-4a739809af00',
         ); /* WAS: '' */
@@ -1171,7 +1234,7 @@ function csc_panopoly_feature_overrides_panelizer_defaults_override_alter(&$data
           ),
           'css' => array(),
           'extras' => array(),
-          'position' => 1,
+          'position' => 3,
           'locks' => array(),
           'uuid' => 'e2df6280-bb65-4a65-bbde-9127e87852bc',
         ); /* WAS: '' */
@@ -1193,59 +1256,9 @@ function csc_panopoly_feature_overrides_panelizer_defaults_override_alter(&$data
           ),
           'css' => array(),
           'extras' => array(),
-          'position' => 3,
+          'position' => 2,
           'locks' => array(),
           'uuid' => 'ed4d2a85-1473-401f-a4e0-e0d94c2ca699',
-        ); /* WAS: '' */
-    $data['node:panopoly_page:default']->display->content['new-f00439f4-eb70-4eaf-9284-7957047bc727'] = (object) array(
-          'pid' => 'new-f00439f4-eb70-4eaf-9284-7957047bc727',
-          'panel' => 'fluid2',
-          'type' => 'entity_field',
-          'subtype' => 'node:field_audio_files',
-          'shown' => TRUE,
-          'access' => array(),
-          'configuration' => array(
-            'label' => 'title',
-            'formatter' => 'jplayer_player',
-            'delta_limit' => 0,
-            'delta_offset' => 0,
-            'delta_reversed' => FALSE,
-            'formatter_settings' => array(
-              'autoplay' => 0,
-              'solution' => 'html, flash',
-              'preload' => 'metadata',
-              'volume' => 80,
-              'muted' => 0,
-              'repeat' => 'none',
-              'backgroundColor' => '000000',
-              'mode' => 'playlist',
-            ),
-            'context' => array(),
-            'override_title' => 0,
-            'override_title_text' => '',
-            'view_mode' => NULL,
-            'widget_title' => NULL,
-            'items_per_page' => NULL,
-            'exposed' => array(
-              'sort_by' => NULL,
-              'sort_order' => NULL,
-            ),
-            'use_pager' => NULL,
-            'pager_id' => NULL,
-            'offset' => NULL,
-            'link_to_view' => NULL,
-            'more_link' => NULL,
-            'path' => NULL,
-          ),
-          'cache' => array(),
-          'style' => array(
-            'settings' => NULL,
-          ),
-          'css' => array(),
-          'extras' => array(),
-          'position' => 1,
-          'locks' => array(),
-          'uuid' => 'f00439f4-eb70-4eaf-9284-7957047bc727',
         ); /* WAS: '' */
     $data['node:panopoly_page:default']->display->content['new-f89132a4-56c1-436e-82ae-77eccf45b18c'] = (object) array(
           'pid' => 'new-f89132a4-56c1-436e-82ae-77eccf45b18c',
@@ -1264,7 +1277,7 @@ function csc_panopoly_feature_overrides_panelizer_defaults_override_alter(&$data
           ),
           'css' => array(),
           'extras' => array(),
-          'position' => 2,
+          'position' => 3,
           'locks' => array(),
           'uuid' => 'f89132a4-56c1-436e-82ae-77eccf45b18c',
         ); /* WAS: '' */
@@ -1285,10 +1298,12 @@ function csc_panopoly_feature_overrides_panelizer_defaults_override_alter(&$data
       3 => 'new-e2df6280-bb65-4a65-bbde-9127e87852bc',
     ); /* WAS: '' */
     $data['node:panopoly_page:default']->display->panels['fluid2'] = array(
-      0 => 'new-2bc509db-cdf6-44ba-a300-59da4e59cf67',
-      1 => 'new-a8ea8e1c-4cc2-4172-a62a-6e1ea5d5f3d6',
-      2 => 'new-b570b4d9-b1f8-4ab2-a536-4a739809af00',
-      3 => 'new-f00439f4-eb70-4eaf-9284-7957047bc727',
+      0 => 'new-a8ea8e1c-4cc2-4172-a62a-6e1ea5d5f3d6',
+      1 => 'new-2bc509db-cdf6-44ba-a300-59da4e59cf67',
+      2 => 'new-b0a0704e-69fd-49b0-bd95-29f938214359',
+      3 => 'new-9b436078-d0da-44a0-86f3-023fd3848add',
+      4 => 'new-1e4a2e89-fc55-406c-bf48-e97e5baccf00',
+      5 => 'new-b570b4d9-b1f8-4ab2-a536-4a739809af00',
     ); /* WAS: '' */
     $data['node:panopoly_page:default']->display->title_pane = 'new-f89132a4-56c1-436e-82ae-77eccf45b18c'; /* WAS: 'new-34b4f35e-bc4b-4819-905c-6b6bf84bffe1' */
     $data['node:panopoly_page:default']->display->uuid = 'e4c588ce-e8eb-43ff-aae6-9f58c56cd20e'; /* WAS: '16346c80-6fcf-4cee-bf7a-9c0173fc2916' */
@@ -1429,6 +1444,7 @@ function csc_panopoly_feature_overrides_strongarm_alter(&$data) {
  */
 function csc_panopoly_feature_overrides_views_default_views_alter(&$data) {
   if (isset($data['admin_views_file'])) {
+    $data['admin_views_file']->display['default']->display_options['fields']['views_bulk_operations']['table'] = 'views_entity_file'; /* WAS: 'file_managed' */
     unset($data['admin_views_file']->display['default']->display_options['fields']['views_bulk_operations']['vbo_operations']['action::panelizer_set_status_action']);
     unset($data['admin_views_file']->display['default']->display_options['fields']['views_bulk_operations']['vbo_operations']['action::system_send_email_action']);
     unset($data['admin_views_file']->display['default']->display_options['fields']['views_bulk_operations']['vbo_operations']['action::views_bulk_operations_argument_selector_action']);
@@ -1443,6 +1459,7 @@ function csc_panopoly_feature_overrides_views_default_views_alter(&$data) {
       'element_label_colon' => FALSE,
       'not' => 0,
     ); /* WAS: '' */
+    $data['admin_views_node']->display['default']->display_options['fields']['views_bulk_operations']['table'] = 'views_entity_node'; /* WAS: 'node' */
     $data['admin_views_node']->display['default']->display_options['fields']['views_bulk_operations']['vbo_operations']['action::node_assign_owner_action']['skip_confirmation'] = 0; /* WAS: 1 */
     $data['admin_views_node']->display['default']->display_options['fields']['views_bulk_operations']['vbo_operations']['action::node_export_json_action'] = array(
       'selected' => 1,
@@ -1522,6 +1539,7 @@ function csc_panopoly_feature_overrides_views_default_views_alter(&$data) {
     unset($data['admin_views_node']->display['default']->display_options['fields']['views_bulk_operations']['vbo_operations']['action::views_bulk_operations_script_action']);
   }
   if (isset($data['admin_views_user'])) {
+    $data['admin_views_user']->display['default']->display_options['fields']['views_bulk_operations']['table'] = 'views_entity_user'; /* WAS: 'users' */
     unset($data['admin_views_user']->display['default']->display_options['fields']['views_bulk_operations']['vbo_operations']['action::system_block_ip_action']);
     unset($data['admin_views_user']->display['default']->display_options['fields']['views_bulk_operations']['vbo_operations']['action::system_goto_action']);
     unset($data['admin_views_user']->display['default']->display_options['fields']['views_bulk_operations']['vbo_operations']['action::system_message_action']);
