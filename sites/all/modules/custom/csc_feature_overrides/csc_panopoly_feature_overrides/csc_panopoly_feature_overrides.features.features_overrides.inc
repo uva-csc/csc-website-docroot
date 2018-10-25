@@ -107,6 +107,7 @@ function csc_panopoly_feature_overrides_features_override_default_overrides() {
   $overrides["file_display.image__teaser__file_field_image.settings|image_style"] = 'panopoly_image_quarter';
   $overrides["file_display.video__default__media_vimeo_video.settings|protocol_specify"] = FALSE;
   $overrides["file_display.video__default__media_youtube_video.settings|modestbranding"] = 1;
+  $overrides["file_display.video__default__media_youtube_video.settings|rel"] = 1;
   $overrides["file_display.video__preview__file_field_file_default.status"] = FALSE;
   $overrides["file_display.video__preview__media_vimeo_image.settings|image_style"] = 'panopoly_image_thumbnail';
   $overrides["file_display.video__preview__media_youtube_image.settings|image_style"] = 'panopoly_image_thumbnail';
@@ -118,6 +119,12 @@ function csc_panopoly_feature_overrides_features_override_default_overrides() {
   $overrides["file_type.video.disabled"] = FALSE;
 
   // Exported overrides for: filter
+  $overrides["filter.panopoly_html_text.filters|wysiwyg|settings|rule_bypass_style_urls"] = 0;
+  $overrides["filter.panopoly_html_text.filters|wysiwyg|settings|rule_bypass_valid_classes"] = 0;
+  $overrides["filter.panopoly_html_text.filters|wysiwyg|settings|rule_bypass_valid_ids"] = 0;
+  $overrides["filter.panopoly_wysiwyg_text.filters|wysiwyg|settings|rule_bypass_style_urls"] = 0;
+  $overrides["filter.panopoly_wysiwyg_text.filters|wysiwyg|settings|rule_bypass_valid_classes"] = 0;
+  $overrides["filter.panopoly_wysiwyg_text.filters|wysiwyg|settings|rule_bypass_valid_ids"] = 0;
   $overrides["filter.panopoly_wysiwyg_text.filters|wysiwyg|settings|style_border-1|border"] = 'border';
   $overrides["filter.panopoly_wysiwyg_text.filters|wysiwyg|settings|style_box|margin"] = 'margin';
   $overrides["filter.panopoly_wysiwyg_text.filters|wysiwyg|settings|style_box|margin-bottom"] = 'margin-bottom';
@@ -833,6 +840,24 @@ function csc_panopoly_feature_overrides_features_override_default_overrides() {
 
   // Exported overrides for: panelizer_defaults
   $overrides["panelizer_defaults.node:panopoly_page:default.display|content|new-0a2c7b96-5f45-4e85-8e00-88fee50f4f71"]["DELETED"] = TRUE;
+  $overrides["panelizer_defaults.node:panopoly_page:default.display|content|new-1e4a2e89-fc55-406c-bf48-e97e5baccf00"] = (object) array(
+      'pid' => 'new-1e4a2e89-fc55-406c-bf48-e97e5baccf00',
+      'panel' => 'fluid2',
+      'type' => 'csc_related_news',
+      'subtype' => 'csc_related_news',
+      'shown' => TRUE,
+      'access' => array(),
+      'configuration' => array(),
+      'cache' => array(),
+      'style' => array(
+        'settings' => NULL,
+      ),
+      'css' => array(),
+      'extras' => array(),
+      'position' => 4,
+      'locks' => array(),
+      'uuid' => '1e4a2e89-fc55-406c-bf48-e97e5baccf00',
+    );
   $overrides["panelizer_defaults.node:panopoly_page:default.display|content|new-2bc509db-cdf6-44ba-a300-59da4e59cf67"] = (object) array(
       'pid' => 'new-2bc509db-cdf6-44ba-a300-59da4e59cf67',
       'panel' => 'fluid2',
@@ -847,7 +872,7 @@ function csc_panopoly_feature_overrides_features_override_default_overrides() {
       ),
       'css' => array(),
       'extras' => array(),
-      'position' => 3,
+      'position' => 1,
       'locks' => array(),
       'uuid' => '2bc509db-cdf6-44ba-a300-59da4e59cf67',
     );
@@ -911,7 +936,7 @@ function csc_panopoly_feature_overrides_features_override_default_overrides() {
       ),
       'css' => array(),
       'extras' => array(),
-      'position' => 3,
+      'position' => 1,
       'locks' => array(),
       'uuid' => '70bae994-6dcf-4034-9825-181f454cc884',
     );
@@ -933,6 +958,24 @@ function csc_panopoly_feature_overrides_features_override_default_overrides() {
       'locks' => array(),
       'uuid' => '835b50a6-bbd7-4971-81c0-9a7d76abae4c',
     );
+  $overrides["panelizer_defaults.node:panopoly_page:default.display|content|new-9b436078-d0da-44a0-86f3-023fd3848add"] = (object) array(
+      'pid' => 'new-9b436078-d0da-44a0-86f3-023fd3848add',
+      'panel' => 'fluid2',
+      'type' => 'csc_related_events',
+      'subtype' => 'csc_related_events',
+      'shown' => TRUE,
+      'access' => array(),
+      'configuration' => array(),
+      'cache' => array(),
+      'style' => array(
+        'settings' => NULL,
+      ),
+      'css' => array(),
+      'extras' => array(),
+      'position' => 3,
+      'locks' => array(),
+      'uuid' => '9b436078-d0da-44a0-86f3-023fd3848add',
+    );
   $overrides["panelizer_defaults.node:panopoly_page:default.display|content|new-a8ea8e1c-4cc2-4172-a62a-6e1ea5d5f3d6"] = (object) array(
       'pid' => 'new-a8ea8e1c-4cc2-4172-a62a-6e1ea5d5f3d6',
       'panel' => 'fluid2',
@@ -951,6 +994,24 @@ function csc_panopoly_feature_overrides_features_override_default_overrides() {
       'locks' => array(),
       'uuid' => 'a8ea8e1c-4cc2-4172-a62a-6e1ea5d5f3d6',
     );
+  $overrides["panelizer_defaults.node:panopoly_page:default.display|content|new-b0a0704e-69fd-49b0-bd95-29f938214359"] = (object) array(
+      'pid' => 'new-b0a0704e-69fd-49b0-bd95-29f938214359',
+      'panel' => 'fluid2',
+      'type' => 'csc_related_activities',
+      'subtype' => 'csc_related_activities',
+      'shown' => TRUE,
+      'access' => array(),
+      'configuration' => array(),
+      'cache' => array(),
+      'style' => array(
+        'settings' => NULL,
+      ),
+      'css' => array(),
+      'extras' => array(),
+      'position' => 2,
+      'locks' => array(),
+      'uuid' => 'b0a0704e-69fd-49b0-bd95-29f938214359',
+    );
   $overrides["panelizer_defaults.node:panopoly_page:default.display|content|new-b570b4d9-b1f8-4ab2-a536-4a739809af00"] = (object) array(
       'pid' => 'new-b570b4d9-b1f8-4ab2-a536-4a739809af00',
       'panel' => 'fluid2',
@@ -965,7 +1026,7 @@ function csc_panopoly_feature_overrides_features_override_default_overrides() {
       ),
       'css' => array(),
       'extras' => array(),
-      'position' => 2,
+      'position' => 5,
       'locks' => array(),
       'uuid' => 'b570b4d9-b1f8-4ab2-a536-4a739809af00',
     );
@@ -1013,7 +1074,7 @@ function csc_panopoly_feature_overrides_features_override_default_overrides() {
       ),
       'css' => array(),
       'extras' => array(),
-      'position' => 1,
+      'position' => 3,
       'locks' => array(),
       'uuid' => 'e2df6280-bb65-4a65-bbde-9127e87852bc',
     );
@@ -1035,59 +1096,9 @@ function csc_panopoly_feature_overrides_features_override_default_overrides() {
       ),
       'css' => array(),
       'extras' => array(),
-      'position' => 3,
+      'position' => 2,
       'locks' => array(),
       'uuid' => 'ed4d2a85-1473-401f-a4e0-e0d94c2ca699',
-    );
-  $overrides["panelizer_defaults.node:panopoly_page:default.display|content|new-f00439f4-eb70-4eaf-9284-7957047bc727"] = (object) array(
-      'pid' => 'new-f00439f4-eb70-4eaf-9284-7957047bc727',
-      'panel' => 'fluid2',
-      'type' => 'entity_field',
-      'subtype' => 'node:field_audio_files',
-      'shown' => TRUE,
-      'access' => array(),
-      'configuration' => array(
-        'label' => 'title',
-        'formatter' => 'jplayer_player',
-        'delta_limit' => 0,
-        'delta_offset' => 0,
-        'delta_reversed' => FALSE,
-        'formatter_settings' => array(
-          'autoplay' => 0,
-          'solution' => 'html, flash',
-          'preload' => 'metadata',
-          'volume' => 80,
-          'muted' => 0,
-          'repeat' => 'none',
-          'backgroundColor' => '000000',
-          'mode' => 'playlist',
-        ),
-        'context' => array(),
-        'override_title' => 0,
-        'override_title_text' => '',
-        'view_mode' => NULL,
-        'widget_title' => NULL,
-        'items_per_page' => NULL,
-        'exposed' => array(
-          'sort_by' => NULL,
-          'sort_order' => NULL,
-        ),
-        'use_pager' => NULL,
-        'pager_id' => NULL,
-        'offset' => NULL,
-        'link_to_view' => NULL,
-        'more_link' => NULL,
-        'path' => NULL,
-      ),
-      'cache' => array(),
-      'style' => array(
-        'settings' => NULL,
-      ),
-      'css' => array(),
-      'extras' => array(),
-      'position' => 1,
-      'locks' => array(),
-      'uuid' => 'f00439f4-eb70-4eaf-9284-7957047bc727',
     );
   $overrides["panelizer_defaults.node:panopoly_page:default.display|content|new-f3bf9c22-9b22-41d2-a57e-110951093871"]["DELETED"] = TRUE;
   $overrides["panelizer_defaults.node:panopoly_page:default.display|content|new-f89132a4-56c1-436e-82ae-77eccf45b18c"] = (object) array(
@@ -1107,7 +1118,7 @@ function csc_panopoly_feature_overrides_features_override_default_overrides() {
       ),
       'css' => array(),
       'extras' => array(),
-      'position' => 2,
+      'position' => 3,
       'locks' => array(),
       'uuid' => 'f89132a4-56c1-436e-82ae-77eccf45b18c',
     );
@@ -1129,10 +1140,12 @@ function csc_panopoly_feature_overrides_features_override_default_overrides() {
     3 => 'new-e2df6280-bb65-4a65-bbde-9127e87852bc',
   );
   $overrides["panelizer_defaults.node:panopoly_page:default.display|panels|fluid2"] = array(
-    0 => 'new-2bc509db-cdf6-44ba-a300-59da4e59cf67',
-    1 => 'new-a8ea8e1c-4cc2-4172-a62a-6e1ea5d5f3d6',
-    2 => 'new-b570b4d9-b1f8-4ab2-a536-4a739809af00',
-    3 => 'new-f00439f4-eb70-4eaf-9284-7957047bc727',
+    0 => 'new-a8ea8e1c-4cc2-4172-a62a-6e1ea5d5f3d6',
+    1 => 'new-2bc509db-cdf6-44ba-a300-59da4e59cf67',
+    2 => 'new-b0a0704e-69fd-49b0-bd95-29f938214359',
+    3 => 'new-9b436078-d0da-44a0-86f3-023fd3848add',
+    4 => 'new-1e4a2e89-fc55-406c-bf48-e97e5baccf00',
+    5 => 'new-b570b4d9-b1f8-4ab2-a536-4a739809af00',
   );
   $overrides["panelizer_defaults.node:panopoly_page:default.display|panels|sidebar"]["DELETED"] = TRUE;
   $overrides["panelizer_defaults.node:panopoly_page:default.display|title_pane"] = 'new-f89132a4-56c1-436e-82ae-77eccf45b18c';
@@ -1237,6 +1250,7 @@ function csc_panopoly_feature_overrides_features_override_default_overrides() {
   $overrides["variable.panelizer_defaults_node_panopoly_landing_page.value|view modes|teaser"]["DELETED"] = TRUE;
 
   // Exported overrides for: views_view
+  $overrides["views_view.admin_views_file.display|default|display_options|fields|views_bulk_operations|table"] = 'views_entity_file';
   $overrides["views_view.admin_views_file.display|default|display_options|fields|views_bulk_operations|vbo_operations|action::panelizer_set_status_action"]["DELETED"] = TRUE;
   $overrides["views_view.admin_views_file.display|default|display_options|fields|views_bulk_operations|vbo_operations|action::system_send_email_action"]["DELETED"] = TRUE;
   $overrides["views_view.admin_views_file.display|default|display_options|fields|views_bulk_operations|vbo_operations|action::views_bulk_operations_argument_selector_action"]["DELETED"] = TRUE;
@@ -1249,6 +1263,7 @@ function csc_panopoly_feature_overrides_features_override_default_overrides() {
     'element_label_colon' => FALSE,
     'not' => 0,
   );
+  $overrides["views_view.admin_views_node.display|default|display_options|fields|views_bulk_operations|table"] = 'views_entity_node';
   $overrides["views_view.admin_views_node.display|default|display_options|fields|views_bulk_operations|vbo_operations|action::node_assign_owner_action|skip_confirmation"] = 0;
   $overrides["views_view.admin_views_node.display|default|display_options|fields|views_bulk_operations|vbo_operations|action::node_export_json_action"] = array(
     'selected' => 1,
@@ -1326,6 +1341,7 @@ function csc_panopoly_feature_overrides_features_override_default_overrides() {
       'field' => 'result',
     ),
   );
+  $overrides["views_view.admin_views_user.display|default|display_options|fields|views_bulk_operations|table"] = 'views_entity_user';
   $overrides["views_view.admin_views_user.display|default|display_options|fields|views_bulk_operations|vbo_operations|action::system_block_ip_action"]["DELETED"] = TRUE;
   $overrides["views_view.admin_views_user.display|default|display_options|fields|views_bulk_operations|vbo_operations|action::system_goto_action"]["DELETED"] = TRUE;
   $overrides["views_view.admin_views_user.display|default|display_options|fields|views_bulk_operations|vbo_operations|action::system_message_action"]["DELETED"] = TRUE;
