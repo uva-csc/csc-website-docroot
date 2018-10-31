@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="def74d16-d17c-4d30-a5a0-d7ad6195e8fb" name="Default" comment="" />
+    <list default="true" id="def74d16-d17c-4d30-a5a0-d7ad6195e8fb" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.htaccess" beforeDir="false" afterPath="$PROJECT_DIR$/.htaccess" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,13 +19,15 @@
         <counts>
           <entry key="project.closed" value="13" />
           <entry key="project.open.time.0" value="12" />
+          <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.5" value="1" />
-          <entry key="project.opened" value="13" />
+          <entry key="project.opened" value="14" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="css" value="1" />
+          <entry key="gitignore" value="1" />
           <entry key="htaccess" value="1" />
           <entry key="html" value="1" />
           <entry key="inc" value="4" />
@@ -34,13 +40,15 @@
           <entry key="CSS" value="1" />
           <entry key="HTML" value="1" />
           <entry key="PHP" value="7" />
+          <entry key="PLAIN_TEXT" value="1" />
           <entry key="htaccess" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="css" value="4" />
-          <entry key="htaccess" value="6" />
+          <entry key="gitignore" value="68" />
+          <entry key="htaccess" value="55" />
           <entry key="html" value="1" />
           <entry key="inc" value="27" />
           <entry key="php" value="742" />
@@ -51,7 +59,8 @@
           <entry key="CSS" value="4" />
           <entry key="HTML" value="1" />
           <entry key="PHP" value="769" />
-          <entry key="htaccess" value="6" />
+          <entry key="PLAIN_TEXT" value="68" />
+          <entry key="htaccess" value="55" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages" />
@@ -66,22 +75,19 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/sites/all/themes/csc/templates/calendar-week.tpl.php">
+        <entry file="file://$PROJECT_DIR$/.htaccess">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="355">
-              <caret line="62" column="9" selection-start-line="62" selection-start-column="9" selection-end-line="62" selection-end-column="9" />
+            <state relative-caret-position="343">
+              <caret line="125" column="57" lean-forward="true" selection-start-line="125" selection-start-column="57" selection-end-line="125" selection-end-column="57" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/sites/all/modules/custom/csc_lists/plugins/content_types/csc_lists.inc">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="179">
-              <caret line="790" column="16" selection-start-line="790" selection-start-column="16" selection-end-line="790" selection-end-column="16" />
-              <folding>
-                <element signature="n#style#0;n#select#0;n#!!top" expanded="true" />
-              </folding>
+            <state relative-caret-position="150">
+              <caret line="10" column="8" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -143,15 +149,15 @@
         <option value="$PROJECT_DIR$/sites/all/themes/csc/templates/maintenance-page.tpl.php" />
         <option value="$PROJECT_DIR$/sites/all/modules/custom/csc_general/csc_general.js" />
         <option value="$PROJECT_DIR$/sites/all/themes/csc/js/csc_common.js" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/sites/all/modules/custom/csc_class_date/plugins/content_types/csc_class_date.inc" />
         <option value="$PROJECT_DIR$/sites/all/themes/csc/css/style-opensans.css" />
         <option value="$PROJECT_DIR$/googleec79f9d4240384d5.html" />
-        <option value="$PROJECT_DIR$/.htaccess" />
         <option value="$PROJECT_DIR$/sites/all/modules/custom/csc_role/plugins/content_types/csc_role.inc" />
         <option value="$PROJECT_DIR$/sites/all/modules/contrib/calendar/theme/calendar-week.tpl.php" />
         <option value="$PROJECT_DIR$/sites/all/themes/csc/templates/calendar-week.tpl.php" />
         <option value="$PROJECT_DIR$/sites/all/modules/custom/csc_lists/plugins/content_types/csc_lists.inc" />
+        <option value="$PROJECT_DIR$/.htaccess" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -329,6 +335,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -341,32 +348,10 @@
               <item name="csc-stage" type="462c0819:PsiDirectoryNode" />
               <item name="sites" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="csc-stage" type="b2602c69:ProjectViewProjectNode" />
-              <item name="csc-stage" type="462c0819:PsiDirectoryNode" />
-              <item name="sites" type="462c0819:PsiDirectoryNode" />
-              <item name="all" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="csc-stage" type="b2602c69:ProjectViewProjectNode" />
-              <item name="csc-stage" type="462c0819:PsiDirectoryNode" />
-              <item name="sites" type="462c0819:PsiDirectoryNode" />
-              <item name="all" type="462c0819:PsiDirectoryNode" />
-              <item name="modules" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="csc-stage" type="b2602c69:ProjectViewProjectNode" />
-              <item name="csc-stage" type="462c0819:PsiDirectoryNode" />
-              <item name="sites" type="462c0819:PsiDirectoryNode" />
-              <item name="all" type="462c0819:PsiDirectoryNode" />
-              <item name="modules" type="462c0819:PsiDirectoryNode" />
-              <item name="custom" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -434,17 +419,18 @@
       <workItem from="1539030705594" duration="1308000" />
       <workItem from="1539712408382" duration="616000" />
       <workItem from="1540407312554" duration="303000" />
+      <workItem from="1540986609504" duration="450000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="44492000" />
+    <option name="totallyTimeSpent" value="44942000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="12" y="23" width="1405" height="804" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.497191" visible="true" weight="0.3052091" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.497191" visible="true" weight="0.30961114" />
       <window_info id="Structure" order="1" sideWeight="0.502809" side_tool="true" weight="0.33455613" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -640,13 +626,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" selection-start-line="6" selection-end-line="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/sites/all/modules/custom/csc_class_date/plugins/content_types/csc_class_date.inc">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1665">
@@ -697,13 +676,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.htaccess">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="27" column="20" selection-start-line="27" selection-start-column="20" selection-end-line="27" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/sites/all/modules/contrib/calendar/theme/calendar-week.tpl.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="933">
@@ -727,7 +699,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/sites/all/themes/csc/templates/calendar-week.tpl.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="355">
+        <state relative-caret-position="585">
           <caret line="62" column="9" selection-start-line="62" selection-start-column="9" selection-end-line="62" selection-end-column="9" />
         </state>
       </provider>
@@ -739,6 +711,20 @@
           <folding>
             <element signature="n#style#0;n#select#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.htaccess">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="343">
+          <caret line="125" column="57" lean-forward="true" selection-start-line="125" selection-start-column="57" selection-end-line="125" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="8" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
         </state>
       </provider>
     </entry>
