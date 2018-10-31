@@ -122,7 +122,6 @@ DirectoryIndex index.php index.html index.htm
   RewriteRule ^ index.php [L]
 
   # Redirect URL to the new csc.virginia.edu url
-  RewriteCond %{HTTP_HOST} ^(?:www\.)?uvacontemplation\.org$  [NC]
   RewriteRule ^(.*)$ http://csc.virginia.edu/$1 [R=301,L]
 
   # Rules to correctly serve gzip compressed CSS and JS files.
