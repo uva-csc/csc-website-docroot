@@ -60,7 +60,7 @@ DirectoryIndex index.php index.html index.htm
 # Various rewrite rules.
 <IfModule mod_rewrite.c>
   RewriteEngine on
-  RewriteCond %{HTTP_HOST} ^(?:www\.)?uvacontemplation\.org$ [NC]
+  RewriteCond %{HTTP_HOST} ^(www\.)?uvacontemplation\.org$ [NC]
   RewriteRule ^(.*)$ http://csc.virginia.edu/$1 [R=301,L]
 
   # Set "protossl" to "s" if we were accessed via https://.  This is used later
