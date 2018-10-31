@@ -123,9 +123,6 @@ DirectoryIndex index.php index.html index.htm
   RewriteCond %{REQUEST_URI} !=/favicon.ico
   RewriteRule ^ index.php [L]
 
-  # Redirect URL to the new csc.virginia.edu url
-  RewriteRule ^(.*)$ http://csc.virginia.edu/$1 [R=301,L]
-
   # Rules to correctly serve gzip compressed CSS and JS files.
   # Requires both mod_rewrite and mod_headers to be enabled.
   <IfModule mod_headers.c>
