@@ -25,6 +25,24 @@ function csc_panopoly_feature_overrides_features_override_default_overrides() {
   );
   $overrides["field_instance.fieldable_panels_pane-image-field_basic_image_image.widget|settings|imce_filefield_on"] = 0;
   $overrides["field_instance.fieldable_panels_pane-image-field_basic_image_image.widget|settings|manualcrop_styles_list|panopoly_image_full"]["DELETED"] = TRUE;
+  $overrides["field_instance.fieldable_panels_pane-map-field_map_address.display|default|settings|apikey"] = '';
+  $overrides["field_instance.fieldable_panels_pane-table-field_basic_table_table.default_value|0|tablefield|caption"]["DELETED"] = TRUE;
+  $overrides["field_instance.fieldable_panels_pane-table-field_basic_table_table.default_value|0|tablefield|cell_0_0"] = '';
+  $overrides["field_instance.fieldable_panels_pane-table-field_basic_table_table.default_value|0|tablefield|cell_0_1"] = '';
+  $overrides["field_instance.fieldable_panels_pane-table-field_basic_table_table.default_value|0|tablefield|cell_1_0"] = '';
+  $overrides["field_instance.fieldable_panels_pane-table-field_basic_table_table.default_value|0|tablefield|cell_1_1"] = '';
+  $overrides["field_instance.fieldable_panels_pane-table-field_basic_table_table.default_value|0|tablefield|cell_2_0"] = '';
+  $overrides["field_instance.fieldable_panels_pane-table-field_basic_table_table.default_value|0|tablefield|cell_2_1"] = '';
+  $overrides["field_instance.fieldable_panels_pane-table-field_basic_table_table.default_value|0|tablefield|paste"]["DELETED"] = TRUE;
+  $overrides["field_instance.fieldable_panels_pane-table-field_basic_table_table.default_value|0|tablefield|tabledata"]["DELETED"] = TRUE;
+  $overrides["field_instance.fieldable_panels_pane-table-field_basic_table_table.display|default|settings|export_csv"] = FALSE;
+  $overrides["field_instance.fieldable_panels_pane-table-field_basic_table_table.display|default|settings|hide_cols_skip_head"] = FALSE;
+  $overrides["field_instance.fieldable_panels_pane-table-field_basic_table_table.display|default|settings|hide_empty_cols"] = FALSE;
+  $overrides["field_instance.fieldable_panels_pane-table-field_basic_table_table.display|default|settings|hide_empty_rows"] = FALSE;
+  $overrides["field_instance.fieldable_panels_pane-table-field_basic_table_table.display|default|settings|hide_header"] = FALSE;
+  $overrides["field_instance.fieldable_panels_pane-table-field_basic_table_table.widget|settings|cell_processing"]["DELETED"] = TRUE;
+  $overrides["field_instance.fieldable_panels_pane-table-field_basic_table_table.widget|settings|lock_values"]["DELETED"] = TRUE;
+  $overrides["field_instance.fieldable_panels_pane-table-field_basic_table_table.widget|settings|restrict_rebuild"]["DELETED"] = TRUE;
   $overrides["field_instance.node-panopoly_page-body.display|default|module"]["DELETED"] = TRUE;
   $overrides["field_instance.node-panopoly_page-body.display|default|type"] = 'hidden';
   $overrides["field_instance.node-panopoly_page-body.display|featured|module"]["DELETED"] = TRUE;
@@ -111,6 +129,7 @@ function csc_panopoly_feature_overrides_features_override_default_overrides() {
   $overrides["file_display.video__preview__file_field_file_default.status"] = FALSE;
   $overrides["file_display.video__preview__media_vimeo_image.settings|image_style"] = 'panopoly_image_thumbnail';
   $overrides["file_display.video__preview__media_youtube_image.settings|image_style"] = 'panopoly_image_thumbnail';
+  $overrides["file_display.video__teaser__media_youtube_video.settings|rel"] = 1;
 
   // Exported overrides for: file_type
   $overrides["file_type.audio.disabled"] = FALSE;
@@ -1365,6 +1384,29 @@ function csc_panopoly_feature_overrides_features_override_default_overrides() {
   $overrides["views_view.backlinks.display|default|display_options|empty|text|empty"]["DELETED"] = TRUE;
   $overrides["views_view.backlinks.display|default|display_options|fields|title|link_to_node"]["DELETED"] = TRUE;
   $overrides["views_view.backlinks.display|default|display_options|use_more_always"] = FALSE;
+  $overrides["views_view.events.display|default|display_options|empty|area|content"] = '<?php
+      $args = arg();
+      $pg = (count($args) > 2) ? $args[2] : FALSE;
+      $cp = current_path();
+  
+      $title = $head_title = "Events";
+      if ($cp == \'events/all/future\') {
+          $title = $head_title = "Upcoming Events";
+      } else if ($cp == \'events/all/past\') {
+          $title = $head_title = "Past Events";
+      }
+  drupal_set_title($title);
+  ?>
+  <div class="view-header">
+        <h2 class="pane-title"><?php echo $head_title; ?></h2>
+        <div id="event-nav">
+           <a href="/events/all/past" <?php if($pg == \'past\') { echo \'class="active"\'; }?>>PAST</a>
+           <a href="/events/all/future" <?php if($pg == \'future\') { echo \'class="active"\'; }?>>FUTURE</a>
+           <a href="/events">ALL</a>
+        </div>    
+  </div>
+  <p>We’re busy planning for Fall 2018 semester. Stay tuned for our full listing late this summer!</p>
+  ';
   $overrides["views_view.frontpage.display|default|display_options|access|perm"]["DELETED"] = TRUE;
   $overrides["views_view.frontpage.display|default|display_options|row_options"]["DELETED"] = TRUE;
   $overrides["views_view.frontpage.display|default|display_options|use_more_always"] = FALSE;
@@ -1660,6 +1702,8 @@ function csc_panopoly_feature_overrides_features_override_default_overrides() {
   $overrides["views_view.user_location_table.display|page_1|display_options|use_pager"]["DELETED"] = TRUE;
   $overrides["views_view.user_location_table.is_cacheable"]["DELETED"] = TRUE;
   $overrides["views_view.user_location_table.view_php"]["DELETED"] = TRUE;
+  $overrides["views_view.webform_submissions.display|default|display_options|fields|delete_submission|label"]["DELETED"] = TRUE;
+  $overrides["views_view.webform_submissions.display|default|display_options|fields|edit_submission|label"]["DELETED"] = TRUE;
 
   // Exported overrides for: wysiwyg
   $overrides["wysiwyg.panopoly_html_text.preferences|add_to_summaries"] = FALSE;
