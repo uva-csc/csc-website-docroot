@@ -31,6 +31,28 @@ function csc_panopoly_feature_overrides_field_default_field_instances_alter(&$da
     $data['fieldable_panels_pane-image-field_basic_image_image']['widget']['settings']['imce_filefield_on'] = 0; /* WAS: '' */
     unset($data['fieldable_panels_pane-image-field_basic_image_image']['widget']['settings']['manualcrop_styles_list']['panopoly_image_full']);
   }
+  if (isset($data['fieldable_panels_pane-map-field_map_address'])) {
+    $data['fieldable_panels_pane-map-field_map_address']['display']['default']['settings']['apikey'] = ''; /* WAS: '' */
+  }
+  if (isset($data['fieldable_panels_pane-table-field_basic_table_table'])) {
+    $data['fieldable_panels_pane-table-field_basic_table_table']['default_value'][0]['tablefield']['cell_0_0'] = ''; /* WAS: '' */
+    $data['fieldable_panels_pane-table-field_basic_table_table']['default_value'][0]['tablefield']['cell_0_1'] = ''; /* WAS: '' */
+    $data['fieldable_panels_pane-table-field_basic_table_table']['default_value'][0]['tablefield']['cell_1_0'] = ''; /* WAS: '' */
+    $data['fieldable_panels_pane-table-field_basic_table_table']['default_value'][0]['tablefield']['cell_1_1'] = ''; /* WAS: '' */
+    $data['fieldable_panels_pane-table-field_basic_table_table']['default_value'][0]['tablefield']['cell_2_0'] = ''; /* WAS: '' */
+    $data['fieldable_panels_pane-table-field_basic_table_table']['default_value'][0]['tablefield']['cell_2_1'] = ''; /* WAS: '' */
+    $data['fieldable_panels_pane-table-field_basic_table_table']['display']['default']['settings']['export_csv'] = FALSE; /* WAS: 0 */
+    $data['fieldable_panels_pane-table-field_basic_table_table']['display']['default']['settings']['hide_cols_skip_head'] = FALSE; /* WAS: 0 */
+    $data['fieldable_panels_pane-table-field_basic_table_table']['display']['default']['settings']['hide_empty_cols'] = FALSE; /* WAS: 0 */
+    $data['fieldable_panels_pane-table-field_basic_table_table']['display']['default']['settings']['hide_empty_rows'] = FALSE; /* WAS: 0 */
+    $data['fieldable_panels_pane-table-field_basic_table_table']['display']['default']['settings']['hide_header'] = FALSE; /* WAS: 0 */
+    unset($data['fieldable_panels_pane-table-field_basic_table_table']['default_value'][0]['tablefield']['caption']);
+    unset($data['fieldable_panels_pane-table-field_basic_table_table']['default_value'][0]['tablefield']['paste']);
+    unset($data['fieldable_panels_pane-table-field_basic_table_table']['default_value'][0]['tablefield']['tabledata']);
+    unset($data['fieldable_panels_pane-table-field_basic_table_table']['widget']['settings']['cell_processing']);
+    unset($data['fieldable_panels_pane-table-field_basic_table_table']['widget']['settings']['lock_values']);
+    unset($data['fieldable_panels_pane-table-field_basic_table_table']['widget']['settings']['restrict_rebuild']);
+  }
   if (isset($data['node-panopoly_page-body'])) {
     $data['node-panopoly_page-body']['display']['default']['type'] = 'hidden'; /* WAS: 'text_default' */
     $data['node-panopoly_page-body']['display']['featured']['type'] = 'hidden'; /* WAS: 'text_summary_or_trimmed' */
@@ -158,6 +180,9 @@ function csc_panopoly_feature_overrides_file_default_displays_alter(&$data) {
   }
   if (isset($data['video__preview__media_youtube_image'])) {
     $data['video__preview__media_youtube_image']->settings['image_style'] = 'panopoly_image_thumbnail'; /* WAS: 'media_thumbnail' */
+  }
+  if (isset($data['video__teaser__media_youtube_video'])) {
+    $data['video__teaser__media_youtube_video']->settings['rel'] = 1; /* WAS: 0 */
   }
 }
 
@@ -1568,6 +1593,53 @@ function csc_panopoly_feature_overrides_views_default_views_alter(&$data) {
     unset($data['backlinks']->display['default']->display_options['empty']['text']['empty']);
     unset($data['backlinks']->display['default']->display_options['fields']['title']['link_to_node']);
   }
+  if (isset($data['events'])) {
+    $data['events']->display['default']->display_options['empty']['area']['content'] = '<?php
+        $args = arg();
+        $pg = (count($args) > 2) ? $args[2] : FALSE;
+        $cp = current_path();
+    
+        $title = $head_title = "Events";
+        if ($cp == \'events/all/future\') {
+            $title = $head_title = "Upcoming Events";
+        } else if ($cp == \'events/all/past\') {
+            $title = $head_title = "Past Events";
+        }
+    drupal_set_title($title);
+    ?>
+    <div class="view-header">
+          <h2 class="pane-title"><?php echo $head_title; ?></h2>
+          <div id="event-nav">
+             <a href="/events/all/past" <?php if($pg == \'past\') { echo \'class="active"\'; }?>>PAST</a>
+             <a href="/events/all/future" <?php if($pg == \'future\') { echo \'class="active"\'; }?>>FUTURE</a>
+             <a href="/events">ALL</a>
+          </div>    
+    </div>
+    <p>We’re busy planning for Fall 2018 semester. Stay tuned for our full listing late this summer!</p>
+    '; /* WAS: '<?php
+        $args = arg();
+        $pg = (count($args) > 2) ? $args[2] : FALSE;
+        $cp = current_path();
+    
+        $title = $head_title = "Events";
+        if ($cp == \'events/all/future\') {
+            $title = $head_title = "Upcoming Events";
+        } else if ($cp == \'events/all/past\') {
+            $title = $head_title = "Past Events";
+        }
+    drupal_set_title($title);
+    ?>
+    <div class="view-header">
+          <h2 class="pane-title"><?php echo $head_title; ?></h2>
+          <div id="event-nav">
+             <a href="/events/all/past" <?php if($pg == \'past\') { echo \'class="active"\'; }?>>PAST</a>
+             <a href="/events/all/future" <?php if($pg == \'future\') { echo \'class="active"\'; }?>>FUTURE</a>
+             <a href="/events">ALL</a>
+          </div>    
+    </div>
+    <p>There are no events to show at this time.</p>
+    ' */
+  }
   if (isset($data['frontpage'])) {
     $data['frontpage']->display['default']->display_options['use_more_always'] = FALSE; /* WAS: '' */
     unset($data['frontpage']->display['default']->display_options['access']['perm']);
@@ -1878,6 +1950,10 @@ function csc_panopoly_feature_overrides_views_default_views_alter(&$data) {
     unset($data['user_location_table']->display['page_1']->display_options['use_pager']);
     unset($data['user_location_table']->is_cacheable);
     unset($data['user_location_table']->view_php);
+  }
+  if (isset($data['webform_submissions'])) {
+    unset($data['webform_submissions']->display['default']->display_options['fields']['delete_submission']['label']);
+    unset($data['webform_submissions']->display['default']->display_options['fields']['edit_submission']['label']);
   }
 }
 
