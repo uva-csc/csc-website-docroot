@@ -6,11 +6,11 @@ $plugin = array(
   'description' => t('Shows Instruction related to current page'),
   'category' => t('CSC Plugins'),
   'render callback' => 'csc_related_classes_render',
-  'edit form' => 'csc_related_edit_form',
+  'edit form' => 'csc_related_classes_edit_form',
   'admin info' => 'csc_related_classes_info',
   'defaults' => array(
         'position' => 'right',
-        'order' => 'title',
+        'order' => 'noderef',
         'node_count' => '3',
         'link_params' => '',  // parameter to add search string to the "All" link
     ),
@@ -31,7 +31,7 @@ function csc_related_classes_info($subtype, $conf, $contexts) {
 /**
  * 'Edit form' callback for the class list settings.
  */
-function csc_related_edit_form($form, &$form_state) {
+function csc_related_classes_edit_form($form, &$form_state) {
 
     $conf = $form_state['conf'];
     $form['position'] = array(
@@ -68,7 +68,7 @@ function csc_related_edit_form($form, &$form_state) {
  * The submit form stores the data in $conf. Saving settings submitted
  */
  
-function csc_related_edit_form_submit($form, &$form_state) {
+function csc_related_classes_edit_form_submit($form, &$form_state) {
   foreach (array_keys($form_state['plugin']['defaults']) as $key) {
     if (isset($form_state['values'][$key])) {
       $form_state['conf'][$key] = $form_state['values'][$key];
