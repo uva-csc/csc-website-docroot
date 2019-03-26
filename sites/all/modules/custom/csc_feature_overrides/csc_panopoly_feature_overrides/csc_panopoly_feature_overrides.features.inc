@@ -21,91 +21,35 @@ function csc_panopoly_feature_overrides_field_default_field_instances_alter(&$da
     $data['fieldable_panels_pane-basic_file-field_basic_file_file']['widget']['settings']['imce_filefield_on'] = 0; /* WAS: '' */
   }
   if (isset($data['fieldable_panels_pane-image-field_basic_image_image'])) {
-    $data['fieldable_panels_pane-image-field_basic_image_image']['settings']['image_field_caption'] = 0; /* WAS: '' */
+    $data['fieldable_panels_pane-image-field_basic_image_image']['settings']['image_field_caption'] = array(
+      'enabled' => 0,
+    ); /* WAS: '' */
     $data['fieldable_panels_pane-image-field_basic_image_image']['settings']['image_field_caption_wrapper'] = array(
       'image_field_caption_default' => array(
         'format' => 'plain_text',
         'value' => '',
       ),
     ); /* WAS: '' */
-    $data['fieldable_panels_pane-image-field_basic_image_image']['widget']['settings']['imce_filefield_on'] = 0; /* WAS: '' */
-    unset($data['fieldable_panels_pane-image-field_basic_image_image']['widget']['settings']['manualcrop_styles_list']['panopoly_image_full']);
   }
   if (isset($data['fieldable_panels_pane-map-field_map_address'])) {
     $data['fieldable_panels_pane-map-field_map_address']['display']['default']['settings']['apikey'] = ''; /* WAS: '' */
   }
-  if (isset($data['fieldable_panels_pane-table-field_basic_table_table'])) {
-    $data['fieldable_panels_pane-table-field_basic_table_table']['default_value'][0]['tablefield']['cell_0_0'] = ''; /* WAS: '' */
-    $data['fieldable_panels_pane-table-field_basic_table_table']['default_value'][0]['tablefield']['cell_0_1'] = ''; /* WAS: '' */
-    $data['fieldable_panels_pane-table-field_basic_table_table']['default_value'][0]['tablefield']['cell_1_0'] = ''; /* WAS: '' */
-    $data['fieldable_panels_pane-table-field_basic_table_table']['default_value'][0]['tablefield']['cell_1_1'] = ''; /* WAS: '' */
-    $data['fieldable_panels_pane-table-field_basic_table_table']['default_value'][0]['tablefield']['cell_2_0'] = ''; /* WAS: '' */
-    $data['fieldable_panels_pane-table-field_basic_table_table']['default_value'][0]['tablefield']['cell_2_1'] = ''; /* WAS: '' */
-    $data['fieldable_panels_pane-table-field_basic_table_table']['display']['default']['settings']['export_csv'] = FALSE; /* WAS: 0 */
-    $data['fieldable_panels_pane-table-field_basic_table_table']['display']['default']['settings']['hide_cols_skip_head'] = FALSE; /* WAS: 0 */
-    $data['fieldable_panels_pane-table-field_basic_table_table']['display']['default']['settings']['hide_empty_cols'] = FALSE; /* WAS: 0 */
-    $data['fieldable_panels_pane-table-field_basic_table_table']['display']['default']['settings']['hide_empty_rows'] = FALSE; /* WAS: 0 */
-    $data['fieldable_panels_pane-table-field_basic_table_table']['display']['default']['settings']['hide_header'] = FALSE; /* WAS: 0 */
-    unset($data['fieldable_panels_pane-table-field_basic_table_table']['default_value'][0]['tablefield']['caption']);
-    unset($data['fieldable_panels_pane-table-field_basic_table_table']['default_value'][0]['tablefield']['paste']);
-    unset($data['fieldable_panels_pane-table-field_basic_table_table']['default_value'][0]['tablefield']['tabledata']);
-    unset($data['fieldable_panels_pane-table-field_basic_table_table']['widget']['settings']['cell_processing']);
-    unset($data['fieldable_panels_pane-table-field_basic_table_table']['widget']['settings']['lock_values']);
-    unset($data['fieldable_panels_pane-table-field_basic_table_table']['widget']['settings']['restrict_rebuild']);
-  }
-  if (isset($data['node-panopoly_page-body'])) {
-    $data['node-panopoly_page-body']['display']['default']['type'] = 'hidden'; /* WAS: 'text_default' */
-    $data['node-panopoly_page-body']['display']['featured']['type'] = 'hidden'; /* WAS: 'text_summary_or_trimmed' */
-    $data['node-panopoly_page-body']['display']['teaser']['type'] = 'hidden'; /* WAS: 'text_summary_or_trimmed' */
-    unset($data['node-panopoly_page-body']['display']['default']['module']);
-    unset($data['node-panopoly_page-body']['display']['featured']['module']);
-    unset($data['node-panopoly_page-body']['display']['featured']['settings']['trim_length']);
-    unset($data['node-panopoly_page-body']['display']['teaser']['module']);
-    unset($data['node-panopoly_page-body']['display']['teaser']['settings']['trim_length']);
-  }
-  if (isset($data['node-panopoly_page-field_featured_categories'])) {
-    $data['node-panopoly_page-field_featured_categories']['display']['default']['type'] = 'hidden'; /* WAS: 'taxonomy_term_reference_link' */
-    unset($data['node-panopoly_page-field_featured_categories']['display']['default']['module']);
-  }
   if (isset($data['node-panopoly_page-field_featured_image'])) {
-    $data['node-panopoly_page-field_featured_image']['display']['default']['type'] = 'hidden'; /* WAS: 'image' */
-    $data['node-panopoly_page-field_featured_image']['display']['featured']['type'] = 'hidden'; /* WAS: 'image' */
-    $data['node-panopoly_page-field_featured_image']['display']['teaser']['type'] = 'hidden'; /* WAS: 'image' */
-    $data['node-panopoly_page-field_featured_image']['settings']['image_field_caption'] = 0; /* WAS: '' */
+    $data['node-panopoly_page-field_featured_image']['settings']['image_field_caption'] = array(
+      'enabled' => 0,
+    ); /* WAS: '' */
     $data['node-panopoly_page-field_featured_image']['settings']['image_field_caption_wrapper'] = array(
       'image_field_caption_default' => array(
         'format' => 'plain_text',
         'value' => '',
       ),
     ); /* WAS: '' */
-    $data['node-panopoly_page-field_featured_image']['widget']['module'] = 'media'; /* WAS: 'image' */
-    $data['node-panopoly_page-field_featured_image']['widget']['settings']['allowed_schemes'] = array(
-      'public' => 'public',
-    ); /* WAS: '' */
-    $data['node-panopoly_page-field_featured_image']['widget']['settings']['allowed_types'] = array(
-      'image' => 'image',
-    ); /* WAS: '' */
-    $data['node-panopoly_page-field_featured_image']['widget']['settings']['browser_plugins'] = array(); /* WAS: '' */
     $data['node-panopoly_page-field_featured_image']['widget']['settings']['imce_filefield_on'] = 0; /* WAS: '' */
-    $data['node-panopoly_page-field_featured_image']['widget']['type'] = 'media_generic'; /* WAS: 'image_image' */
-    unset($data['node-panopoly_page-field_featured_image']['display']['default']['module']);
-    unset($data['node-panopoly_page-field_featured_image']['display']['default']['settings']['image_link']);
-    unset($data['node-panopoly_page-field_featured_image']['display']['default']['settings']['image_style']);
-    unset($data['node-panopoly_page-field_featured_image']['display']['featured']['module']);
-    unset($data['node-panopoly_page-field_featured_image']['display']['featured']['settings']['image_link']);
-    unset($data['node-panopoly_page-field_featured_image']['display']['featured']['settings']['image_style']);
-    unset($data['node-panopoly_page-field_featured_image']['display']['teaser']['module']);
-    unset($data['node-panopoly_page-field_featured_image']['display']['teaser']['settings']['image_link']);
-    unset($data['node-panopoly_page-field_featured_image']['display']['teaser']['settings']['image_style']);
-    unset($data['node-panopoly_page-field_featured_image']['widget']['settings']['manualcrop_styles_list']['panopoly_image_full']);
-  }
-  if (isset($data['node-panopoly_page-field_featured_status'])) {
-    $data['node-panopoly_page-field_featured_status']['display']['default']['type'] = 'hidden'; /* WAS: 'list_default' */
-    unset($data['node-panopoly_page-field_featured_status']['display']['default']['module']);
   }
   if (isset($data['taxonomy_term-panopoly_categories-field_featured_image'])) {
-    $data['taxonomy_term-panopoly_categories-field_featured_image']['display']['default']['type'] = 'hidden'; /* WAS: 'image' */
-    $data['taxonomy_term-panopoly_categories-field_featured_image']['settings']['image_field_caption'] = 0; /* WAS: '' */
+    $data['taxonomy_term-panopoly_categories-field_featured_image']['settings']['image_field_caption'] = array(
+      'enabled' => 0,
+    ); /* WAS: '' */
     $data['taxonomy_term-panopoly_categories-field_featured_image']['settings']['image_field_caption_wrapper'] = array(
       'image_field_caption_default' => array(
         'format' => 'plain_text',
@@ -113,18 +57,11 @@ function csc_panopoly_feature_overrides_field_default_field_instances_alter(&$da
       ),
     ); /* WAS: '' */
     $data['taxonomy_term-panopoly_categories-field_featured_image']['widget']['settings']['imce_filefield_on'] = 0; /* WAS: '' */
-    unset($data['taxonomy_term-panopoly_categories-field_featured_image']['display']['default']['module']);
-    unset($data['taxonomy_term-panopoly_categories-field_featured_image']['display']['default']['settings']['image_link']);
-    unset($data['taxonomy_term-panopoly_categories-field_featured_image']['display']['default']['settings']['image_style']);
-    unset($data['taxonomy_term-panopoly_categories-field_featured_image']['widget']['settings']['manualcrop_styles_list']['panopoly_image_full']);
-  }
-  if (isset($data['user-user-field_user_about'])) {
-    $data['user-user-field_user_about']['display']['default']['type'] = 'hidden'; /* WAS: 'text_default' */
-    unset($data['user-user-field_user_about']['display']['default']['module']);
   }
   if (isset($data['user-user-field_user_picture'])) {
-    $data['user-user-field_user_picture']['display']['default']['type'] = 'hidden'; /* WAS: 'image' */
-    $data['user-user-field_user_picture']['settings']['image_field_caption'] = 0; /* WAS: '' */
+    $data['user-user-field_user_picture']['settings']['image_field_caption'] = array(
+      'enabled' => 0,
+    ); /* WAS: '' */
     $data['user-user-field_user_picture']['settings']['image_field_caption_wrapper'] = array(
       'image_field_caption_default' => array(
         'format' => 'plain_text',
@@ -132,10 +69,6 @@ function csc_panopoly_feature_overrides_field_default_field_instances_alter(&$da
       ),
     ); /* WAS: '' */
     $data['user-user-field_user_picture']['widget']['settings']['imce_filefield_on'] = 0; /* WAS: '' */
-    unset($data['user-user-field_user_picture']['display']['default']['module']);
-    unset($data['user-user-field_user_picture']['display']['default']['settings']['image_link']);
-    unset($data['user-user-field_user_picture']['display']['default']['settings']['image_style']);
-    unset($data['user-user-field_user_picture']['widget']['settings']['manualcrop_styles_list']['panopoly_image_full']);
   }
 }
 
@@ -247,13 +180,13 @@ function csc_panopoly_feature_overrides_filter_default_formats_alter(&$data) {
     $data['panopoly_wysiwyg_text']['filters']['wysiwyg']['settings']['style_table']['table-layout'] = 'table-layout'; /* WAS: 0 */
     $data['panopoly_wysiwyg_text']['filters']['wysiwyg']['settings']['style_user']['cursor'] = 'cursor'; /* WAS: 0 */
     $data['panopoly_wysiwyg_text']['filters']['wysiwyg']['settings']['valid_elements'] = '@[style|class],
-            a[!href|target<_blank|title],
-            div[align<center?justify?left?right],
-            br,em,i,strong,cite,code,blockquote,ul,ol,li,dl,dt,dd,hr,
-            span,p,
-            h1,h2,h3,h4,h5,h6,
-            img[!src|title|alt|width|height|hspace|vspace],
-            table,tr,th,td'; /* WAS: '@[style|class],
+                a[!href|target<_blank|title],
+                div[align<center?justify?left?right],
+                br,em,i,strong,cite,code,blockquote,ul,ol,li,dl,dt,dd,hr,
+                span,p,
+                h1,h2,h3,h4,h5,h6,
+                img[!src|title|alt|width|height|hspace|vspace],
+                table,tr,th,td'; /* WAS: '@[style|class],
     a[!href|target<_blank|title],
     div[align<center?justify?left?right],
     br,em,i,strong,cite,code,blockquote,ul,ol,li,dl,dt,dd,
@@ -406,6 +339,17 @@ function csc_panopoly_feature_overrides_default_linkit_profiles_alter(&$data) {
     unset($data['content_editors']->data['search_plugins']['entity:search_api_index']);
     unset($data['content_editors']->data['search_plugins']['entity:search_api_server']);
     unset($data['content_editors']->data['text_formats']);
+  }
+}
+
+/**
+ * Implements hook_node_info_alter().
+ */
+function csc_panopoly_feature_overrides_node_info_alter(&$data) {
+  if (isset($data['panopoly_landing_page'])) {
+    $data['panopoly_landing_page']['help'] = '<p>Here you can set the <em>Landing Page\'s</em> metadata, for example the title, path and menu options.</p>
+    <p>To add content to the page, first save this form and then click the "Customize this page" button.</p>'; /* WAS: '<p>Here you can set the <em>Landing Page\'s</em> metadata, for example the title, path and menu options.</p>
+    <p>To add content to the page, first save this form and then click the "Customize this page" button.</p>' */
   }
 }
 
