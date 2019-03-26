@@ -16,80 +16,29 @@ function csc_panopoly_feature_overrides_features_override_default_overrides() {
 
   // Exported overrides for: field_instance
   $overrides["field_instance.fieldable_panels_pane-basic_file-field_basic_file_file.widget|settings|imce_filefield_on"] = 0;
-  $overrides["field_instance.fieldable_panels_pane-image-field_basic_image_image.settings|image_field_caption"] = 0;
+  $overrides["field_instance.fieldable_panels_pane-image-field_basic_image_image.settings|image_field_caption"] = array(
+    'enabled' => 0,
+  );
   $overrides["field_instance.fieldable_panels_pane-image-field_basic_image_image.settings|image_field_caption_wrapper"] = array(
     'image_field_caption_default' => array(
       'format' => 'plain_text',
       'value' => '',
     ),
   );
-  $overrides["field_instance.fieldable_panels_pane-image-field_basic_image_image.widget|settings|imce_filefield_on"] = 0;
-  $overrides["field_instance.fieldable_panels_pane-image-field_basic_image_image.widget|settings|manualcrop_styles_list|panopoly_image_full"]["DELETED"] = TRUE;
   $overrides["field_instance.fieldable_panels_pane-map-field_map_address.display|default|settings|apikey"] = '';
-  $overrides["field_instance.fieldable_panels_pane-table-field_basic_table_table.default_value|0|tablefield|caption"]["DELETED"] = TRUE;
-  $overrides["field_instance.fieldable_panels_pane-table-field_basic_table_table.default_value|0|tablefield|cell_0_0"] = '';
-  $overrides["field_instance.fieldable_panels_pane-table-field_basic_table_table.default_value|0|tablefield|cell_0_1"] = '';
-  $overrides["field_instance.fieldable_panels_pane-table-field_basic_table_table.default_value|0|tablefield|cell_1_0"] = '';
-  $overrides["field_instance.fieldable_panels_pane-table-field_basic_table_table.default_value|0|tablefield|cell_1_1"] = '';
-  $overrides["field_instance.fieldable_panels_pane-table-field_basic_table_table.default_value|0|tablefield|cell_2_0"] = '';
-  $overrides["field_instance.fieldable_panels_pane-table-field_basic_table_table.default_value|0|tablefield|cell_2_1"] = '';
-  $overrides["field_instance.fieldable_panels_pane-table-field_basic_table_table.default_value|0|tablefield|paste"]["DELETED"] = TRUE;
-  $overrides["field_instance.fieldable_panels_pane-table-field_basic_table_table.default_value|0|tablefield|tabledata"]["DELETED"] = TRUE;
-  $overrides["field_instance.fieldable_panels_pane-table-field_basic_table_table.display|default|settings|export_csv"] = FALSE;
-  $overrides["field_instance.fieldable_panels_pane-table-field_basic_table_table.display|default|settings|hide_cols_skip_head"] = FALSE;
-  $overrides["field_instance.fieldable_panels_pane-table-field_basic_table_table.display|default|settings|hide_empty_cols"] = FALSE;
-  $overrides["field_instance.fieldable_panels_pane-table-field_basic_table_table.display|default|settings|hide_empty_rows"] = FALSE;
-  $overrides["field_instance.fieldable_panels_pane-table-field_basic_table_table.display|default|settings|hide_header"] = FALSE;
-  $overrides["field_instance.fieldable_panels_pane-table-field_basic_table_table.widget|settings|cell_processing"]["DELETED"] = TRUE;
-  $overrides["field_instance.fieldable_panels_pane-table-field_basic_table_table.widget|settings|lock_values"]["DELETED"] = TRUE;
-  $overrides["field_instance.fieldable_panels_pane-table-field_basic_table_table.widget|settings|restrict_rebuild"]["DELETED"] = TRUE;
-  $overrides["field_instance.node-panopoly_page-body.display|default|module"]["DELETED"] = TRUE;
-  $overrides["field_instance.node-panopoly_page-body.display|default|type"] = 'hidden';
-  $overrides["field_instance.node-panopoly_page-body.display|featured|module"]["DELETED"] = TRUE;
-  $overrides["field_instance.node-panopoly_page-body.display|featured|settings|trim_length"]["DELETED"] = TRUE;
-  $overrides["field_instance.node-panopoly_page-body.display|featured|type"] = 'hidden';
-  $overrides["field_instance.node-panopoly_page-body.display|teaser|module"]["DELETED"] = TRUE;
-  $overrides["field_instance.node-panopoly_page-body.display|teaser|settings|trim_length"]["DELETED"] = TRUE;
-  $overrides["field_instance.node-panopoly_page-body.display|teaser|type"] = 'hidden';
-  $overrides["field_instance.node-panopoly_page-field_featured_categories.display|default|module"]["DELETED"] = TRUE;
-  $overrides["field_instance.node-panopoly_page-field_featured_categories.display|default|type"] = 'hidden';
-  $overrides["field_instance.node-panopoly_page-field_featured_image.display|default|module"]["DELETED"] = TRUE;
-  $overrides["field_instance.node-panopoly_page-field_featured_image.display|default|settings|image_link"]["DELETED"] = TRUE;
-  $overrides["field_instance.node-panopoly_page-field_featured_image.display|default|settings|image_style"]["DELETED"] = TRUE;
-  $overrides["field_instance.node-panopoly_page-field_featured_image.display|default|type"] = 'hidden';
-  $overrides["field_instance.node-panopoly_page-field_featured_image.display|featured|module"]["DELETED"] = TRUE;
-  $overrides["field_instance.node-panopoly_page-field_featured_image.display|featured|settings|image_link"]["DELETED"] = TRUE;
-  $overrides["field_instance.node-panopoly_page-field_featured_image.display|featured|settings|image_style"]["DELETED"] = TRUE;
-  $overrides["field_instance.node-panopoly_page-field_featured_image.display|featured|type"] = 'hidden';
-  $overrides["field_instance.node-panopoly_page-field_featured_image.display|teaser|module"]["DELETED"] = TRUE;
-  $overrides["field_instance.node-panopoly_page-field_featured_image.display|teaser|settings|image_link"]["DELETED"] = TRUE;
-  $overrides["field_instance.node-panopoly_page-field_featured_image.display|teaser|settings|image_style"]["DELETED"] = TRUE;
-  $overrides["field_instance.node-panopoly_page-field_featured_image.display|teaser|type"] = 'hidden';
-  $overrides["field_instance.node-panopoly_page-field_featured_image.settings|image_field_caption"] = 0;
+  $overrides["field_instance.node-panopoly_page-field_featured_image.settings|image_field_caption"] = array(
+    'enabled' => 0,
+  );
   $overrides["field_instance.node-panopoly_page-field_featured_image.settings|image_field_caption_wrapper"] = array(
     'image_field_caption_default' => array(
       'format' => 'plain_text',
       'value' => '',
     ),
   );
-  $overrides["field_instance.node-panopoly_page-field_featured_image.widget|module"] = 'media';
-  $overrides["field_instance.node-panopoly_page-field_featured_image.widget|settings|allowed_schemes"] = array(
-    'public' => 'public',
-  );
-  $overrides["field_instance.node-panopoly_page-field_featured_image.widget|settings|allowed_types"] = array(
-    'image' => 'image',
-  );
-  $overrides["field_instance.node-panopoly_page-field_featured_image.widget|settings|browser_plugins"] = array();
   $overrides["field_instance.node-panopoly_page-field_featured_image.widget|settings|imce_filefield_on"] = 0;
-  $overrides["field_instance.node-panopoly_page-field_featured_image.widget|settings|manualcrop_styles_list|panopoly_image_full"]["DELETED"] = TRUE;
-  $overrides["field_instance.node-panopoly_page-field_featured_image.widget|type"] = 'media_generic';
-  $overrides["field_instance.node-panopoly_page-field_featured_status.display|default|module"]["DELETED"] = TRUE;
-  $overrides["field_instance.node-panopoly_page-field_featured_status.display|default|type"] = 'hidden';
-  $overrides["field_instance.taxonomy_term-panopoly_categories-field_featured_image.display|default|module"]["DELETED"] = TRUE;
-  $overrides["field_instance.taxonomy_term-panopoly_categories-field_featured_image.display|default|settings|image_link"]["DELETED"] = TRUE;
-  $overrides["field_instance.taxonomy_term-panopoly_categories-field_featured_image.display|default|settings|image_style"]["DELETED"] = TRUE;
-  $overrides["field_instance.taxonomy_term-panopoly_categories-field_featured_image.display|default|type"] = 'hidden';
-  $overrides["field_instance.taxonomy_term-panopoly_categories-field_featured_image.settings|image_field_caption"] = 0;
+  $overrides["field_instance.taxonomy_term-panopoly_categories-field_featured_image.settings|image_field_caption"] = array(
+    'enabled' => 0,
+  );
   $overrides["field_instance.taxonomy_term-panopoly_categories-field_featured_image.settings|image_field_caption_wrapper"] = array(
     'image_field_caption_default' => array(
       'format' => 'plain_text',
@@ -97,14 +46,9 @@ function csc_panopoly_feature_overrides_features_override_default_overrides() {
     ),
   );
   $overrides["field_instance.taxonomy_term-panopoly_categories-field_featured_image.widget|settings|imce_filefield_on"] = 0;
-  $overrides["field_instance.taxonomy_term-panopoly_categories-field_featured_image.widget|settings|manualcrop_styles_list|panopoly_image_full"]["DELETED"] = TRUE;
-  $overrides["field_instance.user-user-field_user_about.display|default|module"]["DELETED"] = TRUE;
-  $overrides["field_instance.user-user-field_user_about.display|default|type"] = 'hidden';
-  $overrides["field_instance.user-user-field_user_picture.display|default|module"]["DELETED"] = TRUE;
-  $overrides["field_instance.user-user-field_user_picture.display|default|settings|image_link"]["DELETED"] = TRUE;
-  $overrides["field_instance.user-user-field_user_picture.display|default|settings|image_style"]["DELETED"] = TRUE;
-  $overrides["field_instance.user-user-field_user_picture.display|default|type"] = 'hidden';
-  $overrides["field_instance.user-user-field_user_picture.settings|image_field_caption"] = 0;
+  $overrides["field_instance.user-user-field_user_picture.settings|image_field_caption"] = array(
+    'enabled' => 0,
+  );
   $overrides["field_instance.user-user-field_user_picture.settings|image_field_caption_wrapper"] = array(
     'image_field_caption_default' => array(
       'format' => 'plain_text',
@@ -112,7 +56,6 @@ function csc_panopoly_feature_overrides_features_override_default_overrides() {
     ),
   );
   $overrides["field_instance.user-user-field_user_picture.widget|settings|imce_filefield_on"] = 0;
-  $overrides["field_instance.user-user-field_user_picture.widget|settings|manualcrop_styles_list|panopoly_image_full"]["DELETED"] = TRUE;
 
   // Exported overrides for: file_display
   $overrides["file_display.image__default__file_field_file_default.status"] = FALSE;
@@ -174,13 +117,13 @@ function csc_panopoly_feature_overrides_features_override_default_overrides() {
   $overrides["filter.panopoly_wysiwyg_text.filters|wysiwyg|settings|style_table|table-layout"] = 'table-layout';
   $overrides["filter.panopoly_wysiwyg_text.filters|wysiwyg|settings|style_user|cursor"] = 'cursor';
   $overrides["filter.panopoly_wysiwyg_text.filters|wysiwyg|settings|valid_elements"] = '@[style|class],
-          a[!href|target<_blank|title],
-          div[align<center?justify?left?right],
-          br,em,i,strong,cite,code,blockquote,ul,ol,li,dl,dt,dd,hr,
-          span,p,
-          h1,h2,h3,h4,h5,h6,
-          img[!src|title|alt|width|height|hspace|vspace],
-          table,tr,th,td';
+              a[!href|target<_blank|title],
+              div[align<center?justify?left?right],
+              br,em,i,strong,cite,code,blockquote,ul,ol,li,dl,dt,dd,hr,
+              span,p,
+              h1,h2,h3,h4,h5,h6,
+              img[!src|title|alt|width|height|hspace|vspace],
+              table,tr,th,td';
 
   // Exported overrides for: image
   $overrides["image.apps_featured_screenshot.label"] = 'apps_featured_screenshot';
@@ -254,6 +197,10 @@ function csc_panopoly_feature_overrides_features_override_default_overrides() {
   $overrides["linkit_profiles.content_editors.data|search_plugins|entity:search_api_server"]["DELETED"] = TRUE;
   $overrides["linkit_profiles.content_editors.data|text_formats"]["DELETED"] = TRUE;
   $overrides["linkit_profiles.content_editors.profile_type"] = 2;
+
+  // Exported overrides for: node
+  $overrides["node.panopoly_landing_page.help"] = '<p>Here you can set the <em>Landing Page\'s</em> metadata, for example the title, path and menu options.</p>
+  <p>To add content to the page, first save this form and then click the "Customize this page" button.</p>';
 
   // Exported overrides for: page_manager_handlers
   $overrides["page_manager_handlers.node_edit_panel_context.conf|display|content|new-0581ce01-43a7-4745-b1fb-b10754d71419"] = (object) array(
