@@ -3,331 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="def74d16-d17c-4d30-a5a0-d7ad6195e8fb" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.htaccess" beforeDir="false" afterPath="$PROJECT_DIR$/.htaccess" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CHANGELOG.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CHANGELOG.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MAINTAINERS.txt" beforeDir="false" afterPath="$PROJECT_DIR$/MAINTAINERS.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/bootstrap.inc" beforeDir="false" afterPath="$PROJECT_DIR$/includes/bootstrap.inc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/common.inc" beforeDir="false" afterPath="$PROJECT_DIR$/includes/common.inc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/file.inc" beforeDir="false" afterPath="$PROJECT_DIR$/includes/file.inc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/form.inc" beforeDir="false" afterPath="$PROJECT_DIR$/includes/form.inc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/install.inc" beforeDir="false" afterPath="$PROJECT_DIR$/includes/install.inc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/menu.inc" beforeDir="false" afterPath="$PROJECT_DIR$/includes/menu.inc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/module.inc" beforeDir="false" afterPath="$PROJECT_DIR$/includes/module.inc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/theme.inc" beforeDir="false" afterPath="$PROJECT_DIR$/includes/theme.inc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/tabledrag.js" beforeDir="false" afterPath="$PROJECT_DIR$/misc/tabledrag.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/aggregator/aggregator.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/aggregator/aggregator.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/aggregator/tests/aggregator_test.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/aggregator/tests/aggregator_test.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/block/block.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/block/block.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/block/tests/block_test.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/block/tests/block_test.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/block/tests/themes/block_test_theme/block_test_theme.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/block/tests/themes/block_test_theme/block_test_theme.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/blog/blog.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/blog/blog.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/book/book.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/book/book.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/book/book.module" beforeDir="false" afterPath="$PROJECT_DIR$/modules/book/book.module" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/color/color.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/color/color.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/comment/comment.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/comment/comment.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/contact/contact.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/contact/contact.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/contextual/contextual.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/contextual/contextual.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/dashboard/dashboard.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/dashboard/dashboard.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/dblog/dblog.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/dblog/dblog.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/field/field.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/field/field.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/field/modules/field_sql_storage/field_sql_storage.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/field/modules/field_sql_storage/field_sql_storage.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/field/modules/list/list.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/field/modules/list/list.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/field/modules/list/list.install" beforeDir="false" afterPath="$PROJECT_DIR$/modules/field/modules/list/list.install" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/field/modules/list/tests/list_test.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/field/modules/list/tests/list_test.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/field/modules/number/number.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/field/modules/number/number.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/field/modules/options/options.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/field/modules/options/options.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/field/modules/text/text.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/field/modules/text/text.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/field/tests/field_test.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/field/tests/field_test.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/field_ui/field_ui.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/field_ui/field_ui.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/file/file.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/file/file.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/file/tests/file_module_test.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/file/tests/file_module_test.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/filter/filter.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/filter/filter.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/forum/forum.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/forum/forum.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/help/help.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/help/help.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/image/image.admin.inc" beforeDir="false" afterPath="$PROJECT_DIR$/modules/image/image.admin.inc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/image/image.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/image/image.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/image/tests/image_module_test.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/image/tests/image_module_test.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/locale/locale.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/locale/locale.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/locale/locale.test" beforeDir="false" afterPath="$PROJECT_DIR$/modules/locale/locale.test" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/locale/tests/locale_test.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/locale/tests/locale_test.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/menu/menu.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/menu/menu.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/node/node.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/node/node.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/node/tests/node_access_test.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/node/tests/node_access_test.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/node/tests/node_test.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/node/tests/node_test.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/node/tests/node_test_exception.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/node/tests/node_test_exception.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/openid/openid.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/openid/openid.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/openid/tests/openid_test.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/openid/tests/openid_test.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/overlay/overlay.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/overlay/overlay.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/path/path.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/path/path.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/php/php.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/php/php.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/poll/poll.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/poll/poll.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/profile/profile.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/profile/profile.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/rdf/rdf.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/rdf/rdf.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/rdf/tests/rdf_test.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/rdf/tests/rdf_test.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/search/search.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/search/search.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/search/tests/search_embedded_form.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/search/tests/search_embedded_form.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/search/tests/search_extra_type.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/search/tests/search_extra_type.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/search/tests/search_node_tags.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/search/tests/search_node_tags.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/shortcut/shortcut.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/shortcut/shortcut.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/simpletest/simpletest.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/simpletest/simpletest.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/simpletest/tests/actions_loop_test.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/simpletest/tests/actions_loop_test.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/simpletest/tests/ajax_forms_test.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/simpletest/tests/ajax_forms_test.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/simpletest/tests/ajax_test.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/simpletest/tests/ajax_test.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/simpletest/tests/batch_test.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/simpletest/tests/batch_test.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/simpletest/tests/boot_test_1.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/simpletest/tests/boot_test_1.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/simpletest/tests/boot_test_2.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/simpletest/tests/boot_test_2.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/simpletest/tests/common_test.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/simpletest/tests/common_test.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/simpletest/tests/common_test_cron_helper.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/simpletest/tests/common_test_cron_helper.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/simpletest/tests/database_test.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/simpletest/tests/database_test.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/simpletest/tests/drupal_autoload_test/drupal_autoload_test.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/simpletest/tests/drupal_autoload_test/drupal_autoload_test.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/simpletest/tests/drupal_system_listing_compatible_test/drupal_system_listing_compatible_test.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/simpletest/tests/drupal_system_listing_compatible_test/drupal_system_listing_compatible_test.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/simpletest/tests/drupal_system_listing_incompatible_test/drupal_system_listing_incompatible_test.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/simpletest/tests/drupal_system_listing_incompatible_test/drupal_system_listing_incompatible_test.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/simpletest/tests/entity_cache_test.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/simpletest/tests/entity_cache_test.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/simpletest/tests/entity_cache_test_dependency.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/simpletest/tests/entity_cache_test_dependency.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/simpletest/tests/entity_crud_hook_test.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/simpletest/tests/entity_crud_hook_test.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/simpletest/tests/entity_query_access_test.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/simpletest/tests/entity_query_access_test.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/simpletest/tests/error_test.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/simpletest/tests/error_test.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/simpletest/tests/file.test" beforeDir="false" afterPath="$PROJECT_DIR$/modules/simpletest/tests/file.test" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/simpletest/tests/file_test.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/simpletest/tests/file_test.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/simpletest/tests/filter_test.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/simpletest/tests/filter_test.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/simpletest/tests/form.test" beforeDir="false" afterPath="$PROJECT_DIR$/modules/simpletest/tests/form.test" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/simpletest/tests/form_test.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/simpletest/tests/form_test.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/simpletest/tests/form_test.module" beforeDir="false" afterPath="$PROJECT_DIR$/modules/simpletest/tests/form_test.module" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/simpletest/tests/image.test" beforeDir="false" afterPath="$PROJECT_DIR$/modules/simpletest/tests/image.test" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/simpletest/tests/image_test.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/simpletest/tests/image_test.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/simpletest/tests/menu_test.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/simpletest/tests/menu_test.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/simpletest/tests/module_test.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/simpletest/tests/module_test.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/simpletest/tests/path_test.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/simpletest/tests/path_test.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/simpletest/tests/psr_0_test/psr_0_test.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/simpletest/tests/psr_0_test/psr_0_test.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/simpletest/tests/psr_4_test/psr_4_test.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/simpletest/tests/psr_4_test/psr_4_test.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/simpletest/tests/requirements1_test.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/simpletest/tests/requirements1_test.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/simpletest/tests/requirements2_test.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/simpletest/tests/requirements2_test.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/simpletest/tests/session_test.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/simpletest/tests/session_test.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/simpletest/tests/system_dependencies_test.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/simpletest/tests/system_dependencies_test.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/simpletest/tests/system_incompatible_core_version_dependencies_test.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/simpletest/tests/system_incompatible_core_version_dependencies_test.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/simpletest/tests/system_incompatible_core_version_test.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/simpletest/tests/system_incompatible_core_version_test.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/simpletest/tests/system_incompatible_module_version_dependencies_test.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/simpletest/tests/system_incompatible_module_version_dependencies_test.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/simpletest/tests/system_incompatible_module_version_test.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/simpletest/tests/system_incompatible_module_version_test.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/simpletest/tests/system_project_namespace_test.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/simpletest/tests/system_project_namespace_test.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/simpletest/tests/system_test.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/simpletest/tests/system_test.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/simpletest/tests/taxonomy_test.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/simpletest/tests/taxonomy_test.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/simpletest/tests/theme_test.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/simpletest/tests/theme_test.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/simpletest/tests/themes/test_basetheme/test_basetheme.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/simpletest/tests/themes/test_basetheme/test_basetheme.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/simpletest/tests/themes/test_subtheme/test_subtheme.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/simpletest/tests/themes/test_subtheme/test_subtheme.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/simpletest/tests/themes/test_theme/test_theme.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/simpletest/tests/themes/test_theme/test_theme.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/simpletest/tests/themes/test_theme_nyan_cat/test_theme_nyan_cat.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/simpletest/tests/themes/test_theme_nyan_cat/test_theme_nyan_cat.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/simpletest/tests/update_script_test.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/simpletest/tests/update_script_test.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/simpletest/tests/update_test_1.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/simpletest/tests/update_test_1.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/simpletest/tests/update_test_2.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/simpletest/tests/update_test_2.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/simpletest/tests/update_test_3.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/simpletest/tests/update_test_3.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/simpletest/tests/url_alter_test.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/simpletest/tests/url_alter_test.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/simpletest/tests/xmlrpc_test.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/simpletest/tests/xmlrpc_test.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/statistics/statistics.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/statistics/statistics.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/syslog/syslog.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/syslog/syslog.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/system/system.admin.inc" beforeDir="false" afterPath="$PROJECT_DIR$/modules/system/system.admin.inc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/system/system.api.php" beforeDir="false" afterPath="$PROJECT_DIR$/modules/system/system.api.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/system/system.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/system/system.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/system/system.tar.inc" beforeDir="false" afterPath="$PROJECT_DIR$/modules/system/system.tar.inc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/system/system.test" beforeDir="false" afterPath="$PROJECT_DIR$/modules/system/system.test" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/system/tests/cron_queue_test.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/system/tests/cron_queue_test.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/system/tests/system_cron_test.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/system/tests/system_cron_test.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/taxonomy/taxonomy.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/taxonomy/taxonomy.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/taxonomy/taxonomy.module" beforeDir="false" afterPath="$PROJECT_DIR$/modules/taxonomy/taxonomy.module" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/toolbar/toolbar.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/toolbar/toolbar.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/tracker/tracker.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/tracker/tracker.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/translation/tests/translation_test.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/translation/tests/translation_test.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/translation/translation.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/translation/translation.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/trigger/tests/trigger_test.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/trigger/tests/trigger_test.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/trigger/trigger.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/trigger/trigger.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/update/tests/aaa_update_test.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/update/tests/aaa_update_test.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/update/tests/bbb_update_test.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/update/tests/bbb_update_test.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/update/tests/ccc_update_test.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/update/tests/ccc_update_test.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/update/tests/themes/update_test_admintheme/update_test_admintheme.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/update/tests/themes/update_test_admintheme/update_test_admintheme.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/update/tests/themes/update_test_basetheme/update_test_basetheme.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/update/tests/themes/update_test_basetheme/update_test_basetheme.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/update/tests/themes/update_test_subtheme/update_test_subtheme.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/update/tests/themes/update_test_subtheme/update_test_subtheme.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/update/tests/update_test.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/update/tests/update_test.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/update/update.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/update/update.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/user/tests/user_form_test.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/user/tests/user_form_test.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/user/user.info" beforeDir="false" afterPath="$PROJECT_DIR$/modules/user/user.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/user/user.module" beforeDir="false" afterPath="$PROJECT_DIR$/modules/user/user.module" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/user/user.test" beforeDir="false" afterPath="$PROJECT_DIR$/modules/user/user.test" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/minimal/minimal.info" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/minimal/minimal.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/.travis.yml" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/.travis.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/CHANGELOG.txt" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/CHANGELOG.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/build-panopoly-pantheon.make" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/build-panopoly-pantheon.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/build-panopoly-release.make" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/build-panopoly-release.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/build-panopoly.make" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/build-panopoly.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/drupal-org-core.make" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/drupal-org-core.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/drupal-org-release.make" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/drupal-org-release.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/drupal-org.make" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/drupal-org.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/admin_menu/admin_menu.inc" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/admin_menu/admin_menu.inc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/apps/apps.profile.inc" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/apps/apps.profile.inc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/ctools/views_content/plugins/content_types/views_panes.inc" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/ctools/views_content/plugins/content_types/views_panes.inc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/ctools/views_content/plugins/views/views_content_plugin_display_panel_pane.inc" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/ctools/views_content/plugins/views/views_content_plugin_display_panel_pane.inc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/date/date_api/date_api_ical.inc" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/date/date_api/date_api_ical.inc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/date/date_api/date_api_ical.inc.orig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/date/date_repeat/date_repeat.module" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/date/date_repeat/date_repeat.module" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/date/date_repeat/date_repeat.module.orig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/date/date_repeat/date_repeat_form.inc" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/date/date_repeat/date_repeat_form.inc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/date/date_repeat/date_repeat_form.inc.orig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/date/date_repeat_field/date_repeat_field.module" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/date/date_repeat_field/date_repeat_field.module" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/date/date_repeat_field/date_repeat_field.module.orig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/defaultcontent/PATCHES.txt" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/defaultcontent/PATCHES.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/defaultcontent/defaultcontent.info" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/defaultcontent/defaultcontent.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/defaultcontent/defaultcontent.module" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/defaultcontent/defaultcontent.module" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/features/features.export.inc" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/features/features.export.inc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/features/features.info" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/features/features.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/features/includes/features.menu.inc" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/features/includes/features.menu.inc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/file_entity/file_entity.file.inc" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/file_entity/file_entity.file.inc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/file_entity/file_entity.info" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/file_entity/file_entity.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/file_entity/file_entity.pages.inc" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/file_entity/file_entity.pages.inc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/file_entity/tests/file_entity_test.info" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/file_entity/tests/file_entity_test.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/libraries/CHANGELOG.txt" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/libraries/CHANGELOG.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/libraries/libraries.admin.inc" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/libraries/libraries.admin.inc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/libraries/libraries.api.php" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/libraries/libraries.api.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/libraries/libraries.drush.inc" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/libraries/libraries.drush.inc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/libraries/libraries.info" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/libraries/libraries.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/libraries/libraries.install" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/libraries/libraries.install" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/libraries/libraries.module" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/libraries/libraries.module" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/libraries/tests/LibrariesAdminWebTest.test" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/libraries/tests/LibrariesAdminWebTest.test" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/libraries/tests/libraries/example_info_file.libraries.info" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/libraries/tests/libraries/example_info_file.libraries.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/libraries/tests/modules/libraries_test_module/libraries_test_module.info" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/libraries/tests/modules/libraries_test_module/libraries_test_module.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/libraries/tests/themes/libraries_test_theme/libraries_test_theme.info" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/libraries/tests/themes/libraries_test_theme/libraries_test_theme.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/media/includes/media.fields.inc" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/media/includes/media.fields.inc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/media/media.info" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/media/media.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/media/media.module" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/media/media.module" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/media/media.views.inc" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/media/media.views.inc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/media/modules/media_bulk_upload/includes/media_bulk_upload.pages.inc" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/media/modules/media_bulk_upload/includes/media_bulk_upload.pages.inc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/media/modules/media_bulk_upload/media_bulk_upload.info" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/media/modules/media_bulk_upload/media_bulk_upload.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/media/modules/media_internet/media_internet.info" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/media/modules/media_internet/media_internet.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/media/modules/media_internet/tests/media_internet_test.info" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/media/modules/media_internet/tests/media_internet_test.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/media/modules/media_migrate_file_types/media_migrate_file_types.info" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/media/modules/media_migrate_file_types/media_migrate_file_types.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/media/modules/media_wysiwyg/includes/media_wysiwyg.filter.inc" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/media/modules/media_wysiwyg/includes/media_wysiwyg.filter.inc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/media/modules/media_wysiwyg/includes/media_wysiwyg.pages.inc" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/media/modules/media_wysiwyg/includes/media_wysiwyg.pages.inc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/media/modules/media_wysiwyg/media_wysiwyg.info" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/media/modules/media_wysiwyg/media_wysiwyg.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/media/modules/media_wysiwyg_view_mode/media_wysiwyg_view_mode.info" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/media/modules/media_wysiwyg_view_mode/media_wysiwyg_view_mode.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/media/modules/mediafield/mediafield.info" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/media/modules/mediafield/mediafield.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/media/tests/media_module_test.info" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/media/tests/media_module_test.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/migrate/README.txt" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/migrate/README.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/migrate/includes/base.inc" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/migrate/includes/base.inc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/migrate/includes/migration.inc" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/migrate/includes/migration.inc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/migrate/includes/source.inc" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/migrate/includes/source.inc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/migrate/migrate.info" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/migrate/migrate.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/migrate/migrate_example/beer.install.inc" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/migrate/migrate_example/beer.install.inc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/migrate/migrate_example/migrate_example.info" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/migrate/migrate_example/migrate_example.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/migrate/migrate_example/migrate_example_oracle/migrate_example_oracle.info" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/migrate/migrate_example/migrate_example_oracle/migrate_example_oracle.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/migrate/migrate_example_baseball/migrate_example_baseball.info" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/migrate/migrate_example_baseball/migrate_example_baseball.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/migrate/migrate_example_baseball/migrate_example_baseball.migrate.inc" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/migrate/migrate_example_baseball/migrate_example_baseball.migrate.inc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/migrate/migrate_ui/migrate_ui.info" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/migrate/migrate_ui/migrate_ui.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/migrate/migrate_ui/migrate_ui.wizard.inc" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/migrate/migrate_ui/migrate_ui.wizard.inc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/migrate/plugins/destinations/block_custom.inc" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/migrate/plugins/destinations/block_custom.inc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/migrate/plugins/destinations/comment.inc" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/migrate/plugins/destinations/comment.inc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/migrate/plugins/destinations/entity.inc" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/migrate/plugins/destinations/entity.inc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/migrate/plugins/destinations/fields.inc" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/migrate/plugins/destinations/fields.inc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/migrate/plugins/destinations/menu_links.inc" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/migrate/plugins/destinations/menu_links.inc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/migrate/plugins/destinations/node.inc" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/migrate/plugins/destinations/node.inc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/migrate/plugins/destinations/table.inc" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/migrate/plugins/destinations/table.inc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/migrate/plugins/destinations/table_copy.inc" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/migrate/plugins/destinations/table_copy.inc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/migrate/plugins/destinations/term.inc" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/migrate/plugins/destinations/term.inc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/migrate/plugins/destinations/user.inc" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/migrate/plugins/destinations/user.inc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/migrate/plugins/sources/csv.inc" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/migrate/plugins/sources/csv.inc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/migrate/plugins/sources/json.inc" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/migrate/plugins/sources/json.inc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/migrate/plugins/sources/list.inc" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/migrate/plugins/sources/list.inc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/migrate/plugins/sources/multiitems.inc" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/migrate/plugins/sources/multiitems.inc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/migrate/plugins/sources/sqlmap.inc" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/migrate/plugins/sources/sqlmap.inc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/migrate/plugins/sources/xml.inc" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/migrate/plugins/sources/xml.inc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/migrate/tests/plugins/destinations/comment.test" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/migrate/tests/plugins/destinations/comment.test" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/migrate/tests/plugins/destinations/node.test" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/migrate/tests/plugins/destinations/node.test" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/migrate/tests/plugins/destinations/term.test" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/migrate/tests/plugins/destinations/term.test" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/migrate/tests/plugins/destinations/user.test" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/migrate/tests/plugins/destinations/user.test" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/panels_breadcrumbs/panels_breadcrumbs.info" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/panels_breadcrumbs/panels_breadcrumbs.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/panels_breadcrumbs/panels_breadcrumbs.module" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/panels_breadcrumbs/panels_breadcrumbs.module" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/search_api/CHANGELOG.txt" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/search_api/CHANGELOG.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/search_api/contrib/search_api_facetapi/search_api_facetapi.info" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/search_api/contrib/search_api_facetapi/search_api_facetapi.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/search_api/contrib/search_api_views/README.txt" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/search_api/contrib/search_api_views/README.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/search_api/contrib/search_api_views/includes/handler_filter_date.inc" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/search_api/contrib/search_api_views/includes/handler_filter_date.inc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/search_api/contrib/search_api_views/includes/handler_filter_options.inc" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/search_api/contrib/search_api_views/includes/handler_filter_options.inc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/search_api/contrib/search_api_views/includes/plugin_cache.inc" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/search_api/contrib/search_api_views/includes/plugin_cache.inc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/search_api/contrib/search_api_views/search_api_views.info" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/search_api/contrib/search_api_views/search_api_views.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/search_api/contrib/search_api_views/search_api_views.views.inc" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/search_api/contrib/search_api_views/search_api_views.views.inc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/search_api/includes/callback_add_aggregation.inc" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/search_api/includes/callback_add_aggregation.inc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/search_api/search_api.admin.inc" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/search_api/search_api.admin.inc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/search_api/search_api.drush.inc" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/search_api/search_api.drush.inc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/search_api/search_api.info" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/search_api/search_api.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/search_api/search_api.install" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/search_api/search_api.install" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/search_api/search_api.module" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/search_api/search_api.module" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/search_api/tests/search_api_test.info" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/search_api/tests/search_api_test.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/search_api/tests/search_api_test_2.info" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/search_api/tests/search_api_test_2.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/search_api_db/CHANGELOG.txt" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/search_api_db/CHANGELOG.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/search_api_db/search_api_db.info" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/search_api_db/search_api_db.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/search_api_db/search_api_db.install" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/search_api_db/search_api_db.install" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/search_api_db/service.inc" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/search_api_db/service.inc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/uuid/uuid.features.inc" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/uuid/uuid.features.inc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/uuid/uuid.info" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/uuid/uuid.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/uuid/uuid_path/uuid_path.info" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/uuid/uuid_path/uuid_path.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/uuid/uuid_services/uuid_services.admin.inc" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/uuid/uuid_services/uuid_services.admin.inc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/uuid/uuid_services/uuid_services.info" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/uuid/uuid_services/uuid_services.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/uuid/uuid_services/uuid_services.module" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/uuid/uuid_services/uuid_services.module" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/uuid/uuid_services_example/uuid_services_example.info" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/uuid/uuid_services_example/uuid_services_example.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/views/PATCHES.txt" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/views/PATCHES.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/views/includes/handlers.inc" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/views/includes/handlers.inc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/views/plugins/views_plugin_pager.inc" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/views/plugins/views_plugin_pager.inc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/views/plugins/views_plugin_pager_full.inc" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/views/plugins/views_plugin_pager_full.inc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/views_bulk_operations/actions/book.action.inc" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/views_bulk_operations/actions/book.action.inc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/views_bulk_operations/actions/modify.action.inc" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/views_bulk_operations/actions/modify.action.inc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/views_bulk_operations/actions_permissions.info" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/views_bulk_operations/actions_permissions.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/views_bulk_operations/js/views_bulk_operations.js" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/views_bulk_operations/js/views_bulk_operations.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/views_bulk_operations/plugins/operation_types/action.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/views_bulk_operations/plugins/operation_types/action.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/views_bulk_operations/views/views_bulk_operations_handler_field_operations.inc" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/views_bulk_operations/views/views_bulk_operations_handler_field_operations.inc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/views_bulk_operations/views_bulk_operations.info" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/views_bulk_operations/views_bulk_operations.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/views_bulk_operations/views_bulk_operations.module" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/views_bulk_operations/views_bulk_operations.module" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/views_bulk_operations/views_bulk_operations.rules.inc" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/contrib/views_bulk_operations/views_bulk_operations.rules.inc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/panopoly/panopoly_admin/CHANGELOG.txt" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/panopoly/panopoly_admin/CHANGELOG.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/panopoly/panopoly_admin/panopoly_admin.info" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/panopoly/panopoly_admin/panopoly_admin.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/panopoly/panopoly_admin/panopoly_admin.make" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/panopoly/panopoly_admin/panopoly_admin.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/panopoly/panopoly_core/CHANGELOG.txt" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/panopoly/panopoly_core/CHANGELOG.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/panopoly/panopoly_core/panopoly_core.info" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/panopoly/panopoly_core/panopoly_core.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/panopoly/panopoly_core/panopoly_core.make" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/panopoly/panopoly_core/panopoly_core.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/panopoly/panopoly_core/panopoly_core.profile.inc" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/panopoly/panopoly_core/panopoly_core.profile.inc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/panopoly/panopoly_images/CHANGELOG.txt" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/panopoly/panopoly_images/CHANGELOG.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/panopoly/panopoly_images/panopoly_images.info" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/panopoly/panopoly_images/panopoly_images.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/panopoly/panopoly_magic/CHANGELOG.txt" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/panopoly/panopoly_magic/CHANGELOG.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/panopoly/panopoly_magic/panopoly_magic.info" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/panopoly/panopoly_magic/panopoly_magic.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/panopoly/panopoly_magic/panopoly_magic.module" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/panopoly/panopoly_magic/panopoly_magic.module" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/panopoly/panopoly_pages/CHANGELOG.txt" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/panopoly/panopoly_pages/CHANGELOG.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/panopoly/panopoly_pages/panopoly_pages.info" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/panopoly/panopoly_pages/panopoly_pages.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/panopoly/panopoly_search/CHANGELOG.txt" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/panopoly/panopoly_search/CHANGELOG.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/panopoly/panopoly_search/panopoly_search.info" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/panopoly/panopoly_search/panopoly_search.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/panopoly/panopoly_search/panopoly_search.make" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/panopoly/panopoly_search/panopoly_search.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/panopoly/panopoly_test/CHANGELOG.txt" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/panopoly/panopoly_test/CHANGELOG.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/panopoly/panopoly_test/panopoly_test.info" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/panopoly/panopoly_test/panopoly_test.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/panopoly/panopoly_theme/CHANGELOG.txt" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/panopoly/panopoly_theme/CHANGELOG.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/panopoly/panopoly_theme/panopoly_theme.info" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/panopoly/panopoly_theme/panopoly_theme.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/panopoly/panopoly_users/CHANGELOG.txt" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/panopoly/panopoly_users/CHANGELOG.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/panopoly/panopoly_users/panopoly_users.info" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/panopoly/panopoly_users/panopoly_users.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/panopoly/panopoly_widgets/CHANGELOG.txt" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/panopoly/panopoly_widgets/CHANGELOG.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/panopoly/panopoly_widgets/panopoly_widgets.features.field_instance.inc" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/panopoly/panopoly_widgets/panopoly_widgets.features.field_instance.inc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/panopoly/panopoly_widgets/panopoly_widgets.info" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/panopoly/panopoly_widgets/panopoly_widgets.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/panopoly/panopoly_widgets/panopoly_widgets.install" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/panopoly/panopoly_widgets/panopoly_widgets.install" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/panopoly/panopoly_widgets/panopoly_widgets.make" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/panopoly/panopoly_widgets/panopoly_widgets.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/panopoly/panopoly_widgets/panopoly_widgets.spotlight.inc" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/panopoly/panopoly_widgets/panopoly_widgets.spotlight.inc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/panopoly/panopoly_wysiwyg/CHANGELOG.txt" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/panopoly/panopoly_wysiwyg/CHANGELOG.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/modules/panopoly/panopoly_wysiwyg/panopoly_wysiwyg.info" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/modules/panopoly/panopoly_wysiwyg/panopoly_wysiwyg.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/panopoly/panopoly.info" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/panopoly/panopoly.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/standard/standard.info" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/standard/standard.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/testing/modules/drupal_system_listing_compatible_test/drupal_system_listing_compatible_test.info" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/testing/modules/drupal_system_listing_compatible_test/drupal_system_listing_compatible_test.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/testing/modules/drupal_system_listing_incompatible_test/drupal_system_listing_incompatible_test.info" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/testing/modules/drupal_system_listing_incompatible_test/drupal_system_listing_incompatible_test.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiles/testing/testing.info" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/testing/testing.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sites/all/modules/custom/csc_feature_overrides/csc_panopoly_feature_overrides/csc_panopoly_feature_overrides.features.features_overrides.inc" beforeDir="false" afterPath="$PROJECT_DIR$/sites/all/modules/custom/csc_feature_overrides/csc_panopoly_feature_overrides/csc_panopoly_feature_overrides.features.features_overrides.inc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sites/all/modules/custom/csc_feature_overrides/csc_panopoly_feature_overrides/csc_panopoly_feature_overrides.features.inc" beforeDir="false" afterPath="$PROJECT_DIR$/sites/all/modules/custom/csc_feature_overrides/csc_panopoly_feature_overrides/csc_panopoly_feature_overrides.features.inc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sites/all/modules/custom/csc_feature_overrides/csc_panopoly_feature_overrides/csc_panopoly_feature_overrides.info" beforeDir="false" afterPath="$PROJECT_DIR$/sites/all/modules/custom/csc_feature_overrides/csc_panopoly_feature_overrides/csc_panopoly_feature_overrides.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sites/all/modules/custom/csc_related/plugins/content_types/csc_related_classes.inc" beforeDir="false" afterPath="$PROJECT_DIR$/sites/all/modules/custom/csc_related/plugins/content_types/csc_related_classes.inc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sites/all/modules/custom/csc_related/plugins/content_types/csc_related_people.inc" beforeDir="false" afterPath="$PROJECT_DIR$/sites/all/modules/custom/csc_related/plugins/content_types/csc_related_people.inc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sites/default/default.settings.php" beforeDir="false" afterPath="$PROJECT_DIR$/sites/default/default.settings.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/themes/bartik/bartik.info" beforeDir="false" afterPath="$PROJECT_DIR$/themes/bartik/bartik.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/themes/garland/garland.info" beforeDir="false" afterPath="$PROJECT_DIR$/themes/garland/garland.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/themes/seven/seven.info" beforeDir="false" afterPath="$PROJECT_DIR$/themes/seven/seven.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/themes/stark/stark.info" beforeDir="false" afterPath="$PROJECT_DIR$/themes/stark/stark.info" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -338,38 +13,11 @@
   <component name="DrupalConfiguration" doNotAskAgain="true" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/sites/all/themes/csc/templates/page.tpl.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" column="40" selection-start-line="12" selection-start-column="40" selection-end-line="12" selection-end-column="40" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/sites/all/modules/custom/csc_related/plugins/content_types/csc_related_people.inc">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="456">
-              <caret line="87" column="52" lean-forward="true" selection-start-line="87" selection-start-column="52" selection-end-line="87" selection-end-column="52" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/sites/all/modules/custom/csc_related/plugins/content_types/csc_related_classes.inc">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="428">
-              <caret line="85" column="63" lean-forward="true" selection-start-line="85" selection-start-column="63" selection-end-line="86" selection-end-column="72" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/sites/all/themes/csc/template.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2985">
-              <caret line="199" column="51" selection-start-line="199" selection-start-column="51" selection-end-line="199" selection-end-column="51" />
+            <state relative-caret-position="135">
+              <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
             </state>
           </provider>
         </entry>
@@ -444,11 +92,11 @@
         <option value="$PROJECT_DIR$/sites/all/modules/contrib/calendar/theme/calendar-week.tpl.php" />
         <option value="$PROJECT_DIR$/sites/all/themes/csc/templates/calendar-week.tpl.php" />
         <option value="$PROJECT_DIR$/sites/all/modules/custom/csc_lists/plugins/content_types/csc_lists.inc" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/.htaccess" />
         <option value="$PROJECT_DIR$/sites/all/themes/csc/templates/page.tpl.php" />
         <option value="$PROJECT_DIR$/sites/all/modules/custom/csc_related/plugins/content_types/csc_related_classes.inc" />
         <option value="$PROJECT_DIR$/sites/all/modules/custom/csc_related/plugins/content_types/csc_related_people.inc" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -614,64 +262,8 @@
         <subPane>
           <expand>
             <path>
-              <item name="csc-stage" type="b2602c69:ProjectViewProjectNode" />
-              <item name="csc-stage" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="csc-stage" type="b2602c69:ProjectViewProjectNode" />
-              <item name="csc-stage" type="462c0819:PsiDirectoryNode" />
-              <item name="sites" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="csc-stage" type="b2602c69:ProjectViewProjectNode" />
-              <item name="csc-stage" type="462c0819:PsiDirectoryNode" />
-              <item name="sites" type="462c0819:PsiDirectoryNode" />
-              <item name="all" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="csc-stage" type="b2602c69:ProjectViewProjectNode" />
-              <item name="csc-stage" type="462c0819:PsiDirectoryNode" />
-              <item name="sites" type="462c0819:PsiDirectoryNode" />
-              <item name="all" type="462c0819:PsiDirectoryNode" />
-              <item name="modules" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="csc-stage" type="b2602c69:ProjectViewProjectNode" />
-              <item name="csc-stage" type="462c0819:PsiDirectoryNode" />
-              <item name="sites" type="462c0819:PsiDirectoryNode" />
-              <item name="all" type="462c0819:PsiDirectoryNode" />
-              <item name="modules" type="462c0819:PsiDirectoryNode" />
-              <item name="custom" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="csc-stage" type="b2602c69:ProjectViewProjectNode" />
-              <item name="csc-stage" type="462c0819:PsiDirectoryNode" />
-              <item name="sites" type="462c0819:PsiDirectoryNode" />
-              <item name="all" type="462c0819:PsiDirectoryNode" />
-              <item name="modules" type="462c0819:PsiDirectoryNode" />
-              <item name="custom" type="462c0819:PsiDirectoryNode" />
-              <item name="csc_related" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="csc-stage" type="b2602c69:ProjectViewProjectNode" />
-              <item name="csc-stage" type="462c0819:PsiDirectoryNode" />
-              <item name="sites" type="462c0819:PsiDirectoryNode" />
-              <item name="all" type="462c0819:PsiDirectoryNode" />
-              <item name="modules" type="462c0819:PsiDirectoryNode" />
-              <item name="custom" type="462c0819:PsiDirectoryNode" />
-              <item name="csc_related" type="462c0819:PsiDirectoryNode" />
-              <item name="plugins" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="csc-stage" type="b2602c69:ProjectViewProjectNode" />
-              <item name="csc-stage" type="462c0819:PsiDirectoryNode" />
-              <item name="sites" type="462c0819:PsiDirectoryNode" />
-              <item name="all" type="462c0819:PsiDirectoryNode" />
-              <item name="modules" type="462c0819:PsiDirectoryNode" />
-              <item name="custom" type="462c0819:PsiDirectoryNode" />
-              <item name="csc_related" type="462c0819:PsiDirectoryNode" />
-              <item name="plugins" type="462c0819:PsiDirectoryNode" />
-              <item name="content_types" type="462c0819:PsiDirectoryNode" />
+              <item name="csc-dev" type="b2602c69:ProjectViewProjectNode" />
+              <item name="csc-dev" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -753,13 +345,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="49823000" />
+    <option name="totallyTimeSpent" value="49844000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="28" y="23" width="1393" height="852" extended-state="0" />
+    <frame x="28" y="23" width="1393" height="835" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.497191" visible="true" weight="0.23390082" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.497191" visible="true" weight="0.23982236" />
       <window_info id="Structure" order="1" sideWeight="0.502809" side_tool="true" weight="0.33455613" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -1046,8 +638,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" selection-start-line="13" selection-end-line="13" />
+        <state relative-caret-position="135">
+          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
         </state>
       </provider>
     </entry>
