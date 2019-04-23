@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * csc_panopoly_feature_overrides.features.inc
@@ -339,17 +340,6 @@ function csc_panopoly_feature_overrides_default_linkit_profiles_alter(&$data) {
     unset($data['content_editors']->data['search_plugins']['entity:search_api_index']);
     unset($data['content_editors']->data['search_plugins']['entity:search_api_server']);
     unset($data['content_editors']->data['text_formats']);
-  }
-}
-
-/**
- * Implements hook_node_info_alter().
- */
-function csc_panopoly_feature_overrides_node_info_alter(&$data) {
-  if (isset($data['panopoly_landing_page'])) {
-    $data['panopoly_landing_page']['help'] = '<p>Here you can set the <em>Landing Page\'s</em> metadata, for example the title, path and menu options.</p>
-    <p>To add content to the page, first save this form and then click the "Customize this page" button.</p>'; /* WAS: '<p>Here you can set the <em>Landing Page\'s</em> metadata, for example the title, path and menu options.</p>
-    <p>To add content to the page, first save this form and then click the "Customize this page" button.</p>' */
   }
 }
 

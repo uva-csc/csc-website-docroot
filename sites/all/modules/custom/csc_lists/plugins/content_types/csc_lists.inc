@@ -139,14 +139,14 @@ function csc_lists_render($subtype, $conf, $panel_args, $context = NULL) {
   if ($page_panel) { $title = ''; }
 
   //*** Initializing ***
-  $sort = isset($_GET['sort']) ? htmlspecialchars($_GET['sort']): '';
+  $sort = isset($_GET['sort']) ? check_plain(htmlspecialchars($_GET['sort'])): '';
   $sort_by = 'n.title';
   $order = 'ASC';
   $render_function = 'csc_lists_default_render';
   $tables = $where = $fields = $join = $group = '';
 
   //*** Filter ***
-  $filter = isset($_GET['filter']) ? htmlspecialchars($_GET['filter']): '';
+  $filter = isset($_GET['filter']) ? check_plain(htmlspecialchars($_GET['filter'])): '';
   $filter_by = '';
   if($type == 'class'){
     switch($filter){
@@ -186,7 +186,7 @@ function csc_lists_render($subtype, $conf, $panel_args, $context = NULL) {
   //*** Audience ***
   if($type == 'class') {
     // Sniff audience from parameters (old way)
-    $audience = (empty($_GET['audience'])) ? 'academic' : $_GET['audience'];
+    $audience = (empty($_GET['audience'])) ? 'academic' : check_plain($_GET['audience']);
     if ($page_panel && !empty($params['audience'])) {
         $audience = $params['audience'];
     }
@@ -383,7 +383,13 @@ function csc_lists_render($subtype, $conf, $panel_args, $context = NULL) {
 
   //$output = csc_lists_select();
     $intro = _csc_lists_get_intro_text($panel_args);
-    $output = $intro . '<div class="list-items ' . $render_function . '">' . $render_function($qry) . '</div>';
+    $output = trim($render_function($qry));
+    if (strlen(strip_tags($output)) == 0 ) {
+        $output = '<p>Sorry, no results found!</p>';
+    } else {
+        $output .= ' ' . strlen($output) . ' [<pre>' . str_replace('<', '&lt;', $output) . '</pre>]';
+    }
+    $output = $intro . '<div class="list-items ' . $render_function . '">' . $output . '</div>';
     $output .= '<script>jQuery(".list-item").dotdotdot({watch: true, height: 150})</script>';
 
 	$desc = '';
@@ -393,7 +399,8 @@ function csc_lists_render($subtype, $conf, $panel_args, $context = NULL) {
 	}*/
   $block = new stdClass();
   $block->title = $title;
-  $block->content = $conf['desctxt'] . csc_lists_select($sort) . '<div class="csc-lists-container">' . $output . '</div><div class="clear"></div>';
+  $block->content = $conf['desctxt'] . csc_lists_select($sort) . '<div class="csc-lists-container">' .
+      $output . '</div><div class="clear"></div>';
 
   return $block;
 }
@@ -565,7 +572,7 @@ function csc_lists_select($sortArg) {
  * Determine the audience for the class list page
  */
 function csc_lists_get_audience($page_panel = FALSE) {
-    $audience = $_GET['audience']; // first check for ?audience=... parameter
+    $audience = check_plain($_GET['audience']); // first check for ?audience=... parameter
     if ($page_panel && !empty($params['audience'])) { // And check if panel page with panel parameter
         $audience = $params['audience'];
     } else if (empty($audience)) {  // If audience is empty, then check the path for the class type
