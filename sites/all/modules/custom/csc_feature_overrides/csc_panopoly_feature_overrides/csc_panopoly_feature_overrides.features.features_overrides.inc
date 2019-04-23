@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * csc_panopoly_feature_overrides.features.features_overrides.inc
@@ -197,10 +198,6 @@ function csc_panopoly_feature_overrides_features_override_default_overrides() {
   $overrides["linkit_profiles.content_editors.data|search_plugins|entity:search_api_server"]["DELETED"] = TRUE;
   $overrides["linkit_profiles.content_editors.data|text_formats"]["DELETED"] = TRUE;
   $overrides["linkit_profiles.content_editors.profile_type"] = 2;
-
-  // Exported overrides for: node
-  $overrides["node.panopoly_landing_page.help"] = '<p>Here you can set the <em>Landing Page\'s</em> metadata, for example the title, path and menu options.</p>
-  <p>To add content to the page, first save this form and then click the "Customize this page" button.</p>';
 
   // Exported overrides for: page_manager_handlers
   $overrides["page_manager_handlers.node_edit_panel_context.conf|display|content|new-0581ce01-43a7-4745-b1fb-b10754d71419"] = (object) array(
