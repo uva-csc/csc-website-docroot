@@ -45,7 +45,16 @@ function csc_panopoly_feature_overrides_field_default_field_instances_alter(&$da
         'value' => '',
       ),
     ); /* WAS: '' */
+    $data['node-panopoly_page-field_featured_image']['widget']['module'] = 'media'; /* WAS: 'image' */
+    $data['node-panopoly_page-field_featured_image']['widget']['settings']['allowed_schemes'] = array(
+      'public' => 'public',
+    ); /* WAS: '' */
+    $data['node-panopoly_page-field_featured_image']['widget']['settings']['allowed_types'] = array(
+      'image' => 'image',
+    ); /* WAS: '' */
+    $data['node-panopoly_page-field_featured_image']['widget']['settings']['browser_plugins'] = array(); /* WAS: '' */
     $data['node-panopoly_page-field_featured_image']['widget']['settings']['imce_filefield_on'] = 0; /* WAS: '' */
+    $data['node-panopoly_page-field_featured_image']['widget']['type'] = 'media_generic'; /* WAS: 'image_image' */
   }
   if (isset($data['taxonomy_term-panopoly_categories-field_featured_image'])) {
     $data['taxonomy_term-panopoly_categories-field_featured_image']['settings']['image_field_caption'] = array(
@@ -152,6 +161,7 @@ function csc_panopoly_feature_overrides_filter_default_formats_alter(&$data) {
     $data['panopoly_wysiwyg_text']['filters']['wysiwyg']['settings']['rule_bypass_valid_classes'] = 0; /* WAS: '' */
     $data['panopoly_wysiwyg_text']['filters']['wysiwyg']['settings']['rule_bypass_valid_ids'] = 0; /* WAS: '' */
     $data['panopoly_wysiwyg_text']['filters']['wysiwyg']['settings']['style_border-1']['border'] = 'border'; /* WAS: 0 */
+    $data['panopoly_wysiwyg_text']['filters']['wysiwyg']['settings']['style_border-2']['border-radius'] = 0; /* WAS: '' */
     $data['panopoly_wysiwyg_text']['filters']['wysiwyg']['settings']['style_box']['margin'] = 'margin'; /* WAS: 0 */
     $data['panopoly_wysiwyg_text']['filters']['wysiwyg']['settings']['style_box']['margin-bottom'] = 'margin-bottom'; /* WAS: 0 */
     $data['panopoly_wysiwyg_text']['filters']['wysiwyg']['settings']['style_box']['margin-left'] = 'margin-left'; /* WAS: 0 */
@@ -181,13 +191,13 @@ function csc_panopoly_feature_overrides_filter_default_formats_alter(&$data) {
     $data['panopoly_wysiwyg_text']['filters']['wysiwyg']['settings']['style_table']['table-layout'] = 'table-layout'; /* WAS: 0 */
     $data['panopoly_wysiwyg_text']['filters']['wysiwyg']['settings']['style_user']['cursor'] = 'cursor'; /* WAS: 0 */
     $data['panopoly_wysiwyg_text']['filters']['wysiwyg']['settings']['valid_elements'] = '@[style|class],
-                a[!href|target<_blank|title],
-                div[align<center?justify?left?right],
-                br,em,i,strong,cite,code,blockquote,ul,ol,li,dl,dt,dd,hr,
-                span,p,
-                h1,h2,h3,h4,h5,h6,
-                img[!src|title|alt|width|height|hspace|vspace],
-                table,tr,th,td'; /* WAS: '@[style|class],
+    a[href|name|target<_blank|title],
+    div[align<center?justify?left?right],
+    br,em,i,u,strong,cite,code,blockquote,ul,ol,li,dl,dt,dd,hr,
+    span,p,
+    h1,h2,h3,h4,h5,h6,
+    img[!src|title|alt|width|height|hspace|vspace],
+    table,tr,th,td'; /* WAS: '@[style|class],
     a[!href|target<_blank|title],
     div[align<center?justify?left?right],
     br,em,i,strong,cite,code,blockquote,ul,ol,li,dl,dt,dd,
@@ -1549,7 +1559,7 @@ function csc_panopoly_feature_overrides_views_default_views_alter(&$data) {
              <a href="/events">ALL</a>
           </div>    
     </div>
-    <p>We’re busy planning for Fall 2018 semester. Stay tuned for our full listing late this summer!</p>
+    <p>There are currently no events schedule. Usually, this means we are between semesters. Stay tuned! More events to be planned soon.</p>
     '; /* WAS: '<?php
         $args = arg();
         $pg = (count($args) > 2) ? $args[2] : FALSE;
@@ -1904,6 +1914,7 @@ function csc_panopoly_feature_overrides_wysiwyg_default_profiles_alter(&$data) {
   }
   if (isset($data['panopoly_wysiwyg_text'])) {
     $data['panopoly_wysiwyg_text']['editor'] = 'ckeditor'; /* WAS: 'tinymce' */
+    $data['panopoly_wysiwyg_text']['preferences']['add_to_summaries'] = 0; /* WAS: FALSE */
     $data['panopoly_wysiwyg_text']['preferences']['show_toggle'] = 1; /* WAS: 0 */
     $data['panopoly_wysiwyg_text']['preferences']['version'] = '3.6.3.7474'; /* WAS: '3.5.11' */
     $data['panopoly_wysiwyg_text']['settings']['block_formats'] = 'p,address,pre,h2,h3,h4,h5,h6,div'; /* WAS: '' */
