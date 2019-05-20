@@ -36,7 +36,16 @@ function csc_panopoly_feature_overrides_features_override_default_overrides() {
       'value' => '',
     ),
   );
+  $overrides["field_instance.node-panopoly_page-field_featured_image.widget|module"] = 'media';
+  $overrides["field_instance.node-panopoly_page-field_featured_image.widget|settings|allowed_schemes"] = array(
+    'public' => 'public',
+  );
+  $overrides["field_instance.node-panopoly_page-field_featured_image.widget|settings|allowed_types"] = array(
+    'image' => 'image',
+  );
+  $overrides["field_instance.node-panopoly_page-field_featured_image.widget|settings|browser_plugins"] = array();
   $overrides["field_instance.node-panopoly_page-field_featured_image.widget|settings|imce_filefield_on"] = 0;
+  $overrides["field_instance.node-panopoly_page-field_featured_image.widget|type"] = 'media_generic';
   $overrides["field_instance.taxonomy_term-panopoly_categories-field_featured_image.settings|image_field_caption"] = array(
     'enabled' => 0,
   );
@@ -89,6 +98,7 @@ function csc_panopoly_feature_overrides_features_override_default_overrides() {
   $overrides["filter.panopoly_wysiwyg_text.filters|wysiwyg|settings|rule_bypass_valid_classes"] = 0;
   $overrides["filter.panopoly_wysiwyg_text.filters|wysiwyg|settings|rule_bypass_valid_ids"] = 0;
   $overrides["filter.panopoly_wysiwyg_text.filters|wysiwyg|settings|style_border-1|border"] = 'border';
+  $overrides["filter.panopoly_wysiwyg_text.filters|wysiwyg|settings|style_border-2|border-radius"] = 0;
   $overrides["filter.panopoly_wysiwyg_text.filters|wysiwyg|settings|style_box|margin"] = 'margin';
   $overrides["filter.panopoly_wysiwyg_text.filters|wysiwyg|settings|style_box|margin-bottom"] = 'margin-bottom';
   $overrides["filter.panopoly_wysiwyg_text.filters|wysiwyg|settings|style_box|margin-left"] = 'margin-left';
@@ -118,13 +128,13 @@ function csc_panopoly_feature_overrides_features_override_default_overrides() {
   $overrides["filter.panopoly_wysiwyg_text.filters|wysiwyg|settings|style_table|table-layout"] = 'table-layout';
   $overrides["filter.panopoly_wysiwyg_text.filters|wysiwyg|settings|style_user|cursor"] = 'cursor';
   $overrides["filter.panopoly_wysiwyg_text.filters|wysiwyg|settings|valid_elements"] = '@[style|class],
-              a[!href|target<_blank|title],
-              div[align<center?justify?left?right],
-              br,em,i,strong,cite,code,blockquote,ul,ol,li,dl,dt,dd,hr,
-              span,p,
-              h1,h2,h3,h4,h5,h6,
-              img[!src|title|alt|width|height|hspace|vspace],
-              table,tr,th,td';
+  a[href|name|target<_blank|title],
+  div[align<center?justify?left?right],
+  br,em,i,u,strong,cite,code,blockquote,ul,ol,li,dl,dt,dd,hr,
+  span,p,
+  h1,h2,h3,h4,h5,h6,
+  img[!src|title|alt|width|height|hspace|vspace],
+  table,tr,th,td';
 
   // Exported overrides for: image
   $overrides["image.apps_featured_screenshot.label"] = 'apps_featured_screenshot';
@@ -1349,7 +1359,7 @@ function csc_panopoly_feature_overrides_features_override_default_overrides() {
            <a href="/events">ALL</a>
         </div>    
   </div>
-  <p>We’re busy planning for Fall 2018 semester. Stay tuned for our full listing late this summer!</p>
+  <p>There are currently no events schedule. Usually, this means we are between semesters. Stay tuned! More events to be planned soon.</p>
   ';
   $overrides["views_view.frontpage.display|default|display_options|access|perm"]["DELETED"] = TRUE;
   $overrides["views_view.frontpage.display|default|display_options|row_options"]["DELETED"] = TRUE;
@@ -1656,6 +1666,7 @@ function csc_panopoly_feature_overrides_features_override_default_overrides() {
   $overrides["wysiwyg.panopoly_html_text.settings|preformatted"] = 0;
   $overrides["wysiwyg.panopoly_html_text.settings|theme"]["DELETED"] = TRUE;
   $overrides["wysiwyg.panopoly_wysiwyg_text.editor"] = 'ckeditor';
+  $overrides["wysiwyg.panopoly_wysiwyg_text.preferences|add_to_summaries"] = 0;
   $overrides["wysiwyg.panopoly_wysiwyg_text.preferences|show_toggle"] = 1;
   $overrides["wysiwyg.panopoly_wysiwyg_text.preferences|version"] = '3.6.3.7474';
   $overrides["wysiwyg.panopoly_wysiwyg_text.settings|apply_source_formatting"]["DELETED"] = TRUE;
