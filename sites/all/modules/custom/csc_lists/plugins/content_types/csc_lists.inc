@@ -386,8 +386,6 @@ function csc_lists_render($subtype, $conf, $panel_args, $context = NULL) {
     $output = trim($render_function($qry));
     if (strlen(strip_tags($output)) == 0 ) {
         $output = '<p>Sorry, no results found!</p>';
-    } else {
-        $output .= ' ' . strlen($output) . ' [<pre>' . str_replace('<', '&lt;', $output) . '</pre>]';
     }
     $output = $intro . '<div class="list-items ' . $render_function . '">' . $output . '</div>';
     $output .= '<script>jQuery(".list-item").dotdotdot({watch: true, height: 150})</script>';
