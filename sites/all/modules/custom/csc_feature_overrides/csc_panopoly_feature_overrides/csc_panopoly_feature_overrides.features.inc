@@ -1539,28 +1539,28 @@ function csc_panopoly_feature_overrides_views_default_views_alter(&$data) {
   }
   if (isset($data['events'])) {
     $data['events']->display['default']->display_options['empty']['area']['content'] = '<?php
-        $args = arg();
-        $pg = (count($args) > 2) ? $args[2] : FALSE;
-        $cp = current_path();
-    
-        $title = $head_title = "Events";
-        if ($cp == \'events/all/future\') {
-            $title = $head_title = "Upcoming Events";
-        } else if ($cp == \'events/all/past\') {
-            $title = $head_title = "Past Events";
-        }
-    drupal_set_title($title);
-    ?>
-    <div class="view-header">
-          <h2 class="pane-title"><?php echo $head_title; ?></h2>
-          <div id="event-nav">
-             <a href="/events/all/past" <?php if($pg == \'past\') { echo \'class="active"\'; }?>>PAST</a>
-             <a href="/events/all/future" <?php if($pg == \'future\') { echo \'class="active"\'; }?>>FUTURE</a>
-             <a href="/events">ALL</a>
-          </div>    
-    </div>
-    <p>There are currently no events schedule. Usually, this means we are between semesters. Stay tuned! More events to be planned soon.</p>
-    '; /* WAS: '<?php
+            $args = arg();
+            $pg = (count($args) > 2) ? $args[2] : FALSE;
+            $cp = current_path();
+        
+            $title = $head_title = "Events";
+            if ($cp == \'events/all/future\') {
+                $title = $head_title = "Upcoming Events";
+            } else if ($cp == \'events/all/past\') {
+                $title = $head_title = "Past Events";
+            }
+        drupal_set_title($title);
+        ?>
+        <div class="view-header">
+              <h2 class="pane-title"><?php echo $head_title; ?></h2>
+              <div id="event-nav">
+                 <a href="/events/all/past" <?php if($pg == \'past\') { echo \'class="active"\'; }?>>PAST</a>
+                 <a href="/events/all/future" <?php if($pg == \'future\') { echo \'class="active"\'; }?>>FUTURE</a>
+                 <a href="/events">ALL</a>
+              </div>    
+        </div>
+        <p>There are currently no events schedule. Usually, this means we are between semesters. Stay tuned! More events to be planned soon.</p>
+        '; /* WAS: '<?php
         $args = arg();
         $pg = (count($args) > 2) ? $args[2] : FALSE;
         $cp = current_path();
