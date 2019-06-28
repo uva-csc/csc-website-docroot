@@ -1,8 +1,8 @@
 name = CSC Panopoly Feature Overrides
-description = Overrides for Panopoly created from Dev for release 2.1.17
+description = Overrides for Panopoly created from Dev for release 2.1.18
 core = 7.x
 package = CSC
-version = 7.x-2.1-17
+version = 7.x-2.1-18
 dependencies[] = admin_views
 dependencies[] = apps
 dependencies[] = csc_color_tile
