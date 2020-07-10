@@ -1363,15 +1363,6 @@ function csc_panopoly_feature_overrides_panelizer_defaults_override_alter(&$data
 }
 
 /**
- * Implements hook_default_search_api_server_alter().
- */
-function csc_panopoly_feature_overrides_default_search_api_server_alter(&$data) {
-  if (isset($data['database_server'])) {
-    unset($data['database_server']->options['partial_matches']);
-  }
-}
-
-/**
  * Implements hook_strongarm_alter().
  */
 function csc_panopoly_feature_overrides_strongarm_alter(&$data) {
@@ -1536,53 +1527,6 @@ function csc_panopoly_feature_overrides_views_default_views_alter(&$data) {
     unset($data['backlinks']->display['default']->display_options['access']['perm']);
     unset($data['backlinks']->display['default']->display_options['empty']['text']['empty']);
     unset($data['backlinks']->display['default']->display_options['fields']['title']['link_to_node']);
-  }
-  if (isset($data['events'])) {
-    $data['events']->display['default']->display_options['empty']['area']['content'] = '<?php
-            $args = arg();
-            $pg = (count($args) > 2) ? $args[2] : FALSE;
-            $cp = current_path();
-        
-            $title = $head_title = "Events";
-            if ($cp == \'events/all/future\') {
-                $title = $head_title = "Upcoming Events";
-            } else if ($cp == \'events/all/past\') {
-                $title = $head_title = "Past Events";
-            }
-        drupal_set_title($title);
-        ?>
-        <div class="view-header">
-              <h2 class="pane-title"><?php echo $head_title; ?></h2>
-              <div id="event-nav">
-                 <a href="/events/all/past" <?php if($pg == \'past\') { echo \'class="active"\'; }?>>PAST</a>
-                 <a href="/events/all/future" <?php if($pg == \'future\') { echo \'class="active"\'; }?>>FUTURE</a>
-                 <a href="/events">ALL</a>
-              </div>    
-        </div>
-        <p>There are currently no events schedule. Usually, this means we are between semesters. Stay tuned! More events to be planned soon.</p>
-        '; /* WAS: '<?php
-        $args = arg();
-        $pg = (count($args) > 2) ? $args[2] : FALSE;
-        $cp = current_path();
-    
-        $title = $head_title = "Events";
-        if ($cp == \'events/all/future\') {
-            $title = $head_title = "Upcoming Events";
-        } else if ($cp == \'events/all/past\') {
-            $title = $head_title = "Past Events";
-        }
-    drupal_set_title($title);
-    ?>
-    <div class="view-header">
-          <h2 class="pane-title"><?php echo $head_title; ?></h2>
-          <div id="event-nav">
-             <a href="/events/all/past" <?php if($pg == \'past\') { echo \'class="active"\'; }?>>PAST</a>
-             <a href="/events/all/future" <?php if($pg == \'future\') { echo \'class="active"\'; }?>>FUTURE</a>
-             <a href="/events">ALL</a>
-          </div>    
-    </div>
-    <p>There are no events to show at this time.</p>
-    ' */
   }
   if (isset($data['frontpage'])) {
     $data['frontpage']->display['default']->display_options['use_more_always'] = FALSE; /* WAS: '' */
@@ -1817,8 +1761,12 @@ function csc_panopoly_feature_overrides_views_default_views_alter(&$data) {
     $data['panopoly_database_search']->display['default']->display_options['fields']['field_featured_image']['delta_first_last'] = TRUE; /* WAS: '' */
     $data['panopoly_database_search']->display['default']->display_options['fields']['field_featured_image']['delta_limit'] = 10; /* WAS: '' */
     $data['panopoly_database_search']->display['search_database_results']->display_options['allow']['use_pager'] = 'use_pager'; /* WAS: 0 */
+    unset($data['panopoly_database_search']->display['default']->display_options['arguments']['search_api_views_fulltext']['break_phrase']);
     unset($data['panopoly_database_search']->display['default']->display_options['fields']['body']['alter']);
     unset($data['panopoly_database_search']->display['default']->display_options['fields']['title']['element_type']);
+  }
+  if (isset($data['panopoly_search'])) {
+    unset($data['panopoly_search']->display['default']->display_options['arguments']['search_api_views_fulltext']['break_phrase']);
   }
   if (isset($data['taxonomy_term'])) {
     $data['taxonomy_term']->display['default']->display_options['arguments']['term_node_tid_depth_modifier']['exception']['title_enable'] = TRUE; /* WAS: 1 */

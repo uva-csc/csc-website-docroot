@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * csc_events_views.views_default.inc
@@ -976,28 +977,28 @@ $GLOBALS[\'view_content_type\'] = \'event\';
   $handler->display->display_options['empty']['area']['label'] = 'No Events Available';
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
   $handler->display->display_options['empty']['area']['content'] = '<?php
-    $args = arg();
-    $pg = (count($args) > 2) ? $args[2] : FALSE;
-    $cp = current_path();
-
-    $title = $head_title = "Events";
-    if ($cp == \'events/all/future\') {
-        $title = $head_title = "Upcoming Events";
-    } else if ($cp == \'events/all/past\') {
-        $title = $head_title = "Past Events";
-    }
-drupal_set_title($title);
-?>
-<div class="view-header">
-      <h2 class="pane-title"><?php echo $head_title; ?></h2>
-      <div id="event-nav">
-         <a href="/events/all/past" <?php if($pg == \'past\') { echo \'class="active"\'; }?>>PAST</a>
-         <a href="/events/all/future" <?php if($pg == \'future\') { echo \'class="active"\'; }?>>FUTURE</a>
-         <a href="/events">ALL</a>
-      </div>    
-</div>
-<p>There are no events to show at this time.</p>
-';
+            $args = arg();
+            $pg = (count($args) > 2) ? $args[2] : FALSE;
+            $cp = current_path();
+        
+            $title = $head_title = "Events";
+            if ($cp == \'events/all/future\') {
+                $title = $head_title = "Upcoming Events";
+            } else if ($cp == \'events/all/past\') {
+                $title = $head_title = "Past Events";
+            }
+        drupal_set_title($title);
+        ?>
+        <div class="view-header">
+              <h2 class="pane-title"><?php echo $head_title; ?></h2>
+              <div id="event-nav">
+                 <a href="/events/all/past" <?php if($pg == \'past\') { echo \'class="active"\'; }?>>PAST</a>
+                 <a href="/events/all/future" <?php if($pg == \'future\') { echo \'class="active"\'; }?>>FUTURE</a>
+                 <a href="/events">ALL</a>
+              </div>    
+        </div>
+        <p>There are currently no events scheduled. Usually, this means we are between semesters. Stay tuned! More events to come.</p>
+        ';
   $handler->display->display_options['empty']['area']['format'] = 'php_code';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
@@ -1007,12 +1008,39 @@ drupal_set_title($title);
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   /* Field: Field: Primary Image */
+  $handler->display->display_options['fields']['field_featured_image_1']['id'] = 'field_featured_image_1';
+  $handler->display->display_options['fields']['field_featured_image_1']['table'] = 'field_data_field_featured_image';
+  $handler->display->display_options['fields']['field_featured_image_1']['field'] = 'field_featured_image';
+  $handler->display->display_options['fields']['field_featured_image_1']['label'] = '';
+  $handler->display->display_options['fields']['field_featured_image_1']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_featured_image_1']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_featured_image_1']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_featured_image_1']['settings'] = array(
+    'image_style' => 'panopoly_image_square',
+    'image_link' => 'content',
+  );
+  /* Field: Content: Thumbnail */
+  $handler->display->display_options['fields']['field_thumbnail']['id'] = 'field_thumbnail';
+  $handler->display->display_options['fields']['field_thumbnail']['table'] = 'field_data_field_thumbnail';
+  $handler->display->display_options['fields']['field_thumbnail']['field'] = 'field_thumbnail';
+  $handler->display->display_options['fields']['field_thumbnail']['label'] = '';
+  $handler->display->display_options['fields']['field_thumbnail']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_thumbnail']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_thumbnail']['empty'] = '[field_featured_image_1]';
+  $handler->display->display_options['fields']['field_thumbnail']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_thumbnail']['settings'] = array(
+    'image_style' => 'panopoly_image_square',
+    'image_link' => 'content',
+  );
+  /* Field: Field: Primary Image */
   $handler->display->display_options['fields']['field_featured_image']['id'] = 'field_featured_image';
   $handler->display->display_options['fields']['field_featured_image']['table'] = 'field_data_field_featured_image';
   $handler->display->display_options['fields']['field_featured_image']['field'] = 'field_featured_image';
   $handler->display->display_options['fields']['field_featured_image']['label'] = '';
+  $handler->display->display_options['fields']['field_featured_image']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_featured_image']['alter']['text'] = '[field_thumbnail]';
   $handler->display->display_options['fields']['field_featured_image']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_featured_image']['hide_empty'] = TRUE;
+  $handler->display->display_options['fields']['field_featured_image']['hide_alter_empty'] = FALSE;
   $handler->display->display_options['fields']['field_featured_image']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_featured_image']['settings'] = array(
     'image_style' => 'panopoly_image_square',

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * csc_events_views.features.inc

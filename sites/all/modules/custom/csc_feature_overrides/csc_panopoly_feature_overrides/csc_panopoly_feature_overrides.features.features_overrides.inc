@@ -1198,9 +1198,6 @@ function csc_panopoly_feature_overrides_features_override_default_overrides() {
   $overrides["panelizer_defaults.user:user:default.display|uuid"] = '98ac168f-c536-4838-a97e-a3000b1b6886';
   $overrides["panelizer_defaults.user:user:default.pipeline"] = 'standard';
 
-  // Exported overrides for: search_api_server
-  $overrides["search_api_server.database_server.options|partial_matches"]["DELETED"] = TRUE;
-
   // Exported overrides for: variable
   $overrides["variable.date_popup_authored_enabled_panopoly_landing_page.value"] = 1;
   $overrides["variable.field_bundle_settings_node__panopoly_page.value|extra_fields|form|path|weight"] = 1;
@@ -1338,29 +1335,6 @@ function csc_panopoly_feature_overrides_features_override_default_overrides() {
   $overrides["views_view.backlinks.display|default|display_options|empty|text|empty"]["DELETED"] = TRUE;
   $overrides["views_view.backlinks.display|default|display_options|fields|title|link_to_node"]["DELETED"] = TRUE;
   $overrides["views_view.backlinks.display|default|display_options|use_more_always"] = FALSE;
-  $overrides["views_view.events.display|default|display_options|empty|area|content"] = '<?php
-          $args = arg();
-          $pg = (count($args) > 2) ? $args[2] : FALSE;
-          $cp = current_path();
-      
-          $title = $head_title = "Events";
-          if ($cp == \'events/all/future\') {
-              $title = $head_title = "Upcoming Events";
-          } else if ($cp == \'events/all/past\') {
-              $title = $head_title = "Past Events";
-          }
-      drupal_set_title($title);
-      ?>
-      <div class="view-header">
-            <h2 class="pane-title"><?php echo $head_title; ?></h2>
-            <div id="event-nav">
-               <a href="/events/all/past" <?php if($pg == \'past\') { echo \'class="active"\'; }?>>PAST</a>
-               <a href="/events/all/future" <?php if($pg == \'future\') { echo \'class="active"\'; }?>>FUTURE</a>
-               <a href="/events">ALL</a>
-            </div>    
-      </div>
-      <p>There are currently no events schedule. Usually, this means we are between semesters. Stay tuned! More events to be planned soon.</p>
-      ';
   $overrides["views_view.frontpage.display|default|display_options|access|perm"]["DELETED"] = TRUE;
   $overrides["views_view.frontpage.display|default|display_options|row_options"]["DELETED"] = TRUE;
   $overrides["views_view.frontpage.display|default|display_options|use_more_always"] = FALSE;
@@ -1579,12 +1553,14 @@ function csc_panopoly_feature_overrides_features_override_default_overrides() {
   $overrides["views_view.location_table.view_php"]["DELETED"] = TRUE;
   $overrides["views_view.media_default.display|default|display_options|exposed_form|options"]["DELETED"] = TRUE;
   $overrides["views_view.media_default.display|default|display_options|fields|filename|link_to_file"]["DELETED"] = TRUE;
+  $overrides["views_view.panopoly_database_search.display|default|display_options|arguments|search_api_views_fulltext|break_phrase"]["DELETED"] = TRUE;
   $overrides["views_view.panopoly_database_search.display|default|display_options|fields|body|alter"]["DELETED"] = TRUE;
   $overrides["views_view.panopoly_database_search.display|default|display_options|fields|body|settings|trim_length"] = 300;
   $overrides["views_view.panopoly_database_search.display|default|display_options|fields|field_featured_image|delta_first_last"] = TRUE;
   $overrides["views_view.panopoly_database_search.display|default|display_options|fields|field_featured_image|delta_limit"] = 10;
   $overrides["views_view.panopoly_database_search.display|default|display_options|fields|title|element_type"]["DELETED"] = TRUE;
   $overrides["views_view.panopoly_database_search.display|search_database_results|display_options|allow|use_pager"] = 'use_pager';
+  $overrides["views_view.panopoly_search.display|default|display_options|arguments|search_api_views_fulltext|break_phrase"]["DELETED"] = TRUE;
   $overrides["views_view.taxonomy_term.display|default|display_options|access|perm"]["DELETED"] = TRUE;
   $overrides["views_view.taxonomy_term.display|default|display_options|arguments|term_node_tid_depth_modifier|exception|title_enable"] = TRUE;
   $overrides["views_view.taxonomy_term.display|default|display_options|arguments|term_node_tid_depth_modifier|specify_validation"] = TRUE;
