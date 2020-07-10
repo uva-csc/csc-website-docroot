@@ -17,8 +17,14 @@ function field_tools_field_overview() {
   // Sort the fields, defaulting to field name.
   $query = drupal_get_query_parameters();
   $sort = isset($query['sort']) ? check_plain($query['sort']) : 'field_name';
-  uasort($fields, function($a, $b) use ($sort) {
-    return strcmp($a[$sort], $b[$sort]);
+  uasort($fields, function($a, $b) use ($sort, $field_types) {
+    switch ($sort) {
+      case 'type':
+        // Sort by the field type label.
+        return strcmp($field_types[$a[$sort]]['label'], $field_types[$b[$sort]]['label']);
+      default:
+        return strcmp($a[$sort], $b[$sort]);
+    }
   });
 
   $rows = array();
@@ -122,9 +128,11 @@ function field_tools_field_references_overview() {
               $target_bundles = $field['settings']['handler_settings']['target_bundles'];
               $items = array();
               foreach ($target_bundles as $target_bundle) {
-                $items[] = l($entity_info[$target_type]['bundles'][$target_bundle]['label'],
+                $bundle_label = $entity_info[$target_type]['bundles'][$target_bundle]['label'];
+                $items[$bundle_label] = l($bundle_label,
                   _field_ui_bundle_admin_path($target_type, $target_bundle));
               }
+              ksort($items);
 
               $row[] = theme('item_list', array(
                 'items' => $items,
@@ -615,7 +623,7 @@ function field_tools_bundle_fields_clone_from_form_submit($form, &$form_state) {
 }
 
 /**
- * Form builder for the field clone page.
+ * Form builder for cloning a single field..
  *
  * @param $instance
  *  A FieldAPI field instance definition array.
@@ -1346,14 +1354,18 @@ function field_tools_field_instances_list($field) {
 
       // @todo: sort these.
       $admin_path = _field_ui_bundle_admin_path($entity_type, $bundle);
-      $label = $entity_info[$entity_type]['bundles'][$bundle]['label'];
-      $items_bundles[] = $admin_path ? l($label, $admin_path . '/fields/' . $field['field_name']) : $label;
+      $bundle_label = $entity_info[$entity_type]['bundles'][$bundle]['label'];
+      $items_bundles[$bundle_label] = $admin_path ? l($bundle_label, $admin_path . '/fields/' . $field['field_name']) : $bundle_label;
     }
+    ksort($items_bundles);
 
-    $items_entities[] = $entity_info[$entity_type]['label'] . theme('item_list', array(
+    $entity_label = $entity_info[$entity_type]['label'];
+    $items_entities[$entity_label] = $entity_label . theme('item_list', array(
       'items' => $items_bundles,
     ));
   }
+  ksort($items_entities);
+
   return theme('item_list', array(
     'items' => $items_entities,
   ));
