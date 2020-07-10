@@ -29,6 +29,8 @@
       <div class="csc-3col-inside"><?php print $content['fluid2']; ?></div>
     </div>
 </div>
-</div>                  
+</div>
+
+<div class="csc-3col-footer"><?php print $content['footer']; ?></div>
 
 </div>

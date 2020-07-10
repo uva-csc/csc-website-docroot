@@ -7,7 +7,7 @@ body,
   height: 100%;
 }
 #page-wrapper {
-  min-height: 100%;  
+  min-height: 100%;
 }
 #header div.section,
 #featured div.section,
@@ -68,6 +68,51 @@ body,
   padding: 0 10px;
 }
 
+/** UVA Policty Links footer  (Need to add block to layout) */
+#uva-policy-links {
+  background: #232D4B;
+  border-top: #E57200 8px solid;
+  margin-top: 0px;
+  padding: 20px;
+  min-height: 120px;
+  clear: both;
+}
+
+#uva-policy-links a.uva-logo img {
+  width: 290px;
+}
+
+#uva-policy-links ul.menu {
+  margin: 0 auto 1rem;
+  padding: 0;
+  text-align: center;
+  list-style: none;
+}
+
+#uva-policy-links ul.menu .leaf {
+  display: inline-block;
+  list-style: none;
+  margin: 0;
+  margin-right: 1.375rem;
+  padding: 0;
+  text-align: center;
+}
+
+#uva-policy-links ul.menu .leaf a {
+  color: white !important;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 1.2;
+}
+
+#uva-policy-links ul.menu .leaf a:hover {
+  text-decoration: underline;
+}
+
+/*** End UVA Policy Links */
+
 @media all and (min-width: 560px) and (max-width: 850px) {
 
   #sidebar-first,
@@ -81,14 +126,14 @@ body,
     display: inline;
     float: left; /* LTR */
     position: relative;
-  } 
+  }
   .one-sidebar #sidebar {
     width: 100%;
   }
   #sidebar-first,
   #sidebar-second {
     width: 50%;
-  } 
+  }
   #sidebar-second {
     margin-left: 50%;
   }
@@ -152,7 +197,7 @@ body,
   }
   .no-sidebars #content {
     width: 100%;
-  }  
+  }
   .two-sidebars #content {
     margin-left: 25%;
     margin-right: 25%;
@@ -180,7 +225,7 @@ body,
   }
   .region-triptych-first,
   .region-triptych-middle,
-  .region-triptych-last { 
+  .region-triptych-last {
     width: 33%;
   }
   .region-footer-firstcolumn,

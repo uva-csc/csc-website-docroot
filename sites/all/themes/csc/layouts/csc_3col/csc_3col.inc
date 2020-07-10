@@ -10,6 +10,7 @@ $plugin = array(
   'regions' => array(
     'fixed' => t('Fixed Column'),
     'fluid1' => t('First fluid column'),
-    'fluid2' => t('Second fluid column')
+    'fluid2' => t('Second fluid column'),
+    'footer' => t('Page footer')
   ),
 );

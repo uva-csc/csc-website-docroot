@@ -3,6 +3,10 @@
   width: 100%;
 }
 
+.csc-3col-container {
+  background-color: white;
+}
+
 .csc-3col-right2{
   margin-left: 150px; /*Set left margin to fixed column width*/
 }
@@ -18,4 +22,10 @@
   display: table-cell;
   vertical-align: top;
   /*float: left;*/
+}
+
+.csc-3col-footer {
+  width: 100%;
+  margin-top: 0px;
+  clear: both;
 }
