@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="def74d16-d17c-4d30-a5a0-d7ad6195e8fb" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/sites/all/themes/csc/css/layout.css" beforeDir="false" afterPath="$PROJECT_DIR$/sites/all/themes/csc/css/layout.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sites/all/themes/csc/layouts/csc_3col/csc-3col.tpl.php" beforeDir="false" afterPath="$PROJECT_DIR$/sites/all/themes/csc/layouts/csc_3col/csc-3col.tpl.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sites/all/themes/csc/layouts/csc_3col/csc_3col.css" beforeDir="false" afterPath="$PROJECT_DIR$/sites/all/themes/csc/layouts/csc_3col/csc_3col.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sites/all/themes/csc/layouts/csc_3col/csc_3col.inc" beforeDir="false" afterPath="$PROJECT_DIR$/sites/all/themes/csc/layouts/csc_3col/csc_3col.inc" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="DrupalConfiguration" doNotAskAgain="true" />
+  <component name="FrameworkCommandLineHistory">
+    <commandsHistory>
+      <command text="echo date(&quot;Y-m-d&quot;, strtotime(&quot;2011W01&quot;));" />
+      <command text="$d = date(\&quot;Y-m-d\&quot;, strtotime(\&quot;2011W01\&quot;));" />
+    </commandsHistory>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="28" />
+    <option name="y" value="23" />
+    <option name="width" value="1351" />
+    <option name="height" value="829" />
+  </component>
+  <component name="ProjectId" id="1Q1JZ7XrqnyK7Qb5VITA1mu7Uad" />
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+          <State>
+            <id>Bitwise operation issuesJavaScript</id>
+          </State>
+          <State>
+            <id>CSS</id>
+          </State>
+          <State>
+            <id>Code StylePHP</id>
+          </State>
+          <State>
+            <id>Code quality toolsJavaScript</id>
+          </State>
+          <State>
+            <id>Code style issuesJavaScript</id>
+          </State>
+          <State>
+            <id>CoffeeScript</id>
+          </State>
+          <State>
+            <id>Control FlowPHP</id>
+          </State>
+          <State>
+            <id>Control flow issuesJavaScript</id>
+          </State>
+          <State>
+            <id>Cucumber</id>
+          </State>
+          <State>
+            <id>Data flow issuesJavaScript</id>
+          </State>
+          <State>
+            <id>DocBlocksJoomla!</id>
+          </State>
+          <State>
+            <id>Error handlingPHP</id>
+          </State>
+          <State>
+            <id>General</id>
+          </State>
+          <State>
+            <id>GeneralJavaScript</id>
+          </State>
+          <State>
+            <id>GeneralPHP</id>
+          </State>
+          <State>
+            <id>HTML</id>
+          </State>
+          <State>
+            <id>Haml</id>
+          </State>
+          <State>
+            <id>Handlebars/Mustache</id>
+          </State>
+          <State>
+            <id>Invalid elementsCSS</id>
+          </State>
+          <State>
+            <id>JSON</id>
+          </State>
+          <State>
+            <id>JavaScript</id>
+          </State>
+          <State>
+            <id>JavaScript validity issuesJavaScript</id>
+          </State>
+          <State>
+            <id>Joomla!</id>
+          </State>
+          <State>
+            <id>Less</id>
+          </State>
+          <State>
+            <id>Naming conventionsJavaScript</id>
+          </State>
+          <State>
+            <id>Naming conventionsPHP</id>
+          </State>
+          <State>
+            <id>Node.jsJavaScript</id>
+          </State>
+          <State>
+            <id>PHP</id>
+          </State>
+          <State>
+            <id>PHP Strict StandardsPHP</id>
+          </State>
+          <State>
+            <id>PHPDocPHP</id>
+          </State>
+          <State>
+            <id>Potentially confusing code constructsJavaScript</id>
+          </State>
+          <State>
+            <id>Probable bugsCoffeeScript</id>
+          </State>
+          <State>
+            <id>Probable bugsJavaScript</id>
+          </State>
+          <State>
+            <id>Probable bugsPHP</id>
+          </State>
+          <State>
+            <id>RELAX NG</id>
+          </State>
+          <State>
+            <id>RegExp</id>
+          </State>
+          <State>
+            <id>SQL</id>
+          </State>
+          <State>
+            <id>Sass/SCSS</id>
+          </State>
+          <State>
+            <id>TypeScript</id>
+          </State>
+          <State>
+            <id>UndefinedPHP</id>
+          </State>
+          <State>
+            <id>Vue</id>
+          </State>
+          <State>
+            <id>XML</id>
+          </State>
+          <State>
+            <id>XPath</id>
+          </State>
+          <State>
+            <id>XSLT</id>
+          </State>
+        </expanded-state>
+      </profile-state>
+    </entry>
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="HbShouldOpenHtmlAsHb" value="" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.PHP" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/sites/all/themes/csc/templates" />
+      <recent name="$PROJECT_DIR$/sites/all/modules/contrib" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/sites/all/themes/csc/templates" />
+      <recent name="$PROJECT_DIR$/sites/all/themes/csc" />
+    </key>
+  </component>
+  <component name="StructureViewFactory">
+    <option name="ACTIVE_ACTIONS" value=",ALPHA_COMPARATOR" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="def74d16-d17c-4d30-a5a0-d7ad6195e8fb" name="Default" comment="" />
+      <created>1522680787923</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1522680787923</updated>
+      <workItem from="1522680789344" duration="8566000" />
+      <workItem from="1522754164992" duration="7705000" />
+      <workItem from="1522768142640" duration="8345000" />
+      <workItem from="1522835604737" duration="1486000" />
+      <workItem from="1522861855916" duration="67000" />
+      <workItem from="1522937740336" duration="4903000" />
+      <workItem from="1522951684581" duration="2460000" />
+      <workItem from="1524149864539" duration="303000" />
+      <workItem from="1524829637068" duration="340000" />
+      <workItem from="1531933485624" duration="1382000" />
+      <workItem from="1533034354983" duration="49000" />
+      <workItem from="1533660804237" duration="1226000" />
+      <workItem from="1534191060964" duration="11000" />
+      <workItem from="1538490078777" duration="1670000" />
+      <workItem from="1538593901402" duration="449000" />
+      <workItem from="1538651404520" duration="6000" />
+      <workItem from="1539010081683" duration="680000" />
+      <workItem from="1539016979828" duration="1618000" />
+      <workItem from="1539019090154" duration="215000" />
+      <workItem from="1539026598654" duration="2000" />
+      <workItem from="1539030705594" duration="1308000" />
+      <workItem from="1539712408382" duration="616000" />
+      <workItem from="1540407312554" duration="303000" />
+      <workItem from="1540986609504" duration="450000" />
+      <workItem from="1541782608742" duration="1955000" />
+      <workItem from="1547054824895" duration="749000" />
+      <workItem from="1549370520248" duration="138000" />
+      <workItem from="1549640589885" duration="1083000" />
+      <workItem from="1555939599353" duration="9147000" />
+      <workItem from="1558361367517" duration="996000" />
+      <workItem from="1558444543615" duration="164000" />
+      <workItem from="1559042955054" duration="2000" />
+      <workItem from="1559045065325" duration="2000" />
+      <workItem from="1559763556664" duration="1115000" />
+      <workItem from="1559767257342" duration="325000" />
+      <workItem from="1561730987823" duration="643000" />
+      <workItem from="1562697668950" duration="327000" />
+      <workItem from="1564426892308" duration="973000" />
+      <workItem from="1564586084555" duration="4000" />
+      <workItem from="1566932225706" duration="1043000" />
+      <workItem from="1566985510056" duration="3000" />
+      <workItem from="1594398112684" duration="5790000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="418" y="218" width="604" height="490" key="find.popup" timestamp="1594408538024">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="418" y="218" width="604" height="490" key="find.popup/0.23.1440.877/1440.23.1600.877@0.23.1440.877" timestamp="1594408538024" />
+    <state x="450" y="382" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1594398714162">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="450" y="382" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/0.23.1440.877/1440.23.1600.877@0.23.1440.877" timestamp="1594398714162" />
+  </component>
+</project>
