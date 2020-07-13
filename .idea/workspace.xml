@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="def74d16-d17c-4d30-a5a0-d7ad6195e8fb" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sites/all/themes/csc/css/layout.css" beforeDir="false" afterPath="$PROJECT_DIR$/sites/all/themes/csc/css/layout.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sites/all/themes/csc/css/style-opensans.css" beforeDir="false" afterPath="$PROJECT_DIR$/sites/all/themes/csc/css/style-opensans.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -263,7 +263,7 @@
       <workItem from="1566985510056" duration="3000" />
       <workItem from="1594398112684" duration="7386000" />
       <workItem from="1594641375915" duration="705000" />
-      <workItem from="1594653328844" duration="1861000" />
+      <workItem from="1594653328844" duration="2826000" />
     </task>
     <servers />
   </component>
@@ -291,10 +291,10 @@
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state width="508" height="445" key="SwitcherDM/0.23.1440.877/1440.23.1600.877@0.23.1440.877" timestamp="1594654244788" />
-    <state x="418" y="218" width="604" height="490" key="find.popup" timestamp="1594654284459">
+    <state x="418" y="218" width="604" height="490" key="find.popup" timestamp="1594658418435">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state x="418" y="218" width="604" height="490" key="find.popup/0.23.1440.877/1440.23.1600.877@0.23.1440.877" timestamp="1594654284459" />
+    <state x="418" y="218" width="604" height="490" key="find.popup/0.23.1440.877/1440.23.1600.877@0.23.1440.877" timestamp="1594658418435" />
     <state x="450" y="382" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1594398714162">
       <screen x="0" y="23" width="1440" height="877" />
     </state>

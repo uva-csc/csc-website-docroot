@@ -89,7 +89,7 @@ em strong, strong em {
 /* Displaying the Where: location for classes */
 #content .pane-entity-field.pane-node-field-class-location > h2.pane-title {
     padding-left: 0px;
-    margin-top: 0px;  
+    margin-top: 0px;
     text-transform: uppercase;
     font-weight: normal; /* was bold*/
     font-size: 1.143em !important;
@@ -3267,7 +3267,7 @@ body.logged-in #content {
     font-family: brandon, verdana, arial;
     color: white;
     font-weight: 200;
-    
+
 }
 
 .csc-panel-col-left .pane-csc-newsletter a h2.pane-title {
@@ -3313,7 +3313,7 @@ body.logged-in #content {
 div.pane-csc-isotope, div.pane-csc-isotope * {
     background-color: #dbdad8 !important;
 }
-    
+
 @media only screen and (min-height: 1170px) {
   /* line 2260, ../../../../../sass/sites/all/themes/csc/css/style.scss */
   .pane-csc-newsletter {
@@ -3638,14 +3638,14 @@ div.pane-csc-isotope, div.pane-csc-isotope * {
   border-top: 1px solid #505050;
 }
 /* line 2526, ../../../../../sass/sites/all/themes/csc/css/style.scss */
-.pane-csc-related-organizations .csc-organization-item h2, 
+.pane-csc-related-organizations .csc-organization-item h2,
 .pane-csc-related-activities .csc-activities-item h2,
 .pane-csc-related-classes .csc-classes-item h2 {
   font-family: brandon, 'Helvetica Neue', helvetica, arial, sans-serif;
   text-transform: uppercase;
 }
 /* line 2529, ../../../../../sass/sites/all/themes/csc/css/style.scss */
-.pane-csc-related-organizations .csc-organization-item h2 a, 
+.pane-csc-related-organizations .csc-organization-item h2 a,
 .pane-csc-related-activities .csc-activities-item h2 a {
   font-size: 13px;
   color: #ffffff;
@@ -3704,7 +3704,7 @@ div.pane-csc-isotope, div.pane-csc-isotope * {
 }
 
 /* line 2579, ../../../../../sass/sites/all/themes/csc/css/style.scss */
-.pane-csc-related-people, 
+.pane-csc-related-people,
 .pane-csc-related-news,
 .pane-csc-related-classes {
   float: left;
@@ -3736,12 +3736,12 @@ div.pane-csc-isotope, div.pane-csc-isotope * {
     color: #555;
 }
 
-.csc-3col-col-fluid.csc-3col-first .pane-csc-related-classes .see-all a, 
+.csc-3col-col-fluid.csc-3col-first .pane-csc-related-classes .see-all a,
 .csc-3col-col-fluid.csc-3col-first .pane-csc-related-classes article.node .node-readmore a {
     color: #707070;
 }
 
-.csc-3col-col-fluid.csc-3col-first .pane-csc-related-classes .see-all a:hover, 
+.csc-3col-col-fluid.csc-3col-first .pane-csc-related-classes .see-all a:hover,
 .csc-3col-col-fluid.csc-3col-first .pane-csc-related-classes article.node .node-readmore a:hover {
     color: #222222;
 }
@@ -4159,7 +4159,7 @@ body.page-node-21 .csc-people-detail:hover {
 
 /* line 2848, ../../../../../sass/sites/all/themes/csc/css/style.scss */
 .csc-research-title,
-.pane-csc-related-activities .pane-title, 
+.pane-csc-related-activities .pane-title,
 .pane-csc-related-classes .pane-title,
 .pane-csc-related-news .pane-title {
   font-family: brandon, 'Helvetica Neue', helvetica, arial, sans-serif;
@@ -5507,7 +5507,7 @@ div.csc-login-link {
     clear: both;
     font-size: 0.9em;
     width: 78px;
-    background-color: #e8e7e5;
+    /*background-color: #e8e7e5;*/
 }
 
 div.csc-login-link * {
@@ -5526,7 +5526,7 @@ div.csc-login-link * {
 }
 
 /** CSC News Page **/
-    
+
 .panel-pane.pane-csc-newsletter.in-page {
     display: block;
     clear: both;
@@ -5559,11 +5559,11 @@ div.csc-login-link * {
 }
 
 .view-news div.news-item-detail {
-    
+
 }
 
 /** Page Column Min Widths **/
-.page-events-all .csc-3col-first, 
+.page-events-all .csc-3col-first,
 .page-list .csc-panel-col-right
 {
     display: block;
@@ -5571,7 +5571,7 @@ div.csc-login-link * {
     min-width: 60%;
 }
 
-.page-classes .csc-3col-second, 
+.page-classes .csc-3col-second,
 .page-list .csc-3col-second {
     display: none;
 }
@@ -5583,7 +5583,7 @@ div.csc-login-link * {
 
 /** IMages in body of article **/
 .field-name-body .field-item img {
-    width: auto; 
+    width: auto;
     margin: 0 8px;
 }
 
@@ -5632,7 +5632,7 @@ div.csc-login-link * {
 .pane-social-media-links-social-media-links ul.social-media-links li, .soclnks ul.social-media-links li {
     display: inline-block;
     margin: 6px 2px;
-}   
+}
 
 .pane-social-media-links-social-media-links ul.social-media-links li img {
     width: 32px;
