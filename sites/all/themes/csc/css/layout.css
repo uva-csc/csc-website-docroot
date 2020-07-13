@@ -128,6 +128,11 @@ body,
   clear: both;
 }
 
+/* for panelizer adding modal*/
+#modal-content .footer-top {
+  max-width: 500px;
+}
+
 /*** End UVA Policy Links */
 
 @media all and (min-width: 560px) and (max-width: 850px) {
