@@ -78,7 +78,15 @@ body,
   clear: both;
 }
 
-#uva-policy-links a.uva-logo img {
+#uva-policy-links .footer-top .uva-logo {
+  float: left;
+}
+
+#uva-policy-links .footer-top .csc-logo {
+  float: right;
+}
+
+#uva-policy-links .footer-top img {
   width: 290px;
 }
 
@@ -87,6 +95,7 @@ body,
   padding: 0;
   text-align: center;
   list-style: none;
+  clear: both;
 }
 
 #uva-policy-links ul.menu .leaf {
@@ -109,6 +118,14 @@ body,
 
 #uva-policy-links ul.menu .leaf a:hover {
   text-decoration: underline;
+}
+
+#uva-policy-links .footer-bottom {
+  width: 100%;
+  font-size: smaller;
+  text-align: center;
+  color: white;
+  clear: both;
 }
 
 /*** End UVA Policy Links */

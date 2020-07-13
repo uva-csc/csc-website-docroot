@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="def74d16-d17c-4d30-a5a0-d7ad6195e8fb" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sites/all/themes/csc/css/layout.css" beforeDir="false" afterPath="$PROJECT_DIR$/sites/all/themes/csc/css/layout.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sites/all/themes/csc/layouts/csc_3col/csc-3col.tpl.php" beforeDir="false" afterPath="$PROJECT_DIR$/sites/all/themes/csc/layouts/csc_3col/csc-3col.tpl.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sites/all/themes/csc/layouts/csc_3col/csc_3col.css" beforeDir="false" afterPath="$PROJECT_DIR$/sites/all/themes/csc/layouts/csc_3col/csc_3col.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sites/all/themes/csc/layouts/csc_3col/csc_3col.inc" beforeDir="false" afterPath="$PROJECT_DIR$/sites/all/themes/csc/layouts/csc_3col/csc_3col.inc" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -259,7 +258,9 @@
       <workItem from="1564586084555" duration="4000" />
       <workItem from="1566932225706" duration="1043000" />
       <workItem from="1566985510056" duration="3000" />
-      <workItem from="1594398112684" duration="5790000" />
+      <workItem from="1594398112684" duration="7386000" />
+      <workItem from="1594641375915" duration="705000" />
+      <workItem from="1594653328844" duration="925000" />
     </task>
     <servers />
   </component>
@@ -279,10 +280,14 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="418" y="218" width="604" height="490" key="find.popup" timestamp="1594408538024">
+    <state width="508" height="445" key="SwitcherDM" timestamp="1594654244788">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state x="418" y="218" width="604" height="490" key="find.popup/0.23.1440.877/1440.23.1600.877@0.23.1440.877" timestamp="1594408538024" />
+    <state width="508" height="445" key="SwitcherDM/0.23.1440.877/1440.23.1600.877@0.23.1440.877" timestamp="1594654244788" />
+    <state x="418" y="218" width="604" height="490" key="find.popup" timestamp="1594654284459">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="418" y="218" width="604" height="490" key="find.popup/0.23.1440.877/1440.23.1600.877@0.23.1440.877" timestamp="1594654284459" />
     <state x="450" y="382" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1594398714162">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
