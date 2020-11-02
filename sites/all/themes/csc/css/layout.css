@@ -195,11 +195,3 @@ body,
   }
 }
 
-@media all and (min-width: 1920px) {
-  body {
-    margin: 0 20%;
-  }
-  body > header {
-    width: 60%;
-  }
-}
