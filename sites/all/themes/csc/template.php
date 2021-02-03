@@ -4,25 +4,25 @@ function csc_preprocess_html(&$variables) {
       // Add variables for path to theme.
       $variables['base_path'] = base_path();
       $variables['path_to_resbartik'] = drupal_get_path('theme', 'responsive_bartik');
-    
+
       // Add body classes if certain regions have content.
       if (!empty($variables['page']['featured'])) {
         $variables['classes_array'][] = 'featured';
       }
-    
+
       if (!empty($variables['page']['triptych_first'])
         || !empty($variables['page']['triptych_middle'])
         || !empty($variables['page']['triptych_last'])) {
         $variables['classes_array'][] = 'triptych';
       }
-    
+
       if (!empty($variables['page']['footer_firstcolumn'])
         || !empty($variables['page']['footer_secondcolumn'])
         || !empty($variables['page']['footer_thirdcolumn'])
         || !empty($variables['page']['footer_fourthcolumn'])) {
         $variables['classes_array'][] = 'footer-columns';
       }
-  
+
       // og metadata
       $ogtitle = $variables['head_title'];
       if (strstr($ogtitle, '|')) {

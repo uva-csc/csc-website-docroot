@@ -1,3 +1,139 @@
+Panopoly 7.x-1.79, 2021-01-20
+-------------------
+- Update to Drupal 7.78 for SA-CORE-2021-001.
+- Patch media_youtube to fix failing embeds.
+- Start testing upgrade from 1.78.
+
+Panopoly 7.x-1.78, 2020-11-30
+-------------------
+- Update to Drupal 7.75 for SA-CORE-2020-013.
+- Start testing upgrade from 1.77.
+
+Panopoly 7.x-1.77, 2020-11-19
+-------------------
+- Update to Drupal 7.74 for SA-CORE-2020-012.
+- Fix Travis builds with composer 2.x.
+- Patch contrib modules for PHP 7.4.
+- Start testing upgrade from 1.76.
+
+Panopoly 7.x-1.76, 2020-09-17
+-------------------
+- Update to Drupal 7.73 for SA-CORE-2020-007.
+- Start testing upgrade from 1.75.
+
+Panopoly 7.x-1.75, 2020-06-18
+-------------------
+- Update to Drupal 7.72 for SA-CORE-2020-004.
+- Update the Behat Drupal extension to 4.0.1.
+- Revert "Update the composer files for Travis".
+- Update the composer files for Travis.
+- Detect PHP notices/errors.
+- Removing 7.x-1.73 because it will fail for not having been a "complete"
+  release.
+- Start testing upgrades from 1.72 and 1.73.
+
+Panopoly 7.x-1.74, 2020-05-20
+-------------------
+- Merge tag '7.x-1.73' into 7.x-1.x.
+- Update to Drupal 7.70 for SA-CORE-2020-002 and SA-CORE-2020-003.
+- File widget doesn't seem to switch to Media browser in update tests.
+- Modernize the set of PHP versions used in the tests.
+- Drop support for updating from Panopoly version that were release more
+  than a year ago.
+- Fix Features overridden after tablefield patch from #3130749.
+- Update Panopoly Widgets with latest version of Media (media-7.x-2.26).
+- Update Panopoly Widgets with latest version of TableField
+  (tablefield-7.x-3.6).
+- Update Panopoly Core with latest version of Views (views-7.x-3.24).
+- Fix fatal error in Date with PHP 7.1+.
+- Panopoly_magic doesn't render previews for field_collection's with
+  field_collection 7.x-1.1.
+- Fieldable Panels Panes fields missing from UI.
+- Moving (some?) panopoly_search variables out of strongarm.
+- Patch Tablefield for header row orientation per widget.
+- Prevent PHP notice (Undefined index: title in link_field_load()) during
+  live preview of Image widgets.
+- Modifying content of reusable widgets doesn't actually save when first
+  adding the widget.
+- Update WYSIWYG to version 2.6.
+- Add a 'robo git:pre-commit' to ensure we run 'robo build:drupal-org-make'
+  before committing.
+- Revert "Issue #3094890 by cboyden: Update WYSIWYG to version 2.6".
+- Forgot to run 'robo build:drupal-org-make' before last two commits!.
+- Update Media modules in Panopoly Widgets.
+- Update WYSIWYG to version 2.6.
+- Update Link to version 1.7.
+- Add 'robo diff --uncommitted' for making patches from local changes.
+- Fix undefined index in panopoly_admin_menu_validate.
+- Add Robo command to easily make single module patches for Drupal.org.
+- Forgot to run 'robo build:drupal-org-make' after the latest .make file
+  updates.
+- Update Panopoly Core with latest version of Views (views-7.x-3.23).
+- Update Facet API and Search API Solr.
+- Update Panopoly Core with latest version of Views (views-7.x-3.23).
+- Start testing upgrades from the 1.72 release.
+
+Panopoly 7.x-1.73, 2020-05-20
+-------------------
+- Issue #3138388: Update to Drupal 7.70 for SA-CORE-2020-002 and SA-CORE-2020-003
+
+Panopoly 7.x-1.72, 2019-12-19
+-------------------
+- Issue #3102147: Update to Drupal 7.69 for SA-CORE-2019-012.
+- Issue #2884143 by dsnopek, cboyden: Switch File widget to use Media
+  Browser.
+- Issue #2574369 by dsnopek, cboyden: Tests fail with Radix.
+- Fix 'robo create-test-branch' for patches that make .orig or .rej files.
+- Issue #2975934 by dsnopek, cboyden: Accessibility improvements for the
+  mini pager on the Spotlight widget.
+- Issue #2672468 by cboyden: PHP notices when Piece of Content widget is
+  empty.
+- Issue #3087510 by cboyden: PHP notice when panes have no titles.
+- Issue #3030478 by collinhaines, junaidpv, cboyden: Notice: Only variables
+  should be passed by reference in
+  panopoly_magic_form_ctools_entity_field_content_type_formatter_options_alter().
+- Issue #2743231 by dsnopek: Add Views Pane error - Undefined index:
+  #type.
+- Start testing upgrades from the 1.71 release.
+
+Panopoly 7.x-1.71, 2019-11-19
+-------------------
+- Issue #3094252:  Update admin_views to 7.x-1.7 for SA-CONTRIB-2019-076.
+- Issue #3069824 by dsnopek, cboyden: Display type setting doesn't work for
+  overridden views displays.
+- Backport support for PANOPOLY_BEHAT_WINDOW_SIZE from 8.x-2.x.
+- Issue #2454947 by dsnopek, cboyden: Preview doesn't update when editing
+  the value of a field via FAPE.
+- Issue #3076935 by dsnopek, cboyden: Live preview doesn't update when
+  Views pane uses Views caching.
+- Fix tests on Travis.
+- Issue #3030479 by collinhaines, cboyden: Notice: Undefined index:
+  triggering_element in
+  panopoly_magic_form_ctools_entity_field_content_type_formatter_options_alter().
+- Issue #3070684 by dsnopek, cboyden: Add option to disallow view mode
+  selection for Views content panes in IPE.
+- Fix minor issues with 'robo create-test-branch'.
+- Change Behat version to hopefully fix the tests.
+- Start testing upgrades from the 1.70 release.
+- Updated panopoly_magic's CHANGELOG.txt for 7.x-1.70 release.
+- Issue #2971163 by dsnopek: Aaaah! Forgot panopoly_magic.
+- Issue #2971163 by dsnopek: 'robo release' wouldn't work with
+  composer.json modified for Travis, so completely split those.
+
+Panopoly 7.x-1.70, 2019-06-28
+-------------------
+- Issue #2971163 by dsnopek: Attempt to fix extra 'drush rn' output mixing
+  into CHANGELOG.txt.
+- Issue #2971163 by dsnopek: Replace all scripts and Phing build process
+  with Robo.
+- Issue #3033212 by dsnopek, cboyden: Hide "Always display title" option on
+  Submenu widget.
+- Issue #2905972 by dsnopek, cboyden: Use empty alt="" on images without
+  alt, rather than omitting alt attribute.
+- Issue #2477303 by dsnopek: Drop support for updating from Panopoly
+  version that were release more than a year ago.
+- Start testing upgrades from the 1.68 and 1.69 releases.
+
 7.x-1.69, 2019-06-07
 -------------------
 - Issue #2851122 by dsnopek: Update scripts/create_test_branch.py for monorepo.
