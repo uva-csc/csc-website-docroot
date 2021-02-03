@@ -5,8 +5,10 @@ core = 7.x
 
 ; Panopoly - Contrib - Fields
 
-projects[tablefield][version] = 3.5
+projects[tablefield][version] = 3.6
 projects[tablefield][subdir] = contrib
+projects[tablefield][patch][3128030] = https://www.drupal.org/files/issues/2020-04-22/tablefield-header-orientation-3128030-5.patch
+projects[tablefield][patch][3137640] = https://www.drupal.org/files/issues/2020-05-18/tablefield-7008-fix-3137640-2.patch
 
 projects[simple_gmap][version] = 1.4
 projects[simple_gmap][subdir] = contrib
@@ -19,14 +21,15 @@ projects[menu_block][subdir] = contrib
 
 ; Panopoly - Contrib - Files & Media
 
-projects[file_entity][version] = 2.25
+projects[file_entity][version] = 2.27
 projects[file_entity][subdir] = contrib
 
-projects[media][version] = 2.21
+projects[media][version] = 2.26
 projects[media][subdir] = contrib
 
-projects[media_youtube][version] = 3.8
+projects[media_youtube][version] = 3.9
 projects[media_youtube][subdir] = contrib
+projects[media_youtube][patch][1572550] = https://www.drupal.org/files/issues/2020-12-15/the_youtube_video_id_is_invalid_or_the_video_was_deleted-1572550-076.patch
 
 projects[media_vimeo][version] = 2.1
 projects[media_vimeo][subdir] = contrib
