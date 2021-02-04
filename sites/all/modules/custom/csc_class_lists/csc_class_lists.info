@@ -1,0 +1,6 @@
+name = CSC Class Lists Panel Plugin
+description = Custom display for class lists
+package = CSC
+version = 7.x-1.0
+core = 7.x
+; scripts[] = js/csc-class-lists.js

@@ -614,6 +614,13 @@ function csc_lists_default_render($qry){
   return $output;
 }
 
+/**
+ * Render for alphabetical sorting of lists
+ *
+ * @param $qry
+ * @return string
+ * @throws Exception
+ */
 function csc_lists_alpha_render($qry){
   $r = db_query($qry);
   $output = ''; $letter = '';
@@ -636,10 +643,11 @@ function csc_lists_alpha_render($qry){
     $l = ($node->type == 'people') ? strtoupper(substr($node->field_last_name[$lng][0]['value'], 0, 1)) : strtoupper(substr($node->title, 0, 1));
     if($letter <> $l){
       $letter = $l;
+      /* $tagopen is not defined!
       if ($tagopen) {
         $output .= "</div>";
         $tagopen = false;
-      }
+      }*/
       $output .= "<div class='clear'></div><h2>$letter</h2>\n";
       $output .= '<div class="list-group">';
       $tagopen = true;
@@ -828,6 +836,7 @@ function csc_lists_school_render($qry){
   return $output;
 }
 
+/** Not used?? (ndg 2/4/2021) **/
 function csc_lists_offered_render($qry){
   $r = db_query($qry);
 
@@ -866,6 +875,7 @@ function csc_lists_offered_render($qry){
   return $output;
 }
 
+/** Not used??? (ndg 2/4/2021) **/
 function csc_lists_consolidate_render($qry){
   $r = db_query($qry);
 
