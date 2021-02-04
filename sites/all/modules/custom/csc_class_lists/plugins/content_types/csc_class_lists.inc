@@ -31,12 +31,12 @@ function csc_class_lists_info($subtype, $conf, $contexts) {
  */
 function csc_class_lists_edit_form($form, &$form_state) {
   // Add list description text setting to add description before list
-  $form['desctxt'] = array(
+  $form['desc_text'] = array(
 		'#type' => 'text_format',
 		'#title' => t('Description text'),
 		'#description' => t('In the textbox above, enter any descriptive text to display before this list.'),
 		'#format' => NULL,
-		'#default_value' => (isset($form_state['conf'])) ? $form_state['conf']['desctxt'] : '',
+		'#default_value' => (isset($form_state['conf'])) ? $form_state['conf']['desc_text'] : '',
 	);
   $form['list_params'] = array(
         '#type' => 'textfield',
@@ -53,24 +53,43 @@ function csc_class_lists_edit_form($form, &$form_state) {
  * The submit form stores the data in $conf.
  */
 function csc_class_lists_edit_form_submit($form, &$form_state) {
-	$form_state['conf']['desctxt'] = $form_state['values']['desctxt']['value'];
+	$form_state['conf']['desc_text'] = $form_state['values']['desc_text']['value'];
 	$form_state['conf']['list_params'] = $form_state['values']['list_params'];
 }
 
 function csc_class_lists_render($subtype, $conf, $panel_args, $context = NULL) {
-  $type = arg(1);
-  $nid = (int)arg(2);
-  $list_subtype = (isset($panel_args[1])) ? $panel_args[1] : FALSE;
-  $type = 'class';
+
   $params = array();
-  $temp = explode('&', $conf['list_params']);
-  foreach($temp as $p) {
-      $pts = explode('=', $p);
-      $params[$pts[0]] = $pts[1];
+  if (!empty($conf['list_params'])) {
+    $temp = explode('&', $conf['list_params']);
+    foreach ($temp as $p) {
+      if (strstr($p, '=')) {
+        $pts = explode('=', $p);
+        $params[$pts[0]] = $pts[1];
+      } else {
+        watchdog('csc class lists', "list param without = : {$p}");
+      }
+    }
   }
 
   $title = 'Instruction';
   $node_type = 'class';
+
+  $field = field_info_field('field_audience');
+  $audience_values = list_allowed_values($field);
+  $audience = array_keys($audience_values)[0]; // Default audience is first in field value list
+
+  // Base page path (Remove audience)
+  $page_path = current_path();
+  if (!empty($panel_args)) {
+    $audience = $panel_args[0]; // If intended audience is in the given parameters (last part of path) use it
+    // Calculate base page path for audience links
+    $path_pts = explode('/', $page_path);
+    if ($path_pts[count($path_pts) - 1] == $audience) {
+      array_pop($path_pts);
+    }
+    $page_path = '/' . implode('/', $path_pts);
+  }
 
 
   //*** Initializing ***
@@ -100,25 +119,10 @@ function csc_class_lists_render($subtype, $conf, $panel_args, $context = NULL) {
 
 
   //*** Audience ***
-  // Sniff audience from parameters (old way)
-  $audience = (empty($_GET['audience'])) ? 'academic' : check_plain($_GET['audience']);
-  if ($page_panel && !empty($params['audience'])) {
-      $audience = $params['audience'];
-  }
-  // Check URL for specific type of class and adjust audience if it is one of those urls (new way)
-  $url_array = array(
-    'drop-in' => 'list/class/dropins',
-    'academic' => 'list/class/uvacourses',
-    'non-academic' => 'list/class/workshops',
-    'retreat' => 'list/class/retreats'
-  );
-  $cp = current_path();
-  $ind = array_search($cp, $url_array);
-  if ($ind) { $audience = $ind; }
 
   // Create Query condition for audience
   $tables .= ', {field_data_field_audience} fa';
-  $where .= "AND fa.field_audience_value='". htmlspecialchars($audience) ."' AND fa.entity_id=n.nid AND fa.bundle='$node_type'";
+  $where .= "AND fa.field_audience_value='". htmlspecialchars($audience) ."' AND fa.entity_id=n.nid AND fa.bundle='$node_type' ";
 
   switch($sort){
     case 'date_asc':
@@ -170,15 +174,14 @@ function csc_class_lists_render($subtype, $conf, $panel_args, $context = NULL) {
       $output = '<p>Sorry, no results found!</p>';
   }
   $output = $intro . '<div class="list-items ' . $render_function . '">' . $output . '</div>';
-  $output .= '<script>jQuery(".list-item").dotdotdot({watch: true, height: 150})</script>';
-
-	$desc = '';
+  // This line breaks the content pane:
+  //$output .= '<script>jQuery(".list-item").dotdotdot({watch: true, height: 150})</script>';
 
   $block = new stdClass();
   $block->title = $title;
-  $block->content = $conf['desctxt'] . csc_class_lists_select($sort) . '<div class="csc-class-lists-container">' .
-      $output . '</div><div class="clear"></div>';
-
+  $class_type_select = csc_class_lists_select($page_path, $audience, $sort);
+  $block->content = $conf['desc_text'] . $class_type_select . '<div class="csc-lists-container">' .
+     $output . '</div><div class="clear"></div>';
   return $block;
 }
 
@@ -221,12 +224,10 @@ function _csc_class_lists_get_intro_text($pargs) {
     return $content; // If nothing matches, this is an empty string
 }
 
-function csc_class_lists_select($sortArg) {
+function csc_class_lists_select($pathArg, $audience_key, $sortArg) {
 
-  $type = arg(1);
-  $nid = (int)arg(2);
-  $types = array_keys(node_type_get_types());
-  if(!in_array($type, $types)) return;
+  $field = field_info_field('field_audience');
+  $audiences = list_allowed_values($field);
 
   $output = '';
   // Removed from sort: 'Date Added' => array('date_desc' => 'Newest First', 'date_asc' => 'Oldest First'),
@@ -236,41 +237,29 @@ function csc_class_lists_select($sortArg) {
 
   $output .= '<div class="list-filter-wrapper">';
 
-  //Audience filter
-  if($type == 'class'){
-    $class_array = array(
-      'drop-in' => 'Drop-in Classes',
-      'academic' => 'UVA Courses',
-      'non-academic' => 'Workshops',
-      'retreat' => 'Retreats'
+  // Create Audience URLS with page path and audience values keys
+  $audience_links = array();
+  foreach($audiences as $key => $label) {
+    $audience_links[$key] = array(
+      'path' => $pathArg . '/' . $key,
+      'label' => $label,
     );
-    $url_array = array(
-      'drop-in' => '/list/class/dropins',
-      'academic' => '/list/class/uvacourses',
-      'non-academic' => '/list/class/workshops',
-      'retreat' => '/list/class/retreats'
-    );
-
-    $base_link = 'list/' . $type;
-    $base_link.= ($nid) ? "/$nid" : '';
-    $class = csc_class_lists_get_audience();
-    $output .= '<div id="audience-filter" class="audience-filter '. $class .'">';
-
-    foreach($class_array as $k => $v) {
-        $link = $url_array[$k];
-        $output .= '<a href="' . $link . '" class="' . ($class == $k ? 'selected' : '') . '" data-value="' . $k . '">' . $v . '</a>';
-    }
-
-    $output .= '</div>';
-  } else {
-    $class = '';
   }
+
+  $output .= '<div id="audience-filter" class="audience-filter '. $audience_key .'">';
+
+  foreach($audience_links as $k => $v) {
+      $output .= '<a href="' . $v['path'] . '" class="' . ($k == $audience_key ? 'selected' : '') .
+        '" data-value="' . $k . '">' . $v['label'] . '</a>';
+  }
+
+  $output .= '</div>';
 
   if(sizeof($sort)){
     $output .= '<form method="get" id="csc-list-form">';
-    $output .= '<input id="audience-input" type="hidden" name="audience" value="' . $class . '"/>';
-    $output .= '<input type="hidden" name="q" value="list/' . $type;
-    $output .= ($nid) ? "/$nid" : '';
+    $output .= '<input id="audience-input" type="hidden" name="audience" value="' . $audience_key . '"/>';
+    $output .= '<input type="hidden" name="q" value="' . $pathArg;
+    //$output .= ($nid) ? "/$nid" : '';
     $output .= '">';
 
     $output .= '<div class="sort-label">Sort by</div>';
@@ -292,36 +281,6 @@ function csc_class_lists_select($sortArg) {
   }
 
   return $output;
-}
-
-/**
- * Determine the audience for the class list page
- */
-function csc_class_lists_get_audience($page_panel = FALSE) {
-    $audience = (isset($_GET['audience']))? check_plain($_GET['audience']) : ''; // first check for ?audience=... parameter
-    if ($page_panel && !empty($params['audience'])) { // And check if panel page with panel parameter
-        $audience = $params['audience'];
-    } else if (empty($audience)) {  // If audience is empty, then check the path for the class type
-        $pth = current_path();
-        if (preg_match('/list\/class\/(.+)\/?$/', $pth, $mtch)) {
-            $audience = $mtch[1];
-            switch($audience) {
-                case 'dropins':
-                    $audience = 'drop-in';
-                    break;
-                case 'workshops':
-                    $audience = 'non-academic';
-                    break;
-                case 'retreats':
-                    $audience = 'retreat';
-                    break;
-                default:
-                    $audience = 'academic';
-            }
-        }
-    }
-    if (empty($audience)) { $audience = 'academic'; } // If it's still empty, then default to academic  Just in case...
-    return $audience;
 }
 
 /**
@@ -380,10 +339,11 @@ function csc_class_lists_alpha_render($qry){
     $l = ($node->type == 'people') ? strtoupper(substr($node->field_last_name[$lng][0]['value'], 0, 1)) : strtoupper(substr($node->title, 0, 1));
     if($letter <> $l){
       $letter = $l;
+      /* $tagopen is not defined
       if ($tagopen) {
         $output .= "</div>";
         $tagopen = false;
-      }
+      }*/
       $output .= "<div class='clear'></div><h2>$letter</h2>\n";
       $output .= '<div class="list-group">';
       $tagopen = true;
@@ -399,7 +359,6 @@ function csc_class_lists_alpha_render($qry){
 
   return $output;
 }
-
 
 function csc_class_lists_year_render($qry){
   $r = db_query($qry);
@@ -435,12 +394,13 @@ function csc_class_lists_year_render($qry){
  * @throws Exception
  */
 function csc_class_lists_semester_render($qry) {
+  watchdog('csc class list > semester_render', "Query: $qry");
   $r = db_query($qry);
   $ourres = array();
   $output = ''; $semester = '';
   // Figure out current semester to make sure a heading is printed for it
   $today = date('Ymd');
-  $current_semester = csc_list_calculate_semester($today, $today);
+  $current_semester = csc_class_list_calculate_semester($today, $today);
   // Only set current heading not printed if it is a Spring or Fall semester
   $curr_is_printed = (preg_match('/Spring|Fall/', $current_semester)) ? FALSE : TRUE;
 
@@ -451,15 +411,15 @@ function csc_class_lists_semester_render($qry) {
   // Iterate through results and separate the two
   foreach ($r as $row) {
       $node = node_load($row->nid);
-      $lng = $node->language;
-      if (!empty($node->field_date[$lng][0]['rrule']) && strstr($node->field_date[$lng][0]['rrule'], 'NEVER=1')) {
-          $nerows[$node->title] =  theme('csc_class_lists_item', array('title' => $node->title,
-                                          'nid' => $node->nid,
-                                          'teaser' => isset($node->field_small_teaser[$lng][0]['value']) ? $node->field_teaser[$lng][0]['value'] : '',
-                                          'image' => isset($node->field_featured_image[$lng][0]['uri'])? $node->field_featured_image[$lng][0]['uri'] : '',
-                                         ));
+      $lng = ($node) ? $node->language : 'und';
+      if ($node && !empty($node->field_date[$lng][0]['rrule']) && strstr($node->field_date[$lng][0]['rrule'], 'NEVER=1')) {
+        $nerows[$node->title] = theme('csc_class_lists_item', array('title' => $node->title,
+          'nid' => $node->nid,
+          'teaser' => isset($node->field_small_teaser[$lng][0]['value']) ? $node->field_teaser[$lng][0]['value'] : '',
+          'image' => isset($node->field_featured_image[$lng][0]['uri']) ? $node->field_featured_image[$lng][0]['uri'] : '',
+        ));
       } else {
-          $regrows[] = $row;
+        $regrows[] = $row;
       }
   }
 
@@ -474,32 +434,38 @@ function csc_class_lists_semester_render($qry) {
   }
 
   // Process regular rows into $output
-  foreach ($regrows as $row) {
+  foreach ($regrows as $rowindex => $row) {
     $node = node_load($row->nid);
-    $lng = $node->language;
-    $item = theme('csc_class_lists_item', array('title' => $node->title,
-                                          'nid' => $node->nid,
-                                          'teaser' => isset($node->field_small_teaser[$lng][0]['value']) ? $node->field_teaser[$lng][0]['value'] : '',
-                                          'image' => isset($node->field_featured_image[$lng][0]['uri'])? $node->field_featured_image[$lng][0]['uri'] : '',
-                                         ));
+    if ($node) {
+      $lng = $node->language;
+      $item = theme('csc_class_lists_item', array('title' => $node->title,
+        'nid' => $node->nid,
+        'teaser' => isset($node->field_small_teaser[$lng][0]['value']) ? $node->field_teaser[$lng][0]['value'] : '',
+        'image' => isset($node->field_featured_image[$lng][0]['uri']) ? $node->field_featured_image[$lng][0]['uri'] : '',
+      ));
 
-    $mysemester = csc_list_calculate_semester($row->dfv, $row->maxdfv);
-    if($mysemester <> $semester){
-       // If current semester heading is not printed, check to make sure first class is in current semester
-       if ($mysemester == $current_semester) { $curr_is_printed = TRUE; }
-       // If not then print a header for current semester with "To Be Announced".
-       $is_prior = _semester_prior_to($mysemester, $current_semester);
-       //dpm($is_prior, 'is prior');
-       if (!$curr_is_printed && $is_prior) {
+      $mysemester = csc_class_list_calculate_semester($row->dfv, $row->maxdfv);
+      if ($mysemester <> $semester) {
+        // If current semester heading is not printed, check to make sure first class is in current semester
+        if ($mysemester == $current_semester) {
+          $curr_is_printed = TRUE;
+        }
+        // If not then print a header for current semester with "To Be Announced".
+        $is_prior = _class_semester_prior_to($mysemester, $current_semester);
+        //dpm($is_prior, 'is prior');
+        if (!$curr_is_printed && $is_prior) {
           $output .= "<div class='clear'></div><h2 class='lower'>$current_semester</h2>\n";
           $output .= "<p class=\"tbap\">To Be Announced!</p>"; // class p.tbap called in csc-class-lists.js to add class type
           $curr_is_printed = TRUE;
-       }
-      $semester = $mysemester;
-      $output .= "<div class='clear'></div><h2 class='lower'>$semester</h2>\n";
-      $output .= "<div class='list-group'>$item";
+        }
+        $semester = $mysemester;
+        $output .= "<div class='clear'></div><h2 class='lower'>$semester</h2>\n";
+        $output .= "<div class='list-group'>$item";
+      } else {
+        $output .= $item;
+      }
     } else {
-      $output .= $item;
+      watchdog('csc_class_list > semester_render', "No node for row {$rowindex}: " . json_encode($row));
     }
   }
   $output .= '</div>';
@@ -514,7 +480,7 @@ function csc_class_lists_semester_render($qry) {
  * @param $sem2
  * @return bool
  */
-function _semester_prior_to($sem1, $sem2) {
+function _class_semester_prior_to($sem1, $sem2) {
     $sem1 = explode(' ', $sem1);
     $sem1[0] = strtolower($sem1[0]);
     $sem2 = explode(' ', $sem2);
@@ -546,7 +512,7 @@ function _semester_prior_to($sem1, $sem2) {
     }
 }
 
-function csc_list_calculate_semester($start, $end) {
+function csc_class_list_calculate_semester($start, $end) {
 	$dt = date_parse($start);
     $enddt = date_parse($end);
 	$year = $dt['year'];
