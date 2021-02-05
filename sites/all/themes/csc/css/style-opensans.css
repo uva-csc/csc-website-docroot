@@ -5215,6 +5215,11 @@ white-space: pre;
   float: left;
   height: 160px;
 }
+
+.pane-csc-class-lists .csc-lists-container .list-item {
+  overflow: hidden;
+}
+
 /* line 3409, ../../../../../sass/sites/all/themes/csc/css/style.scss */
 .csc-lists-container .list-item:hover {
   background-color: #444;

@@ -58,7 +58,7 @@ function csc_class_lists_edit_form_submit($form, &$form_state) {
 }
 
 function csc_class_lists_render($subtype, $conf, $panel_args, $context = NULL) {
-
+  watchdog('csc class list', 'in render: ' . json_encode($panel_args));
   $params = array();
   if (!empty($conf['list_params'])) {
     $temp = explode('&', $conf['list_params']);
@@ -67,7 +67,7 @@ function csc_class_lists_render($subtype, $conf, $panel_args, $context = NULL) {
         $pts = explode('=', $p);
         $params[$pts[0]] = $pts[1];
       } else {
-        watchdog('csc class lists', "list param without = : {$p}");
+         // watchdog('csc class lists', "list param without = : {$p}");
       }
     }
   }
@@ -90,7 +90,6 @@ function csc_class_lists_render($subtype, $conf, $panel_args, $context = NULL) {
     }
     $page_path = '/' . implode('/', $path_pts);
   }
-
 
   //*** Initializing ***
   $sort = isset($_GET['sort']) ? check_plain(htmlspecialchars($_GET['sort'])): '';
@@ -226,18 +225,21 @@ function _csc_class_lists_get_intro_text($pargs) {
 
 function csc_class_lists_select($pathArg, $audience_key, $sortArg) {
 
-  $field = field_info_field('field_audience');
-  $audiences = list_allowed_values($field);
-
   $output = '';
   // Removed from sort: 'Date Added' => array('date_desc' => 'Newest First', 'date_asc' => 'Oldest First'),
-  $sort = array('Date Offered' => array('offered' => 'Date Offered'), 'Title' => array('title_asc' => 'A-Z', 'title_desc' => 'Z-A'), 'School' => array('school' => 'School A-Z'));
+  $sort = array(
+    'Date Offered' => array('' => 'Date Offered'),
+    'Title' => array('title_asc' => 'A-Z', 'title_desc' => 'Z-A'),
+    'School' => array('school' => 'School A-Z')
+  );
   $sort_default = 'date_desc';
-  //$filter = array('upcoming' => 'Upcoming', 'ongoing' => 'Ongoing', 'past' => 'Past');
+  // $filter = array('upcoming' => 'Upcoming', 'ongoing' => 'Ongoing', 'past' => 'Past');
 
   $output .= '<div class="list-filter-wrapper">';
 
   // Create Audience URLS with page path and audience values keys
+  $field = field_info_field('field_audience');
+  $audiences = list_allowed_values($field);
   $audience_links = array();
   foreach($audiences as $key => $label) {
     $audience_links[$key] = array(
@@ -245,23 +247,17 @@ function csc_class_lists_select($pathArg, $audience_key, $sortArg) {
       'label' => $label,
     );
   }
-
+  $sortstr = (!empty($_GET['sort'])) ? "?sort={$_GET['sort']}" : '';
   $output .= '<div id="audience-filter" class="audience-filter '. $audience_key .'">';
-
   foreach($audience_links as $k => $v) {
-      $output .= '<a href="' . $v['path'] . '" class="' . ($k == $audience_key ? 'selected' : '') .
+      $output .= '<a href="' . $v['path'] . $sortstr . '" class="' . ($k == $audience_key ? 'selected' : '') .
         '" data-value="' . $k . '">' . $v['label'] . '</a>';
   }
-
   $output .= '</div>';
 
+  // Do Sort Select
   if(sizeof($sort)){
     $output .= '<form method="get" id="csc-list-form">';
-    $output .= '<input id="audience-input" type="hidden" name="audience" value="' . $audience_key . '"/>';
-    $output .= '<input type="hidden" name="q" value="' . $pathArg;
-    //$output .= ($nid) ? "/$nid" : '';
-    $output .= '">';
-
     $output .= '<div class="sort-label">Sort by</div>';
     $output .= '<select style="min-width:125px" data-placeholder="Sort by..." name="sort" onChange="document.getElementById(\'csc-list-form\').submit()">';
     foreach($sort as $k1 => $v1){
@@ -279,7 +275,7 @@ function csc_class_lists_select($pathArg, $audience_key, $sortArg) {
     $output .= '<script>jQuery("#csc-list-form").find("select").chosen({disable_search: true})</script>';
     $output .= '</div>';
   }
-
+  // Return top links output
   return $output;
 }
 
@@ -394,7 +390,7 @@ function csc_class_lists_year_render($qry){
  * @throws Exception
  */
 function csc_class_lists_semester_render($qry) {
-  watchdog('csc class list > semester_render', "Query: $qry");
+  //watchdog('csc class list > semester_render', "Query: $qry");
   $r = db_query($qry);
   $ourres = array();
   $output = ''; $semester = '';
@@ -450,7 +446,8 @@ function csc_class_lists_semester_render($qry) {
         if ($mysemester == $current_semester) {
           $curr_is_printed = TRUE;
         }
-        // If not then print a header for current semester with "To Be Announced".
+        // If not, there are no classes yet for current semester
+        // So print a header for current semester with "To Be Announced".
         $is_prior = _class_semester_prior_to($mysemester, $current_semester);
         //dpm($is_prior, 'is prior');
         if (!$curr_is_printed && $is_prior) {
@@ -465,7 +462,7 @@ function csc_class_lists_semester_render($qry) {
         $output .= $item;
       }
     } else {
-      watchdog('csc_class_list > semester_render', "No node for row {$rowindex}: " . json_encode($row));
+       // watchdog('csc_class_list > semester_render', "No node for row {$rowindex}: " . json_encode($row));
     }
   }
   $output .= '</div>';
