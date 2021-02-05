@@ -58,7 +58,7 @@ function csc_class_lists_edit_form_submit($form, &$form_state) {
 }
 
 function csc_class_lists_render($subtype, $conf, $panel_args, $context = NULL) {
-  watchdog('csc class list', 'in render: ' . json_encode($panel_args));
+  //watchdog('csc class list', 'in render: ' . json_encode($panel_args));
   $params = array();
   if (!empty($conf['list_params'])) {
     $temp = explode('&', $conf['list_params']);
@@ -92,7 +92,7 @@ function csc_class_lists_render($subtype, $conf, $panel_args, $context = NULL) {
   }
 
   //*** Initializing ***
-  $sort = isset($_GET['sort']) ? check_plain(htmlspecialchars($_GET['sort'])): '';
+  $sort = (isset($_GET['sort']) && !empty($_GET['sort'])) ? check_plain(htmlspecialchars($_GET['sort'])): '';
   $sort_by = 'n.title';
   $order = 'ASC';
   $render_function = 'csc_class_lists_default_render';
@@ -179,6 +179,7 @@ function csc_class_lists_render($subtype, $conf, $panel_args, $context = NULL) {
   $block = new stdClass();
   $block->title = $title;
   $class_type_select = csc_class_lists_select($page_path, $audience, $sort);
+  //$class_type_select = '<b>Type selecdt Placeholder</b>';
   $block->content = $conf['desc_text'] . $class_type_select . '<div class="csc-lists-container">' .
      $output . '</div><div class="clear"></div>';
   return $block;
@@ -223,19 +224,10 @@ function _csc_class_lists_get_intro_text($pargs) {
     return $content; // If nothing matches, this is an empty string
 }
 
-function csc_class_lists_select($pathArg, $audience_key, $sortArg) {
+function csc_class_lists_select($pathArg, $audience_key='', $sortArg='') {
 
-  $output = '';
-  // Removed from sort: 'Date Added' => array('date_desc' => 'Newest First', 'date_asc' => 'Oldest First'),
-  $sort = array(
-    'Date Offered' => array('' => 'Date Offered'),
-    'Title' => array('title_asc' => 'A-Z', 'title_desc' => 'Z-A'),
-    'School' => array('school' => 'School A-Z')
-  );
-  $sort_default = 'date_desc';
-  // $filter = array('upcoming' => 'Upcoming', 'ongoing' => 'Ongoing', 'past' => 'Past');
-
-  $output .= '<div class="list-filter-wrapper">';
+  $output = '<div class="list-filter-wrapper">';
+  //return $output . "<b>PlaceHolder</b></div>";
 
   // Create Audience URLS with page path and audience values keys
   $field = field_info_field('field_audience');
@@ -247,7 +239,7 @@ function csc_class_lists_select($pathArg, $audience_key, $sortArg) {
       'label' => $label,
     );
   }
-  $sortstr = (!empty($_GET['sort'])) ? "?sort={$_GET['sort']}" : '';
+  $sortstr = (!empty($sortArg)) ? "?sort={$sortArg}" : '';
   $output .= '<div id="audience-filter" class="audience-filter '. $audience_key .'">';
   foreach($audience_links as $k => $v) {
       $output .= '<a href="' . $v['path'] . $sortstr . '" class="' . ($k == $audience_key ? 'selected' : '') .
@@ -256,25 +248,33 @@ function csc_class_lists_select($pathArg, $audience_key, $sortArg) {
   $output .= '</div>';
 
   // Do Sort Select
-  if(sizeof($sort)){
-    $output .= '<form method="get" id="csc-list-form">';
-    $output .= '<div class="sort-label">Sort by</div>';
-    $output .= '<select style="min-width:125px" data-placeholder="Sort by..." name="sort" onChange="document.getElementById(\'csc-list-form\').submit()">';
-    foreach($sort as $k1 => $v1){
-      $output .= '<optgroup label="' . $k1 . '">';
-      foreach($v1 as $k => $v){
-        $output .= '<option value="'. $k .'"';
-        if($sortArg == $k) $output .= ' selected';
-        $output .='>' . $v . '</option>';
-      }
-      $output .= '</optgroup>';
-    }
-    $output .= '</select>';
+  // Removed from sort: 'Date Added' => array('date_desc' => 'Newest First', 'date_asc' => 'Oldest First'),
+  $sort = array(
+    'Date Offered' => array('' => 'Date Offered'),
+    'Title' => array('title_asc' => 'A-Z', 'title_desc' => 'Z-A'),
+    'School' => array('school' => 'School A-Z')
+  );
+  // $sort_default = 'date_desc';
+  // $filter = array('upcoming' => 'Upcoming', 'ongoing' => 'Ongoing', 'past' => 'Past');
 
-    $output .= "</form>\n";
-    $output .= '<script>jQuery("#csc-list-form").find("select").chosen({disable_search: true})</script>';
-    $output .= '</div>';
+  $output .= '<form method="get" id="csc-list-form">';
+  $output .= '<div class="sort-label">Sort by</div>';
+  $output .= '<select style="min-width:125px" data-placeholder="Sort by..." name="sort" onChange="document.getElementById(\'csc-list-form\').submit()">';
+  foreach($sort as $k1 => $v1){
+    $output .= '<optgroup label="' . $k1 . '">';
+    foreach($v1 as $k => $v){
+      $output .= '<option value="'. $k .'"';
+      if($sortArg == $k) $output .= ' selected';
+      $output .='>' . $v . '</option>';
+    }
+    $output .= '</optgroup>';
   }
+  $output .= '</select>';
+
+  $output .= "</form>\n";
+  // $output .= '<script>jQuery("#csc-list-form").find("select").chosen({disable_search: true})</script>';
+  $output .= '</div>';
+
   // Return top links output
   return $output;
 }
@@ -390,7 +390,7 @@ function csc_class_lists_year_render($qry){
  * @throws Exception
  */
 function csc_class_lists_semester_render($qry) {
-  //watchdog('csc class list > semester_render', "Query: $qry");
+  watchdog('csc class list > semester_render', "Query: $qry");
   $r = db_query($qry);
   $ourres = array();
   $output = ''; $semester = '';
@@ -409,10 +409,12 @@ function csc_class_lists_semester_render($qry) {
       $node = node_load($row->nid);
       $lng = ($node) ? $node->language : 'und';
       if ($node && !empty($node->field_date[$lng][0]['rrule']) && strstr($node->field_date[$lng][0]['rrule'], 'NEVER=1')) {
+        $ntease = isset($node->field_small_teaser[$lng][0]['value']) ? $node->field_teaser[$lng][0]['value'] : '';
+        $nimg = isset($node->field_featured_image[$lng][0]['uri']) ? $node->field_featured_image[$lng][0]['uri'] : '';
         $nerows[$node->title] = theme('csc_class_lists_item', array('title' => $node->title,
           'nid' => $node->nid,
-          'teaser' => isset($node->field_small_teaser[$lng][0]['value']) ? $node->field_teaser[$lng][0]['value'] : '',
-          'image' => isset($node->field_featured_image[$lng][0]['uri']) ? $node->field_featured_image[$lng][0]['uri'] : '',
+          'teaser' => $ntease,
+          'image' => $nimg,
         ));
       } else {
         $regrows[] = $row;
@@ -466,6 +468,8 @@ function csc_class_lists_semester_render($qry) {
     }
   }
   $output .= '</div>';
+  // $wdout = str_replace('<', '&lt;', str_replace('>', '&gt;', $output));
+  // watchdog('csc class lists', "returning: " . $wdout);
   return $output;
 }
 

@@ -9,6 +9,7 @@
  * CSC Class Lists: Migrate audience values of dropin, workshop and retreat to new audience value "other"
  */
 function csc_class_lists_update_7000() {
+  watchdog('csc class list install', "In csc lists update");
   // Add "other" to audience field allowed values (From https://drupal.stackexchange.com/a/50152/20666)
   $field = field_info_field('field_audience');
   $values = &$field['settings']['allowed_values'];
@@ -24,5 +25,6 @@ function csc_class_lists_update_7000() {
     ))
     ->condition('field_audience_value', array('drop-in', 'non-academic', 'retreat'), 'IN')
     ->execute();
+  watchdog('csc class list install', "{$num_updated} nodes updated audience value to other");
   drupal_set_message("CSC Class List Update: Audience changed to 'other' for {$num_updated} nodes");
 }
