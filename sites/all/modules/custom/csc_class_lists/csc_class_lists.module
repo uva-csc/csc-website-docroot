@@ -2,7 +2,7 @@
 
 function csc_class_lists_install() {
   // Call update to adjust audience values
-  // csc_class_lists_update_7000();
+  csc_class_lists_update_7000();
 }
 
 /**

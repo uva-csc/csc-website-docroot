@@ -167,7 +167,8 @@ function csc_class_lists_render($subtype, $conf, $panel_args, $context = NULL) {
 
   // watchdog('csc_class_lists', 'Query: ' . $qry);
   //$output = csc_class_lists_select();
-  $intro = _csc_class_lists_get_intro_text($panel_args);
+
+  $intro = _csc_class_lists_get_intro_text($audience);
   $output = trim($render_function($qry));
   if (strlen(strip_tags($output)) == 0 ) {
       $output = '<p>Sorry, no results found!</p>';
@@ -180,7 +181,8 @@ function csc_class_lists_render($subtype, $conf, $panel_args, $context = NULL) {
   $block->title = $title;
   $class_type_select = csc_class_lists_select($page_path, $audience, $sort);
   //$class_type_select = '<b>Type selecdt Placeholder</b>';
-  $block->content = $conf['desc_text'] . $class_type_select . '<div class="csc-lists-container">' .
+  $block->content = '<div class="all-class-desc">' . $conf['desc_text'] . '</div>' .
+     $class_type_select . '<div class="csc-lists-container">' .
      $output . '</div><div class="clear"></div>';
   return $block;
 }
@@ -192,8 +194,8 @@ function csc_class_lists_render($subtype, $conf, $panel_args, $context = NULL) {
  * @param $pargs
  * @return string
  */
-function _csc_class_lists_get_intro_text($pargs) {
-    $blockname = strtolower(implode(' ', $pargs) . ' list block');  // Create the block name from the panel args
+function _csc_class_lists_get_intro_text($audience) {
+    $blockname = $audience . ' class description';  // Create the block name from the panel args
     //watchdog('csc_class_lists blockname', $blockname);
     // Get list of all blocks
     module_load_include('inc', 'block', 'block.admin');
@@ -272,6 +274,7 @@ function csc_class_lists_select($pathArg, $audience_key='', $sortArg='') {
   $output .= '</select>';
 
   $output .= "</form>\n";
+  // Causes crash when adding panel to page. Took out. (ndg8f 2/5/2021)
   // $output .= '<script>jQuery("#csc-list-form").find("select").chosen({disable_search: true})</script>';
   $output .= '</div>';
 

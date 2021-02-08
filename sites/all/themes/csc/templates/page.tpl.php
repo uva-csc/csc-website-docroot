@@ -3,18 +3,13 @@
 <div id="header-logo"><a href="<?php echo url('<front>');?>"><?php print_image('logo_csc_horiz-banner-transparent-oct-2018.png', 453, 50, "Comtemplative Scinces Center");?></a></div>
 <div id="header-icons">
   <ul>
-    <!-- <li><a href="#"><?php print_image('explore_icon.png', 0, 0, "Explore CSC", 'class="top-icons" id="explore-icon"');?></a></li> -->
-    <!--<li><a alt="Support" class="noxhr top-anchor" id="support-link" href="<?php echo url('support'); ?>"><?php print_image('gift_icon.png', 24, 27, "Give Now", 'class="top-icons" id="gift-icon"');?><div class="header-icon-text">Support</div></a></li>-->
+    <!-- Old Bitly Url: http://at.virginia.edu/supportcsc (figure out how to redirect) -->
     <li><a target="_blank" alt="Give Now" class="noxhr top-anchor"
-           href="http://at.virginia.edu/supportcsc"><?php
+           href="https://securelb.imodules.com/s/1535/16-uva/giving.aspx?sid=1535&gid=16&pgid=20601&dids=983.1104.4468.1452&bledit=1&sort=1&appealcode=NUVAWEB"><?php
                 print_image('gift_icon.png', 24, 27, "Give Now", 'class="top-icons" id="gift-icon"');
             ?><div class="header-icon-text">Give Now</div></a></li>
-    <!--<li><a id="anchor-about" alt="About Us" href="<?php echo url('content/about-us');?>" class="noxhr"><?php print_image('about_icon.png', 24, 24, "About CSC", 'class="top-icons" id="about-icon"');?><div class="header-icon-text">about</div></a></li>-->
-    <!-- <li><a class="noxhr top-anchor" alt="News" id="news-link" href="<?php echo url('csc-news');?>"><?php print_image('news_icon.png', 32, 29, "News", 'class="top-icons" id="news-icon"');?><div class="header-icon-text">News</div></a></li>
-    <li><a class="top-anchor" alt="Connect with Us" id="connect-link" href="<?php echo url('csc_column/connect');?>"><?php print_image('handshake_icon.png', 32, 32, "Connect", 'class="top-icons" id="connect-icon"');?><div class="header-icon-text">Connect</div></a></li>-->
     <li><a class="top-anchor" alt="Calendar" id="calendar-link" href="<?php echo url('csc_calendar');?>"><?php print_image('calendar_icon.png', 24, 27, "Calendar", 'class="top-icons" id="calendar-icon"');?><div class="header-icon-text">calendar</div></a></li>
     <li><a class="top-anchor" alt="Contact Us" href="<?php echo url('csc_column/contact');?>"><?php print_image('contact_icon.png', 24, 24, "Contact", 'class="top-icons" id="contact-icon"');?><div class="header-icon-text">contact</div></a></li>
-    <!--li><a class="top-anchor" alt="Log into your account" href="<?php echo url('csc_column/login');?>"><?php print_image('login_icon.png', 17, 24, "Login", 'class="top-icons" id="login-icon"');?><div class="header-icon-text">log in</div></a></li--> 
     <li><a class="top-anchor" alt="Search CSC" href="<?php echo url('csc_column/search');?>"><?php print_image('search.png', 24, 24, "Search", 'class="top-icons" id="search-icon"');?><div class="header-icon-text">search</div></a></li>
   </ul>
 </div>

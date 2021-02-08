@@ -86,6 +86,7 @@ em strong, strong em {
 #content .pane-organizations-panel-pane-1 h2.pane-title,
 .view-panopoly-database-search h2.pane-title,
 .pane-csc-lists h2,
+.pane-csc-class-lists h2,
 .pane-csc-directors > h2,
 .pane-csc-role > h2,
 #content .pane-events-panel-pane-1 .views-label,
@@ -143,7 +144,8 @@ em strong, strong em {
 }
 
 /* line 110, ../../../../../sass/_global.scss */
-#content .pane-news-new-list-all h2.pane-title, #content .pane-events-panel-pane-1 h2.pane-title, #content .pane-csc-class-date h2.pane-title, #content .pane-research-panel-pane-1 h2.pane-title, #content .pane-learning-panel-pane-1 h2.pane-title, #content .pane-engagement-panel-pane-1 h2.pane-title, #content .pane-classes-panel-pane-1 h2.pane-title, #content .pane-people-panel-pane-1 h2.pane-title, #content .pane-organizations-panel-pane-1 h2.pane-title, .view-panopoly-database-search h2.pane-title,
+#content .pane-news-new-list-all h2.pane-title, #content .pane-events-panel-pane-1 h2.pane-title, #content .pane-csc-class-date h2.pane-title, #content .pane-research-panel-pane-1 h2.pane-title, #content .pane-learning-panel-pane-1 h2.pane-title, #content .pane-engagement-panel-pane-1 h2.pane-title, #content .pane-classes-panel-pane-1 h2.pane-title, #content .pane-people-panel-pane-1 h2.pane-title, #content .pane-organizations-panel-pane-1 h2.pane-title,
+.view-panopoly-database-search h2.pane-title,
 .pane-csc-lists h2,
 .pane-csc-class-lists h2,
 .pane-csc-directors > h2, .pane-csc-role > h2, #content .pane-events-panel-pane-1 .views-label, .pane-node-field-event-date h2.pane-title, .pane-node-field-location h2, .pane-csc-event-date h2, .page-node-264 .pane-node-body h2, .page-node-215 .pane-node-body h2, .filter-tip {
@@ -226,7 +228,8 @@ em strong, strong em {
 }
 
 /* line 153, ../../../../../sass/_global.scss */
-.csc-3col-first, .page-list .csc-panel-col-right {
+.csc-3col-first, .page-list .csc-panel-col-right,
+.page-classlist .csc-panel-col-right {
   background: white url(../images/gray_line_bg.gif) left repeat-y;
 }
 
@@ -2952,7 +2955,8 @@ body.front .csc-3col-col-fixed, body.front .csc-panel-col-left {
   background: #fff;
 }
 /* line 51, ../../../../../sass/_global.scss */
-body.page-list .csc-panel-col-right {
+body.page-list .csc-panel-col-right,
+body.page-classlist .csc-panel-col-right {
   position: static;
   width: 100%;
 }
@@ -5155,17 +5159,20 @@ white-space: pre;
 
 @media only screen and (max-width: 640px) {
   /* line 3361, ../../../../../sass/sites/all/themes/csc/css/style.scss */
-  .page-list .csc-panel-col-right {
+  .page-list .csc-panel-col-right,
+  .page-classlist .csc-panel-col-right {
     position: static;
   }
 }
 /* line 3367, ../../../../../sass/sites/all/themes/csc/css/style.scss */
-.page-list .csc-panel-inside-inside {
+.page-list .csc-panel-inside-inside,
+.page-classlist .csc-panel-inside-inside {
   padding: 2em;
 }
 @media only screen and (max-width: 640px) {
   /* line 3367, ../../../../../sass/sites/all/themes/csc/css/style.scss */
-  .page-list .csc-panel-inside-inside {
+  .page-list .csc-panel-inside-inside,
+  .page-classlist .csc-panel-inside-inside {
     padding: 0.4em;
   }
 }
@@ -5477,14 +5484,16 @@ white-space: pre;
   margin-right: 0.8em;
 }
 /* line 51, ../../../../../sass/_global.scss */
-body.page-list-class .list-filter-wrapper form {
+body.page-list-class .list-filter-wrapper form,
+body.page-classlist .list-filter-wrapper form {
   top: 0px;
   right: 0px;
   position: absolute;
 }
 @media only screen and (max-width: 640px) {
   /* line 51, ../../../../../sass/_global.scss */
-  body.page-list-class .list-filter-wrapper form {
+  body.page-list-class .list-filter-wrapper form,
+  body.page-classlist .list-filter-wrapper form {
     position: static;
   }
 }
@@ -5641,7 +5650,8 @@ div.csc-login-link * {
 
 /** Page Column Min Widths **/
 .page-events-all .csc-3col-first,
-.page-list .csc-panel-col-right
+.page-list .csc-panel-col-right,
+.page-classlist .csc-panel-col-right
 {
     display: block;
     float: left;
@@ -5649,7 +5659,8 @@ div.csc-login-link * {
 }
 
 .page-classes .csc-3col-second,
-.page-list .csc-3col-second {
+.page-list .csc-3col-second,
+.page-classlist .csc-3col-second {
     display: none;
 }
 
