@@ -143,7 +143,7 @@ function csc_isotope_admin_form($form, $form_state) {
         );
         $form['front_color_tile_table'][$i]['body'] = array(
             '#type' => 'markup',
-            '#markup' => strip_tags($node->body['und'][0]['value']),
+            '#markup' => (isset($node->body['und'][0]['value'])) ? strip_tags($node->body['und'][0]['value']) : '',
         );
         $form['front_color_tile_table'][$i]['weight'] = array(
             '#type' => 'textfield',

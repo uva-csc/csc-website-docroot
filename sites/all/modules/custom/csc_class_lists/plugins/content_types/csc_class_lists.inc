@@ -393,7 +393,7 @@ function csc_class_lists_year_render($qry){
  * @throws Exception
  */
 function csc_class_lists_semester_render($qry) {
-  watchdog('csc class list > semester_render', "Query: $qry");
+  // watchdog('csc class list > semester_render', "Query: $qry");
   $r = db_query($qry);
   $ourres = array();
   $output = ''; $semester = '';
