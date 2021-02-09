@@ -68,6 +68,10 @@ DirectoryIndex index.php index.html index.htm
   RewriteCond %{HTTPS} on
   RewriteRule ^ - [E=protossl:s]
 
+  # Redirect to new CSC Url
+  RewriteCond %{HTTP_HOST} ^(www\.)?uvacontemplation\.org$ [NC]
+  RewriteRule ^(.*)$ https://csc.virginia.edu/$1 [R=301,L]
+
   # Make sure Authorization HTTP header is available to PHP
   # even when running as CGI or FastCGI.
   RewriteRule ^ - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
