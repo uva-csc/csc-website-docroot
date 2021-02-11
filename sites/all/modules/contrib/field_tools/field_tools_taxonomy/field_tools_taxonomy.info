@@ -7,9 +7,8 @@ core = 7.x
 files[] = field_tools_taxonomy.module
 files[] = field_tools_taxonomy.admin.inc
 
-; Information added by Drupal.org packaging script on 2015-08-21
-version = "7.x-1.0-alpha9"
+; Information added by Drupal.org packaging script on 2020-01-31
+version = "7.x-1.0-alpha10"
 core = "7.x"
 project = "field_tools"
-datestamp = "1440188040"
-
+datestamp = "1580489245"

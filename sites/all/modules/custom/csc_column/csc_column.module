@@ -113,7 +113,8 @@ function csc_column_login_form_submit($form, &$form_state){
 }
 
 function csc_column_login(){
-  $output = drupal_render(drupal_get_form('csc_column_login_form'));
+  $loginform = drupal_get_form('csc_column_login_form');
+  $output = drupal_render($loginform);
   echo $output;
 }
 
@@ -203,7 +204,7 @@ function csc_column_menu(){
     'page callback' => 'csc_column_connect',
     'access arguments' => array('access content'),
   );
-  
+
   $items['csc_column/explore'] = array(
     'page callback' => 'csc_column_explore',
     'access arguments' => array('access content'),

@@ -13,7 +13,7 @@ function csc_isotope_ctools_plugin_directory($owner, $plugin_type) {
  */
 function csc_isotope_menu() {
     $items = array();
-    
+
   $items['admin/config/csc'] = array(
         'title' => 'CSC Settings',
         'description' => 'Settings for CSC',
@@ -23,21 +23,21 @@ function csc_isotope_menu() {
         'type' => MENU_LOCAL_TASK | MENU_NORMAL_ITEM,
         // See csc_newletter for mailchip newsletter settings
     );
-    
+
     $items['admin/config/csc/frontpage'] = array(
         'title' => 'Front Page',
         'description' => 'Settings for CSC front page',
         'type' => MENU_DEFAULT_LOCAL_TASK,
     );
-  
+
     return $items;
 }
 
 /**
- * Need to make a drag and droppable table here of node's promoted. 
- * See 
+ * Need to make a drag and droppable table here of node's promoted.
+ * See
  * https://www.curveagency.com/blog/creating-form-draggable-elements-using-drupaladdtabledrag
- *  
+ *
  */
 function csc_isotope_admin_form($form, $form_state) {
     module_load_include('inc', 'csc_isotope', 'plugins/content_types/csc_isotope_page');
@@ -48,8 +48,8 @@ function csc_isotope_admin_form($form, $form_state) {
     );
     $form['instructions'] = array(
         '#type' => 'markup',
-        '#markup' => t('<p>The table below lists all the nodes that have been promoted to the front page. 
-        Drag and drop to place them in the order that you want them to appear on the page. 
+        '#markup' => t('<p>The table below lists all the nodes that have been promoted to the front page.
+        Drag and drop to place them in the order that you want them to appear on the page.
         (Note: they will be automatically interspersed with the color context tiles.)</p>'),
     );
     $form['front_node_table'] = array(
@@ -61,7 +61,7 @@ function csc_isotope_admin_form($form, $form_state) {
     $node_list = variable_get('front_node_list', array());
     $nodes = node_load_multiple($node_list);
     if (count($nodes) < 7 ) {
-         drupal_set_message(t('There are only @CT nodes promoted to the front page. There must be at least 7. Please add more!', 
+         drupal_set_message(t('There are only @CT nodes promoted to the front page. There must be at least 7. Please add more!',
             array('@CT' => count($nodes))), 'warning');
     }
     $rows = array();
@@ -73,19 +73,19 @@ function csc_isotope_admin_form($form, $form_state) {
             '#markup' => t('Tile') . ' ' . $i,
         );
         $form['front_node_table'][$i]['nid'] = array(
-            '#type' => 'markup', 
+            '#type' => 'markup',
             '#markup' => $node->nid,
         );
         $form['front_node_table'][$i]['nidval'] = array(
-            '#type' => 'hidden', 
+            '#type' => 'hidden',
             '#value' => $node->nid,
         );
         $form['front_node_table'][$i]['title'] = array(
-            '#type' => 'markup', 
+            '#type' => 'markup',
             '#markup' => l($node->title, 'node/' . $node->nid),
         );
         $form['front_node_table'][$i]['type'] = array(
-            '#type' => 'markup', 
+            '#type' => 'markup',
             '#markup' => $node->type,
         );
         $form['front_node_table'][$i]['weight'] = array(
@@ -93,7 +93,7 @@ function csc_isotope_admin_form($form, $form_state) {
             '#default_value' => $i,
             '#size' => 3,
             '#attributes' => array('class' => array('item-row-weight')),
-        ); 
+        );
     }
     // Color TIle list
     $form['ctheader'] = array(
@@ -103,7 +103,7 @@ function csc_isotope_admin_form($form, $form_state) {
     );
     $form['ctinstructions'] = array(
         '#type' => 'markup',
-        '#markup' => t('<p>The table below lists all the color tile nodes that are published and promoted to the front page. 
+        '#markup' => t('<p>The table below lists all the color tile nodes that are published and promoted to the front page.
         Drag and drop to place them in the order that you want them to appear on the page. <br/>
         (Note: <strong>ONLY THE FIRST 5 WILL APPEAR.</strong> They will be automatically interspersed with the content tiles.)</p>'),
     );
@@ -113,7 +113,7 @@ function csc_isotope_admin_form($form, $form_state) {
         '#tree' => TRUE,
         '#theme' => 'front_color_tile_table_drag_components',
     );
-    
+
     $ctrows = array();
     $i = 0;
     /*
@@ -130,27 +130,27 @@ function csc_isotope_admin_form($form, $form_state) {
             '#markup' => t('Tile') . ' ' . $i,
         );
         $form['front_color_tile_table'][$i]['nid'] = array(
-            '#type' => 'markup', 
+            '#type' => 'markup',
             '#markup' => $node->nid,
         );
         $form['front_color_tile_table'][$i]['nidval'] = array(
-            '#type' => 'hidden', 
+            '#type' => 'hidden',
             '#value' => $node->nid,
         );
         $form['front_color_tile_table'][$i]['title'] = array(
-            '#type' => 'markup', 
+            '#type' => 'markup',
             '#markup' => l($node->title, 'node/' . $node->nid),
         );
         $form['front_color_tile_table'][$i]['body'] = array(
-            '#type' => 'markup', 
-            '#markup' => strip_tags($node->body['und'][0]['value']),
+            '#type' => 'markup',
+            '#markup' => (isset($node->body['und'][0]['value'])) ? strip_tags($node->body['und'][0]['value']) : '',
         );
         $form['front_color_tile_table'][$i]['weight'] = array(
             '#type' => 'textfield',
             '#default_value' => $i,
             '#size' => 3,
             '#attributes' => array('class' => array('item-row-weight')),
-        ); 
+        );
     }
     $form['submit'] = array(
         '#type' => 'submit',
@@ -171,7 +171,7 @@ function csc_isotope_admin_form_submit($form, &$form_state) {
         $node_list[] = $val['nidval'];
     }
     variable_set('front_node_list', $node_list);
-    
+
     // Color Tile Table
     $vals = $form_state['values']['front_color_tile_table'];
     usort($vals, function($a, $b) {
@@ -204,15 +204,15 @@ function csc_isotope_theme($existing, $type, $theme, $path) {
 function theme_front_node_table_drag_components($vars) {
   $element = $vars['element'];
   drupal_add_tabledrag('front_node_table', 'order', 'sibling', 'item-row-weight');
- 
-  $header = array( 
+
+  $header = array(
         'item' => t('Item'),
-        'nid' => t('Node ID'), 
-        'title' => t('Title'), 
-        'type' => t('Type'), 
+        'nid' => t('Node ID'),
+        'title' => t('Title'),
+        'type' => t('Type'),
         'weight' => t('Weight')
     );
- 
+
   $rows = array();
   foreach (element_children($element) as $key) {
     $row = array();
@@ -223,9 +223,9 @@ function theme_front_node_table_drag_components($vars) {
     }
     $rows[] = $row;
   }
- 
+
   return theme('table', array(
-    'header' => $header, 
+    'header' => $header,
     'rows' => $rows,
     'attributes' => array('id' => 'front_node_table'),
   ));
@@ -236,15 +236,15 @@ function theme_front_node_table_drag_components($vars) {
 function theme_front_color_tile_table_drag_components($vars) {
   $element = $vars['element'];
   drupal_add_tabledrag('front_color_tile_table', 'order', 'sibling', 'item-row-weight');
- 
-  $header = array( 
+
+  $header = array(
         'item' => t('Item'),
-        'nid' => t('Node ID'), 
-        'title' => t('Title'), 
-        'body' => t('Text'), 
+        'nid' => t('Node ID'),
+        'title' => t('Title'),
+        'body' => t('Text'),
         'weight' => t('Weight')
     );
- 
+
   $rows = array();
   foreach (element_children($element) as $key) {
     $row = array();
@@ -255,9 +255,9 @@ function theme_front_color_tile_table_drag_components($vars) {
     }
     $rows[] = $row;
   }
- 
+
   return theme('table', array(
-    'header' => $header, 
+    'header' => $header,
     'rows' => $rows,
     'attributes' => array('id' => 'front_color_tile_table'),
   ));
@@ -308,7 +308,7 @@ function csc_isotope_cron() {
             }
         }
         variable_set('front_node_list', array_filter($node_list));
-        
+
         $node_list = variable_get('front_color_tile_list');
         foreach($node_list as $i => $nid) {
             $node = node_load($nid);
@@ -331,19 +331,18 @@ function csc_isotope_node_view($node, $view_mode, $langcode) {
                 $url = url('node/' . $node->field_alternate_url['und'][0]['target_id']);
             }
             drupal_goto($url);
-        } 
+        }
     }
 }
 
 function csc_isotope_node_update($node) {
     if ($node->promote == 0) {
-        csc_isotope_remove_nid($nid);
+        csc_isotope_remove_nid($node->nid);
     }
 }
 
 function csc_isotope_node_delete($node) {
-    $nid = $node->nid;
-     csc_isotope_remove_nid($nid);
+     csc_isotope_remove_nid($$node->nid);
 }
 
 function csc_isotope_remove_nid($nid) {
