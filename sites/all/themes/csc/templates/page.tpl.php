@@ -3,9 +3,11 @@
 <div id="header-logo"><a href="<?php echo url('<front>');?>"><?php print_image('logo_csc_horiz-banner-transparent-oct-2018.png', 453, 50, "Comtemplative Scinces Center");?></a></div>
 <div id="header-icons">
   <ul>
-    <!-- Old Bitly Url: http://at.virginia.edu/supportcsc (figure out how to redirect) -->
+    <!-- Old Bitly Url: http://at.virginia.edu/supportcsc (figure out how to redirect)
+        Previous URL: https://securelb.imodules.com/s/1535/16-uva/giving.aspx?sid=1535&gid=16&pgid=20601&dids=983.1104.4468.1452&bledit=1&sort=1&appealcode=NUVAWEB
+    -->
     <li><a target="_blank" alt="Give Now" class="noxhr top-anchor"
-           href="https://securelb.imodules.com/s/1535/16-uva/giving.aspx?sid=1535&gid=16&pgid=20601&dids=983.1104.4468.1452&bledit=1&sort=1&appealcode=NUVAWEB"><?php
+           href="https://www.givecampus.com/campaigns/19165/donations/new"><?php
                 print_image('gift_icon.png', 24, 27, "Give Now", 'class="top-icons" id="gift-icon"');
             ?><div class="header-icon-text">Give Now</div></a></li>
     <li><a class="top-anchor" alt="Calendar" id="calendar-link" href="<?php echo url('csc_calendar');?>"><?php print_image('calendar_icon.png', 24, 27, "Calendar", 'class="top-icons" id="calendar-icon"');?><div class="header-icon-text">calendar</div></a></li>

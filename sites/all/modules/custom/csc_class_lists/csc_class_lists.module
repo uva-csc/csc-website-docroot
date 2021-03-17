@@ -39,7 +39,6 @@ function theme_csc_class_lists_item($var){
       'height' => ''
     )) : '';
 
-  $output = '<div class="list-item">';
   if( $image != '' ) {
     $output.= '<div class="list-item-image">';
     $output.= $image;
@@ -51,9 +50,9 @@ function theme_csc_class_lists_item($var){
   $output.= $var['teaser'];
   $output.= '    </div>';
   $output.= '  </div>';
-  $output.= '</div>';
 
   $output = l($output, 'node/' . $var['nid'], array('html' => true));
+  $output = '<div class="list-item">' . $output . '</div>';
 
   return $output;
 }
